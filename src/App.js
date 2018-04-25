@@ -8,17 +8,22 @@ import { equipment } from './equipment';
 class App extends Component {
 
   componentDidMount() {
-    console.log(sets);
-    console.log(equipment);
+    console.log(Object.keys(sets).length);
+    console.log(Object.keys(equipment).length);
 
     let newObj = {};
-    Object.keys(equipment).map( (x) => {
-      newObj[equipment[x].partOfSet] = newObj[equipment[x].partOfSet] + 1 || 1 
+    Object.keys(equipment).forEach( (x) => {
+      if (equipment[x].type === "set") {
+        newObj[equipment[x].partOfSet] = newObj[equipment[x].partOfSet] + 1 || 1;
+      } else {
+        newObj[equipment[x].name] = 1;
+      }
+
     });
 
     let newObj2 = {};
-    Object.keys(sets).map( (x) => {
-      Object.keys(sets[x].items).map( (y) => {
+    Object.keys(sets).forEach( (x) => {
+      Object.keys(sets[x].items).forEach( (y) => {
         let t = sets[x].items[y];
         t = t.split(' ').join('_');
         t = t.split("'").join('');

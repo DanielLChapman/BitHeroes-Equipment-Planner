@@ -438,6 +438,150 @@ export const equipment = {
 		image: "",
 		partOfSet: "gatekeeper",
 		effect: ""
+	},
+	pew_pew: {
+		name: "Pew Pew",
+		type: "mythic",
+		slot: "Laser",
+		image: "",
+		partOfSet: "",
+		effect: "3% Ricochet Chance",
+		location: "r4 heroic"
+	},
+	hysteria: {
+		name: "Hysteria",
+		type: "mythic",
+		slot: "Staff",
+		image: "",
+		partOfSet: "",
+		effect: "Gain increased damage the lower your health percentage becomes, up to 10%",
+		location: "t7 Netherworld World Boss Heroic"
+	},
+	bub: {
+		name: "Bub",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "2% Absorb Chance",
+		location: "t7 Orlag World Boss Heroic"
+	},
+	superstition: {
+		name: "Superstition",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "Convert 3% of all team damage recieved to your enrage meter",
+		location: "t7 Netherworld World Boss Heroic"
+	},
+	night_visage: {
+		name: "Night Visage",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "While at full health, damage increased by 5%",
+		location: "t7 Set Trials and Gauntlets 200-209"
+	},
+	consumption: {
+		name: "Consumption",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "5% chance to heal a teammate for 85-115% when they are about to die",
+		location: "t7 Set Trials and Gauntlets 200-209"
+	},
+	decay: {
+		name: "Decay",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "5% chance for healing skills recieved to be twice as effective",
+		location: "r4 Heroic"
+	},
+	necrosis: {
+		name: "Necrosis",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "10% chance to gain 1 SP per turn",
+		location: "t7 Orlag World Boss Heroic"
+	},
+	cometfell: {
+		name: "Cometfell",
+		type: "mythic",
+		slot: "Sword",
+		image: "",
+		partOfSet: "",
+		effect: "1% Quad Strike",
+		location: "r5 Heroic"
+	},
+	nebuleye: {
+		name: "Nebuleye",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "Damage increased by 1% for every legendary item equipped",
+		location: "r5 Heroic"
+	},
+	hood_of_menace: {
+		name: "Hood Of Menace",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "While above 75% health, evade chance increased by 5%",
+		location: "t8 Netherworld World Boss Heroic"
+	},
+	crypt_tunic: {
+		name: "Crypt tunic",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "+2% Deflect Chance",
+		location: "t8 Netherworld World Boss Heroic"
+	},
+	fish_n_barrel: {
+		name: "Fish N' Barrel",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "Gain 5% damage reduction, but deal 5% reduced damage",
+		location: "t8 Orlag World Boss Heroic"
+	},
+	engulfing_artifact: {
+		name: "Engulfing Artifact",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "At the start of each turn, shield team for 22-27%",
+		location: "t8 Orlag World Boss Heroic"
+	},
+	nemesis: {
+		name: "Nemesis",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "4% Dual Strike",
+		location: "t8 Set Trials & Gauntlets 340+"
+	},
+	bedlam: {
+		name: "Bedlam",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "Increase the poteny of your healing skills by 8%",
+		location: "t8 Set Trials & Gauntlets 340+"
 	}
 }
 /* 
@@ -448,5 +592,15 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: ""
+	},
+
+	[name]: {
+		name: "",
+		type: "mythic",
+		slot: "",
+		image: "",
+		partOfSet: "",
+		effect: "",
+		location: ""
 	},
 	*/
