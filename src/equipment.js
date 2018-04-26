@@ -1,3 +1,4 @@
+//71
 export const equipment = {
 	phobos: {
 		name: "Phobos",

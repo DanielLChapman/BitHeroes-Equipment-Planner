@@ -1,3 +1,4 @@
+//18
 export const sets = {
 	ares_legacy:{
 			name: "Ares Legacy",

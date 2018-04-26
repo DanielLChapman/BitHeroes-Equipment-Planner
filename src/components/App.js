@@ -7,7 +7,33 @@ import { equipment } from './equipment';
 
 class App extends Component {
 
-  componentDidMount() {
+  constructor (props) {
+    super(props);
+    this.state = {
+      equipped: {
+        mainhand: {},
+        offhand: {},
+        body: {},
+        head: {},
+        ring: {},
+        necklace: {},
+        pet: {},
+        accessory: {}
+      },
+      sets,
+      mythics: {},
+      mainhands: {},
+      offhands: {},
+      bodies: {},
+      heads: {},
+      rings: {},
+      necklaces: {},
+      pets: {},
+      accessories: {}
+    }
+  }
+
+  componentDidMount () {
     console.log(Object.keys(sets).length);
     console.log(Object.keys(equipment).length);
 
