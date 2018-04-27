@@ -42,7 +42,7 @@ export default class Equipment extends Component {
 				<ul className="by-slot-reveal">
 					<li className="by-slot-types by-slots-mainhand">
 						<span>Mainhands</span>
-						<ul class="by-slot-types-reveal by-slots-mainhand-reveal">
+						<ul className="by-slot-types-reveal by-slots-mainhand-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.mainhands).map((x) => {
 									return <li key={x}>{this.props.sortedEquipment.mainhands[x].name}</li>
@@ -52,7 +52,7 @@ export default class Equipment extends Component {
 					</li>
 					<li className="by-slot-types by-slots-offhand">
 						<span>Offhands</span>
-						<ul class="by-slot-types-reveal by-slots-offhand-reveal">
+						<ul className="by-slot-types-reveal by-slots-offhand-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.offhands).map((x) => {
 									return <li key={x}>{this.props.sortedEquipment.offhands[x].name}</li>
@@ -62,7 +62,7 @@ export default class Equipment extends Component {
 					</li>
 					<li className="by-slot-types by-slots-body">
 						<span>Bodies</span>
-						<ul class="by-slot-types-reveal by-slots-body-reveal">
+						<ul className="by-slot-types-reveal by-slots-body-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.bodies).map((x) => {
 									return <li key={x}>{this.props.sortedEquipment.bodies[x].name}</li>
@@ -72,7 +72,7 @@ export default class Equipment extends Component {
 					</li>
 					<li className="by-slot-types by-slots-head">
 						<span>Heads</span>
-						<ul class="by-slot-types-reveal by-slots-head-reveal">
+						<ul className="by-slot-types-reveal by-slots-head-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.heads).map((x) => {
 									return <li key={x}>{this.props.sortedEquipment.heads[x].name}</li>
@@ -82,7 +82,7 @@ export default class Equipment extends Component {
 					</li>
 					<li className="by-slot-types by-slots-necklace">
 						<span>Necklaces</span>
-						<ul class="by-slot-types-reveal by-slots-necklace-reveal">
+						<ul className="by-slot-types-reveal by-slots-necklace-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.necklaces).map((x) => {
 									return <li key={x}>{this.props.sortedEquipment.necklaces[x].name}</li>
@@ -92,7 +92,7 @@ export default class Equipment extends Component {
 					</li>
 					<li className="by-slot-types by-slots-ring">
 						<span>Rings</span>
-						<ul class="by-slot-types-reveal by-slots-ring-reveal">
+						<ul className="by-slot-types-reveal by-slots-ring-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.rings).map((x) => {
 									return <li key={x}>{this.props.sortedEquipment.rings[x].name}</li>
@@ -102,7 +102,7 @@ export default class Equipment extends Component {
 					</li>
 					<li className="by-slot-types by-slots-pet">
 						<span>Pets</span>
-						<ul class="by-slot-types-reveal by-slots-pet-reveal">
+						<ul className="by-slot-types-reveal by-slots-pet-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.pets).map((x) => {
 									return <li key={x}>{this.props.sortedEquipment.pets[x].name}</li>
@@ -112,7 +112,7 @@ export default class Equipment extends Component {
 					</li>
 					<li className="by-slot-types by-slots-accessory">
 						<span>Acccessories</span>
-						<ul class="by-slot-types-reveal by-slots-accessory-reveal">
+						<ul className="by-slot-types-reveal by-slots-accessory-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.accessories).map((x) => {
 									return <li key={x}>{this.props.sortedEquipment.accessories[x].name}</li>

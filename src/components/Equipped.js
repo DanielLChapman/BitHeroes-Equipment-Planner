@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
+import EquippedView from './EquippedView';
+
 export default class Equipped extends Component {
 
 	render() {
@@ -9,7 +11,11 @@ export default class Equipped extends Component {
 				<h1>Hey</h1>
 				{
 					Object.keys(this.props.equipped).map((x) => {
-						return <h3 key={x}>{x}</h3>
+						return (
+							<div className={`equipped-container equpped-container-${x}`} key={x}>
+								<EquippedView equipped={this.props.equipped[x]} />
+							</div>
+						)
 					})
 				}
 			</React.Fragment>
