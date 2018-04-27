@@ -164,12 +164,12 @@ export const sets = {
 	inferno:	{
 			name: "Inferno",
 			location: "Tier 8 Nethworld World Boss or from rerolling a t8 set piece",
-			items: ["", "", ""],
+			items: ["Final Gaze", "Final Flash", "Melding Cloak", "Brimstone"],
 			description: "",
 			setBonuses: {
-				2: "",
-				3: "",
-				4: ""
+				2: "4% chance for skills to be twice as powerful",
+				3: "20% chance for skills to not spend SP",
+				4: "Skills that cost SP deal 20% increased damage"
 			}
 		},
 	gatekeeper:	{

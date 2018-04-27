@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-import { sets } from './sets';
-import { equipment } from './equipment';
+import { sets } from '../sets';
+import { equipment } from '../equipment';
+
+import Equipment from './Equipment';
+import Equipped from './Equipped';
 
 class App extends Component {
 
@@ -21,61 +22,104 @@ class App extends Component {
         accessory: {}
       },
       sets,
+      equipment,
       mythics: {},
-      mainhands: {},
-      offhands: {},
-      bodies: {},
-      heads: {},
-      rings: {},
-      necklaces: {},
-      pets: {},
-      accessories: {}
+      sortedEquipment: {
+        mainhands: {},
+        offhands: {},
+        bodies: {},
+        heads: {},
+        rings: {},
+        necklaces: {},
+        pets: {},
+        accessories: {}
+      }
     }
   }
 
   componentDidMount () {
-    console.log(Object.keys(sets).length);
-    console.log(Object.keys(equipment).length);
-
-    let newObj = {};
+    var mainhands = {}, offhands = {}, 
+    bodies = {}, heads = {}, rings = {}, 
+    necklaces = {}, pets = {}, accessories = {};
     Object.keys(equipment).forEach( (x) => {
-      if (equipment[x].type === "set") {
-        newObj[equipment[x].partOfSet] = newObj[equipment[x].partOfSet] + 1 || 1;
-      } else {
-        newObj[equipment[x].name] = 1;
+      switch(equipment[x].slot) {
+        case 'Offhand':
+          offhands[x] = equipment[x];
+          break;
+        case 'Body':
+          bodies[x] = equipment[x];
+          break;
+        case 'Head':
+          heads[x] = equipment[x];
+          break;
+        case 'Ring':
+          rings[x] = equipment[x];
+          break;
+        case 'Necklace':
+          necklaces[x] = equipment[x];
+          break;
+        case 'Pet':
+          pets[x] = equipment[x];
+          break;
+        case 'Accessory':
+          accessories[x] = equipment[x];
+          break;
+        default: 
+          mainhands[x] = equipment[x];
       }
-
     });
 
-    let newObj2 = {};
     Object.keys(sets).forEach( (x) => {
       Object.keys(sets[x].items).forEach( (y) => {
         let t = sets[x].items[y];
-        t = t.split(' ').join('_');
+        if (typeof t === "object") {
+          t = t.name;
+        }
+        if (typeof t === "undefined") {
+          t = "Phantom Light";
+        }
+        t = t.split(" ").join('_');
         t = t.split("'").join('');
         t = t.toLowerCase();
-        if (equipment[t]) {
-          newObj2[t] = 1;
-        } else {
-          newObj2[t] = 0;
-        }
+        sets[x].items[y] = equipment[t]
       })
     });
 
-
-    console.log(newObj);
-    console.log(newObj2);
+    this.setState({
+      sets,
+      sortedEquipment: {
+        mainhands, 
+        offhands, 
+        bodies, 
+        heads, 
+        rings, 
+        necklaces, 
+        pets, 
+        accessories
+      }
+    });
   }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+        <header className="App-header header">
+          <h1 className="title">Bit Heroes Set/Mythic Planner</h1>
+          <p className="sharable-link">
+            []
+          </p>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <section className="container">
+          <div className="left">
+            <div className="equipped">
+              <Equipped equipped={this.state.equipped} />
+            </div>
+          </div>
+          <div className="right">
+            <div className="equipment">
+              <Equipment sets={this.state.sets} equipment={this.state.equipment} sortedEquipment={this.state.sortedEquipment}/>
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
