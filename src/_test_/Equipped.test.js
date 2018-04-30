@@ -20,7 +20,8 @@ describe('Layout', () => {
 		        necklace: {},
 		        pet: {},
 		        accessory: {}
-			}
+			},
+			removeItem: jest.fn()
 		}
 		wrapper = shallow(<Equipped {...props} />);
 	});

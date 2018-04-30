@@ -12,7 +12,9 @@ export default class Equipped extends Component {
 				{
 					Object.keys(this.props.equipped).map((x) => {
 						return (
-							<div className={`equipped-container equpped-container-${x}`} key={x}>
+							<div className={`equipped-container equpped-container-${x}`} 
+								 key={x} 
+								 onClick={() => {this.props.removeItem(x)}}>
 								<EquippedView equipped={this.props.equipped[x]} />
 							</div>
 						)
@@ -24,5 +26,6 @@ export default class Equipped extends Component {
 }
 
 Equipped.propTypes = {
-	equipped: PropTypes.object.isRequired
+	equipped: PropTypes.object.isRequired,
+	removeItem: PropTypes.func.isRequired
 };

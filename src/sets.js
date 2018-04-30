@@ -60,7 +60,7 @@ export const sets = {
 				3: "7% Chance for projectiles to ricochet to a nearby enemy"
 			}
 		},
-	taldriths_artifacts:	{
+	taldrilths_artifacts:	{
 			name: "Taldrilth's Artifacts",
 			location: "Trials/Gauntlets 140-149 or from rerolling a t6 set piece",
 			items: ["Eternal Fire", "Scaled Dragon's Bone", "Taldrilth's Soul"],

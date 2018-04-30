@@ -5,6 +5,40 @@ import { equipment } from '../equipment';
 
 import Equipment from './Equipment';
 import Equipped from './Equipped';
+import BonusView from './BonusView';
+
+var calculateBonuses = (equipmentOn) => {
+  let bonuses = {
+    mythics: [],
+    sets: {}
+  };
+  let setsToSort = {};
+
+  Object.keys(equipmentOn).forEach((x) => {
+
+    if (equipmentOn[x].type === "mythic") {
+      bonuses.mythics.push(equipmentOn[x]);
+    } else  if (equipmentOn[x].type === "set") {
+      setsToSort[equipmentOn[x].partOfSet] = setsToSort[equipmentOn[x].partOfSet] + 1 || 1;
+    };
+  });
+
+  Object.keys(setsToSort).forEach((x) => {
+    if (setsToSort[x] >= 2 ) {
+      //grab set to get set bonuses,
+      let setWorkingOn = sets[x];
+      //Figure out which bonuses it gets;
+      bonuses.sets[x] = [];
+      Object.keys(setWorkingOn.setBonuses).forEach((y) => {
+        if (setsToSort[x] >= parseInt(y, 10)) {
+          bonuses.sets[x].push(setWorkingOn.setBonuses[y]);
+        }
+      })
+    }
+  });
+
+  return bonuses;
+}
 
 class App extends Component {
 
@@ -23,6 +57,7 @@ class App extends Component {
       },
       sets,
       equipment,
+      bonuses: {},
       mythics: {},
       sortedEquipment: {
         mainhands: {},
@@ -112,11 +147,22 @@ class App extends Component {
       tempSlot = tempSlot.toLowerCase();
       if (['sword', 'spear','staff','laser', 'crossbow', 'bow'].includes(tempSlot)) {
         state.equipped['mainhand'] = item;
-        return this.setState(state);
+        this.setState(state);
+      } else {
+        state.equipped[tempSlot] = item;
       }
-      state.equipped[tempSlot] = item;
     }
-    this.setState(state);
+    state.bonuses = {...calculateBonuses(state.equipped)};
+
+    this.setState({...state});
+  }
+
+  removeItem = (slot) => {
+    let state = this.state;
+    state.equipped[slot] = {};
+    state.bonuses = calculateBonuses(state.equipped);
+
+    this.setState({...state})
   }
 
 
@@ -130,9 +176,12 @@ class App extends Component {
           </p>
         </header>
         <section className="container">
+          <div className="bonuses">
+            <BonusView bonuses={this.state.bonuses} />  
+          </div>
           <div className="left">
             <div className="equipped">
-              <Equipped equipped={this.state.equipped} />
+              <Equipped removeItem={this.removeItem} equipped={this.state.equipped} />
             </div>
           </div>
           <div className="right">
@@ -141,6 +190,7 @@ class App extends Component {
             </div>
           </div>
         </section>
+
       </div>
     );
   }

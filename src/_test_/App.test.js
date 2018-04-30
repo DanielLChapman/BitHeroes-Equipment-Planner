@@ -31,4 +31,8 @@ describe('Layout', () => {
 	it('Expects .equip to have a Equipped component', () => {
 		expect(wrapper.find('.equipped').find('Equipped').length).toBe(1);
 	});
+	it('Has an area for bonuses', () => {
+		expect(wrapper.find('.bonuses').length).toBe(1);
+		expect(wrapper.find('BonusView').length).toBe(1);
+	})
 })
