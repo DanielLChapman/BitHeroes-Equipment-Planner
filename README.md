@@ -1,8 +1,8 @@
 TODO:
 
-1. Function Planning
-2. Function Test writing
-3. Function Implementing
+1. Function Planning ✔(for add, not for remove)
+2. Function Test writing ✔(for add, not for remove)
+3. Function Implementing ✔(for add, not for remove)
 4. Fixing function tests/adding more for things I forgot
 5. Bonuses calculation planning
 6. Bonuses Calculation test writing
