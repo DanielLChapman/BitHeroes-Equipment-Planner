@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
 
 
@@ -8,7 +8,7 @@ const EquippedView = (props) => {
         <React.Fragment>
 
           <div className={`equipped-image-view equipped-image-view-${props.equipped.slot}`}>
-            <img src={`./images/${props.equipped.image}`} />
+            <img src={`./images/${props.equipped.image}`} alt={`${props.equipped.name}-equipment`} />
           </div>
 
           <div className={`equipped-name-view equipped-name-view-${props.equipped.slot}`}>

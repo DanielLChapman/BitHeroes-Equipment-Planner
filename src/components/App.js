@@ -40,8 +40,11 @@ class App extends Component {
   componentDidMount () {
     var mainhands = {}, offhands = {}, 
     bodies = {}, heads = {}, rings = {}, 
-    necklaces = {}, pets = {}, accessories = {};
+    necklaces = {}, pets = {}, accessories = {}, mythics = {};
     Object.keys(equipment).forEach( (x) => {
+      if (equipment[x].type === "mythic") {
+        mythics[x] = equipment[x];
+      }
       switch(equipment[x].slot) {
         case 'Offhand':
           offhands[x] = equipment[x];
@@ -66,7 +69,7 @@ class App extends Component {
           break;
         default: 
           mainhands[x] = equipment[x];
-      }
+      };
     });
 
     Object.keys(sets).forEach( (x) => {
@@ -87,6 +90,7 @@ class App extends Component {
 
     this.setState({
       sets,
+      mythics,
       sortedEquipment: {
         mainhands, 
         offhands, 
@@ -99,6 +103,23 @@ class App extends Component {
       }
     });
   }
+
+  equipItem = (name) => {
+    let state = this.state;
+    let item = equipment[name];
+    if (typeof item === 'object') {
+      let tempSlot = item['slot'];
+      tempSlot = tempSlot.toLowerCase();
+      if (['sword', 'spear','staff','laser', 'crossbow', 'bow'].includes(tempSlot)) {
+        state.equipped['mainhand'] = item;
+        return this.setState(state);
+      }
+      state.equipped[tempSlot] = item;
+    }
+    this.setState(state);
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -116,7 +137,7 @@ class App extends Component {
           </div>
           <div className="right">
             <div className="equipment">
-              <Equipment sets={this.state.sets} equipment={this.state.equipment} sortedEquipment={this.state.sortedEquipment}/>
+              <Equipment equipItem={this.equipItem} mythics={this.state.mythics} sets={this.state.sets} equipment={this.state.equipment} sortedEquipment={this.state.sortedEquipment}/>
             </div>
           </div>
         </section>

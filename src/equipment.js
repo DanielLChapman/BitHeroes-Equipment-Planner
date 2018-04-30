@@ -17,7 +17,7 @@ export const equipment = {
 		effect: ""
 	},
 	phantom_light: {
-		name: "Phantomlight",
+		name: "Phantom Light",
 		type: "set",
 		slot: "Sword",
 		image: "",

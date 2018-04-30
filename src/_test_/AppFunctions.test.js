@@ -1,5 +1,6 @@
 import React from 'react';
 import Router from "../components/Router";
+import App from "../components/App";
 import Equipment from "../components/Equipment";
 import { shallow, mount } from 'enzyme';
 import { BrowserRouter, Route, Switch, MemoryRouter } from "react-router-dom";
@@ -7,12 +8,14 @@ import { BrowserRouter, Route, Switch, MemoryRouter } from "react-router-dom";
 import {equipment} from '../equipment';
 import {sets} from '../sets';
 
-var wrapper;
-describe('Layout', () => {
+var wrapper, equipmentWrapper, props;
+describe('Add Function', () => {
 	beforeEach(function() {
+		wrapper = shallow(<App />);
 		var mainhands = {}, offhands = {}, 
 	    bodies = {}, heads = {}, rings = {}, 
 	    necklaces = {}, pets = {}, accessories = {}, mythics = {};
+
 	    Object.keys(equipment).forEach( (x) => {
 	    	if (equipment[x].type === "mythic") {
         		mythics[x] = equipment[x];
@@ -54,34 +57,30 @@ describe('Layout', () => {
 	        pets, 
 	        accessories
 	      }
-		const props = {
+		props = {
 			equipment,
 			sets,
 			sortedEquipment,
 			mythics,
 			equipItem: jest.fn()
 		}
-		wrapper = shallow(<Equipment {...props} />);
-	});
-	it('Containers 3 buttons', () => {
-		expect(wrapper.find('.by-main-buttons').length).toBe(3);
-	});
-	it('expects to find 3 uls with names', () => {
-		expect(wrapper.find('.by-set-reveal').length).toBe(1);
-		expect(wrapper.find('.by-mythic-reveal').length).toBe(1);
-		expect(wrapper.find('.by-slot-reveal').length).toBe(1);
-	})
-	it('Expects .by-set-reveal to contain 18 lis', () => {
-		expect(wrapper.find('.by-sets-names').length).toBe(18);
-	});
-	it('Expects .by-mythic-reveal to contain 16 lis', () => {
-		expect(wrapper.find('.by-mythic-reveal').find('li').length).toBe(16);
-	});
-	it('Expects .by-slot-reveal to contain 8 lis', () => {
-		expect(wrapper.find('.by-slot-reveal').find('.by-slot-types').length).toBe(8);
-		expect(wrapper.find('.by-slot-types').first().find('ul').length).toBe(1);
-		expect(wrapper.find('.by-slot-types').first().find('span').length).toBe(1);
-		expect(wrapper.find('.by-slot-types').first().find('ul').find('li').length).toBeGreaterThan(0);
+		equipmentWrapper = shallow(<Equipment {...props} />);
 	});
 
-})
+	it('Contains a equipment area', () => {
+		//Do one for each area, mythic, set, slot
+		expect(wrapper.find('Equipment').dive().find('.by-set-reveal-sub-ares_legacy').find('li').first().length).toBe(1);
+		expect(wrapper.find('Equipment').dive().find('.by-mythic-reveal').find('li').first().length).toBe(1);
+		expect(wrapper.find('Equipment').dive().find('.by-slots-body-reveal').find('li').first().length).toBe(1);
+	});
+
+	it('Equips the clicked item', () => {
+		wrapper.find('Equipment').dive().find('.by-set-reveal-sub-ares_legacy').find('li').first().simulate('click');
+		expect(wrapper.state().equipped.mainhand).toBeDefined();
+		wrapper.find('Equipment').dive().find('.by-mythic-reveal').find('li').first().simulate('click');
+		expect(wrapper.state().equipped.mainhand.name).toBe('Pew Pew');
+		wrapper.find('Equipment').dive().find('.by-slots-accessory-reveal').find('li').first().simulate('click');
+		expect(wrapper.state().equipped.accessory.name).toBe('Acropodium');
+	})
+});
+
