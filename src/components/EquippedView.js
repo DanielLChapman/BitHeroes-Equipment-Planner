@@ -8,7 +8,7 @@ const EquippedView = (props) => {
         <React.Fragment>
 
           <div className={`equipped-image-view equipped-image-view-${props.equipped.slot}`}>
-            <img src={`./images/${props.equipped.image}`} alt={`${props.equipped.name}-equipment`} />
+            <img src={`/images/${props.equipped.image}`} alt={`${props.equipped.name}-equipment`} />
           </div>
 
           <div className={`equipped-name-view equipped-name-view-${props.equipped.slot}`}>
@@ -20,6 +20,7 @@ const EquippedView = (props) => {
     } else {
       return (
         <div className="nothing-to-see-here">
+          <h1>?</h1>
         </div>
       )
     }

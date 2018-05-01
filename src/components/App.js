@@ -77,6 +77,8 @@ class App extends Component {
     bodies = {}, heads = {}, rings = {}, 
     necklaces = {}, pets = {}, accessories = {}, mythics = {};
     Object.keys(equipment).forEach( (x) => {
+      equipment[x].image = `${x}.png`
+
       if (equipment[x].type === "mythic") {
         mythics[x] = equipment[x];
       }
@@ -120,7 +122,7 @@ class App extends Component {
         t = t.split("'").join('');
         t = t.toLowerCase();
         sets[x].items[y] = equipment[t]
-      })
+      });
     });
 
     this.setState({
@@ -172,7 +174,7 @@ class App extends Component {
         <header className="App-header header">
           <h1 className="title">Bit Heroes Set/Mythic Planner</h1>
           <p className="sharable-link">
-            []
+            Shareable Link : []
           </p>
         </header>
         <section className="container">

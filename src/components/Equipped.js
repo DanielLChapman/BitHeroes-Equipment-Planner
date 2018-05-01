@@ -8,7 +8,6 @@ export default class Equipped extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<h1>Hey</h1>
 				{
 					Object.keys(this.props.equipped).map((x) => {
 						return (

@@ -16,19 +16,148 @@ body {
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  background-color: transparent;
+  height: 50px;
+  padding: 15px 5px 0px 5px;
+  color: black;
+
+  font-family: 'Roboto', sans-serif;
+  .title {
+    font-size: 1.3em;
+    text-align: left;
+    margin-top: -5px;
+  }
+  .sharable-link {
+    text-align: right;
+    font-size: 1.3em;
+    position: relative;
+    top: -47px;
+    margin-right: 40px;
+    width: auto;
+    .url-to-copy {
+      position: relative;
+      width: 150px;
+    }
+  }
 }
 
-.App-title {
-  font-size: 1.5em;
+
+
+.container {
+  border: 1px solid black;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  font-family: 'Work Sans', sans-serif;
+  ul, li {
+    padding: 0; 
+    margin: 0;
+    width: 300px;
+    list-style: none;
+  }
+
+  li {
+    border: 1px solid black;
+    padding: 15px 40px 15px 40px;
+
+  }
+
+  .bonuses {
+    width: 300px;
+    margin: 0 auto;
+    border:1px solid black;
+    height: auto;
+    position: absolute;
+    display: none;
+  }
+  .left, .right {
+    flex-grow: 1;
+    border:1px solid black;
+    padding-top: 25px;
+  }
+  .right {
+    height: 600px;
+    overflow-y: scroll;
+  }
+  .equipped {
+    width: 400px;
+    height: 600px;
+    border:1px solid black;
+    margin: 0 auto;
+    padding-top: 15px;
+    position: relative;
+    .equipped-container {
+      width: 100px;
+      height: 120px;
+      position: absolute;
+      border:1px solid black;
+      margin-left: 15px;
+      margin-right: 15px;
+      &:nth-child(1) {
+        border:1px solid green;
+        margin-top: 0;
+      }
+      &:nth-child(2) {
+        border:1px solid green;
+        margin-top: 145px;
+      }
+      &:nth-child(3) {
+        border:1px solid green;
+        margin-top: 290px;
+      }
+      &:nth-child(4) {
+        border:1px solid green;
+        margin-top: 435px;
+      }
+      &:nth-child(5) {
+        border:1px solid green;
+        right: 0;
+      }
+      &:nth-child(6) {
+        border:1px solid green;
+        right: 0;
+        margin-top: 145px;
+      }
+      &:nth-child(7) {
+        border:1px solid green;
+        right: 0; 
+        margin-top: 290px;
+      }
+      &:nth-child(8) {
+        border:1px solid green;
+        right: 0; 
+        margin-top: 435px;
+      }
+      .nothing-to-see-here {
+        h1 {
+          font-size: 40px;
+        }
+      }
+      .equipped-image-view {
+        width: 80%;
+        height: auto;
+        border:1px solid black;
+        position: relative;
+        left: 10%;
+        margin-top: 10px;
+        img {
+          width: 50%;
+        }
+      }
+      .equipped-name-view {
+        position: relative;
+        margin-top: 5px;
+        font-size: 13px;
+      }
+    }
+  }
 }
 
-.App-intro {
-  font-size: large;
-}
+
 
 .by-set-reveal {
   position: relative;
@@ -36,9 +165,18 @@ body {
 }
 .by-set-reveal-sub {
   position: relative;
-  right: -50px;
 }
 
 .by-slot-types span {
   font-size: 16px;
 }
+
+.by-main-buttons {
+  width: 300px;
+  height: 40px;
+  left: 0;
+}
+
+
+
+

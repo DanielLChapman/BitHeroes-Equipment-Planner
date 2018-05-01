@@ -125,7 +125,7 @@ export const equipment = {
 		type: "set",
 		slot: "Bow",
 		image: "",
-		partOfSet: "trugors_call",
+		partOfSet: "trugdors_call",
 		effect: ""
 	},
 	scaled_vambrace: {
@@ -133,7 +133,7 @@ export const equipment = {
 		type: "set",
 		slot: "Offhand",
 		image: "",
-		partOfSet: "trugors_call",
+		partOfSet: "trugdors_call",
 		effect: ""
 	},
 	dragons_breath: {
@@ -141,7 +141,7 @@ export const equipment = {
 		type: "set",
 		slot: "Head",
 		image: "",
-		partOfSet: "trugors_call",
+		partOfSet: "trugdors_call",
 		effect: ""
 	},
 	eternal_fire: {
