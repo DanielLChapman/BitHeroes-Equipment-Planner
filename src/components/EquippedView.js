@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 
 const EquippedView = (props) => {
-    console.log(props.equipped)
     if('name' in props.equipped) {
       return (
         <React.Fragment>

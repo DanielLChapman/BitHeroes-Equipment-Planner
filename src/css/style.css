@@ -93,6 +93,7 @@ body {
   position: relative;
   margin: 0 auto;
   margin-top: 14px;
+  padding-bottom: 5px;
 }
 .container .right .bonuses ul,
 .container .right .bonuses li {
@@ -155,7 +156,8 @@ body {
   border: 2px solid #fedc5b;
 }
 .container .right .by-set-reveal-sub span:nth-child(1) {
-  color: #e6f2b1;
+  color: #84fffd;
+  text-shadow: 0 0 5px #000;
 }
 .container .right .by-mythic-reveal li,
 .container .right .by-slot-types-reveal li {
@@ -167,10 +169,8 @@ body {
   border: 3px solid #fedc5b;
 }
 .container .right .by-mythic-reveal .item-name {
-  color: #e6f2b1;
-}
-.container .right .by-slot-types-reveal li {
-  color: #e6f2b1;
+  color: #fc0f40;
+  text-shadow: 0 0 5px #000;
 }
 .container .right .left-span-name {
   position: relative;
@@ -193,6 +193,14 @@ body {
 }
 .container .right .by-slot-types li {
   cursor: pointer;
+}
+.container .right .by-slot-types .by-slots-type-set {
+  color: #84fffd;
+  text-shadow: 0 0 5px #000;
+}
+.container .right .by-slot-types .by-slots-type-mythic {
+  color: #fc0f40;
+  text-shadow: 0 0 5px #000;
 }
 .container .equipped {
   width: 400px;

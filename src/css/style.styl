@@ -92,6 +92,7 @@ body {
       position: relative;
       margin: 0 auto;
       margin-top: 14px;
+      padding-bottom: 5px;
       ul, li {
         list-style: none;
         padding: 0;
@@ -149,7 +150,8 @@ body {
         }
       }
       span:nth-child(1) {
-        color: #e6f2b1;
+        color: set-blue;
+        text-shadow: 0 0 5px #000;
       }
     }
     .by-mythic-reveal, .by-slot-types-reveal {
@@ -163,12 +165,12 @@ body {
     }
     .by-mythic-reveal {
       .item-name {
-        color: #e6f2b1;
+        color: mythic-red;
+        text-shadow: 0 0 5px #000;
       }
     }
     .by-slot-types-reveal {
       li {
-        color: #e6f2b1;
       }
     }
 
@@ -197,6 +199,14 @@ body {
       }
       li {
         cursor: pointer;
+      }
+      .by-slots-type-set {
+        color: set-blue;
+        text-shadow: 0 0 5px #000;
+      }
+      .by-slots-type-mythic {
+        color: mythic-red;
+        text-shadow: 0 0 5px #000;
       }
     }
   }

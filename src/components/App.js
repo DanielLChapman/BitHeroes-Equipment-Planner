@@ -10,7 +10,8 @@ import BonusView from './BonusView';
 var calculateBonuses = (equipmentOn) => {
   let bonuses = {
     mythics: [],
-    sets: {}
+    sets: {},
+    pets: []
   };
   let setsToSort = {};
 
@@ -20,7 +21,10 @@ var calculateBonuses = (equipmentOn) => {
       bonuses.mythics.push(equipmentOn[x]);
     } else  if (equipmentOn[x].type === "set") {
       setsToSort[equipmentOn[x].partOfSet] = setsToSort[equipmentOn[x].partOfSet] + 1 || 1;
-    };
+      if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
+        bonuses.pets.push(equipmentOn[x]);
+      }
+    } 
   });
 
   Object.keys(setsToSort).forEach((x) => {
@@ -36,7 +40,6 @@ var calculateBonuses = (equipmentOn) => {
       })
     }
   });
-
   return bonuses;
 }
 

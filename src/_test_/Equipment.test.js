@@ -93,4 +93,14 @@ describe('Layout', () => {
 		expect(wrapper.find('.by-mythic-reveal').first().find('.mythic-bonus').length).toBe(16);
 	});
 
+	it('Expects that all the equipment have a different sharable link', () => {
+		Object.keys(equipment).forEach((x) => {
+			Object.keys(equipment).forEach((y) => {
+				if (x !== y) {
+					expect(equipment[x].shareID).not.toEqual(equipment[y].shareID);
+				}
+			})
+		})
+	})
+
 })

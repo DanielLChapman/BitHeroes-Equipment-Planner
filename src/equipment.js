@@ -6,7 +6,8 @@ export const equipment = {
 		slot: "Sword",
 		image: "",
 		partOfSet: "ares_legacy",
-		effect: ""
+		effect: "",
+		shareID: "ph"
 	},
 	deimos: {
 		name: "Deimos",
@@ -14,7 +15,8 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "ares_legacy",
-		effect: ""
+		effect: "",
+		shareID: "de"
 	},
 	phantom_light: {
 		name: "Phantom Light",
@@ -22,7 +24,8 @@ export const equipment = {
 		slot: "Sword",
 		image: "",
 		partOfSet: "divinity",
-		effect: ""
+		effect: "",
+		shareID: "pl"
 	},
 	legacy_of_truth: {
 		name: "Legacy Of Truth",
@@ -30,7 +33,8 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "divinity",
-		effect: ""
+		effect: "",
+		shareID: "lt"
 	},
 	trinity_plate: {
 		name: "Trinity Plate",
@@ -38,7 +42,8 @@ export const equipment = {
 		slot: "Body",
 		image: "",
 		partOfSet: "divinity",
-		effect: ""
+		effect: "",
+		shareID: "tp"
 	},
 	visortron: {
 		name: "Visortron",
@@ -46,7 +51,8 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "maru",
-		effect: ""
+		effect: "",
+		shareID: "vi"
 	},
 	mechcoat: {
 		name: "Mechcoat",
@@ -54,7 +60,8 @@ export const equipment = {
 		slot: "Body",
 		image: "",
 		partOfSet: "maru",
-		effect: ""
+		effect: "",
+		shareID: "me"
 	},
 	rom_bios: {
 		name: "ROM BIOS",
@@ -62,7 +69,8 @@ export const equipment = {
 		slot: "Ring",
 		image: "",
 		partOfSet: "maru",
-		effect: ""
+		effect: "",
+		shareID: "rb"
 	},
 	blast_protocol: {
 		name: "Blast Protocol",
@@ -70,7 +78,8 @@ export const equipment = {
 		slot: "Necklace",
 		image: "",
 		partOfSet: "maru",
-		effect: ""
+		effect: "",
+		shareID: "bp"
 	},
 	moonlight: {
 		name: "Moonlight",
@@ -78,7 +87,8 @@ export const equipment = {
 		slot: "Staff",
 		image: "",
 		partOfSet: "night_walker",
-		effect: ""
+		effect: "",
+		shareID: "mo"
 	},
 	discordiant_power: {
 		name: "Discordiant Power",
@@ -86,7 +96,8 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "night_walker",
-		effect: ""
+		effect: "",
+		shareID: "dp"
 	},
 	dominance: {
 		name: "Dominance",
@@ -94,7 +105,8 @@ export const equipment = {
 		slot: "Ring",
 		image: "",
 		partOfSet: "night_walker",
-		effect: ""
+		effect: "",
+		shareID: "do"
 	},
 	adorned_malice: {
 		name: "Adorned Malice",
@@ -102,7 +114,8 @@ export const equipment = {
 		slot: "Necklace",
 		image: "",
 		partOfSet: "night_walker",
-		effect: ""
+		effect: "",
+		shareID: "am"
 	},
 	despair: {
 		name: "Despair",
@@ -110,7 +123,8 @@ export const equipment = {
 		slot: "Necklace",
 		image: "",
 		partOfSet: "unity",
-		effect: ""
+		effect: "",
+		shareID: "ds"
 	},
 	sorrow: {
 		name: "Sorrow",
@@ -118,7 +132,8 @@ export const equipment = {
 		slot: "Ring",
 		image: "",
 		partOfSet: "unity",
-		effect: ""
+		effect: "",
+		shareID: "so"
 	},
 	trugdors_bite: {
 		name: "Trugdor's Bite",
@@ -126,7 +141,8 @@ export const equipment = {
 		slot: "Bow",
 		image: "",
 		partOfSet: "trugdors_call",
-		effect: ""
+		effect: "",
+		shareID: "tb"
 	},
 	scaled_vambrace: {
 		name: "Scaled Vambrace",
@@ -134,7 +150,8 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "trugdors_call",
-		effect: ""
+		effect: "",
+		shareID: "sv"
 	},
 	dragons_breath: {
 		name: "Dragons Breath",
@@ -142,7 +159,8 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "trugdors_call",
-		effect: ""
+		effect: "",
+		shareID: "db"
 	},
 	eternal_fire: {
 		name: "Eternal Fire",
@@ -150,7 +168,8 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "taldrilths_artifacts",
-		effect: ""
+		effect: "",
+		shareID: "ef"
 	},
 	scaled_dragons_bone: {
 		name: "Scaled Dragon's Bone",
@@ -158,7 +177,8 @@ export const equipment = {
 		slot: "Body",
 		image: "",
 		partOfSet: "taldrilths_artifacts",
-		effect: ""
+		effect: "",
+		shareID: "sd"
 	},
 	taldrilths_soul: {
 		name: "Taldrilth's Soul",
@@ -166,7 +186,8 @@ export const equipment = {
 		slot: "Necklace",
 		image: "",
 		partOfSet: "taldrilths_artifacts",
-		effect: ""
+		effect: "",
+		shareID: "ts"
 	},
 	matsukura: {
 		name: "Matsukura",
@@ -174,7 +195,8 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "bushido",
-		effect: ""
+		effect: "",
+		shareID: "mt"
 	},
 	yashiros_dou: {
 		name: "Yashiro's Dou",
@@ -182,7 +204,8 @@ export const equipment = {
 		slot: "Body",
 		image: "",
 		partOfSet: "bushido",
-		effect: ""
+		effect: "",
+		shareID: "yd"
 	},
 	gigastrike: {
 		name: "Gigastrike",
@@ -190,7 +213,8 @@ export const equipment = {
 		slot: "Spear",
 		image: "",
 		partOfSet: "conduction",
-		effect: ""
+		effect: "",
+		shareID: "gi"
 	},
 	magnetron: {
 		name: "Magnetron",
@@ -198,7 +222,8 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "conduction",
-		effect: ""
+		effect: "",
+		shareID: "ma"
 	},
 	flow_plate: {
 		name: "Flow Plate",
@@ -206,7 +231,8 @@ export const equipment = {
 		slot: "Body",
 		image: "",
 		partOfSet: "conduction",
-		effect: ""
+		effect: "",
+		shareID: "fp"
 	},
 	power_amp: {
 		name: "Power Amp",
@@ -214,7 +240,8 @@ export const equipment = {
 		slot: "Ring",
 		image: "",
 		partOfSet: "conduction",
-		effect: ""
+		effect: "",
+		shareID: "pa"
 	},
 	yak_blade: {
 		name: "Yak Blade",
@@ -222,7 +249,8 @@ export const equipment = {
 		slot: "Sword",
 		image: "",
 		partOfSet: "luminary",
-		effect: ""
+		effect: "",
+		shareID: "yb"
 	},
 	stillness: {
 		name: "Stillness",
@@ -230,7 +258,8 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "luminary",
-		effect: ""
+		effect: "",
+		shareID: "st"
 	},
 	hylidae: {
 		name: "Hylidae",
@@ -238,7 +267,8 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "luminary",
-		effect: ""
+		effect: "",
+		shareID: "hy"
 	},
 	flowing_silk_sash: {
 		name: "Flowing Silk Sash",
@@ -246,7 +276,8 @@ export const equipment = {
 		slot: "Body",
 		image: "",
 		partOfSet: "luminary",
-		effect: ""
+		effect: "",
+		shareID: "fs"
 	},
 	maelstrom: {
 		name: "Maelstrom",
@@ -254,7 +285,8 @@ export const equipment = {
 		slot: "Staff",
 		image: "",
 		partOfSet: "lunar_guardian",
-		effect: ""
+		effect: "",
+		shareID: "ms"
 	},
 	eclipse_barrier: {
 		name: "Eclipse Barrier",
@@ -262,7 +294,8 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "lunar_guardian",
-		effect: ""
+		effect: "",
+		shareID: "eb"
 	},
 	moku: {
 		name: "Moku",
@@ -270,7 +303,8 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "jynx",
-		effect: ""
+		effect: "",
+		shareID: "mk"
 	},
 	ku: {
 		name: "Ku",
@@ -278,7 +312,8 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "jynx",
-		effect: ""
+		effect: "",
+		shareID: "ku"
 	},
 	wraithguard: {
 		name: "Wraithguard",
@@ -286,7 +321,8 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "obliteration",
-		effect: ""
+		effect: "",
+		shareID: "wr"
 	},
 	last_sight: {
 		name: "Last Sight",
@@ -294,7 +330,8 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "obliteration",
-		effect: ""
+		effect: "",
+		shareID: "ls"
 	},
 	dark_wrap: {
 		name: "Dark Wrap",
@@ -302,7 +339,8 @@ export const equipment = {
 		slot: "Body",
 		image: "",
 		partOfSet: "obliteration",
-		effect: ""
+		effect: "",
+		shareID: "dw"
 	},
 	black_omen: {
 		name: "Black Omen",
@@ -310,7 +348,8 @@ export const equipment = {
 		slot: "Necklace",
 		image: "",
 		partOfSet: "obliteration",
-		effect: ""
+		effect: "",
+		shareID: "bo"
 	},
 	arcusbolt: {
 		name: "Arcusbolt",
@@ -318,7 +357,8 @@ export const equipment = {
 		slot: "Crossbow",
 		image: "",
 		partOfSet: "agony",
-		effect: ""
+		effect: "",
+		shareID: "ar"
 	},
 	tormented_soul: {
 		name: "Tormented Soul",
@@ -326,7 +366,8 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "agony",
-		effect: ""
+		effect: "",
+		shareID: "tu"
 	},
 	gravetouch: {
 		name: "Gravetouch",
@@ -334,7 +375,8 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "agony",
-		effect: ""
+		effect: "",
+		shareID: "gt"
 	},
 	crypt_hunter: {
 		name: "Crypt Hunter",
@@ -342,7 +384,8 @@ export const equipment = {
 		slot: "Necklace",
 		image: "",
 		partOfSet: "agony",
-		effect: ""
+		effect: "",
+		shareID: "ch"
 	},
 	ancient_tiara: {
 		name: "Ancient Tiara",
@@ -350,7 +393,8 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "illustrious_artifacts",
-		effect: ""
+		effect: "",
+		shareID: "ai"
 	},
 	heavenly_garb: {
 		name: "Heavenly Garb",
@@ -359,6 +403,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "illustrious_artifacts",
 		effect: ""
+		,
+		shareID: "hg"
 	},
 	exalted_binding: {
 		name: "Exalted Binding",
@@ -366,7 +412,8 @@ export const equipment = {
 		slot: "Ring",
 		image: "",
 		partOfSet: "illustrious_artifacts",
-		effect: ""
+		effect: "",
+		shareID: "ex"
 	},
 	tayto_sword: {
 		name: "Tayto Sword",
@@ -374,7 +421,8 @@ export const equipment = {
 		slot: "Sword",
 		image: "",
 		partOfSet: "taters",
-		effect: ""
+		effect: "",
+		shareID: "ty"
 	},
 	tayto_sack: {
 		name: "Tayto Sack",
@@ -382,7 +430,8 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "taters",
-		effect: ""
+		effect: "",
+		shareID: "tc"
 	},
 	hangin_tayto: {
 		name: "Hangin Tayto",
@@ -390,7 +439,8 @@ export const equipment = {
 		slot: "Necklace",
 		image: "",
 		partOfSet: "taters",
-		effect: ""
+		effect: "",
+		shareID: "ht"
 	},
 	final_gaze: {
 		name: "Final Gaze",
@@ -398,7 +448,8 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "inferno",
-		effect: ""
+		effect: "",
+		shareID: "fg"
 	},
 	final_flash: {
 		name: "Final Flash",
@@ -406,7 +457,8 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "inferno",
-		effect: ""
+		effect: "",
+		shareID: "ff"
 	},
 	melding_cloak: {
 		name: "Melding Cloak",
@@ -414,7 +466,8 @@ export const equipment = {
 		slot: "Body",
 		image: "",
 		partOfSet: "inferno",
-		effect: ""
+		effect: "",
+		shareID: "mc"
 	},
 	brimstone: {
 		name: "Brimstone",
@@ -422,7 +475,8 @@ export const equipment = {
 		slot: "Necklace",
 		image: "",
 		partOfSet: "inferno",
-		effect: ""
+		effect: "",
+		shareID: "br"
 	},
 	acropodium: {
 		name: "Acropodium",
@@ -430,7 +484,8 @@ export const equipment = {
 		slot: "Accessory",
 		image: "",
 		partOfSet: "gatekeeper",
-		effect: ""
+		effect: "",
+		shareID: "ac"
 	},
 	karlorr: {
 		name: "Karlorr",
@@ -438,7 +493,8 @@ export const equipment = {
 		slot: "Pet",
 		image: "",
 		partOfSet: "gatekeeper",
-		effect: ""
+		effect: "",
+		shareID: "ka"
 	},
 	pew_pew: {
 		name: "Pew Pew",
@@ -447,7 +503,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "3% Ricochet Chance",
-		location: "r4 heroic"
+		location: "r4 heroic",
+		shareID: "pp"
 	},
 	hysteria: {
 		name: "Hysteria",
@@ -456,7 +513,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Gain increased damage the lower your health percentage becomes, up to 10%",
-		location: "t7 Netherworld World Boss Heroic"
+		location: "t7 Netherworld World Boss Heroic",
+		shareID: "hs"
 	},
 	bub: {
 		name: "Bub",
@@ -465,7 +523,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "2% Absorb Chance",
-		location: "t7 Orlag World Boss Heroic"
+		location: "t7 Orlag World Boss Heroic",
+		shareID: "bb"
 	},
 	superstition: {
 		name: "Superstition",
@@ -474,7 +533,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Convert 3% of all team damage recieved to your enrage meter",
-		location: "t7 Netherworld World Boss Heroic"
+		location: "t7 Netherworld World Boss Heroic",
+		shareID: "sp"
 	},
 	night_visage: {
 		name: "Night Visage",
@@ -483,7 +543,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "While at full health, damage increased by 5%",
-		location: "t7 Set Trials and Gauntlets 200-209"
+		location: "t7 Set Trials and Gauntlets 200-209",
+		shareID: "ni"
 	},
 	consumption: {
 		name: "Consumption",
@@ -492,7 +553,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "5% chance to heal a teammate for 85-115% when they are about to die",
-		location: "t7 Set Trials and Gauntlets 200-209"
+		location: "t7 Set Trials and Gauntlets 200-209",
+		shareID: "cn"
 	},
 	decay: {
 		name: "Decay",
@@ -501,7 +563,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "5% chance for healing skills recieved to be twice as effective",
-		location: "r4 Heroic"
+		location: "r4 Heroic",
+		shareID: "dc"
 	},
 	necrosis: {
 		name: "Necrosis",
@@ -510,7 +573,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "10% chance to gain 1 SP per turn",
-		location: "t7 Orlag World Boss Heroic"
+		location: "t7 Orlag World Boss Heroic",
+		shareID: "no"
 	},
 	cometfell: {
 		name: "Cometfell",
@@ -519,7 +583,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "1% Quad Strike",
-		location: "r5 Heroic"
+		location: "r5 Heroic",
+		shareID: "cm"
 	},
 	nebuleye: {
 		name: "Nebuleye",
@@ -528,7 +593,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Damage increased by 1% for every legendary item equipped",
-		location: "r5 Heroic"
+		location: "r5 Heroic",
+		shareID: "nb"
 	},
 	hood_of_menace: {
 		name: "Hood Of Menace",
@@ -537,7 +603,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "While above 75% health, evade chance increased by 5%",
-		location: "t8 Netherworld World Boss Heroic"
+		location: "t8 Netherworld World Boss Heroic",
+		shareID: "hm"
 	},
 	crypt_tunic: {
 		name: "Crypt tunic",
@@ -546,7 +613,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "+2% Deflect Chance",
-		location: "t8 Netherworld World Boss Heroic"
+		location: "t8 Netherworld World Boss Heroic",
+		shareID: "ct"
 	},
 	fish_n_barrel: {
 		name: "Fish N' Barrel",
@@ -555,7 +623,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Gain 5% damage reduction, but deal 5% reduced damage",
-		location: "t8 Orlag World Boss Heroic"
+		location: "t8 Orlag World Boss Heroic",
+		shareID: "fn"
 	},
 	engulfing_artifact: {
 		name: "Engulfing Artifact",
@@ -564,7 +633,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "At the start of each turn, shield team for 22-27%",
-		location: "t8 Orlag World Boss Heroic"
+		location: "t8 Orlag World Boss Heroic",
+		shareID: "ea"
 	},
 	nemesis: {
 		name: "Nemesis",
@@ -573,7 +643,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "4% Dual Strike",
-		location: "t8 Set Trials & Gauntlets 340+"
+		location: "t8 Set Trials & Gauntlets 340+",
+		shareID: "ne"
 	},
 	bedlam: {
 		name: "Bedlam",
@@ -582,7 +653,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Increase the poteny of your healing skills by 8%",
-		location: "t8 Set Trials & Gauntlets 340+"
+		location: "t8 Set Trials & Gauntlets 340+",
+		shareID: "bd"
 	}
 }
 /* 

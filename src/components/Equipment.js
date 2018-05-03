@@ -115,7 +115,12 @@ export default class Equipment extends Component {
 										} else {
 											returnVal = convertName(this.props.sortedEquipment.mainhands[x].name);
 									}
-									return <li key={x} onClick={() => {this.props.equipItem(returnVal)}}>{this.props.sortedEquipment.mainhands[x].name}</li>
+									return <li
+											className={`by-slots-type-${this.props.sortedEquipment.mainhands[x].type}`} 
+											key={x} 
+											onClick={() => {this.props.equipItem(returnVal)}}>
+											{this.props.sortedEquipment.mainhands[x].name}
+											</li>
 								})
 							}
 						</ul>
@@ -125,7 +130,12 @@ export default class Equipment extends Component {
 						<ul className="by-slot-types-reveal by-slots-offhand-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.offhands).map((x) => {
-									return <li key={x} onClick={() => {this.props.equipItem(x)}}>{this.props.sortedEquipment.offhands[x].name}</li>
+									return <li 
+											className={`by-slots-type-${this.props.sortedEquipment.offhands[x].type}`} 
+											key={x} 
+											onClick={() => {this.props.equipItem(x)}}>
+											{this.props.sortedEquipment.offhands[x].name}
+											</li>
 								})
 							}
 						</ul>
@@ -135,7 +145,12 @@ export default class Equipment extends Component {
 						<ul className="by-slot-types-reveal by-slots-body-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.bodies).map((x) => {
-									return <li key={x} onClick={() => {this.props.equipItem(x)}}>{this.props.sortedEquipment.bodies[x].name}</li>
+									return <li
+									 		className={`by-slots-type-${this.props.sortedEquipment.bodies[x].type}`}  
+									 		key={x} 
+									 		onClick={() => {this.props.equipItem(x)}}>
+									 		{this.props.sortedEquipment.bodies[x].name}
+									 		</li>
 								})
 							}
 						</ul>
@@ -145,7 +160,12 @@ export default class Equipment extends Component {
 						<ul className="by-slot-types-reveal by-slots-head-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.heads).map((x) => {
-									return <li key={x} onClick={() => {this.props.equipItem(x)}}>{this.props.sortedEquipment.heads[x].name}</li>
+									return <li 
+											className={`by-slots-type-${this.props.sortedEquipment.heads[x].type}`}  
+											key={x} 
+											onClick={() => {this.props.equipItem(x)}}>
+											{this.props.sortedEquipment.heads[x].name}
+											</li>
 								})
 							}
 						</ul>
@@ -155,7 +175,12 @@ export default class Equipment extends Component {
 						<ul className="by-slot-types-reveal by-slots-necklace-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.necklaces).map((x) => {
-									return <li key={x} onClick={() => {this.props.equipItem(x)}}>{this.props.sortedEquipment.necklaces[x].name}</li>
+									return <li 
+											className={`by-slots-type-${this.props.sortedEquipment.necklaces[x].type}`} 
+											key={x} 
+											onClick={() => {this.props.equipItem(x)}}>
+											{this.props.sortedEquipment.necklaces[x].name}
+											</li>
 								})
 							}
 						</ul>
@@ -165,7 +190,11 @@ export default class Equipment extends Component {
 						<ul className="by-slot-types-reveal by-slots-ring-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.rings).map((x) => {
-									return <li key={x} onClick={() => {this.props.equipItem(x)}}>{this.props.sortedEquipment.rings[x].name}</li>
+									return <li 
+											className={`by-slots-type-${this.props.sortedEquipment.rings[x].type}`} 
+											key={x} onClick={() => {this.props.equipItem(x)}}>
+											{this.props.sortedEquipment.rings[x].name}
+											</li>
 								})
 							}
 						</ul>
@@ -175,7 +204,12 @@ export default class Equipment extends Component {
 						<ul className="by-slot-types-reveal by-slots-pet-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.pets).map((x) => {
-									return <li key={x} onClick={() => {this.props.equipItem(x)}}>{this.props.sortedEquipment.pets[x].name}</li>
+									return <li
+											className={`by-slots-type-set`} 
+											key={x} 
+											onClick={() => {this.props.equipItem(x)}}>
+											{this.props.sortedEquipment.pets[x].name}
+											</li>
 								})
 							}
 						</ul>
@@ -185,7 +219,12 @@ export default class Equipment extends Component {
 						<ul className="by-slot-types-reveal by-slots-accessory-reveal">
 							{
 								Object.keys(this.props.sortedEquipment.accessories).map((x) => {
-									return <li key={x} onClick={() => {this.props.equipItem(x)}}>{this.props.sortedEquipment.accessories[x].name}</li>
+									return <li
+											className={`by-slots-type-set`} 
+									 		key={x} 
+									 		onClick={() => {this.props.equipItem(x)}}>
+									 		{this.props.sortedEquipment.accessories[x].name}
+									 		</li>
 								})
 							}
 						</ul>
