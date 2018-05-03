@@ -8,5 +8,6 @@ TODO:
 6. Bonuses Calculation test writing ✔
 7. Bonus calculation implementing ✔
 8. Make it look pretty ✔
-81. Make mythic and sets have different colors in slots 
-9. Figure out what to do for sharable links
+81. Make mythic and sets have different colors in slots ✔
+82. Add in pet and accessories to bonuses 
+9. Figure out what to do for sharable links✔

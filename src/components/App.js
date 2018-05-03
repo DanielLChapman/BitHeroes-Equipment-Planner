@@ -223,7 +223,7 @@ class App extends Component {
     let bonuses = calculateBonuses(state.equipped);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
-
+    this.props.history.push(`/${state.urlEnd}`);
 
     this.setState({...state});
   }
@@ -235,6 +235,7 @@ class App extends Component {
     let bonuses = calculateBonuses(state.equipped);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
+    this.props.history.push(`/${state.urlEnd}`);
 
     this.setState({...state})
   }
