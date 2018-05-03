@@ -14,17 +14,20 @@ var calculateBonuses = (equipmentOn) => {
     pets: []
   };
   let setsToSort = {};
+  let urlEnd = "";
 
   Object.keys(equipmentOn).forEach((x) => {
 
     if (equipmentOn[x].type === "mythic") {
       bonuses.mythics.push(equipmentOn[x]);
+      urlEnd += equipmentOn[x].shareID;
     } else  if (equipmentOn[x].type === "set") {
       setsToSort[equipmentOn[x].partOfSet] = setsToSort[equipmentOn[x].partOfSet] + 1 || 1;
       if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
         bonuses.pets.push(equipmentOn[x]);
       }
-    } 
+      urlEnd += equipmentOn[x].shareID;
+    }
   });
 
   Object.keys(setsToSort).forEach((x) => {
@@ -40,7 +43,7 @@ var calculateBonuses = (equipmentOn) => {
       })
     }
   });
-  return bonuses;
+  return {bonuses, urlEnd};
 }
 
 class App extends Component {
@@ -71,7 +74,8 @@ class App extends Component {
         rings: {},
         accessories: {},
         pets: {}
-      }
+      },
+      urlEnd: ""
     }
   }
 
@@ -157,7 +161,11 @@ class App extends Component {
         state.equipped[tempSlot] = item;
       }
     }
-    state.bonuses = {...calculateBonuses(state.equipped)};
+    let bonuses = calculateBonuses(state.equipped);
+
+    state.bonuses = {...bonuses.bonuses};
+    state.urlEnd = bonuses.urlEnd
+
 
     this.setState({...state});
   }
@@ -177,7 +185,9 @@ class App extends Component {
         <header className="App-header header">
           <h1 className="title">Bit Heroes Equipment Planner</h1>
           <p className="sharable-link">
-            Shareable Link : []
+            Share: <input
+                    readOnly
+                    value={`https://bit-heroes-equipment.herokuapp.com/${this.state.urlEnd}`}></input>
           </p>
         </header>
         <section className="container">
