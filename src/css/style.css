@@ -2,6 +2,8 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#56abd8), to(#27313e));
+  background: linear-gradient(#56abd8, #27313e);
   padding: 0;
 }
 .App {
@@ -15,8 +17,9 @@ body {
 .App-header {
   background-color: transparent;
   height: 50px;
-  padding: 15px 5px 0px 5px;
-  color: #000;
+  padding: 15px 10px 0px 10px;
+  color: #fff;
+  text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
 }
 .App-header .title {
@@ -37,7 +40,6 @@ body {
   width: 150px;
 }
 .container {
-  border: 1px solid #000;
   position: relative;
   padding: 0;
   margin: 0;
@@ -59,79 +61,218 @@ body {
   list-style: none;
 }
 .container li {
-  border: 1px solid #000;
   padding: 15px 40px 15px 40px;
 }
-.container .bonuses {
-  width: 300px;
+.container .by-set-reveal,
+.container .by-mythic-reveal,
+.container .by-slot-reveal {
+  width: 380px;
   margin: 0 auto;
-  border: 1px solid #000;
-  height: auto;
-  position: absolute;
-  display: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
 }
 .container .left,
 .container .right {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  border: 1px solid #000;
   padding-top: 25px;
 }
 .container .right {
-  height: 600px;
+  height: calc(100vh - 75px);
+  min-height: 600px;
   overflow-y: scroll;
+  color: #fff;
+  padding-bottom: 100px;
+}
+.container .right .bonuses {
+  width: 300px;
+  height: 100px;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 14px;
+}
+.container .right .bonuses ul,
+.container .right .bonuses li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.container .right .bonuses .bonus-mythics,
+.container .right .bonuses .bonus-sets {
+  padding: 20px 0px;
+}
+.container .right .bonuses .bonus-mythic-name {
+  color: #fc0f40;
+  text-shadow: 0 0 3px #000;
+}
+.container .right .bonuses .bonus-set-name {
+  color: #84fffd;
+  text-shadow: 0 0 3px #000;
+}
+.container .right .set-information {
+  display: none;
+}
+.container .right .set-information:hover {
+  padding-top: 5px;
+  display: block;
+}
+.container .right .item-name {
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1.05px;
+  color: #fff;
+}
+.container .right .click-on-this {
+  display: block;
+  cursor: pointer;
+  letter-spacing: 1.05px;
+  color: #fff;
+}
+.container .right .click-on-this:hover + .set-information {
+  padding-top: 5px;
+  display: block;
+}
+.container .right .set-bonuses,
+.container .right .mythic-bonus,
+.container .right .mythic-slot,
+.container .right .set-location,
+.container .right .mythic-location {
+  font-size: 13px;
+}
+.container .right .by-set-reveal-sub {
+  padding-top: 15px;
+}
+.container .right .by-set-reveal-sub li {
+  text-align: left;
+  border: 1px solid #e7cfa8;
+  padding-left: 0;
+  padding-right: 0;
+  marign-bottom: 2px;
+}
+.container .right .by-set-reveal-sub li:active {
+  border: 2px solid #fedc5b;
+}
+.container .right .by-set-reveal-sub span:nth-child(1) {
+  color: #e6f2b1;
+}
+.container .right .by-mythic-reveal li,
+.container .right .by-slot-types-reveal li {
+  border: 2px solid #e7cfa8;
+  margin-bottom: 1px;
+}
+.container .right .by-mythic-reveal li:active,
+.container .right .by-slot-types-reveal li:active {
+  border: 3px solid #fedc5b;
+}
+.container .right .by-mythic-reveal .item-name {
+  color: #e6f2b1;
+}
+.container .right .by-slot-types-reveal li {
+  color: #e6f2b1;
+}
+.container .right .left-span-name {
+  position: relative;
+  left: 10px;
+}
+.container .right .right-span-slot {
+  font-size: 13px;
+  right: 10px;
+  padding-top: 3px;
+  position: absolute;
+}
+.container .right .by-slot-types ul {
+  position: relative;
+  left: -40px;
+  margin-top: 15px;
+}
+.container .right .by-slot-types .by-slot-types-reveal li {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 13px;
+}
+.container .right .by-slot-types li {
+  cursor: pointer;
 }
 .container .equipped {
   width: 400px;
-  height: 600px;
-  border: 1px solid #000;
+  min-height: 600px;
+  height: auto;
   margin: 0 auto;
   padding-top: 15px;
   position: relative;
 }
 .container .equipped .equipped-container {
   width: 100px;
-  height: 120px;
+  height: 130px;
   position: absolute;
-  border: 1px solid #000;
   margin-left: 15px;
+  border-radius: 5px;
   margin-right: 15px;
+  border: 2px solid #000;
+  background: transparent;
+  color: #fff;
+}
+.container .equipped .equipped-container .slot-name {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  bottom: 5px;
+  text-transform: uppercase;
 }
 .container .equipped .equipped-container:nth-child(1) {
-  border: 1px solid #008000;
   margin-top: 0;
 }
+.container .equipped .equipped-container:nth-child(1) .slot-name:after {
+  content: "Mainhand";
+}
 .container .equipped .equipped-container:nth-child(2) {
-  border: 1px solid #008000;
-  margin-top: 145px;
+  margin-top: 150px;
+}
+.container .equipped .equipped-container:nth-child(2) .slot-name:after {
+  content: "Offhand";
 }
 .container .equipped .equipped-container:nth-child(3) {
-  border: 1px solid #008000;
-  margin-top: 290px;
+  margin-top: 300px;
+}
+.container .equipped .equipped-container:nth-child(3) .slot-name:after {
+  content: "Head";
 }
 .container .equipped .equipped-container:nth-child(4) {
-  border: 1px solid #008000;
-  margin-top: 435px;
+  margin-top: 450px;
+}
+.container .equipped .equipped-container:nth-child(4) .slot-name:after {
+  content: "Bodies";
 }
 .container .equipped .equipped-container:nth-child(5) {
-  border: 1px solid #008000;
   right: 0;
+}
+.container .equipped .equipped-container:nth-child(5) .slot-name:after {
+  content: "Necklace";
 }
 .container .equipped .equipped-container:nth-child(6) {
-  border: 1px solid #008000;
   right: 0;
-  margin-top: 145px;
+  margin-top: 150px;
+}
+.container .equipped .equipped-container:nth-child(6) .slot-name:after {
+  content: "Ring";
 }
 .container .equipped .equipped-container:nth-child(7) {
-  border: 1px solid #008000;
   right: 0;
-  margin-top: 290px;
+  margin-top: 300px;
+}
+.container .equipped .equipped-container:nth-child(7) .slot-name:after {
+  content: "Accessory";
 }
 .container .equipped .equipped-container:nth-child(8) {
-  border: 1px solid #008000;
   right: 0;
-  margin-top: 435px;
+  margin-top: 450px;
+}
+.container .equipped .equipped-container:nth-child(8) .slot-name:after {
+  content: "Pet";
 }
 .container .equipped .equipped-container .nothing-to-see-here h1 {
   font-size: 40px;
@@ -139,7 +280,6 @@ body {
 .container .equipped .equipped-container .equipped-image-view {
   width: 80%;
   height: auto;
-  border: 1px solid #000;
   position: relative;
   left: 10%;
   margin-top: 10px;
@@ -152,6 +292,12 @@ body {
   margin-top: 5px;
   font-size: 13px;
 }
+.container .equipped .equipped-mythic {
+  border: 2px solid #fc0f40 !important;
+}
+.container .equipped .equipped-set {
+  border: 2px solid #84fffd !important;
+}
 .by-set-reveal {
   position: relative;
   left: 0px;
@@ -163,7 +309,16 @@ body {
   font-size: 16px;
 }
 .by-main-buttons {
-  width: 300px;
+  width: 400px;
   height: 40px;
   left: 0;
+  display: block;
+  margin: 0 auto;
+  background-color: #26303b;
+  border: 2px solid #a3b9d5;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 15px;
+  margin-bottom: 2px;
+  text-transform: uppercase;
 }

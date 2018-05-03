@@ -11,7 +11,7 @@ export default class Equipped extends Component {
 				{
 					Object.keys(this.props.equipped).map((x) => {
 						return (
-							<div className={`equipped-container equpped-container-${x}`} 
+							<div className={`equipped-container equpped-container-${x} equipped-${this.props.equipped[x].type}`} 
 								 key={x} 
 								 onClick={() => {this.props.removeItem(x)}}>
 								<EquippedView equipped={this.props.equipped[x]} />

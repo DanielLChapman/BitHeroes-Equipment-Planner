@@ -11,7 +11,7 @@ const BonusView = (props) => {
                     <ul>
                     {
                       Object.keys(props.bonuses.mythics).map((x) => {
-                        return <li key={x}>{props.bonuses.mythics[x].name} : {props.bonuses.mythics[x].effect}</li>
+                        return <li key={x}><span className="bonus-mythic-name">{props.bonuses.mythics[x].name}</span> : {props.bonuses.mythics[x].effect}</li>
                       })
                     }
                     </ul>
@@ -24,7 +24,7 @@ const BonusView = (props) => {
                     {
                       Object.keys(props.bonuses.sets).map((x) => {
                         return <li key={x}>
-                                {sets[x].name}
+                                <span className="bonus-set-name">{sets[x].name}</span>
                                 <ul>
                                 {
                                   props.bonuses.sets[x].map((y) => {
@@ -40,6 +40,7 @@ const BonusView = (props) => {
     }
 
     return (<div>
+      Current Bonuses: 
       {hasMythics}
       {hasSets}
     </div>)

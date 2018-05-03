@@ -32,5 +32,7 @@ describe('Layout', () => {
 		var wrapper2 = shallow(<EquippedView {...props} />);
 		expect(wrapper2.find('img').length).toBe(0);
 		expect(wrapper2.find('.nothing-to-see-here').length).toBe(1);
+		expect(wrapper2.find('.nothing-to-see-here').find('h1').length).toBe(1);
+		expect(wrapper2.find('.nothing-to-see-here').find('.slot-name').length).toBe(1);
 	})
 })

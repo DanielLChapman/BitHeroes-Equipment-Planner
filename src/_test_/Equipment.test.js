@@ -83,5 +83,14 @@ describe('Layout', () => {
 		expect(wrapper.find('.by-slot-types').first().find('span').length).toBe(1);
 		expect(wrapper.find('.by-slot-types').first().find('ul').find('li').length).toBeGreaterThan(0);
 	});
+	it('Expects the sets to have the information below the name', () => {
+		expect(wrapper.find('.by-set-reveal').first().find('.set-bonuses').length).toBe(18);
+		expect(wrapper.find('.by-set-reveal').first().find('.set-location').length).toBe(18);
+	});
+	it('Expects the mythics to have the information below the name', () => {
+		expect(wrapper.find('.by-mythic-reveal').first().find('.mythic-slot').length).toBe(16);
+		expect(wrapper.find('.by-mythic-reveal').first().find('.mythic-location').length).toBe(16);
+		expect(wrapper.find('.by-mythic-reveal').first().find('.mythic-bonus').length).toBe(16);
+	});
 
 })

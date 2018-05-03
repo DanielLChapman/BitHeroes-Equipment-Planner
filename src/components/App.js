@@ -48,12 +48,12 @@ class App extends Component {
       equipped: {
         mainhand: {},
         offhand: {},
-        body: {},
         head: {},
-        ring: {},
+        body: {},
         necklace: {},
-        pet: {},
-        accessory: {}
+        ring: {},
+        accessory: {},
+        pet: {}
       },
       sets,
       equipment,
@@ -62,12 +62,12 @@ class App extends Component {
       sortedEquipment: {
         mainhands: {},
         offhands: {},
-        bodies: {},
         heads: {},
-        rings: {},
+        bodies: {},
         necklaces: {},
-        pets: {},
-        accessories: {}
+        rings: {},
+        accessories: {},
+        pets: {}
       }
     }
   }
@@ -133,10 +133,10 @@ class App extends Component {
         offhands, 
         bodies, 
         heads, 
-        rings, 
         necklaces, 
-        pets, 
-        accessories
+        rings,
+        accessories, 
+        pets
       }
     });
   }
@@ -172,21 +172,21 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header header">
-          <h1 className="title">Bit Heroes Set/Mythic Planner</h1>
+          <h1 className="title">Bit Heroes Equipment Planner</h1>
           <p className="sharable-link">
             Shareable Link : []
           </p>
         </header>
         <section className="container">
-          <div className="bonuses">
-            <BonusView bonuses={this.state.bonuses} />  
-          </div>
           <div className="left">
             <div className="equipped">
               <Equipped removeItem={this.removeItem} equipped={this.state.equipped} />
             </div>
           </div>
           <div className="right">
+            <div className="bonuses">
+              <BonusView bonuses={this.state.bonuses} />  
+            </div>
             <div className="equipment">
               <Equipment equipItem={this.equipItem} mythics={this.state.mythics} sets={this.state.sets} equipment={this.state.equipment} sortedEquipment={this.state.sortedEquipment}/>
             </div>

@@ -34,5 +34,5 @@ describe('Layout', () => {
 	it('Has an area for bonuses', () => {
 		expect(wrapper.find('.bonuses').length).toBe(1);
 		expect(wrapper.find('BonusView').length).toBe(1);
-	})
+	});
 })

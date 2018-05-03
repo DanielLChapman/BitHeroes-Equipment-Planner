@@ -161,3 +161,23 @@ describe('Removes selected equipped item', () => {
 		expect(wrapper.find('BonusView').dive().find('.bonus-sets').length).toBe(1);
 	})
 });
+
+describe('Styling Buttons', () => {
+
+	it('expects default state behavior', () => {
+		expect(equipmentWrapper.state()).toEqual({
+			slotReveal: false,
+			mythicReveal: false,
+			setReveal: false
+		});
+	});
+
+	it('Expects the state to change on click of button', () => {
+		equipmentWrapper.find('.by-set').simulate('click');
+		expect(equipmentWrapper.state()).toEqual({
+			slotReveal: false,
+			mythicReveal: false,
+			setReveal: true
+		});
+	})
+})
