@@ -132,9 +132,65 @@ class App extends Component {
       });
     });
 
+
+
+    //finding equipped items
+    let equipArray = this.props.match.params.parameters.match(/.{1,2}/g);
+    var equipped = {
+      mainhand: {},
+      offhand: {},
+      head: {},
+      body: {},
+      necklace: {},
+      ring: {},
+      accessory: {},
+      pet: {}
+    };
+
+    equipArray.forEach((x) => {
+      if(x.split('').length === 2) {
+        Object.keys(equipment).forEach((y) => {
+          if (equipment[y].shareID === x) {
+            switch(equipment[y].slot) {
+              case 'Offhand':
+                equipped.offhand = equipment[y];
+                break;
+              case 'Body':
+                equipped.body = equipment[y];
+                break;
+              case 'Head':
+                equipped.head = equipment[y];
+                break;
+              case 'Ring':
+                equipped.ring = equipment[y];
+                break;
+              case 'Necklace':
+                equipped.necklace = equipment[y];
+                break;
+              case 'Pet':
+                equipped.pet = equipment[y];
+                break;
+              case 'Accessory':
+                equipped.accessory= equipment[y];
+                break;
+              default: 
+                equipped.mainhand = equipment[y];
+            };
+          }
+        })
+      }
+    });
+
+    let tempBonus = calculateBonuses(equipped);
+    let bonuses = {...tempBonus.bonuses};
+    let urlEnd = tempBonus.urlEnd;
+
     this.setState({
       sets,
       mythics,
+      equipped,
+      bonuses,
+      urlEnd,
       sortedEquipment: {
         mainhands, 
         offhands, 
@@ -161,10 +217,10 @@ class App extends Component {
         state.equipped[tempSlot] = item;
       }
     }
-    let bonuses = calculateBonuses(state.equipped);
 
+    let bonuses = calculateBonuses(state.equipped);
     state.bonuses = {...bonuses.bonuses};
-    state.urlEnd = bonuses.urlEnd
+    state.urlEnd = bonuses.urlEnd;
 
 
     this.setState({...state});
@@ -173,7 +229,10 @@ class App extends Component {
   removeItem = (slot) => {
     let state = this.state;
     state.equipped[slot] = {};
-    state.bonuses = calculateBonuses(state.equipped);
+
+    let bonuses = calculateBonuses(state.equipped);
+    state.bonuses = {...bonuses.bonuses};
+    state.urlEnd = bonuses.urlEnd;
 
     this.setState({...state})
   }
@@ -189,6 +248,7 @@ class App extends Component {
                     readOnly
                     value={`https://bit-heroes-equipment.herokuapp.com/${this.state.urlEnd}`}></input>
           </p>
+          
         </header>
         <section className="container">
           <div className="left">
