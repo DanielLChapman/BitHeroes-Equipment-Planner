@@ -132,10 +132,7 @@ class App extends Component {
       });
     });
 
-
-
-    //finding equipped items
-    let equipArray = this.props.match.params.parameters.match(/.{1,2}/g);
+    var bonuses, urlEnd;
     var equipped = {
       mainhand: {},
       offhand: {},
@@ -147,43 +144,48 @@ class App extends Component {
       pet: {}
     };
 
-    equipArray.forEach((x) => {
-      if(x.split('').length === 2) {
-        Object.keys(equipment).forEach((y) => {
-          if (equipment[y].shareID === x) {
-            switch(equipment[y].slot) {
-              case 'Offhand':
-                equipped.offhand = equipment[y];
-                break;
-              case 'Body':
-                equipped.body = equipment[y];
-                break;
-              case 'Head':
-                equipped.head = equipment[y];
-                break;
-              case 'Ring':
-                equipped.ring = equipment[y];
-                break;
-              case 'Necklace':
-                equipped.necklace = equipment[y];
-                break;
-              case 'Pet':
-                equipped.pet = equipment[y];
-                break;
-              case 'Accessory':
-                equipped.accessory= equipment[y];
-                break;
-              default: 
-                equipped.mainhand = equipment[y];
-            };
-          }
-        })
-      }
-    });
+    //finding equipped items
+    if (this.props.match.params.parameters) {
+      let equipArray = this.props.match.params.parameters.match(/.{1,2}/g);
+
+      equipArray.forEach((x) => {
+        if(x.split('').length === 2) {
+          Object.keys(equipment).forEach((y) => {
+            if (equipment[y].shareID === x) {
+              switch(equipment[y].slot) {
+                case 'Offhand':
+                  equipped.offhand = equipment[y];
+                  break;
+                case 'Body':
+                  equipped.body = equipment[y];
+                  break;
+                case 'Head':
+                  equipped.head = equipment[y];
+                  break;
+                case 'Ring':
+                  equipped.ring = equipment[y];
+                  break;
+                case 'Necklace':
+                  equipped.necklace = equipment[y];
+                  break;
+                case 'Pet':
+                  equipped.pet = equipment[y];
+                  break;
+                case 'Accessory':
+                  equipped.accessory= equipment[y];
+                  break;
+                default: 
+                  equipped.mainhand = equipment[y];
+              };
+            }
+          })
+        }
+      });
+    }
 
     let tempBonus = calculateBonuses(equipped);
-    let bonuses = {...tempBonus.bonuses};
-    let urlEnd = tempBonus.urlEnd;
+    bonuses = {...tempBonus.bonuses};
+    urlEnd = tempBonus.urlEnd;
 
     this.setState({
       sets,
