@@ -145,7 +145,7 @@ class App extends Component {
     };
 
     //finding equipped items
-    if (this.props.match.params.parameters) {
+    if (this.props.match && this.props.match.params.parameters) {
       let equipArray = this.props.match.params.parameters.match(/.{1,2}/g);
 
       equipArray.forEach((x) => {
@@ -223,7 +223,12 @@ class App extends Component {
     let bonuses = calculateBonuses(state.equipped);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
-    this.props.history.push(`/${state.urlEnd}`);
+    try {
+      this.props.history.push(`/${state.urlEnd}`);
+    }
+    catch (err) {
+      console.log(this.props);
+    }
 
     this.setState({...state});
   }
@@ -235,7 +240,12 @@ class App extends Component {
     let bonuses = calculateBonuses(state.equipped);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
-    this.props.history.push(`/${state.urlEnd}`);
+    try {
+      this.props.history.push(`/${state.urlEnd}`);
+    }
+    catch (err) {
+      console.log(this.props);
+    }
 
     this.setState({...state})
   }

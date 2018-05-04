@@ -12,7 +12,7 @@ const EquippedView = (props) => {
           </div>
 
           <div className={`equipped-name-view equipped-name-view-${props.equipped.slot}`}>
-            <span>{props.equipped.name}</span>
+            <span className="equipped-item-name">{props.equipped.name}</span>
           </div>
           <span className="slot-name"></span>
         </React.Fragment>

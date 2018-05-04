@@ -28,6 +28,14 @@ body {
     font-size: 1.3em;
     text-align: left;
     margin-top: -5px;
+    @media screen and (max-width: 620px) {
+      top: 0;
+      width: 100%;
+      text-align: center;
+    }
+    @media screen and (max-width: 400px) {
+      font-size: 1em;
+    }
   }
   .sharable-link {
     text-align: right;
@@ -39,6 +47,14 @@ body {
     .url-to-copy {
       position: relative;
       width: 150px;
+    }
+    @media screen and (max-width: 700px) {
+      margin-right: 20px;
+    }
+    @media screen and (max-width: 620px) {
+      top: 0;
+      width: 100%;
+      text-align: center;
     }
   }
 }
@@ -54,16 +70,26 @@ body {
   display: flex;
   justify-content: center;
   font-family: 'Work Sans', sans-serif;
+  @media screen and (max-width: 900px) {
+    display: initial;
+  }
   ul, li {
     padding: 0; 
     margin: 0;
     width: 300px;
     list-style: none;
+    @media screen and (max-width: 400px) {
+      width: 100%;
+    }
   }
 
   li {
     padding: 15px 40px 15px 40px;
-
+    @media screen and (max-width: 400px) {
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
   }
   .by-set-reveal, .by-mythic-reveal, .by-slot-reveal {
     width: 380px;
@@ -71,20 +97,33 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
     position: relative;
+    @media screen and (max-width: 400px) {
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
   }
 
   .left, .right {
     flex-grow: 1;
     padding-top: 25px;
+    @media screen and (max-width: 900px) {
+      width: 100%;
+    }
   }
   .left {
   }
   .right {
-    height: calc(100vh - 75px);
+    height: calc(100vh - 135px);
     min-height: 600px;
     overflow-y: scroll;
     color: white;
     padding-bottom: 100px;
+    .equipment {
+      @media screen and (max-width: 400px) {
+        width: 100%;
+      }
+    }
     .bonuses {
       width: 300px;
       height: 100px;
@@ -97,6 +136,10 @@ body {
         list-style: none;
         padding: 0;
         margin: 0;
+        @media screen and (max-width: 400px) {
+          width: 98%;
+          left: 1%;
+        }
       }
       .bonus-mythics, .bonus-sets {
         padding: 20px 0px;
@@ -106,6 +149,10 @@ body {
         text-shadow: 0 0 3px #000;
       }
       .bonus-set-name {
+        color: set-blue;
+        text-shadow: 0 0 3px #000;
+      }
+      .bonus-pet-name {
         color: set-blue;
         text-shadow: 0 0 3px #000;
       }
@@ -121,6 +168,11 @@ body {
       font-family: 'Roboto', sans-serif;
       letter-spacing: 1.05px;
       color: white;
+      @media screen and (max-width: 400px) {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+      }
     }
     .click-on-this {
       display: block;
@@ -136,6 +188,11 @@ body {
     }
     .set-bonuses, .mythic-bonus, .mythic-slot, .set-location, .mythic-location {
       font-size: 13px;
+    }
+    .by-set-reveal {
+      @media screen and (max-width: 400px) {
+        width: 100%;
+      }
     }
     .by-set-reveal-sub {
       padding-top: 15px;
@@ -162,15 +219,17 @@ body {
           border: 3px solid #fedc5b;
         }
       }
+      @media screen and (max-width: 400px) {
+        width: 100%;
+      }
     }
     .by-mythic-reveal {
       .item-name {
         color: mythic-red;
         text-shadow: 0 0 5px #000;
       }
-    }
-    .by-slot-types-reveal {
-      li {
+      @media screen and (max-width: 400px) {
+        width: 100%;
       }
     }
 
@@ -190,6 +249,9 @@ body {
         position: relative;
         left: -40px;
         margin-top: 15px;
+        @media screen and (max-width: 400px) {
+          left: -2px;
+        }
       }
       .by-slot-types-reveal {
         li {
@@ -218,6 +280,9 @@ body {
     margin: 0 auto;
     padding-top: 15px;
     position: relative;
+    @media screen and (max-width: 400px) {
+      width: 100%;
+    }
     .equipped-container {
       width: 100px;
       height: 130px;
@@ -365,6 +430,10 @@ body {
   font-size: 15px;
   margin-bottom: 2px;
   text-transform: uppercase;
+  @media screen and (max-width: 400px) {
+    width: 98%;
+    left: 1%;
+  }
 }
 
 

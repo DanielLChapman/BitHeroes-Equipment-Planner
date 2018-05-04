@@ -20,7 +20,7 @@ describe('Layout', () => {
 		expect(wrapper.find('img').length).toBe(1);
 	});
 	it('Contains a span for names', () => {
-		expect(wrapper.find('span').length).toBe(1);
+		expect(wrapper.find('.equipped-item-name').length).toBe(1);
 	});
 
 	it('Contains something else if there is no names', () => {

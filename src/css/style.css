@@ -27,6 +27,18 @@ body {
   text-align: left;
   margin-top: -5px;
 }
+@media screen and (max-width: 620px) {
+  .App-header .title {
+    top: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 400px) {
+  .App-header .title {
+    font-size: 1em;
+  }
+}
 .App-header .sharable-link {
   text-align: right;
   font-size: 1em;
@@ -38,6 +50,18 @@ body {
 .App-header .sharable-link .url-to-copy {
   position: relative;
   width: 150px;
+}
+@media screen and (max-width: 700px) {
+  .App-header .sharable-link {
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .App-header .sharable-link {
+    top: 0;
+    width: 100%;
+    text-align: center;
+  }
 }
 .container {
   position: relative;
@@ -53,6 +77,11 @@ body {
           justify-content: center;
   font-family: 'Work Sans', sans-serif;
 }
+@media screen and (max-width: 900px) {
+  .container {
+    display: initial;
+  }
+}
 .container ul,
 .container li {
   padding: 0;
@@ -60,8 +89,21 @@ body {
   width: 300px;
   list-style: none;
 }
+@media screen and (max-width: 400px) {
+  .container ul,
+  .container li {
+    width: 100%;
+  }
+}
 .container li {
   padding: 15px 40px 15px 40px;
+}
+@media screen and (max-width: 400px) {
+  .container li {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
 }
 .container .by-set-reveal,
 .container .by-mythic-reveal,
@@ -72,6 +114,15 @@ body {
   margin-bottom: 10px;
   position: relative;
 }
+@media screen and (max-width: 400px) {
+  .container .by-set-reveal,
+  .container .by-mythic-reveal,
+  .container .by-slot-reveal {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+}
 .container .left,
 .container .right {
   -webkit-box-flex: 1;
@@ -79,12 +130,23 @@ body {
           flex-grow: 1;
   padding-top: 25px;
 }
+@media screen and (max-width: 900px) {
+  .container .left,
+  .container .right {
+    width: 100%;
+  }
+}
 .container .right {
-  height: calc(100vh - 75px);
+  height: calc(100vh - 135px);
   min-height: 600px;
   overflow-y: scroll;
   color: #fff;
   padding-bottom: 100px;
+}
+@media screen and (max-width: 400px) {
+  .container .right .equipment {
+    width: 100%;
+  }
 }
 .container .right .bonuses {
   width: 300px;
@@ -101,6 +163,13 @@ body {
   padding: 0;
   margin: 0;
 }
+@media screen and (max-width: 400px) {
+  .container .right .bonuses ul,
+  .container .right .bonuses li {
+    width: 98%;
+    left: 1%;
+  }
+}
 .container .right .bonuses .bonus-mythics,
 .container .right .bonuses .bonus-sets {
   padding: 20px 0px;
@@ -110,6 +179,10 @@ body {
   text-shadow: 0 0 3px #000;
 }
 .container .right .bonuses .bonus-set-name {
+  color: #84fffd;
+  text-shadow: 0 0 3px #000;
+}
+.container .right .bonuses .bonus-pet-name {
   color: #84fffd;
   text-shadow: 0 0 3px #000;
 }
@@ -124,6 +197,13 @@ body {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 1.05px;
   color: #fff;
+}
+@media screen and (max-width: 400px) {
+  .container .right .item-name {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
 }
 .container .right .click-on-this {
   display: block;
@@ -141,6 +221,11 @@ body {
 .container .right .set-location,
 .container .right .mythic-location {
   font-size: 13px;
+}
+@media screen and (max-width: 400px) {
+  .container .right .by-set-reveal {
+    width: 100%;
+  }
 }
 .container .right .by-set-reveal-sub {
   padding-top: 15px;
@@ -168,9 +253,20 @@ body {
 .container .right .by-slot-types-reveal li:active {
   border: 3px solid #fedc5b;
 }
+@media screen and (max-width: 400px) {
+  .container .right .by-mythic-reveal,
+  .container .right .by-slot-types-reveal {
+    width: 100%;
+  }
+}
 .container .right .by-mythic-reveal .item-name {
   color: #fc0f40;
   text-shadow: 0 0 5px #000;
+}
+@media screen and (max-width: 400px) {
+  .container .right .by-mythic-reveal {
+    width: 100%;
+  }
 }
 .container .right .left-span-name {
   position: relative;
@@ -186,6 +282,11 @@ body {
   position: relative;
   left: -40px;
   margin-top: 15px;
+}
+@media screen and (max-width: 400px) {
+  .container .right .by-slot-types ul {
+    left: -2px;
+  }
 }
 .container .right .by-slot-types .by-slot-types-reveal li {
   font-family: 'Work Sans', sans-serif;
@@ -209,6 +310,11 @@ body {
   margin: 0 auto;
   padding-top: 15px;
   position: relative;
+}
+@media screen and (max-width: 400px) {
+  .container .equipped {
+    width: 100%;
+  }
 }
 .container .equipped .equipped-container {
   width: 100px;
@@ -329,4 +435,10 @@ body {
   font-size: 15px;
   margin-bottom: 2px;
   text-transform: uppercase;
+}
+@media screen and (max-width: 400px) {
+  .by-main-buttons {
+    width: 98%;
+    left: 1%;
+  }
 }

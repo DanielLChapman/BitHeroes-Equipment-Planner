@@ -484,7 +484,7 @@ export const equipment = {
 		slot: "Accessory",
 		image: "",
 		partOfSet: "gatekeeper",
-		effect: "",
+		effect: "+24.5% Damage",
 		shareID: "ac"
 	},
 	karlorr: {
@@ -493,7 +493,7 @@ export const equipment = {
 		slot: "Pet",
 		image: "",
 		partOfSet: "gatekeeper",
-		effect: "",
+		effect: "30% chance to attack weakest enemy per turn, when you get hit, and when you hit an enemy",
 		shareID: "ka"
 	},
 	pew_pew: {
