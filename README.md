@@ -13,8 +13,8 @@ TODO:
 81. Make mythic and sets have different colors in slots ✔
 82. Add in pet and accessories to bonuses ✔
 9. Figure out what to do for sharable links ✔
-10. Mobile
-11. DRY
+10. Mobile ✔
+11. DRY ✔
 
 Future
 
@@ -22,3 +22,4 @@ Future
 2. Search Functionality to search for certain words in both title and effects
 3. Add enchants / runes <- not sure how to save without a database but I guess I would have to add it in
 4. Skill calculations
+5. Way to get back to the top. Maybe re-do bonuses so it is always visible

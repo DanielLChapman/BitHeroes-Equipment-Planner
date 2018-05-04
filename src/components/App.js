@@ -7,44 +7,7 @@ import Equipment from './Equipment';
 import Equipped from './Equipped';
 import BonusView from './BonusView';
 
-var calculateBonuses = (equipmentOn) => {
-  let bonuses = {
-    mythics: [],
-    sets: {},
-    pets: []
-  };
-  let setsToSort = {};
-  let urlEnd = "";
-
-  Object.keys(equipmentOn).forEach((x) => {
-
-    if (equipmentOn[x].type === "mythic") {
-      bonuses.mythics.push(equipmentOn[x]);
-      urlEnd += equipmentOn[x].shareID;
-    } else  if (equipmentOn[x].type === "set") {
-      setsToSort[equipmentOn[x].partOfSet] = setsToSort[equipmentOn[x].partOfSet] + 1 || 1;
-      if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
-        bonuses.pets.push(equipmentOn[x]);
-      }
-      urlEnd += equipmentOn[x].shareID;
-    }
-  });
-
-  Object.keys(setsToSort).forEach((x) => {
-    if (setsToSort[x] >= 2 ) {
-      //grab set to get set bonuses,
-      let setWorkingOn = sets[x];
-      //Figure out which bonuses it gets;
-      bonuses.sets[x] = [];
-      Object.keys(setWorkingOn.setBonuses).forEach((y) => {
-        if (setsToSort[x] >= parseInt(y, 10)) {
-          bonuses.sets[x].push(setWorkingOn.setBonuses[y]);
-        }
-      })
-    }
-  });
-  return {bonuses, urlEnd};
-}
+import {calculateBonuses, convertName} from '../functions';
 
 class App extends Component {
 
@@ -80,9 +43,8 @@ class App extends Component {
   }
 
   componentDidMount () {
-    var mainhands = {}, offhands = {}, 
-    bodies = {}, heads = {}, rings = {}, 
-    necklaces = {}, pets = {}, accessories = {}, mythics = {};
+    var sortedEquipment = this.state.sortedEquipment, mythics = {};
+
     Object.keys(equipment).forEach( (x) => {
       equipment[x].image = `${x}.png`
 
@@ -91,28 +53,28 @@ class App extends Component {
       }
       switch(equipment[x].slot) {
         case 'Offhand':
-          offhands[x] = equipment[x];
+          sortedEquipment.offhands[x] = equipment[x];
           break;
         case 'Body':
-          bodies[x] = equipment[x];
+          sortedEquipment.bodies[x] = equipment[x];
           break;
         case 'Head':
-          heads[x] = equipment[x];
+          sortedEquipment.heads[x] = equipment[x];
           break;
         case 'Ring':
-          rings[x] = equipment[x];
+          sortedEquipment.rings[x] = equipment[x];
           break;
         case 'Necklace':
-          necklaces[x] = equipment[x];
+          sortedEquipment.necklaces[x] = equipment[x];
           break;
         case 'Pet':
-          pets[x] = equipment[x];
+          sortedEquipment.pets[x] = equipment[x];
           break;
         case 'Accessory':
-          accessories[x] = equipment[x];
+          sortedEquipment.accessories[x] = equipment[x];
           break;
         default: 
-          mainhands[x] = equipment[x];
+          sortedEquipment.mainhands[x] = equipment[x];
       };
     });
 
@@ -122,12 +84,7 @@ class App extends Component {
         if (typeof t === "object") {
           t = t.name;
         }
-        if (typeof t === "undefined") {
-          t = "Phantom Light";
-        }
-        t = t.split(" ").join('_');
-        t = t.split("'").join('');
-        t = t.toLowerCase();
+        t = convertName(t);
         sets[x].items[y] = equipment[t]
       });
     });
@@ -193,16 +150,7 @@ class App extends Component {
       equipped,
       bonuses,
       urlEnd,
-      sortedEquipment: {
-        mainhands, 
-        offhands, 
-        bodies, 
-        heads, 
-        necklaces, 
-        rings,
-        accessories, 
-        pets
-      }
+      sortedEquipment
     });
   }
 
@@ -240,6 +188,7 @@ class App extends Component {
     let bonuses = calculateBonuses(state.equipped);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
+
     try {
       this.props.history.push(`/${state.urlEnd}`);
     }

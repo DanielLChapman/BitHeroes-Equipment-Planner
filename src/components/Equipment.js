@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
-var convertName = (name) => {
-	name = name.split(' ').join('_');
-	name = name.split("'").join("");
-	name = name.toLowerCase();
-	return name;
-}
+import {convertName} from '../functions';
 
 export default class Equipment extends Component {
 
