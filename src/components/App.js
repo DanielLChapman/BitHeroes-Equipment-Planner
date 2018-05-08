@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { sets } from '../sets';
 import { equipment } from '../equipment';
+import { base } from '../stats';
 
 import Equipment from './Equipment';
 import Equipped from './Equipped';
@@ -26,6 +27,8 @@ class App extends Component {
       },
       sets,
       equipment,
+      runes: base.runes,
+      enchants: base.enchants,
       bonuses: {},
       mythics: {},
       sortedEquipment: {
@@ -139,7 +142,6 @@ class App extends Component {
         }
       });
     }
-
     let tempBonus = calculateBonuses(equipped);
     bonuses = {...tempBonus.bonuses};
     urlEnd = tempBonus.urlEnd;
@@ -169,8 +171,10 @@ class App extends Component {
     }
 
     let bonuses = calculateBonuses(state.equipped);
+
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
+
     try {
       this.props.history.push(`/${state.urlEnd}`);
     }
@@ -204,7 +208,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header header">
-          <h1 className="title">Bit Heroes Equipment Planner</h1>
+          <h1 className="title">Bit Heroes Equipment Planner {base.current_stats.absorb_chance}</h1>
           <p className="sharable-link">
             Share: <input
                     readOnly

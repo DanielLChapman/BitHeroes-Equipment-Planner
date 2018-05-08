@@ -18,6 +18,13 @@ TODO:
 
 Future
 
+12. Add Stat View Window
+13. Allow for person to set TS
+14. Add Effects to Equipments / Sets 
+15. Update stats by effects
+16. Write tests for each set/mythic
+
+
 1. Add all pets and accessories
 2. Search Functionality to search for certain words in both title and effects
 3. Add enchants / runes <- not sure how to save without a database but I guess I would have to add it in
