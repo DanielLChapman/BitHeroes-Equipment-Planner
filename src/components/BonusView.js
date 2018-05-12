@@ -45,7 +45,7 @@ const BonusView = (props) => {
                     {
                       Object.keys(props.bonuses.pets).map((x) => {
                         return <li key={x}>
-                                <span className="bonus-pet-name">{props.bonuses.pets[x].name}</span>:<br /> {props.bonuses.pets[x].effect}<br />
+                                <span className={`bonus-pet-name bonus-pet-name-${props.bonuses.pets[x].type}`}>{props.bonuses.pets[x].name}</span>:<br /> {props.bonuses.pets[x].effect}<br />
                               </li>
                       })
                     }

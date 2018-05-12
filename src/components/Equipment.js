@@ -200,7 +200,7 @@ export default class Equipment extends Component {
 							{
 								Object.keys(this.props.sortedEquipment.pets).map((x) => {
 									return <li
-											className={`by-slots-type-set`} 
+											className={`by-slots-type-pet-${this.props.sortedEquipment.pets[x].type}`} 
 											key={x} 
 											onClick={() => {this.props.equipItem(x)}}>
 											{this.props.sortedEquipment.pets[x].name}
@@ -215,7 +215,7 @@ export default class Equipment extends Component {
 							{
 								Object.keys(this.props.sortedEquipment.accessories).map((x) => {
 									return <li
-											className={`by-slots-type-set`} 
+											className={`by-slots-type-pet-${this.props.sortedEquipment.accessories[x].type}`} 
 									 		key={x} 
 									 		onClick={() => {this.props.equipItem(x)}}>
 									 		{this.props.sortedEquipment.accessories[x].name}
@@ -235,5 +235,6 @@ Equipment.propTypes = {
 	equipment: PropTypes.object.isRequired,
 	sortedEquipment: PropTypes.object.isRequired,
 	mythics: PropTypes.object.isRequired,
-	equipItem: PropTypes.func.isRequired
+	equipItem: PropTypes.func.isRequired,
+	legendaries: PropTypes.object.isRequired
 }

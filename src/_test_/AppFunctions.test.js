@@ -14,11 +14,14 @@ describe('Add Function', () => {
 		wrapper = shallow(<App />);
 		var mainhands = {}, offhands = {}, 
 	    bodies = {}, heads = {}, rings = {}, 
-	    necklaces = {}, pets = {}, accessories = {}, mythics = {};
+	    necklaces = {}, pets = {}, accessories = {}, mythics = {}, legendaries = {};
 
 	    Object.keys(equipment).forEach( (x) => {
 	    	if (equipment[x].type === "mythic") {
         		mythics[x] = equipment[x];
+     		}
+     		if (equipment[x].type === "legendary") {
+     			legendaries[x] = equipment[x];
      		}
 			switch(equipment[x].slot) {
 				case 'Offhand':
@@ -62,6 +65,7 @@ describe('Add Function', () => {
 			sets,
 			sortedEquipment,
 			mythics,
+			legendaries,
 			equipItem: jest.fn()
 		}
 		equipmentWrapper = shallow(<Equipment {...props} />);
@@ -157,7 +161,6 @@ describe('Removes selected equipped item', () => {
 				}
 			}
 		});
-		console.log(wrapper.state().bonuses);
 		expect(wrapper.find('BonusView').dive().find('.bonus-sets').length).toBe(1);
 	})
 });

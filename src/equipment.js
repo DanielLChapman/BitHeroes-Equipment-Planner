@@ -607,7 +607,7 @@ export const equipment = {
 		shareID: "hm"
 	},
 	crypt_tunic: {
-		name: "Crypt tunic",
+		name: "Crypt Tunic",
 		type: "mythic",
 		slot: "Body",
 		image: "",
@@ -655,7 +655,248 @@ export const equipment = {
 		effect: "Increase the poteny of your healing skills by 8%",
 		location: "t8 Set Trials & Gauntlets 340+",
 		shareID: "bd"
+	},
+	widowmaker: {
+		name: "Widowmaker",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "16% Crit Chance, 50% Crit Damage, 4% Empower Chance",
+		location: "Shop",
+		shareID: "WM"
+	},
+	seraphims_grace: {
+		name: "Seraphim's Grace",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "20% Block Chance, 10% Evade Chance, 5% Deflect Chance",
+		location: "Shop",
+		shareID: "sg"
+	},
+	melvin_champ: {
+		name: "Melvin Chapman",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "20% Dual Strike, 9% Crit Chance",
+		location: "Shop",
+		shareID: "MH"
+	},
+	abominable_trophy: {
+		name: "Abominable Trophy",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "20% Damage Reduction, 5% Absorb Chance",
+		location: "Shop",
+		shareID: "ao"
+	},
+	wrath: {
+		name: "Wrath",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "10% Deflect Chance, 7.5% Absorb Chance",
+		location: "Shop",
+		shareID: "WR"
+	},
+	baronets: {
+		name: "Baronets",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "20% Empower Chance, 4.5% Dual Strike",
+		location: "Shop",
+		shareID: "ec"
+	},
+	astaroths_diadem: {
+		name: "Astaroth's Diadem",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "2.5% Empower, 2.5% Dual, 5% Damage, 5% Speed, 5% Crit Chance, 50% Crit Damage",
+		location: "Shop",
+		shareID: "ad"
+	},
+	melvin_stew: {
+		name: "Melvin Stew",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "15% Absorb Chance",
+		location: "Shop",
+		shareID: "es"
+	},
+	the_atomising_neutrino_accelerator: {
+		name: "The Atomising Neutrino Accelerator",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "60% Block Chance",
+		location: "Shop",
+		shareID: "aa"
+	},
+	travelling_forge: {
+		name: "Travelling Forge",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "10% Dual Strike, 10% Empower Chance, 10% Crit Chance",
+		location: "Shop",
+		shareID: "TF"
+	},
+	transcendence: {
+		name: "Transcendence",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "16% Crit Chance, 50% Crit Damage, 4% Empower Chance",
+		location: "Shop",
+		shareID: "tr"
+	},
+	nelson: {
+		name: "Nelson",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "20% Chance to Attack Closest enemy per turn, get hit, and when hit",
+		location: "Shop",
+		shareID: "nl"
+	},
+	gemmi: {
+		name: "Gemmi",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "20% Chance To Heal per turn, on hit, and when hit",
+		location: "Shop",
+		shareID: "mm"
+	},
+	boiguh: {
+		name: "Boiguh",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "20% Chance to shield team per turn, on hit, and when hit",
+		location: "Shop",
+		shareID: "uh"
+	},
+	quimby: {
+		name: "Quimby",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "20% Chance to attack weakest per turn, on hit, and when hit",
+		location: "Shop",
+		shareID: "qu"
+	},
+	wuvboi: {
+		name: "Wubvoi",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "20% Chance to heal and shield team per turn, on hit, and when hit",
+		location: "Shop",
+		shareID: "wv"
+	},
+	buvboi: {
+		name: "Buvboi",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "20% Chance to attack random enemy per turn, on hit, and when hit",
+		location: "Shop",
+		shareID: "bi"
+	},
+	skulldemort: {
+		name: "Skulldemort",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "20% Chance to heal lowest health teammate per turn, on hit, and when hit",
+		location: "Shop",
+		shareID: "sk"
+	},
+	fuvboi: {
+		name: "Fuvboi",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "10% Chance to heal and shield team per turn, on hit, and when hit",
+		location: "Shop",
+		shareID: "uv"
+	},
+	toebert: {
+		name: "Toebert",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "61.5% Chance to heal and shield team per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "te"
+	},
+	urgoff: {
+		name: "Urgoff",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "61.5% Chance to heal team per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "uf"
+	},
+	prisby: {
+		name: "Prisby",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "41% Chance to attack strongest enemy per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "pb"
+	},
+	roogamenz: {
+		name: "Roogamenz",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "61.5% Chance to shield team per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "oo"
+	},
+	crem: {
+		name: "Crem",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "10 Chance to heal team per turn, on hit, and when hit",
+		location: "Shop",
+		shareID: "rm"
 	}
+	
 }
 /* 
 [name]: {
@@ -675,5 +916,15 @@ export const equipment = {
 		partOfSet: "",
 		effect: "",
 		location: ""
+	},
+	[name]: {
+		name: "",
+		type: "legendary",
+		slot: "",
+		image: "",
+		partOfSet: "",
+		effect: "",
+		location: "",
+		shareID: ""
 	},
 	*/

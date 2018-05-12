@@ -31,6 +31,7 @@ class App extends Component {
       enchants: base.enchants,
       bonuses: {},
       mythics: {},
+      legendaries: {},
       sortedEquipment: {
         mainhands: {},
         offhands: {},
@@ -46,13 +47,15 @@ class App extends Component {
   }
 
   componentDidMount () {
-    var sortedEquipment = this.state.sortedEquipment, mythics = {};
+    var sortedEquipment = this.state.sortedEquipment, mythics = {}, legendaries = {};
 
     Object.keys(equipment).forEach( (x) => {
       equipment[x].image = `${x}.png`
 
       if (equipment[x].type === "mythic") {
         mythics[x] = equipment[x];
+      } else if (equipment[x].type ==="legendary") {
+        legendaries[x] = equipment[x];
       }
       switch(equipment[x].slot) {
         case 'Offhand':
@@ -152,6 +155,7 @@ class App extends Component {
       equipped,
       bonuses,
       urlEnd,
+      legendaries,
       sortedEquipment
     });
   }
@@ -179,7 +183,6 @@ class App extends Component {
       this.props.history.push(`/${state.urlEnd}`);
     }
     catch (err) {
-      console.log(this.props);
     }
 
     this.setState({...state});
@@ -197,7 +200,6 @@ class App extends Component {
       this.props.history.push(`/${state.urlEnd}`);
     }
     catch (err) {
-      console.log(this.props);
     }
 
     this.setState({...state})
@@ -227,7 +229,7 @@ class App extends Component {
               <BonusView bonuses={this.state.bonuses} />  
             </div>
             <div className="equipment">
-              <Equipment equipItem={this.equipItem} mythics={this.state.mythics} sets={this.state.sets} equipment={this.state.equipment} sortedEquipment={this.state.sortedEquipment}/>
+              <Equipment legendaries={this.state.legendaries} equipItem={this.equipItem} mythics={this.state.mythics} sets={this.state.sets} equipment={this.state.equipment} sortedEquipment={this.state.sortedEquipment}/>
             </div>
           </div>
         </section>

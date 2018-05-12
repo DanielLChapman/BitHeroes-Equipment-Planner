@@ -12,10 +12,12 @@ describe('Layout', () => {
 	beforeEach(function() {
 		var mainhands = {}, offhands = {}, 
 	    bodies = {}, heads = {}, rings = {}, 
-	    necklaces = {}, pets = {}, accessories = {}, mythics = {};
+	    necklaces = {}, pets = {}, accessories = {}, mythics = {}, legendaries = {};
 	    Object.keys(equipment).forEach( (x) => {
 	    	if (equipment[x].type === "mythic") {
         		mythics[x] = equipment[x];
+     		} else if (equipment[x].type === "legendary") {
+     			legendaries[x] = equipment[x];
      		}
 			switch(equipment[x].slot) {
 				case 'Offhand':
@@ -59,6 +61,7 @@ describe('Layout', () => {
 			sets,
 			sortedEquipment,
 			mythics,
+			legendaries,
 			equipItem: jest.fn()
 		}
 		wrapper = shallow(<Equipment {...props} />);

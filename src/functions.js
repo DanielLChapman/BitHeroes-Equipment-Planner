@@ -23,6 +23,9 @@ export const calculateBonuses = (equipmentOn) => {
         bonuses.pets.push(equipmentOn[x]);
       }
       urlEnd += equipmentOn[x].shareID;
+    } else if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
+      bonuses.pets.push(equipmentOn[x]);
+      urlEnd += equipmentOn[x].shareID;
     }
   });
 
@@ -39,7 +42,6 @@ export const calculateBonuses = (equipmentOn) => {
       })
     }
   });
-
   base.current_stats = stats;
 
   return {bonuses, urlEnd};
@@ -178,6 +180,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2) => {
     case 'Bedlam':
       stats.healing += 8;
       break;
+    //Add in legendary enchant and accessories
     default: 
       console.log(name, equipped, stats);
   };

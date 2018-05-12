@@ -26,4 +26,8 @@ export var base ={
 	current_stats: {},
 	runes: [],
 	enchants: []
-}
+};
+
+export const runeTypes = ["damage", "health", "speed", "block", "evade", "deflect_chance", "damage_enrage", "life_steal", "dual_strike", "damage_reduction", "empower_chance", "absorb_chance"];
+
+export const enchantTypes = ["block", "damage_reduction", "damage", "damage_enrage", "deflect_chance", "dual_strike", "empower_chance", "evade", "health", "life_steal", "speed"];

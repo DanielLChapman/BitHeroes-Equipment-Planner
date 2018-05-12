@@ -186,6 +186,9 @@ body {
   color: #84fffd;
   text-shadow: 0 0 3px #000;
 }
+.container .right .bonuses .bonus-pet-name-legendary {
+  color: #ffd400 !important;
+}
 .container .right .set-information {
   display: none;
 }
@@ -295,12 +298,19 @@ body {
 .container .right .by-slot-types li {
   cursor: pointer;
 }
-.container .right .by-slot-types .by-slots-type-set {
+.container .right .by-slot-types .by-slots-type-set,
+.container .right .by-slot-types .by-slots-type-pet-set {
   color: #84fffd;
   text-shadow: 0 0 5px #000;
 }
 .container .right .by-slot-types .by-slots-type-mythic {
   color: #fc0f40;
+  text-shadow: 0 0 5px #000;
+}
+.container .right .by-slot-types .by-slots-type-legendary,
+.container .right .by-slot-types .bonus-pet-name-legendary,
+.container .right .by-slot-types .by-slots-type-pet-legendary {
+  color: #ffd400 !important;
   text-shadow: 0 0 5px #000;
 }
 .container .equipped {
@@ -411,6 +421,9 @@ body {
 }
 .container .equipped .equipped-set {
   border: 2px solid #84fffd !important;
+}
+.container .equipped .equipped-legendary {
+  border: 2px solid #ffd400 !important;
 }
 .by-set-reveal {
   position: relative;
