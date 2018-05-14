@@ -210,7 +210,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header header">
-          <h1 className="title">Bit Heroes Equipment Planner {base.current_stats.absorb_chance}</h1>
+          <h1 className="title">Bit Heroes Equipment Planner</h1>
           <p className="sharable-link">
             Share: <input
                     readOnly
