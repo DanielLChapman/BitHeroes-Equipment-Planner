@@ -166,7 +166,7 @@ class App extends Component {
     if (typeof item === 'object') {
       let tempSlot = item['slot'];
       tempSlot = tempSlot.toLowerCase();
-      if (['sword', 'spear','staff','laser', 'crossbow', 'bow'].includes(tempSlot)) {
+      if (['sword', 'spear','staff','laser', 'crossbow', 'bow', 'axe', 'laser gun'].includes(tempSlot)) {
         state.equipped['mainhand'] = item;
         this.setState(state);
       } else {

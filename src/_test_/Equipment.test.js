@@ -74,11 +74,11 @@ describe('Layout', () => {
 		expect(wrapper.find('.by-mythic-reveal').length).toBe(1);
 		expect(wrapper.find('.by-slot-reveal').length).toBe(1);
 	})
-	it('Expects .by-set-reveal to contain 18 lis', () => {
-		expect(wrapper.find('.by-sets-names').length).toBe(18);
+	it('Expects .by-set-reveal to contain 24 lis', () => {
+		expect(wrapper.find('.by-sets-names').length).toBe(24);
 	});
-	it('Expects .by-mythic-reveal to contain 16 lis', () => {
-		expect(wrapper.find('.by-mythic-reveal').find('li').length).toBe(16);
+	it('Expects .by-mythic-reveal to contain 29 lis', () => {
+		expect(wrapper.find('.by-mythic-reveal').find('li').length).toBe(29);
 	});
 	it('Expects .by-slot-reveal to contain 8 lis', () => {
 		expect(wrapper.find('.by-slot-reveal').find('.by-slot-types').length).toBe(8);
@@ -87,13 +87,13 @@ describe('Layout', () => {
 		expect(wrapper.find('.by-slot-types').first().find('ul').find('li').length).toBeGreaterThan(0);
 	});
 	it('Expects the sets to have the information below the name', () => {
-		expect(wrapper.find('.by-set-reveal').first().find('.set-bonuses').length).toBe(18);
-		expect(wrapper.find('.by-set-reveal').first().find('.set-location').length).toBe(18);
+		expect(wrapper.find('.by-set-reveal').first().find('.set-bonuses').length).toBe(24);
+		expect(wrapper.find('.by-set-reveal').first().find('.set-location').length).toBe(24);
 	});
 	it('Expects the mythics to have the information below the name', () => {
-		expect(wrapper.find('.by-mythic-reveal').first().find('.mythic-slot').length).toBe(16);
-		expect(wrapper.find('.by-mythic-reveal').first().find('.mythic-location').length).toBe(16);
-		expect(wrapper.find('.by-mythic-reveal').first().find('.mythic-bonus').length).toBe(16);
+		expect(wrapper.find('.by-mythic-reveal').first().find('.mythic-slot').length).toBe(29);
+		expect(wrapper.find('.by-mythic-reveal').first().find('.mythic-location').length).toBe(29);
+		expect(wrapper.find('.by-mythic-reveal').first().find('.mythic-bonus').length).toBe(29);
 	});
 
 	it('Expects that all the equipment have a different sharable link', () => {

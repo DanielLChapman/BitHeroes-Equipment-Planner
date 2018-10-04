@@ -41,6 +41,17 @@ export const sets = {
 				4: "Gain 15% damage reduction while shielded"
 			}
 		},
+	arsenal:	{
+			name: "Arsenal",
+			location: "R6",
+			items: ["UMD Lazzault", "Aimbot 80", "A M W", "Nanovectal Plating"],
+			description: "",
+			setBonuses: {
+				2: "+2% Richochet",
+				3: "Damage increase by 10% to enemies above 75% Health or below 25% health",
+				4: "Gain increased damage the higher your targets health percentage is, up to 30%"
+			}
+		},
 	unity:	{
 			name: "Unity",
 			location: "Trials/Gauntlets 100-109 or from rerolling a t5 set piece",
@@ -92,13 +103,24 @@ export const sets = {
 		},
 	luminary:	{
 			name: "Luminary",
-			location: "Trials/Gauntlets Difficulty 340+",
+			location: "Trials/Gauntlets Difficulty 260-289",
 			items: ["Yak Blade", "Stillness", "Hylidae", "Flowing Silk Sash"],
 			description: "",
 			setBonuses: {
 				2: "Gain enrage equal to 5% of heals",
 				3: "Increases potency of your healing by 15%",
 				4: "Automatically prevent the first death upon your team"
+			}
+		},
+	polaris:	{
+			name: "Polaris",
+			location: "Trials/Gauntlets 510+",
+			items: ["Sky Vapor", "Sky Vault", "Champions Helm", "Whale Plate"],
+			description: "",
+			setBonuses: {
+				2: "+5% Damage Enrage",
+				3: "Heal to full the first time you drop below 50% health.",
+				4: "Gain Damage Reduction the higher your health percentage is, up to a maximum of 20%"
 			}
 		},
 	lunar_guardian:	{
@@ -141,6 +163,16 @@ export const sets = {
 				4: "9% chance for projectiles to ricochet to a nearby enemy"
 			}
 		},
+	eruption:	{
+			name: "Eruption",
+			location: "T9 Orlag HC",
+			items: ["SlagHelm", "Molten Chasis", "Magmight"],
+			description: "",
+			setBonuses: {
+				2: "First attack against you per battle is absorbed",
+				3: "23% evade chance"
+			}
+		},
 	illustrious_artifacts:	{
 			name: "Illustrious Artifacts",
 			location: "Tier 6 Netherworld World Boss",
@@ -172,6 +204,16 @@ export const sets = {
 				4: "Skills that cost SP deal 20% increased damage"
 			}
 		},
+	requiem:	{
+			name: "Requiem",
+			location: "T9 Nether HC",
+			items: ["Veilstrike", "Cloudsinge", "Oscillation"],
+			description: "",
+			setBonuses: {
+				2: "20% Chance to deal 25% increased damage",
+				3: "1-24% damage increase"
+			}
+		},
 	gatekeeper:	{
 			name: "Gatekeeper",
 			location: "Small/Large Dragon Egg",
@@ -180,8 +222,33 @@ export const sets = {
 			setBonuses: {
 				2: ".5% Chance for skills to trigger four times"
 			}
+		},
+	featherfall:	{
+			name: "Featherfall",
+			location: "Invasion or Expedition",
+			items: ["Maplestrike", "Emberling", "Windspirit", "Nimble", "Clarity", "Peacesong"],
+			description: "",
+			setBonuses: {
+				2: "+4% Damage",
+				3: "+4% Speed",
+				4: "+4% Dual Strike",
+				5: "+4% Empower Chance",
+				6: "+2% Dual Strike"
+			}
+		},
+	hellfire:	{
+			name: "Hellfire",
+			location: "Invasion or Expedition",
+			items: ["Dawn Of Mercy", "Idol Of Decay", "Deception", "Soulkeeper", "Dementia", "Ferocity"],
+			description: "",
+			setBonuses: {
+				2: "+4% Damage Reduction",
+				3: "+8% Block Chance",
+				4: "+4% Evade Chance",
+				5: "+3% Deflect Chance",
+				6: "+4% Absorb Chance"
+			}
 		}
-
 }
 
 /*

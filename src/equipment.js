@@ -117,6 +117,42 @@ export const equipment = {
 		effect: "",
 		shareID: "am"
 	},
+	umd_lazzault: {
+		name: "UMD Lazzault",
+		type: "set",
+		slot: "Laser Gun",
+		image: "",
+		partOfSet: "arsenal",
+		effect: "",
+		shareID: "a1"
+	},
+	aimbot_80: {
+		name: "Aimbot 80",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "arsenal",
+		effect: "",
+		shareID: "a2"
+	},
+	a_m_w: {
+		name: "A M W",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "arsenal",
+		effect: "",
+		shareID: "a3"
+	},
+	nanovectal_plating: {
+		name: "Nanovectal Plating",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "arsenal",
+		effect: "",
+		shareID: "a4"
+	},
 	despair: {
 		name: "Despair",
 		type: "set",
@@ -279,6 +315,42 @@ export const equipment = {
 		effect: "",
 		shareID: "fs"
 	},
+	sky_vapor: {
+		name: "Sky Vapor",
+		type: "set",
+		slot: "Sword",
+		image: "",
+		partOfSet: "polaris",
+		effect: "",
+		shareID: "p1"
+	},
+	sky_vault: {
+		name: "Sky Vault",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "polaris",
+		effect: "",
+		shareID: "p2"
+	},
+	champions_helm: {
+		name: "Champions Helm",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "polaris",
+		effect: "",
+		shareID: "p3"
+	},
+	whale_plate: {
+		name: "Whale Plate",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "polaris",
+		effect: "",
+		shareID: "p4"
+	},
 	maelstrom: {
 		name: "Maelstrom",
 		type: "set",
@@ -387,6 +459,33 @@ export const equipment = {
 		effect: "",
 		shareID: "ch"
 	},
+	slaghelm: {
+		name: "Slaghelm",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "eruption",
+		effect: "",
+		shareID: "e1"
+	},
+	molten_chasis: {
+		name: "Molten Chasis",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "eruption",
+		effect: "",
+		shareID: "e2"
+	},
+	magmight: {
+		name: "Magmight",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "eruption",
+		effect: "",
+		shareID: "e3"
+	},
 	ancient_tiara: {
 		name: "Ancient Tiara",
 		type: "set",
@@ -477,6 +576,33 @@ export const equipment = {
 		partOfSet: "inferno",
 		effect: "",
 		shareID: "br"
+	},
+	veilstrike: {
+		name: "Veilstrike",
+		type: "set",
+		slot: "Sword",
+		image: "",
+		partOfSet: "requiem",
+		effect: "",
+		shareID: "r1"
+	},
+	cloudsinge: {
+		name: "Cloudsinge",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "requiem",
+		effect: "",
+		shareID: "r2"
+	},
+	oscillation: {
+		name: "Oscillation",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "requiem",
+		effect: "",
+		shareID: "r3"
 	},
 	acropodium: {
 		name: "Acropodium",
@@ -895,7 +1021,247 @@ export const equipment = {
 		effect: "10 Chance to heal team per turn, on hit, and when hit",
 		location: "Shop",
 		shareID: "rm"
-	}
+	},
+	dawn_of_mercy: {
+		name: "Dawn Of Mercy",
+		type: "set",
+		slot: "Axe",
+		image: "",
+		partOfSet: "hellfire",
+		effect: "",
+		shareID: "dm"
+	},
+	idol_of_decay: {
+		name: "Idol Of Decay",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "hellfire",
+		effect: "",
+		shareID: "io"
+	},
+	deception: {
+		name: "Deception",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "hellfire",
+		effect: "",
+		shareID: "h3"
+	},
+	soulkeeper: {
+		name: "Soulkeeper",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "hellfire",
+		effect: "",
+		shareID: "h4"
+	},
+	dementia: {
+		name: "Dementia",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "hellfire",
+		effect: "",
+		shareID: "h5"
+	},
+	ferocity: {
+		name: "Ferocity",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "hellfire",
+		effect: "",
+		shareID: "h6"
+	},
+	maplestrike: {
+		name: "Maplestrike",
+		type: "set",
+		slot: "Bow",
+		image: "",
+		partOfSet: "featherfall",
+		effect: "",
+		shareID: "f1"
+	},
+	peacesong: {
+		name: "Peacesong",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "featherfall",
+		effect: "",
+		shareID: "f6"
+	},
+	emberling: {
+		name: "Emberling",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "featherfall",
+		effect: "",
+		shareID: "f2"
+	},
+	windspirit: {
+		name: "Windspirit",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "featherfall",
+		effect: "",
+		shareID: "f3"
+	},
+	nimble: {
+		name: "Nimble",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "featherfall",
+		effect: "",
+		shareID: "f4"
+	},
+	clarity: {
+		name: "Clarity",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "featherfall",
+		effect: "",
+		shareID: "f5"
+	},
+	veilage: {
+		name: "Veilage",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "4% Empower Chance",
+		location: "r6 heroic",
+		shareID: "vl"
+	},
+	flickerate: {
+		name: "Flickerate",
+		type: "mythic",
+		slot: "Neck",
+		image: "",
+		partOfSet: "",
+		effect: "2% Absorb Chance",
+		location: "r6 heroic",
+		shareID: "fr"
+	},
+	moon_collage: {
+		name: "Moon Collage",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "Gain a 1%, 2%, 3%, 5%, 10% or 50% damage increase based on a weighted chance",
+		location: "t9 trials",
+		shareID: "ml"
+	},
+	lava_defender: {
+		name: "Lava Defender",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "5% Redirect chance",
+		location: "t9 trials",
+		shareID: "ld"
+	},
+	dewey_decal: {
+		name: "Dewey Decal",
+		type: "mythic",
+		slot: "Neck",
+		image: "",
+		partOfSet: "",
+		effect: "Gain 5% increased damage while all teammates are alive",
+		location: "t9 orlag hc",
+		shareID: "dy"
+	},
+	magmasher: {
+		name: "Magmasher",
+		type: "mythic",
+		slot: "Axe",
+		image: "",
+		partOfSet: "",
+		effect: "Heals received from skills are 10% more effective",
+		location: "t9 orlag hc",
+		shareID: "mg"
+	},
+	brightstar: {
+		name: "Brightstar",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "3% Deflect Chance",
+		location: "t9 nether hc",
+		shareID: "bt"
+	},
+	shifting_breeze: {
+		name: "Shifting Breeze",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "4% Speed",
+		location: "t9 nether hc",
+		shareID: "sb"
+	},
+	oblivion: {
+		name: "Oblivion",
+		type: "mythic",
+		slot: "Staff",
+		image: "",
+		partOfSet: "",
+		effect: "+1% Absorb Chance, +1% Deflect Chance, +1% Evade Chance",
+		location: "Expedition (Relaeib Portal)",
+		shareID: "ov"
+	},
+	peeper: {
+		name: "Peeper",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "+1-8% Damage",
+		location: "Expedition (Zarlock Portal)",
+		shareID: "ee"
+	},
+	ataraxia: {
+		name: "Ataraxia",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "Gain 1% increase damage for every set item equipped",
+		location: "Expedition (Blemo Portal)",
+		shareID: "xi"
+	},
+	twitch: {
+		name: "Twitch",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "+1-8% Damage Reduction",
+		location: "Expedition (Gummy's Portal)",
+		shareID: "wi"
+	},
+	mewmeck: {
+		name: "Mewmeck",
+		type: "mythic",
+		slot: "Neck",
+		image: "",
+		partOfSet: "",
+		effect: "+1% Damage, +1% Speed, +1% Dual Strike, +1% Empower Chance",
+		location: "Jelly Event",
+		shareID: "wc"
+	},
+	
+	
 	
 }
 /* 
