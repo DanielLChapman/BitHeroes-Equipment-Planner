@@ -1300,8 +1300,36 @@ export const equipment = {
 		location: "Shop",
 		shareID: "da"
 	},
-	
-	
+	harvester: {
+		name: "Harvester",
+		type: "ancient",
+		slot: "Sword",
+		image: "",
+		partOfSet: "",
+		effect: "Bonus: 5% chance to use a random skill for free at the start of each turn",
+		location: "Craft from z7d3",
+		shareID: "hv"
+	},
+	starweave_ring: {
+		name: "Starweave",
+		type: "ancient",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "Reduces the amount of set items required for a set bonus by 1. Must have at least 2 items of a specific set equipped",
+		location: "Craft from z8d3",
+		shareID: "sr"
+	},
+	starweave_necklace: {
+		name: "Starweave",
+		type: "ancient",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "Reduces the amount of set items required for a set bonus by 1. Must have at least 2 items of a specific set equipped",
+		location: "Craft from z8d3",
+		shareID: "sn"
+	},
 }
 /* 
 [name]: {

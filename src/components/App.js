@@ -168,8 +168,15 @@ class App extends Component {
       tempSlot = tempSlot.toLowerCase();
       if (['sword', 'spear','staff','laser', 'crossbow', 'bow', 'axe', 'laser gun'].includes(tempSlot)) {
         state.equipped['mainhand'] = item;
-        this.setState(state);
       } else {
+        if (item.name === "Starweave") {
+          if (item.slot === "Necklace" && state.equipped['ring'].name === "Starweave") {
+            state.equipped['ring'] = {};
+          }
+          else if (item.slot === "Ring" && state.equipped['necklace'].name === "Starweave") {
+            state.equipped['necklace'] = {};
+          }
+        }
         state.equipped[tempSlot] = item;
       }
     }

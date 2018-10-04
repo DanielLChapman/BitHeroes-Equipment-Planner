@@ -5,15 +5,24 @@ export const calculateBonuses = (equipmentOn) => {
   let bonuses = {
     mythics: [],
     sets: {},
+    ancients: [],
     pets: []
   };
   let setsToSort = {};
   let urlEnd = "";
   let stats = {...base.default_stats};
+  let ancientEquipped = false;
 
   Object.keys(equipmentOn).forEach((x) => {
-
-    if (equipmentOn[x].type === "mythic") {
+    if (equipmentOn[x].type === "ancient") {
+      bonuses.ancients.push(equipmentOn[x]);
+      urlEnd += equipmentOn[x].shareID;
+      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats);
+      if (equipmentOn[x].name === "Starweave") {
+        ancientEquipped = true;
+      }
+    }
+     else if (equipmentOn[x].type === "mythic" ) {
       bonuses.mythics.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
       stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats)
@@ -35,6 +44,9 @@ export const calculateBonuses = (equipmentOn) => {
       let setWorkingOn = sets[x];
       //Figure out which bonuses it gets;
       bonuses.sets[x] = [];
+      if (ancientEquipped) {
+          setsToSort[x] += 1;
+        }
       Object.keys(setWorkingOn.setBonuses).forEach((y) => {
         if (setsToSort[x] >= parseInt(y, 10)) {
           bonuses.sets[x].push(setWorkingOn.setBonuses[y]);
@@ -182,7 +194,8 @@ export const setStatBonuses = (name, equipped, stats, count = 2) => {
       break;
     //Add in legendary enchant and accessories
     default: 
-      console.log(name, equipped, stats);
+      //console.log(name, equipped, stats);
+      console.log('Updated Bonuses');
   };
 
   return stats;

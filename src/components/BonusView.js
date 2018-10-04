@@ -4,7 +4,19 @@ import PropTypes from "prop-types";
 import { sets } from '../sets';
 
 const BonusView = (props) => {
-    var hasMythics, hasSets, hasPets;
+    var hasMythics, hasSets, hasPets, hasAncients;
+    if (props.bonuses.ancients && Object.keys(props.bonuses.ancients).length > 0) {
+      hasAncients = <div className="bonus-ancients">
+                    <span>Ancient Bonuses: </span>
+                    <ul>
+                    {
+                      Object.keys(props.bonuses.ancients).map((x) => {
+                        return <li key={x}><span className="bonus-ancients-name">{props.bonuses.ancients[x].name}</span> : {props.bonuses.ancients[x].effect}</li>
+                      })
+                    }
+                    </ul>
+                  </div>
+    }
     if (props.bonuses.mythics && Object.keys(props.bonuses.mythics).length > 0) {
       hasMythics = <div className="bonus-mythics">
                     <span>Mythic Bonuses: </span>
@@ -55,6 +67,7 @@ const BonusView = (props) => {
 
     return (<div>
       Current Bonuses: 
+      {hasAncients}
       {hasMythics}
       {hasSets}
       {hasPets}

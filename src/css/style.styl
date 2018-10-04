@@ -141,7 +141,7 @@ body {
           left: 1%;
         }
       }
-      .bonus-mythics, .bonus-sets {
+      .bonus-mythics, .bonus-sets, .bonus-ancients, .bonus-pets {
         padding: 20px 0px;
       }
       .bonus-mythic-name {
@@ -154,6 +154,10 @@ body {
       }
       .bonus-pet-name {
         color: set-blue;
+        text-shadow: 0 0 3px #000;
+      }
+      .bonus-ancients-name {
+        color: ancient-orange;
         text-shadow: 0 0 3px #000;
       }
       .bonus-pet-name-legendary {
@@ -275,6 +279,10 @@ body {
       }
       .by-slots-type-legendary, .bonus-pet-name-legendary, .by-slots-type-pet-legendary {
         color: legendary-yellow !important;
+        text-shadow: 0 0 5px #000;
+      }
+      .by-slots-type-ancient {
+        color: ancient-orange !important;
         text-shadow: 0 0 5px #000;
       }
     }
@@ -409,6 +417,9 @@ body {
     }
     .equipped-legendary {
       border: 2px solid legendary-yellow !important;
+    }
+    .equipped-ancient {
+      border: 2px solid ancient-orange !important;
     }
   }
 }
