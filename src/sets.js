@@ -160,7 +160,7 @@ export const sets = {
 			setBonuses: {
 				2: "You and nearby teamates gain 3% increased damage",
 				3: "You and your nearby teammates gain 10% SP Regeneration",
-				4: "9% chance for projectiles to ricochet to a nearby enemy"
+				4: "10% chance for projectiles to ricochet to a nearby enemy"
 			}
 		},
 	eruption:	{
