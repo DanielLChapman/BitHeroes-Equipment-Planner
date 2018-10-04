@@ -1173,7 +1173,7 @@ export const equipment = {
 	dewey_decal: {
 		name: "Dewey Decal",
 		type: "mythic",
-		slot: "Neck",
+		slot: "Necklace",
 		image: "",
 		partOfSet: "",
 		effect: "Gain 5% increased damage while all teammates are alive",
