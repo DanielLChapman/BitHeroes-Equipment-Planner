@@ -1143,7 +1143,7 @@ export const equipment = {
 	flickerate: {
 		name: "Flickerate",
 		type: "mythic",
-		slot: "Neck",
+		slot: "Necklace",
 		image: "",
 		partOfSet: "",
 		effect: "2% Absorb Chance",
@@ -1253,7 +1253,7 @@ export const equipment = {
 	mewmeck: {
 		name: "Mewmeck",
 		type: "mythic",
-		slot: "Neck",
+		slot: "Necklace",
 		image: "",
 		partOfSet: "",
 		effect: "+1% Damage, +1% Speed, +1% Dual Strike, +1% Empower Chance",
