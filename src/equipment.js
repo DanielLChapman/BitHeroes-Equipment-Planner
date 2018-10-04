@@ -1260,7 +1260,46 @@ export const equipment = {
 		location: "Jelly Event",
 		shareID: "wc"
 	},
-	
+	sakura: {
+		name: "Sakura",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "25% Damage Reduction, 10% Block Chance",
+		location: "Shop",
+		shareID: "ur"
+	},
+	zaserite_wings: {
+		name: "Zaserite Wings",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "	10% Crit Chance, 5% Empower Chance, 5% Dual Strike, 5% Damage, 5% Speed, 5% Life Steal",
+		location: "Shop",
+		shareID: "za"
+	},
+	kiwi: {
+		name: "Kiwi",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "20.5% Chance to attack weakest per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "iw"
+	},
+	sardines: {
+		name: "Sardines",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "61.5% Chance to spread heal and shield per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "da"
+	},
 	
 	
 }
