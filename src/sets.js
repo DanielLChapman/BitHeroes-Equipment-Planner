@@ -220,7 +220,7 @@ export const sets = {
 			items: ["Acropodium", "Karlorr"],
 			description: "",
 			setBonuses: {
-				2: ".5% Chance for skills to trigger four times"
+				2: "0.5% chance for skills to trigger four additional times."
 			}
 		},
 	featherfall:	{
