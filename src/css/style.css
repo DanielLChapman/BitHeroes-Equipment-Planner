@@ -189,10 +189,9 @@ body {
   color: #ffd400 !important;
 }
 .container .right .set-information {
-  display: none;
+  display: block;
 }
 .container .right .set-information:hover {
-  padding-top: 5px;
   display: block;
 }
 .container .right .item-name {
@@ -214,7 +213,6 @@ body {
   color: #fff;
 }
 .container .right .click-on-this:hover + .set-information {
-  padding-top: 5px;
   display: block;
 }
 .container .right .set-bonuses,
@@ -240,7 +238,7 @@ body {
   marign-bottom: 2px;
 }
 .container .right .by-set-reveal-sub li:active {
-  border: 2px solid #fedc5b;
+  outline: 2px solid #fedc5b;
 }
 .container .right .by-set-reveal-sub span:nth-child(1) {
   color: #84fffd;
