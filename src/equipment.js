@@ -738,7 +738,7 @@ export const equipment = {
 		slot: "Body",
 		image: "",
 		partOfSet: "",
-		effect: "+2% Deflect Chance",
+		effect: "+3% Deflect Chance",
 		location: "t8 Netherworld World Boss Heroic",
 		shareID: "ct"
 	},
