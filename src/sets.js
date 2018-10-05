@@ -170,7 +170,7 @@ export const sets = {
 			description: "",
 			setBonuses: {
 				2: "First attack against you per battle is absorbed",
-				3: "23% evade chance"
+				3: "12% evade chance"
 			}
 		},
 	illustrious_artifacts:	{
@@ -233,7 +233,7 @@ export const sets = {
 				3: "+4% Speed",
 				4: "+4% Dual Strike",
 				5: "+4% Empower Chance",
-				6: "+2% Dual Strike"
+				6: "+2% Quad Strike"
 			}
 		},
 	hellfire:	{
