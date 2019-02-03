@@ -888,7 +888,7 @@ export const equipment = {
 		slot: "Accessory",
 		image: "",
 		partOfSet: "",
-		effect: "16% Crit Chance, 50% Crit Damage, 4% Empower Chance",
+		effect: "40% Crit Chance, 3% Dual Strike, 3% Empower Chance",
 		location: "Shop",
 		shareID: "tr"
 	},
