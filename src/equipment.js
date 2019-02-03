@@ -135,8 +135,8 @@ export const equipment = {
 		effect: "",
 		shareID: "a2"
 	},
-	a_m_w: {
-		name: "A M W",
+	a_m_h: {
+		name: "A M H",
 		type: "set",
 		slot: "Head",
 		image: "",

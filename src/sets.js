@@ -44,7 +44,7 @@ export const sets = {
 	arsenal:	{
 			name: "Arsenal",
 			location: "R6",
-			items: ["UMD Lazzault", "Aimbot 80", "A M W", "Nanovectal Plating"],
+			items: ["UMD Lazzault", "Aimbot 80", "A M H", "Nanovectal Plating"],
 			description: "",
 			setBonuses: {
 				2: "+2% Richochet",
