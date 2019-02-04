@@ -1250,6 +1250,46 @@ export const equipment = {
 		location: "Expedition (Gummy's Portal)",
 		shareID: "wi"
 	},
+	abhorence: {
+		name: "Abhorence",
+		type: "mythic",
+		slot: "Bow",
+		image: "",
+		partOfSet: "",
+		effect: "+1.5% Ricochet Chance, 1% Empower Chance, 1% Dual Strike",
+		location: "Expedition (Googarum's)",
+		shareID: "ah"
+	},
+	radiance: {
+		name: "Radiance",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "Gain 0.75% Increase damage and damage reduction for every Mythic item equipped",
+		location: "Svord's",
+		shareID: "re"
+	},
+	vile_focus: {
+		name: "Vile Focus",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "While above 50% health, Absorb Chance increased by 3%",
+		location: "Expedition (Twinmbo's)",
+		shareID: "vf"
+	},
+	cloak_of_dark_tides: {
+		name: "Cloak Of Dark Tides",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "Deal 5% increased damage, but take 5% increased damage",
+		location: "Expedition (X5-T34M's)",
+		shareID: "dt"
+	},
 	mewmeck: {
 		name: "Mewmeck",
 		type: "mythic",
@@ -1276,9 +1316,19 @@ export const equipment = {
 		slot: "Accessory",
 		image: "",
 		partOfSet: "",
-		effect: "	10% Crit Chance, 5% Empower Chance, 5% Dual Strike, 5% Damage, 5% Speed, 5% Life Steal",
+		effect: "10% Crit Chance, 5% Empower Chance, 5% Dual Strike, 5% Damage, 5% Speed, 5% Life Steal",
 		location: "Shop",
 		shareID: "za"
+	},
+	drozgul: {
+		name: "Drozgul",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "8% Damage Reduction, 5% Evade Chance, 5% Absorb Chance, 5% Deflect Chance",
+		location: "Shop",
+		shareID: "gu"
 	},
 	kiwi: {
 		name: "Kiwi",
@@ -1299,6 +1349,16 @@ export const equipment = {
 		effect: "61.5% Chance to spread heal and shield per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
 		shareID: "da"
+	},
+	crintie: {
+		name: "Crintie",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "61.5% chance to heal weakest teammate and attack weakest enemy per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "cr"
 	},
 	harvester: {
 		name: "Harvester",
