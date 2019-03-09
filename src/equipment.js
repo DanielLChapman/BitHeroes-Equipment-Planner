@@ -1423,7 +1423,7 @@ export const equipment = {
 	bassault: {
 		name: "Bassault",
 		type: "mythic",
-		slot: "Sword",
+		slot: "Axe",
 		image: "",
 		partOfSet: "",
 		effect: "Gain 5% damage reduction while shielded",
