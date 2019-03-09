@@ -587,6 +587,14 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   case 'Frostybite':
     stats.damage += 5;
     break;
+  case 'Merciless':
+    if (count === 2 && equipped.mainhand.type === "Spear") {
+      stats.damage += 5;
+    }
+    if (count === 4) {
+      stats.damage += 35;
+    }
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);
