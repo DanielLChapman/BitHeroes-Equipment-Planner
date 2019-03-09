@@ -1390,6 +1390,46 @@ export const equipment = {
 		location: "Craft from z8d3",
 		shareID: "sn"
 	},
+	melvin_cloak: {
+		name: "Melvin Cloak",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "You and nearby teammates gain 2% increased damage",
+		location: "R7 heroic",
+		shareID: "m1"
+	},
+	melvin_head: {
+		name: "Melvin Head",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "Increase maximum shields to 75% of total health",
+		location: "R7 heroic",
+		shareID: "m2"
+	},
+	frostybite: {
+		name: "Frostybite",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "5% SP skill damage increase",
+		location: "R7 Trials 680+",
+		shareID: "f1"
+	},
+	bassault: {
+		name: "Bassault",
+		type: "mythic",
+		slot: "Sword",
+		image: "",
+		partOfSet: "",
+		effect: "Gain 5% damage reduction while shielded",
+		location: "R7 Trials 680+",
+		shareID: "b1"
+	},
 }
 /* 
 [name]: {

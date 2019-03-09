@@ -224,6 +224,21 @@ export default class Equipment extends Component {
 							}
 						</ul>
 					</li>
+					<li className="by-slot-types by-slots-mount">
+						<span className="item-name" >Mounts</span>
+						<ul className="by-slot-types-reveal by-slots-mount-reveal">
+							{
+								Object.keys(this.props.mounts).map((x) => {
+									return <li
+											className={`by-slots-type-pet-legendary`} 
+									 		key={x} 
+									 		onClick={() => {this.props.equipItem(x)}}>
+									 		{this.props.mounts[x].title}
+									 		</li>
+								})
+							}
+						</ul>
+					</li>
 				</ul>
 			</div>
 		)

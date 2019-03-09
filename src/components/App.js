@@ -2,13 +2,38 @@ import React, { Component } from 'react';
 
 import { sets } from '../sets';
 import { equipment } from '../equipment';
-import { base } from '../stats';
+import { enchantTypes, mountTypes, runeTypes } from '../stats';
 
 import Equipment from './Equipment';
 import Equipped from './Equipped';
 import BonusView from './BonusView';
+import RuneWindow from './RuneWindow';
+import StatWindow from './StatWindow';
+import EnchantWindow from './EnchantWindow';
 
-import {calculateBonuses, convertName} from '../functions';
+import {calculateBonuses, convertName, searchObjectArray } from '../functions';
+
+const enchants = {
+  enchantSlot1: {
+      slot1: 'None',
+      slot2: 'None'
+  }, enchantSlot2: {
+      slot1: 'None',
+      slot2: 'None'
+  }, enchantSlot3: {
+      slot1: 'None',
+      slot2: 'None'
+  }, enchantSlot4: {
+      slot1: 'None',
+      slot2: 'None'
+  }, enchantSlot5: {
+      slot1: 'None',
+      slot2: 'None'
+  }, enchantSlot6: {
+      slot1: 'None',
+      slot2: 'None'
+  }
+};
 
 class App extends Component {
 
@@ -23,15 +48,17 @@ class App extends Component {
         necklace: {},
         ring: {},
         accessory: {},
-        pet: {}
+        pet: {},
+        mount: {}
       },
       sets,
       equipment,
-      runes: base.runes,
-      enchants: base.enchants,
+      runes: [],
+      enchants: {...enchants},
       bonuses: {},
       mythics: {},
       legendaries: {},
+      mounts: mountTypes,
       sortedEquipment: {
         mainhands: {},
         offhands: {},
@@ -42,7 +69,12 @@ class App extends Component {
         accessories: {},
         pets: {}
       },
-      urlEnd: ""
+      urlEnd: "",
+      showRunes: false,
+      showEnchants: false,
+      showStats: false,
+      accessoryLevel: 1,
+      stats: {}
     }
   }
 
@@ -104,7 +136,8 @@ class App extends Component {
       necklace: {},
       ring: {},
       accessory: {},
-      pet: {}
+      pet: {},
+      mount: {}
     };
 
     //finding equipped items
@@ -145,8 +178,105 @@ class App extends Component {
         }
       });
     }
-    let tempBonus = calculateBonuses(equipped);
+
+    //finding mount, runes, and enchants
+    let runeValues = [], enchantValues = "", accessoryLevel = 1;
+    if (this.props.location.search && this.props.location.search !== "") {
+      let x = this.props.location.search.split("?")[1];
+      let temp = x.split("&");
+
+      for (let x = 0; x < temp.length; x++) {
+        let ts = temp[x].split('=');
+        switch(ts[0]) {
+          case 'mount':
+          let tM = ts[1];
+          if (parseInt(tM, 10) >= 0 && parseInt(tM, 10) < Object.keys(mountTypes).length) {
+            equipped.mount = mountTypes[tM];
+          }
+          break;
+          case 'enchantments':
+          enchantValues = ts[1].split('');
+          break;
+          case 'runes':
+          runeValues = ts[1].split('');
+          break;
+          case 'accessory':
+          if (!isNaN(ts[1]) && ts[1] >= 0 && ts[1] <=4 ) {
+            accessoryLevel = parseInt(ts[1],10);
+          } 
+          break;
+          default:
+          break;
+        }
+      }
+
+    }
+
+    //runeValues
+    if (runeValues) {
+      if (runeValues.length > 4) {
+        runeValues.splice(4);
+      } else if (runeValues.length < 4) {
+        runeValues = runeValues.concat(['x', 'x', 'x', 'x']);
+        runeValues.splice(4);
+      }
+    } else {
+      runeValues = ['x', 'x', 'x', 'x'];
+    }
+
+    runeValues = runeValues.join('').toLowerCase().split('');
+
+    for (let i = 0; i < runeValues.length; i++) {
+      let foundVal = false;
+      let y = 0;
+      while(!foundVal) {
+        if (runeTypes[y].id === runeValues[i]) {
+          foundVal = true;
+          runeValues[i] = runeTypes[y];
+        }
+        y++;
+
+        if (y >= runeTypes.length) {
+          foundVal = true;
+        }
+      }
+    }
+
+    //enchants
+    let enchantmentsToState = Object.assign({}, enchants);
+
+    if (enchantValues.length <= 0) {
+      enchantValues = "xxxxxxxxxxxx".split('');
+    }
+    else if (enchantValues.length > 12) {
+      enchantValues.splice(12);
+    }
+    else if (enchantValues.length < 12) {
+      enchantValues = enchantValues.concat("xxxxxxxxxxxx".split(''));
+      enchantValues.concat(12);
+    }
+
+    let u = 0, eS = 1, s = 1;
+    for (let x = 0; x < enchantValues.length; x++) {
+      let r1 = searchObjectArray(enchantTypes, 'id', enchantValues[x]);
+      if (u%2 === 0 ) {
+        enchantmentsToState['enchantSlot' + eS]['slot' + s] = r1;
+        s++;
+      } else {
+        if (enchantmentsToState['enchantSlot' + eS]['slot1'].title !== r1.title) {
+          enchantmentsToState['enchantSlot' + eS]['slot' + s] = r1;
+        } else {
+          enchantmentsToState['enchantSlot' + eS]['slot' + s] = searchObjectArray(enchantTypes, 'id', 'x');
+        }
+        s--;
+        eS++;
+      }
+      u++;
+    }
+
+    let tempBonus = calculateBonuses(equipped, runeValues, enchantmentsToState, this.state.accessoryLevel);
     bonuses = {...tempBonus.bonuses};
+    let stats = tempBonus.stats;
     urlEnd = tempBonus.urlEnd;
 
     this.setState({
@@ -155,14 +285,19 @@ class App extends Component {
       equipped,
       bonuses,
       urlEnd,
+      enchants: enchantmentsToState,
       legendaries,
-      sortedEquipment
+      runes: runeValues,
+      sortedEquipment,
+      stats,
+      accessoryLevel
     });
   }
 
   equipItem = (name) => {
     let state = this.state;
     let item = equipment[name];
+
     if (typeof item === 'object') {
       let tempSlot = item['slot'];
       tempSlot = tempSlot.toLowerCase();
@@ -179,10 +314,14 @@ class App extends Component {
         }
         state.equipped[tempSlot] = item;
       }
+    } else {
+      item = mountTypes[name];
+      state.equipped.mount = item;
     }
 
-    let bonuses = calculateBonuses(state.equipped);
-
+    let bonuses = calculateBonuses(state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel);
+    let stats = bonuses.stats;
+    state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
 
@@ -195,14 +334,158 @@ class App extends Component {
     this.setState({...state});
   }
 
+  equipRunes = (runeArray) => {
+    let state = this.state;
+    let runes = runeArray;
+
+    //convert titles to objects
+    for (let i = 0; i < runes.length; i++) {
+      let foundVal = false;
+      let y = 0;
+      while(!foundVal) {
+        if (runeTypes[y].title === runes[i]) {
+          foundVal = true;
+          runes[i] = runeTypes[y];
+        }
+        y++;
+
+        if (y >= runeTypes.length) {
+          foundVal = true;
+        }
+      }
+    }
+
+    state.runes = runes;
+    let bonuses = calculateBonuses(this.state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
+    let stats = bonuses.stats;
+    state.stats = stats;
+    state.bonuses = {...bonuses.bonuses};
+    state.urlEnd = bonuses.urlEnd;
+
+    try {
+      this.props.history.push(`/${state.urlEnd}`);
+    }
+    catch (err) {
+    }
+
+    this.setState({...state});
+  }
+
+  equipEnchants = (enchantObject) => {
+    var eTS = enchantObject;
+
+
+    let c = 0;
+    Object.keys(eTS).forEach((x) => {
+      if (c <= 5) {
+  
+        let r1 = searchObjectArray(enchantTypes, 'title',eTS[x]['slot1']);
+        let r2 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot2']);
+  
+        let enchantArray = ["Block", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "None"];
+  
+        if (r1.value > 2 || !enchantArray.includes(r1.title)) {
+          r1 =  {
+            id: 'x',
+            title: "None",
+            selected: false,
+            effect: "speed",
+            value:  0,
+            key: 'enchant'
+          };
+        }
+        if (r2.value > 2 || !enchantArray.includes(r2.title)) {
+          r2 =  {
+            id: 'x',
+            title: "None",
+            selected: false,
+            effect: "speed",
+            value:  0,
+            key: 'enchant'
+          };
+        }
+  
+        eTS[x]['slot2'] = r2;
+        eTS[x]['slot1'] = r1;
+      }
+      c++;
+    });
+
+    let state = this.state;
+
+    state.enchants = {...eTS};
+
+    let bonuses = calculateBonuses(this.state.equipped, state.runes, eTS, this.state.accessoryLevel);
+    let stats = bonuses.stats;
+    state.stats = stats;
+    state.bonuses = {...bonuses.bonuses};
+    state.urlEnd = bonuses.urlEnd;
+
+    try {
+      this.props.history.push(`/${state.urlEnd}`);
+    }
+    catch (err) {
+    }
+
+    this.setState({...state});
+
+
+  }
+
   removeItem = (slot) => {
     let state = this.state;
     state.equipped[slot] = {};
 
-    let bonuses = calculateBonuses(state.equipped);
+    let bonuses = calculateBonuses(state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
+    let stats = bonuses.stats;
+    state.stats = stats;
+    try {
+      this.props.history.push(`/${state.urlEnd}`);
+    }
+    catch (err) {
+    }
 
+    this.setState({...state})
+  }
+
+  handleOpenClose = (window) => {
+    let state = this.state;
+    switch (window) {
+      case 'Enchants':
+        state.showEnchants = !state.showEnchants;
+      break;
+      case 'Runes':
+        state.showRunes = !state.showRunes;
+      break;
+      case 'Stats':
+        state.showStats = !state.showStats;
+      break;
+      default: 
+      break;
+    }
+
+    this.setState({...state})
+  }
+
+  modifyAccessory = (value) => {
+    let state = this.state;
+    if (!isNaN(value)) {
+      if (value < 0) {
+        state.accessoryLevel = 0;
+      } else if (value > 4) {
+        state.accessoryLevel = 4;
+      }
+      else {
+        state.accessoryLevel = Math.floor(value);
+      }
+    }
+    let bonuses = calculateBonuses(state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
+    state.bonuses = {...bonuses.bonuses};
+    state.urlEnd = bonuses.urlEnd;
+    let stats = bonuses.stats;
+    state.stats = stats;
     try {
       this.props.history.push(`/${state.urlEnd}`);
     }
@@ -214,6 +497,17 @@ class App extends Component {
 
 
   render() {
+    let runeWindowStyling, enchantWindowStyling, statWindowStyling;
+    const showStyling = {
+      left: 0
+    };
+    const hideStyling = {
+      left: '-420px'
+    };
+    runeWindowStyling = ((this.state.showRunes) ? showStyling : hideStyling);
+    enchantWindowStyling = ((this.state.showEnchants) ? showStyling : hideStyling);
+    statWindowStyling = ((this.state.showStats) ? showStyling : hideStyling);
+
     return (
       <div className="App">
         <header className="App-header header">
@@ -226,6 +520,14 @@ class App extends Component {
           
         </header>
         <section className="container">
+          <StatWindow styling={statWindowStyling} stats={this.state.stats} modifyAccessoryLevel={this.modifyAccessory} currentLevel={this.state.accessoryLevel} openClose={this.handleOpenClose}/>
+          <RuneWindow styling={runeWindowStyling} equipRunes={this.equipRunes} runes={this.state.runes} openClose={this.handleOpenClose}/>
+          <EnchantWindow styling={enchantWindowStyling} equipEnchants={this.equipEnchants} enchants={this.state.enchants} openClose={this.handleOpenClose} />
+          <div className="sideNav">
+            <div className="sideNav-stats" onClick={() => {this.handleOpenClose('Stats')}}>Stats</div>
+            <div className="sideNav-runes" onClick={() => {this.handleOpenClose('Runes')}}>Runes</div>
+            <div className="sideNav-enchants" onClick={() => {this.handleOpenClose('Enchants')}}>Enchants</div>
+          </div>
           <div className="left">
             <div className="equipped">
               <Equipped removeItem={this.removeItem} equipped={this.state.equipped} />
@@ -236,7 +538,7 @@ class App extends Component {
               <BonusView bonuses={this.state.bonuses} />  
             </div>
             <div className="equipment">
-              <Equipment legendaries={this.state.legendaries} equipItem={this.equipItem} mythics={this.state.mythics} sets={this.state.sets} equipment={this.state.equipment} sortedEquipment={this.state.sortedEquipment}/>
+              <Equipment legendaries={this.state.legendaries} equipItem={this.equipItem} mythics={this.state.mythics} sets={this.state.sets} equipment={this.state.equipment} sortedEquipment={this.state.sortedEquipment} mounts={mountTypes}/>
             </div>
           </div>
         </section>
@@ -247,3 +549,5 @@ class App extends Component {
 }
 
 export default App;
+
+
