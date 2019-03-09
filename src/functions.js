@@ -291,7 +291,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     break;
   case 'Conduction':
     if (count === 2) {
-      if (equipped.mainhand.type === "Bow" || equipped.mainhand.type === "Crossbow" || equipped.mainhand.type === "Staff") {
+      if (equipped.mainhand.slot === "Bow" || equipped.mainhand.slot === "Crossbow" || equipped.mainhand.slot === "Staff") {
         stats.damage += 5;
       }
     }
@@ -588,7 +588,8 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.damage += 5;
     break;
   case 'Merciless':
-    if (count === 2 && equipped.mainhand.type === "Spear") {
+    if (count === 2 && equipped.mainhand.slot === "Spear") {
+
       stats.damage += 5;
     }
     if (count === 4) {
