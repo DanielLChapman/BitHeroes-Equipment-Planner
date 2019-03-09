@@ -156,13 +156,14 @@ export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, acc
   let c = 0;
 
   if (Object.keys(enchantments).length > 0 && JSON.stringify(enchants) !== JSON.stringify(enchantments)) {
+    let tempURL = "", tempURL2 = "";
     if (!hasAddedQ) {
-      urlEnd+="?";
+      tempURL+="?";
       hasAddedQ = true;
     } else {
-      urlEnd+="&"
+      tempURL+="&"
     }
-    urlEnd += "enchantments=";
+    tempURL += "enchantments=";
     Object.keys(enchantments).forEach((x) => {
       if (c <= 5) {
 
@@ -195,11 +196,15 @@ export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, acc
         stats[r2.effect] += r2.value;
         stats[r1.effect] += r1.value;
 
-        urlEnd += r1.id + "" + r2.id;
+        tempURL2 += r1.id + "" + r2.id;
 
       }
       c++;
     });
+
+    if (tempURL2 !== "xxxxxxxxxxxx") {
+      urlEnd += tempURL + tempURL2;
+    }
   }
 
 
