@@ -72,8 +72,10 @@ body {
   margin: 0;
   width: 100%;
   height: auto;
+  display: -webkit-flex;
   display: flex;
-  justify-content: center;
+  -webkit-justify-content: center;
+          justify-content: center;
   font-family: 'Work Sans', sans-serif;
 }
 @media screen and (max-width: 900px) {
@@ -129,7 +131,8 @@ body {
 }
 .container .left,
 .container .right {
-  flex-grow: 1;
+  -webkit-flex-grow: 1;
+          flex-grow: 1;
   padding-top: 25px;
 }
 @media screen and (max-width: 900px) {

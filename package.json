@@ -4,14 +4,12 @@
   "private": true,
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-jest": "^22.4.3",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-app": "^3.1.1",
     "concurrently": "3.5.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "jest": "^22.4.3",
     "react-test-renderer": "^16.2.0"
   },
   "dependencies": {
@@ -21,7 +19,7 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4",
+    "react-scripts": "2.1.8",
     "react-transition-group": "^2.2.1",
     "stylus": "0.54.5"
   },

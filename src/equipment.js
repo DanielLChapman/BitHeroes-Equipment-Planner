@@ -1430,6 +1430,42 @@ export const equipment = {
 		location: "R7 Trials 680+",
 		shareID: "b1"
 	},
+	ikoscale: {
+		name: "Ikoscale",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "merciless",
+		effect: "",
+		shareID: "m3"
+	},
+	phantomate: {
+		name: "Phantomate",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "merciless",
+		effect: "",
+		shareID: "m4"
+	},
+	reptor: {
+		name: "Reptor",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "merciless",
+		effect: "",
+		shareID: "m5"
+	},
+	retilio: {
+		name: "Retilio",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "merciless",
+		effect: "",
+		shareID: "m6"
+	},
 }
 /* 
 [name]: {

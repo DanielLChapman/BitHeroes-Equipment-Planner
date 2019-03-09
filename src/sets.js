@@ -123,6 +123,17 @@ export const sets = {
 				4: "Gain Damage Reduction the higher your health percentage is, up to a maximum of 20%"
 			}
 		},
+	merciless:	{
+			name: "Merciless",
+			location: "Trials/Gauntlets 680+",
+			items: ["Phantomate", "Reptor", "Ikoscale", "Retilio"],
+			description: "",
+			setBonuses: {
+				2: "+5% Damage while using a spear",
+				3: "75% of overkill projectile damage richochets",
+				4: "15% Increased damage. Each hit on an enemy increases this bonus by 2.5% on them, to a max of 35%. "
+			}
+		},
 	lunar_guardian:	{
 			name: "Lunar Guardian",
 			location: "Tier 6 Orlag World Boss",
