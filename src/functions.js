@@ -57,6 +57,11 @@ export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, acc
   let urlEnd = "";
   let stats = {...base.default_stats};
   let ancientEquipped = false;
+  var doubled = {
+    enchant: false,
+    mount: false,
+    rune: false
+  }
 
   Object.keys(equipmentOn).forEach((x) => {
     if (equipmentOn[x].type === "ancient") {
@@ -96,18 +101,37 @@ export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, acc
       Object.keys(setWorkingOn.setBonuses).forEach((y) => {
         if (setsToSort[x] >= parseInt(y, 10)) {
           bonuses.sets[x].push(setWorkingOn.setBonuses[y]);
-          stats = setStatBonuses(setWorkingOn.name, equipmentOn, stats, y, accessoryLevel);
+          if (setWorkingOn.name !== 'Apocalypse') {
+            stats = setStatBonuses(setWorkingOn.name, equipmentOn, stats, y, accessoryLevel);
+          } else if (setWorkingOn.name === 'Apocalypse') {
+              if (y === '3') {
+                doubled.enchant = true;
+              }
+              if (y === '4') {
+                doubled.mount = true;
+              }
+              if (y === '5') {
+                doubled.rune = true;
+              }
+              
+          }
+          
+          
         }
       })
     }
   });
   let hasAddedQ = false;
+
   
   //Add Mount
   if (Object.keys(equipmentOn.mount).length > 0) {
     urlEnd+="?";
     hasAddedQ = true;
     stats[equipmentOn.mount.effect] += equipmentOn.mount.value;
+    if (doubled.mount) {
+      stats[equipmentOn.mount.effect] += equipmentOn.mount.value;
+    }
     urlEnd+= "mount=" + equipmentOn.mount.id;
     bonuses.mounts = equipmentOn.mount;
 
@@ -134,6 +158,9 @@ export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, acc
       if (runes[i].id !== 'x') {
         let tempRune = runes[i];
         stats[tempRune.effect] += tempRune.value;
+        if (doubled.rune) {
+          stats[tempRune.effect] += tempRune.value;
+        }
         runesForURL += tempRune.id;
       }
 
@@ -196,6 +223,11 @@ export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, acc
         stats[r2.effect] += r2.value;
         stats[r1.effect] += r1.value;
 
+        if (doubled.enchant) {
+          stats[r2.effect] += r2.value;
+          stats[r1.effect] += r1.value;
+        }
+
         tempURL2 += r1.id + "" + r2.id;
 
       }
@@ -207,8 +239,6 @@ export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, acc
     }
   }
 
-
-  console.log(stats);
   base.current_stats = stats;
 
   return {bonuses, urlEnd, stats};

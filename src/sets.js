@@ -225,6 +225,17 @@ export const sets = {
 				3: "1-24% damage increase"
 			}
 		},
+	apocalypse:	{
+			name: "Apocalypse",
+			location: "t10 Worldboss",
+			items: ["Exarkun", "Reflekun", "Solus", "Garplate", "Revenwrap", "Plaguscore"],
+			description: "",
+			setBonuses: {
+				3: "Enchant Bonuses Doubled",
+				4: "Mount Bonuses Doubled",
+				5: "Major Rune Bonuses Doubled "
+			}
+		},
 	gatekeeper:	{
 			name: "Gatekeeper",
 			location: "Small/Large Dragon Egg",

@@ -1466,6 +1466,61 @@ export const equipment = {
 		effect: "",
 		shareID: "m6"
 	},
+	exarkun: {
+		name: "Exarkun",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "apocalypse",
+		effect: "",
+		shareID: "c1"
+	},
+	reflekun: {
+		name: "Reflekun",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "apocalypse",
+		effect: "",
+		shareID: "c2"
+	},
+	solus: {
+		name: "Solus",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "apocalypse",
+		effect: "",
+		shareID: "c3"
+	},
+	garplate: {
+		name: "Garplate",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "apocalypse",
+		effect: "",
+		shareID: "c4"
+	},
+	revenwrap: {
+		name: "Revenwrap",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "apocalypse",
+		effect: "",
+		shareID: "c5"
+	},
+	plaguscore: {
+		name: "Plaguscore",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "apocalypse",
+		effect: "",
+		shareID: "c6"
+	},
+	
 }
 /* 
 [name]: {
