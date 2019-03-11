@@ -382,7 +382,7 @@ class App extends Component {
         let r1 = searchObjectArray(enchantTypes, 'title',eTS[x]['slot1']);
         let r2 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot2']);
   
-        let enchantArray = ["Block", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "None"];
+        let enchantArray = ["Absorb", "Block", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "None"];
   
         if (r1.value > 2 || !enchantArray.includes(r1.title)) {
           r1 =  {

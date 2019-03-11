@@ -1407,7 +1407,7 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Increase maximum shields to 75% of total health",
-		location: "R7 heroic",
+		location: "R7 Trials 680+",
 		shareID: "m2"
 	},
 	frostybite: {
@@ -1417,7 +1417,7 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "5% SP skill damage increase",
-		location: "R7 Trials 680+",
+		location: "R7 heroic",
 		shareID: "f1"
 	},
 	bassault: {
