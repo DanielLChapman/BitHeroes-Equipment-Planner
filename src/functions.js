@@ -626,6 +626,14 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
       stats.damage += 35;
     }
     break;
+  case 'Earthen Might':
+    if (count === 2) {
+      stats.deflect_chance += 2;
+    }
+    if (count === 4) {
+      stats.damage_reduction += 25;
+    }
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);

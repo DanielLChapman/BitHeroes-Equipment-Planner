@@ -13,7 +13,7 @@ export const sets = {
 			name: "Divinity",
 			location: "From r3 or from re-rolling a set piece from Trials/Gauntlets",
 			items: ["Phantom Light", "Legacy Of Truth", "Trinity Plate"],
-			description: "Second set bonus only affects the player.",
+			description: "",
 			setBonuses: {
 				2: "Damage increased by 5% while using a sword",
 				3: "Execute: Damage increased by 30% to enemies below 30% health"
@@ -52,6 +52,17 @@ export const sets = {
 				4: "Gain increased damage the higher your targets health percentage is, up to 30%"
 			}
 		},
+	earthen_might:	{
+			name: "Earthen Might",
+			location: "r7 Heroic Raids",
+			items: ["Tectonica", "Quartzar", "Shatterguard", "Omenstone"],
+			description: "",
+			setBonuses: {
+				2: "+2% Deflect Chance",
+				3: "Automatically Prevent the first death upon your team, also shields target for half shields",
+				4: "+25% Damage Reduction, this is reduced by 3% each time you are attacked and returns to 25% when it drops below 10%",
+			}
+		},
 	unity:	{
 			name: "Unity",
 			location: "Trials/Gauntlets 100-109 or from rerolling a t5 set piece",
@@ -85,7 +96,7 @@ export const sets = {
 			name: "Bushido",
 			location: "Trials/Gauntlets 140-149 or from rerolling a t6 set piece",
 			items: ["Matsukura", "Yashiro's Dou"],
-			description: "Does not affect pets procs",
+			description: "",
 			setBonuses: {
 				2: "Berserk: +10% damage, but take 10% more damage"
 			}
@@ -156,7 +167,7 @@ export const sets = {
 			name: "Obliteration",
 			location: "Tier 7 Orlag World Boss",
 			items: ["Wraithguard", "Last Sight", "Dark Wrap", "Black Omen"],
-			description: "Does not affect pet procs",
+			description: "",
 			setBonuses: {
 				2: "Teammates behind you take 5% reduced damage",
 				3: "Teammates behind you deal 5% increased damage",
@@ -270,7 +281,9 @@ export const sets = {
 				5: "+3% Deflect Chance",
 				6: "+4% Absorb Chance"
 			}
-		}
+		},
+	
+	
 }
 
 /*

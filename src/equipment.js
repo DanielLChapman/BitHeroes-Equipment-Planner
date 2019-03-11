@@ -1520,6 +1520,42 @@ export const equipment = {
 		effect: "",
 		shareID: "c6"
 	},
+	tectonica: {
+		name: "Tectonica",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "earthen_might",
+		effect: "",
+		shareID: "t1"
+	},
+	quartzar: {
+		name: "Quartzar",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "earthen_might",
+		effect: "",
+		shareID: "t2"
+	},
+	shatterguard: {
+		name: "Shatterguard",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "earthen_might",
+		effect: "",
+		shareID: "t3"
+	},
+	omenstone: {
+		name: "Omenstone",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "earthen_might",
+		effect: "",
+		shareID: "t4"
+	},
 	
 }
 /* 
