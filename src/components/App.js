@@ -375,6 +375,7 @@ class App extends Component {
     var eTS = enchantObject;
 
 
+
     let c = 0;
     Object.keys(eTS).forEach((x) => {
       if (c <= 5) {

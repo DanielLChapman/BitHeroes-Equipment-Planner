@@ -191,7 +191,7 @@ export const enchantTypes = [{
 	key: 'enchant'
 },{
 	id: 'l',
-	title: "Asborb",
+	title: "Absorb",
 	selected: false,
 	effect: "absorb",
 	value:  .5,
