@@ -80,7 +80,9 @@ export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, acc
       setsToSort[equipmentOn[x].partOfSet] = setsToSort[equipmentOn[x].partOfSet] + 1 || 1;
       if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
         bonuses.pets.push(equipmentOn[x]);
+        stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
       }
+
       urlEnd += equipmentOn[x].shareID;
     } else if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
       bonuses.pets.push(equipmentOn[x]);
@@ -551,7 +553,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.dual_strike += 20+(.5*accessoryUpgrade);
     stats.critical_chance += 9+(1*accessoryUpgrade);
     break;
-  case 'Abdominable Trophy':
+  case 'Abominable Trophy':
     stats.damage_reduction += 20+(1*accessoryUpgrade);
     stats.absorb_chance += 5;
     break;
@@ -559,7 +561,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.deflect_chance += 10+(.75*accessoryUpgrade);
     stats.absorb_chance += 7.5;
     break
-  case 'Baronet Edwins Cranialoptic Regulator':
+  case 'Baronets':
     stats.empower_chance += 20+(1*accessoryUpgrade);
     stats.dual_strike += 4.5;
     break;
@@ -577,7 +579,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   case 'The Atomising Neutrino Accelerator':
     stats.block += 60+(2*accessoryUpgrade);
     break;
-  case 'Traveling Forge':
+  case 'Travelling Forge':
     stats.dual_strike += 10+(.5*accessoryUpgrade);
     stats.empower_chance += 10+(.5*accessoryUpgrade)
     stats.critical_chance += 10;
@@ -591,7 +593,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.damage_reduction += 25;
     stats.block += 10+(2*accessoryUpgrade)
     break;
-  case 'Zaerite Wings':
+  case 'Zaserite Wings':
     stats.critical_chance+=10+(.4*accessoryUpgrade);
     stats.empower_chance+=5+(.2*accessoryUpgrade);
     stats.dual_strike+=5+(.2*accessoryUpgrade);

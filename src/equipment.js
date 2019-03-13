@@ -793,7 +793,7 @@ export const equipment = {
 		shareID: "WM"
 	},
 	seraphims_grace: {
-		name: "Seraphim's Grace",
+		name: "Seraphims Grace",
 		type: "legendary",
 		slot: "Accessory",
 		image: "",
@@ -803,7 +803,7 @@ export const equipment = {
 		shareID: "sg"
 	},
 	melvin_champ: {
-		name: "Melvin Chapman",
+		name: "Melvin Champ",
 		type: "legendary",
 		slot: "Accessory",
 		image: "",
@@ -832,8 +832,8 @@ export const equipment = {
 		location: "Shop",
 		shareID: "WR"
 	},
-	baronets: {
-		name: "Baronets",
+	baronet_edwins_cranialoptic_regulator: {
+		name: "Baronet Edwins Cranialoptic Regulator",
 		type: "legendary",
 		slot: "Accessory",
 		image: "",
@@ -843,7 +843,7 @@ export const equipment = {
 		shareID: "ec"
 	},
 	astaroths_diadem: {
-		name: "Astaroth's Diadem",
+		name: "Astaroths Diadem",
 		type: "legendary",
 		slot: "Accessory",
 		image: "",
