@@ -832,8 +832,8 @@ export const equipment = {
 		location: "Shop",
 		shareID: "WR"
 	},
-	baronet_edwins_cranialoptic_regulator: {
-		name: "Baronet Edwins Cranialoptic Regulator",
+	baronets: {
+		name: "Baronets",
 		type: "legendary",
 		slot: "Accessory",
 		image: "",
