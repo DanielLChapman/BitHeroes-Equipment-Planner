@@ -274,7 +274,7 @@ class App extends Component {
       u++;
     }
 
-    let tempBonus = calculateBonuses(equipped, runeValues, enchantmentsToState, this.state.accessoryLevel);
+    let tempBonus = calculateBonuses(equipped, runeValues, enchantmentsToState, accessoryLevel);
     bonuses = {...tempBonus.bonuses};
     let stats = tempBonus.stats;
     urlEnd = tempBonus.urlEnd;
