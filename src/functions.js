@@ -607,6 +607,11 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.absorb_chance += 5;
     stats.deflect_chance += 5;
     break;
+  case 'Seraphims Grace':
+    stats.block += 20+(1*accessoryUpgrade);
+    stats.evade += 10+(.5*accessoryUpgrade);
+    stats.deflect_chance += 5;
+    break;
   case 'Acropodium':
     stats.damage+=24.5+(1*accessoryUpgrade);
     break;
