@@ -105,6 +105,13 @@ export const runeTypes = [{
 	key: "rune"
 },
 {
+	id: 'q',
+	title: "Deflect",
+	effect: "deflect_chance",
+	value:1.25,
+	key: "rune"
+},
+{
 	id: 'x',
 	title: "None",
 	effect: "dual_strike",
@@ -193,7 +200,7 @@ export const enchantTypes = [{
 	id: 'l',
 	title: "Absorb",
 	selected: false,
-	effect: "absorb",
+	effect: "absorb_chance",
 	value:  .5,
 	key: 'enchant'
 },{
