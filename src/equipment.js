@@ -1556,6 +1556,26 @@ export const equipment = {
 		effect: "",
 		shareID: "t4"
 	},
+	degenera: {
+		name: "Degenera",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "1% Absorb, 1% Deflect, 1% Damage Reduction",
+		location: "T10 Melvin World Boss",
+		shareID: "m7"
+	},
+	rabid_skeever: {
+		name: "Rabid Skeever",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "When you hit an enemy, launch a skeever at the weakest eneemy for 47-87 damage.",
+		location: "T10 Melvin World Boss",
+		shareID: "m8"
+	},
 	
 }
 /* 

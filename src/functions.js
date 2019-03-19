@@ -618,6 +618,11 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   case 'Melvin Cloak':
     stats.damage += 2;
     break;
+  case 'Degenera':
+    stats.absorb_chance += 1;
+    stats.deflect_chance += 1;
+    stats.damage_reduction += 1;
+    break;
   case 'Bassault':
     stats.damage_reduction += 5;
     break;
