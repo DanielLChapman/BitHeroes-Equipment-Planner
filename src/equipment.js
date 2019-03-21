@@ -1300,6 +1300,16 @@ export const equipment = {
 		location: "Jelly Event",
 		shareID: "wc"
 	},
+	peppermint_ring: {
+		name: "Peppermint Ring",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "+2 Team Enrage, You and nearby teammates gain 1% increased Damage",
+		location: "Holiday Invasion",
+		shareID: "pr"
+	},
 	sakura: {
 		name: "Sakura",
 		type: "legendary",
