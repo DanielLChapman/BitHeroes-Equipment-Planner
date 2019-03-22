@@ -180,7 +180,7 @@ class App extends Component {
     }
 
     //finding mount, runes, and enchants
-    let runeValues = [], enchantValues = "", accessoryLevel = 1;
+    let runeValues = [], enchantValues = "", accessoryLevel = 1, baseStats = [6, 6, 6],tempVS;
     if (this.props.location.search && this.props.location.search !== "") {
       let x = this.props.location.search.split("?")[1];
       let temp = x.split("&");
@@ -204,6 +204,24 @@ class App extends Component {
           if (!isNaN(ts[1]) && ts[1] >= 0 && ts[1] <=4 ) {
             accessoryLevel = parseInt(ts[1],10);
           } 
+          break;
+          case 's':
+            tempVS = parseInt(ts[1], 10);
+            if (!isNaN(tempVS)) {
+              baseStats[1] = tempVS;
+            }
+          break;
+          case 'p': 
+            tempVS = parseInt(ts[1], 10);
+            if (!isNaN(tempVS)) {
+              baseStats[0] = tempVS;
+            }
+          break;
+          case 'a':
+            tempVS = parseInt(ts[1], 10);
+            if (!isNaN(tempVS)) {
+              baseStats[2] = tempVS;
+            }
           break;
           default:
           break;
@@ -274,7 +292,7 @@ class App extends Component {
       u++;
     }
 
-    let tempBonus = calculateBonuses([6, 6, 6], equipped, runeValues, enchantmentsToState, accessoryLevel);
+    let tempBonus = calculateBonuses(baseStats, equipped, runeValues, enchantmentsToState, accessoryLevel);
     bonuses = {...tempBonus.bonuses};
     let stats = tempBonus.stats;
     urlEnd = tempBonus.urlEnd;

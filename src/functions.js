@@ -272,9 +272,20 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     }
   }
 
-  stats.power = baseStats[0]
-  stats.stamina = baseStats[1]
-  stats.agility = baseStats[2]
+  stats.power = baseStats[0];
+  stats.stamina = baseStats[1];
+  stats.agility = baseStats[2];
+
+  if (baseStats[0] !== 6 || baseStats[1] !== 6 || baseStats[2] !== 6) {
+    if (!hasAddedQ) {
+      urlEnd+="?";
+      hasAddedQ = true;
+    } else {
+      urlEnd+="&"
+    }
+    urlEnd += "p=" + baseStats[0] + "&s=" + baseStats[1] + "&a=" + baseStats[2];
+  }
+
 
   stats.links = linkCalculation(stats);
 
