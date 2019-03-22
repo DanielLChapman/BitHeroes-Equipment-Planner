@@ -22,11 +22,17 @@ export var base ={
 		healing: 0, 
 		quad_strike: 0,
 		richochet_chance: 0,
-		team_enrage: 0
+		team_enrage: 0,
+		links: {
+			healthEfficiency: 0,
+			damageMitigation: 0,
+			damageBonus: 0,
+			damageOutput: 0
+		}
 	},
 	current_stats: {},
 	runes: [],
-	enchants: []
+	enchants: [],
 };
 
 export const runeTypes = [{

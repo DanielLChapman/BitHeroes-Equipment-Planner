@@ -45,6 +45,37 @@ export const searchObjectArray = (objectArray, searchQuery, compareTo) => {
   return returnQuery;
 }
 
+const linkCalculation = (stats) => {
+  let rA, rD, rE, rB, rR;
+  let s = stats;
+  var defaultLinks = JSON.parse(JSON.stringify(base.default_stats.links));
+  rA = stats.absorb_chance/100;
+  rD = Math.abs((1-rA)*stats.deflect_chance/100);
+  rE =  Math.abs((1-rA-rD)*stats.evade/100);
+  rB = Math.abs((1-rA-rD-rE)*stats.block/100);
+  rR = Math.abs((1-rA-rD-rE-(rB*.5))*stats.damage_reduction/100);
+
+  defaultLinks.damageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(s.damage))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
+  defaultLinks.damageBonus = parseFloat(defaultLinks.damageBonus.toFixed(2));
+
+  let tempTurns = 0;
+  //USING DPS STATS OF RUSTYPEACH, 1890 1250 1800
+  tempTurns = (((1700+2000) / 2) * ((1700+2000) / 2))/2000/(30*(100+s.speed)/100);
+
+  defaultLinks.damageOutput = (tempTurns*2000)*defaultLinks.damageBonus/100;
+
+  //damage mitigation
+  defaultLinks.damageMitigation = (1-((1-rD-rE-(rB/2)-rR-rA)))*100;
+  defaultLinks.damageMitigation = parseFloat(defaultLinks.damageMitigation.toFixed(2));
+
+  //health efficiency
+  defaultLinks.healthEfficiency = (1/(1-rD-rD-(rB/2)-rR-rA*2))*100;
+  defaultLinks.healthEfficiency = parseFloat(defaultLinks.healthEfficiency.toFixed(2));
+
+
+  return defaultLinks;
+}
+
 export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, accessoryLevel = 1) => {
   let bonuses = {
     mythics: [],
@@ -240,6 +271,8 @@ export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, acc
       urlEnd += tempURL + tempURL2;
     }
   }
+
+  stats.links = linkCalculation(stats);
 
   base.current_stats = stats;
 

@@ -553,6 +553,9 @@ body {
   letter-spacing: 1.55px;
   text-align: right;
 }
+.stat-window ul li span:after {
+  content: "%";
+}
 .rune-div .custom-select,
 .enchant-div .custom-select,
 .stat-window .custom-select {

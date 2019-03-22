@@ -24,6 +24,15 @@ export default class StatWindow extends React.Component {
     }
 
     render() {
+        let linkCalcs = <ul></ul>
+        if (this.props.stats.links) {
+            linkCalcs = <ul>
+            <li>Health Efficiency: <span className="stat-view">{this.props.stats.links.healthEfficiency}</span></li>
+            <li>Damage Mitigation: <span className="stat-view">{this.props.stats.links.damageMitigation}</span></li>
+            <li>Damage Bonus:<span className="stat-view">{this.props.stats.links.damageBonus}</span> </li>
+            <li>Damage Output: <span className="stat-view">{this.props.stats.links.damageOutput}</span></li>
+        </ul> 
+        }
         return (<div className="stat-window"  style={this.props.styling}>
             <span className="x-close" onClick={() => {this.props.openClose('Stats')}}>x</span>
             <h3>Modify Accessory Level: </h3>
@@ -56,7 +65,10 @@ export default class StatWindow extends React.Component {
                 <li>Quad Strike:<span className="stat-view">{this.props.stats.quad_strike}</span> </li>
                 <li>Richochet Chance:<span className="stat-view">{this.props.stats.richochet_chance}</span> </li>
                 <li>Healing:<span className="stat-view">{this.props.stats.healing}</span> </li>
+
             </ul>
+            <h3>Link Calculated Mitigations: </h3>
+            {linkCalcs}
         </div>)
     }
 };
