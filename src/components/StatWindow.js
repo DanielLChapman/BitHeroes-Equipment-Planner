@@ -15,12 +15,16 @@ export default class StatWindow extends React.Component {
         this.props.modifyAccessoryLevel(temp);
     }
 
+    updateInputValue = (event) => {
+        let typeOfS = event.currentTarget.getAttribute('stat');
+        this.props.updateStats(event.currentTarget.value, typeOfS);
+    }
+
     componentWillReceiveProps(nextProps) {
         let state = this.state;
         if (typeof nextProps.currentLevel !== undefined ) {
             state.accessoryLevel = nextProps.currentLevel
         };
-        
     }
 
     render() {
@@ -30,7 +34,7 @@ export default class StatWindow extends React.Component {
             <li>Health Efficiency: <span className="stat-view">{this.props.stats.links.healthEfficiency}</span></li>
             <li>Damage Mitigation: <span className="stat-view">{this.props.stats.links.damageMitigation}</span></li>
             <li>Damage Bonus:<span className="stat-view">{this.props.stats.links.damageBonus}</span> </li>
-            <li>Damage Output: <span className="stat-view">{this.props.stats.links.damageOutput}</span></li>
+            <li>Damage Output: <span className="stat-view damage-output">{this.props.stats.links.damageOutput}</span></li>
         </ul> 
         }
         return (<div className="stat-window"  style={this.props.styling}>
@@ -68,6 +72,12 @@ export default class StatWindow extends React.Component {
 
             </ul>
             <h3>Link Calculated Mitigations: </h3>
+            <input className="stat-input" value={parseInt(this.props.stats.power, 10) || 0} stat="power" onChange={this.updateInputValue}/>
+           
+            <input className="stat-input" value={parseInt(this.props.stats.stamina, 10) || 0} stat="stamina" onChange={this.updateInputValue}/>
+           
+            <input className="stat-input" value={parseInt(this.props.stats.agility, 10) || 0} stat="agility" onChange={this.updateInputValue}/>
+           
             {linkCalcs}
         </div>)
     }

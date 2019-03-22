@@ -274,7 +274,7 @@ class App extends Component {
       u++;
     }
 
-    let tempBonus = calculateBonuses(equipped, runeValues, enchantmentsToState, accessoryLevel);
+    let tempBonus = calculateBonuses([6, 6, 6], equipped, runeValues, enchantmentsToState, accessoryLevel);
     bonuses = {...tempBonus.bonuses};
     let stats = tempBonus.stats;
     urlEnd = tempBonus.urlEnd;
@@ -319,7 +319,7 @@ class App extends Component {
       state.equipped.mount = item;
     }
 
-    let bonuses = calculateBonuses(state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel);
     let stats = bonuses.stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
@@ -356,7 +356,7 @@ class App extends Component {
     }
 
     state.runes = runes;
-    let bonuses = calculateBonuses(this.state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
     let stats = bonuses.stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
@@ -416,7 +416,7 @@ class App extends Component {
 
     state.enchants = {...eTS};
 
-    let bonuses = calculateBonuses(this.state.equipped, state.runes, eTS, this.state.accessoryLevel);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, eTS, this.state.accessoryLevel);
     let stats = bonuses.stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
@@ -437,7 +437,7 @@ class App extends Component {
     let state = this.state;
     state.equipped[slot] = {};
 
-    let bonuses = calculateBonuses(state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
     let stats = bonuses.stats;
@@ -482,7 +482,7 @@ class App extends Component {
         state.accessoryLevel = Math.floor(value);
       }
     }
-    let bonuses = calculateBonuses(state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
     let stats = bonuses.stats;
@@ -496,6 +496,30 @@ class App extends Component {
     this.setState({...state})
   }
 
+  updateStats = (value, stat) => {
+    let state = this.state;
+    let v = parseInt(value);
+
+    if (!isNaN(v)) {
+      state.stats[stat] = v;
+    } else {
+      state.stats[stat] = 0;
+    }
+
+    let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel);
+    let stats = bonuses.stats;
+    state.stats = stats;
+    state.bonuses = {...bonuses.bonuses};
+    state.urlEnd = bonuses.urlEnd;
+
+    try {
+      this.props.history.push(`/${state.urlEnd}`);
+    }
+    catch (err) {
+    }
+
+    this.setState({...state});
+  }
 
   render() {
     let runeWindowStyling, enchantWindowStyling, statWindowStyling;
@@ -521,7 +545,7 @@ class App extends Component {
           
         </header>
         <section className="container">
-          <StatWindow styling={statWindowStyling} stats={this.state.stats} modifyAccessoryLevel={this.modifyAccessory} currentLevel={this.state.accessoryLevel} openClose={this.handleOpenClose}/>
+          <StatWindow updateStats={this.updateStats} styling={statWindowStyling} stats={this.state.stats} modifyAccessoryLevel={this.modifyAccessory} currentLevel={this.state.accessoryLevel} openClose={this.handleOpenClose}/>
           <RuneWindow styling={runeWindowStyling} equipRunes={this.equipRunes} runes={this.state.runes} openClose={this.handleOpenClose}/>
           <EnchantWindow styling={enchantWindowStyling} equipEnchants={this.equipEnchants} enchants={this.state.enchants} openClose={this.handleOpenClose} />
           <div className="sideNav">

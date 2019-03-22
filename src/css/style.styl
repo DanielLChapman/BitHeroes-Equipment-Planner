@@ -539,6 +539,11 @@ body {
           content: "%"
         }
       }
+      .damage-output {
+        &:after {
+          content: ""
+        }
+      }
     }
   }
 }
@@ -637,4 +642,14 @@ body {
 select.selector, select option {
   background-color: white !important;
   color: black !important;
+}
+
+.stat-input {
+  width: 50px;
+  margin: 0 auto;
+  position: relative;
+  height:35px;
+
+  border:1px solid black;
+
 }

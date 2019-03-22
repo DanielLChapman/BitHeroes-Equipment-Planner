@@ -59,10 +59,10 @@ const linkCalculation = (stats) => {
   defaultLinks.damageBonus = parseFloat(defaultLinks.damageBonus.toFixed(2));
 
   let tempTurns = 0;
-  //USING DPS STATS OF RUSTYPEACH, 1890 1250 1800
-  tempTurns = (((1700+2000) / 2) * ((1700+2000) / 2))/2000/(30*(100+s.speed)/100);
+  tempTurns = (((s.agility+s.power) / 2) * ((s.agility+s.power) / 2))/s.power/(30*(100+s.speed)/100);
 
   defaultLinks.damageOutput = (tempTurns*2000)*defaultLinks.damageBonus/100;
+  defaultLinks.damageOutput = parseFloat(defaultLinks.damageOutput.toFixed(2));
 
   //damage mitigation
   defaultLinks.damageMitigation = (1-((1-rD-rE-(rB/2)-rR-rA)))*100;
@@ -76,7 +76,7 @@ const linkCalculation = (stats) => {
   return defaultLinks;
 }
 
-export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, accessoryLevel = 1) => {
+export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [], enchantments = {}, accessoryLevel = 1) => {
   let bonuses = {
     mythics: [],
     sets: {},
@@ -271,6 +271,10 @@ export const calculateBonuses = (equipmentOn, runes = [], enchantments = {}, acc
       urlEnd += tempURL + tempURL2;
     }
   }
+
+  stats.power = baseStats[0]
+  stats.stamina = baseStats[1]
+  stats.agility = baseStats[2]
 
   stats.links = linkCalculation(stats);
 

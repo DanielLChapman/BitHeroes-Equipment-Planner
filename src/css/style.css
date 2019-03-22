@@ -556,6 +556,9 @@ body {
 .stat-window ul li span:after {
   content: "%";
 }
+.stat-window ul li .damage-output:after {
+  content: "";
+}
 .rune-div .custom-select,
 .enchant-div .custom-select,
 .stat-window .custom-select {
@@ -653,4 +656,11 @@ select.selector,
 select option {
   background-color: #fff !important;
   color: #000 !important;
+}
+.stat-input {
+  width: 50px;
+  margin: 0 auto;
+  position: relative;
+  height: 35px;
+  border: 1px solid #000;
 }
