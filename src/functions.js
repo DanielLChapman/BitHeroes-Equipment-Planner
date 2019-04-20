@@ -371,7 +371,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     break;
   case 'Conduction':
     if (count === 2) {
-      if (equipped.mainhand.slot === "Bow" || equipped.mainhand.slot === "Crossbow" || equipped.mainhand.slot === "Staff") {
+      if (equipped.mainhand.slot === "Bow" || equipped.mainhand.slot === "Spear" ||equipped.mainhand.slot === "Laser Gun" || equipped.mainhand.slot === "Crossbow" || equipped.mainhand.slot === "Staff") {
         stats.damage += 5;
       }
     }
@@ -676,6 +676,23 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     break;
   case 'Frostybite':
     stats.damage += 5;
+    break;
+  case 'Meteor Chain':
+    stats.dual_strike += 1;
+    stats.empower_chance += 1;
+    break;
+  case 'Vortex Zapper':
+    stats.richochet_chance += 3;
+    break;
+  case 'Meteor Blaster':
+    stats.healing += 10;
+    break;
+  case 'Power Core':
+    stats.damage_reduction += 25+(1*accessoryUpgrade);
+    stats.evade += 5;
+    break;
+  case 'Vortex Band':
+    stats.damage_reduction += 4.5;
     break;
   case 'Merciless':
     if (count === 2 && equipped.mainhand.slot === "Spear") {

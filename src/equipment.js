@@ -822,6 +822,7 @@ export const equipment = {
 		location: "Shop",
 		shareID: "ao"
 	},
+
 	wrath: {
 		name: "Wrath",
 		type: "legendary",
@@ -1585,6 +1586,56 @@ export const equipment = {
 		effect: "When you hit an enemy, launch a skeever at the weakest eneemy for 47-87 damage.",
 		location: "T10 Melvin World Boss",
 		shareID: "m8"
+	},
+	meteor_blaster: {
+		name: "Meteor Blaster",
+		type: "mythic",
+		slot: "Laser Gun",
+		image: "",
+		partOfSet: "",
+		effect: "5% Bonus Healing + 1 each time an ally is healed up to 10",
+		location: "Expedition Zorgo Crossing",
+		shareID: "mb"
+	},
+	vortex_zapper: {
+		name: "Vortex Zapper",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "3% Ricochet Chance",
+		location: "Expedition Yackerz Tundra",
+		shareID: "vz"
+	},
+	meteor_chain: {
+		name: "Meteor Chain",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "1% Dual Strike, 1% Empower Chance 5% to gain SP",
+		location: "Expedition Vionot Sewer",
+		shareID: "md"
+	},
+	power_core: {
+		name: "Power Core",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "25% Damage Reduction, 5% Evade  Chance",
+		location: "Shop",
+		shareID: "pw"
+	},
+	vortex_band: {
+		name: "Vortex Band",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "Gain Damage reduction the higher health percentage is up to 4.5%",
+		location: "Expedition XXX LAST PORTAL",
+		shareID: "vb"
 	},
 	
 }
