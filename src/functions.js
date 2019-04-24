@@ -569,7 +569,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.evade += 1;
     break;
   case 'Twitch':
-    stats.damage_reduction += 8;
+    stats.damage_reduction += 4.5;
     break;
   case 'Radiance':
     stats.damage += .75 * parseInt(numMythics, 10);
