@@ -271,7 +271,7 @@ class App extends Component {
     }
     else if (enchantValues.length < 12) {
       enchantValues = enchantValues.concat("xxxxxxxxxxxx".split(''));
-      enchantValues.concat(12);
+      enchantValues.splice(12);
     }
 
     let u = 0, eS = 1, s = 1;
