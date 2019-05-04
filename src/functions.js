@@ -569,7 +569,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.evade += 1;
     break;
   case 'Twitch':
-    stats.damage_reduction += 4.5;
+    stats.damage_reduction += 8;
     break;
   case 'Radiance':
     stats.damage += .75 * parseInt(numMythics, 10);
@@ -693,6 +693,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     break;
   case 'Vortex Band':
     stats.damage_reduction += 4.5;
+    break;
+  case 'Nice To Meat Ya':
+    stats.damage_reduction += 2;
+    stats.absorb_chance += 1;
     break;
   case 'Merciless':
     if (count === 2 && equipped.mainhand.slot === "Spear") {

@@ -1634,8 +1634,18 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Gain Damage reduction the higher health percentage is up to 4.5%",
-		location: "Expedition XXX LAST PORTAL",
+		location: "Expedition",
 		shareID: "vb"
+	},
+	nice_to_meat_ya: {
+		name: "Nice To Meat Ya",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "+1% Absorb, +2% Damage Reduction",
+		location: "Papoz Invasion",
+		shareID: "my"
 	},
 	
 }
