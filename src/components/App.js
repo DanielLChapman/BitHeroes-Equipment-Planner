@@ -316,6 +316,10 @@ class App extends Component {
     let state = this.state;
     let item = equipment[name];
 
+    if (name === "polychromatic_blaster") {
+      item = equipment['polychromatic_blaster_main'];
+    }
+
     if (typeof item === 'object') {
       let tempSlot = item['slot'];
       tempSlot = tempSlot.toLowerCase();
@@ -332,16 +336,24 @@ class App extends Component {
         }
         state.equipped[tempSlot] = item;
       }
+      if (item.name === "Polychromatic Blaster") {
+        if (tempSlot === 'laser gun' && state.equipped['offhand'].name === "Polychromatic Blaster") {
+          state.equipped['offhand'] = {};
+        }
+        if (tempSlot === 'offhand' && state.equipped['mainhand'].name === "Polychromatic Blaster") {
+          state.equipped['mainhand'] = {};
+        }
+      }
     } else {
       item = mountTypes[name];
       state.equipped.mount = item;
     }
 
-    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel);
-    let stats = bonuses.stats;
-    state.stats = stats;
-    state.bonuses = {...bonuses.bonuses};
-    state.urlEnd = bonuses.urlEnd;
+      let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel);
+      let stats = bonuses.stats;
+      state.stats = stats;
+      state.bonuses = {...bonuses.bonuses};
+      state.urlEnd = bonuses.urlEnd;
 
     try {
       this.props.history.push(`/${state.urlEnd}`);

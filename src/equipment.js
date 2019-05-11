@@ -625,7 +625,7 @@ export const equipment = {
 	pew_pew: {
 		name: "Pew Pew",
 		type: "mythic",
-		slot: "Laser",
+		slot: "Laser Gun",
 		image: "",
 		partOfSet: "",
 		effect: "3% Ricochet Chance",
@@ -1646,6 +1646,26 @@ export const equipment = {
 		effect: "+1% Absorb, +2% Damage Reduction",
 		location: "Papoz Invasion",
 		shareID: "my"
+	},
+	polychromatic_blaster_main: {
+		name: "Polychromatic Blaster",
+		type: "ancient",
+		slot: "Laser Gun",
+		image: "",
+		partOfSet: "",
+		effect: "If you have 1 mythic equipped, double the bonuses",
+		location: "Craft from z9d3",
+		shareID: "yc"
+	},
+	polychromatic_blaster_offhand: {
+		name: "Polychromatic Blaster",
+		type: "ancient",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "If you have 1 mythic equipped, double the bonuses",
+		location: "Craft from z9d3",
+		shareID: "yo"
 	},
 	
 }

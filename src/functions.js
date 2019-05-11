@@ -88,6 +88,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
   let urlEnd = "";
   let stats = {...base.default_stats};
   let ancientEquipped = false;
+  let ancientEquipped2 = false;
   var doubled = {
     enchant: false,
     mount: false,
@@ -101,6 +102,9 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
       if (equipmentOn[x].name === "Starweave") {
         ancientEquipped = true;
+      }
+      if (equipmentOn[x].name === "Polychromatic Blaster") {
+        ancientEquipped2 = true;
       }
     }
      else if (equipmentOn[x].type === "mythic" ) {
@@ -121,6 +125,25 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
     }
   });
+
+
+  if (ancientEquipped2) {
+    let numMythics = 0;
+    let x = 0;
+    Object.keys(equipmentOn).forEach((p) => {
+      switch(equipmentOn[p].type) {
+        case 'mythic': 
+          numMythics++;
+          x = p;
+          break;
+        default:
+          break
+      }
+    });
+    if (numMythics === 1) {
+      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
+    }
+  }
 
   Object.keys(setsToSort).forEach((x) => {
     if (setsToSort[x] >= 2 ) {
@@ -317,8 +340,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
       default:
         break
     }
-    
-  })
+  });
 
   count = parseInt(count, 10);
   switch(name) {
