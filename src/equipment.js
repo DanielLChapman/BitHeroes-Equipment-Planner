@@ -1667,6 +1667,112 @@ export const equipment = {
 		location: "Craft from z9d3",
 		shareID: "yo"
 	},
+	sleipnir: {
+		name: "Sleipnir",
+		type: "mythic",
+		slot: "Axe",
+		image: "",
+		partOfSet: "",
+		effect: "While above 50% health, damage increased by 5%",
+		location: "Blublix Portal (IDOL)",
+		shareID: "xs"
+	},
+	slibinas: {
+		name: "Slibinas",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "+1% Block, 1% Evade, 1% Damage Reduction, 0.5% absorb, 0.5% Deflect chance",
+		location: "Mowhi Portal ( IDOL )",
+		shareID: "xa"
+	},
+	eternal_resolve: {
+		name: "Eternal Resolve",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "5% chance to gain 2 sp per turn",
+		location: "Wizbot Portal ( IDOL )",
+		shareID: "xe"
+	},
+	ultimatum: {
+		name: "Ultimatum",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "+2% Dual Strike, +0.5% Quad Strike",
+		location: "Astamus Portal ( IDOL )",
+		shareID: "xu"
+	},
+	pep_pep: {
+		name: "Pep Pep",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "+1% Quad Strike",
+		location: "Ninja Invasion Mythic",
+		shareID: "pq"
+	},
+	blorg_implant: {
+		name: "Blorg Implant",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "Deal 10% increased Damage when the enemy team only has 1 unit alive",
+		location: "t10 Extermination Worldboss",
+		shareID: "bh"
+	},
+	timeweaver_garments: {
+		name: "Timeweaver Garments",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "+5% damage reduction while all teammates are alive",
+		location: "t10 Extermination Worldboss",
+		shareID: "tg"
+	},
+	vulcarn: {
+		name: "Vulcarn",
+		type: "set",
+		slot: "Axe",
+		image: "",
+		partOfSet: "virulence",
+		effect: "",
+		shareID: "v1"
+	},
+	ytterbite_scrap: {
+		name: "Ytterbite Scrap",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "virulence",
+		effect: "",
+		shareID: "v2"
+	},
+	aquatic_ward: {
+		name: "Aquatic Ward",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "trident",
+		effect: "",
+		shareID: "t5"
+	},
+	nemos_tempest: {
+		name: "Nemo's Tempest",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "trident",
+		effect: "",
+		shareID: "t6"
+	},
 	
 }
 /* 

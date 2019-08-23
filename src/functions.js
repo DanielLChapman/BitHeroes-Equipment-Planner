@@ -737,6 +737,34 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
       stats.damage_reduction += 25;
     }
     break;
+  case 'Ultimatum':
+      stats.dual_strike += 2;
+      stats.quad_strike += 0.5;
+      break;
+  case 'Slibinas':
+    stats.block += 1;
+    stats.evade += 1;
+    stats.damage_reduction += 1;
+    stats.absorb_chance += 0.5;
+    stats.deflect_chance += 0.5;
+    break;
+  case 'Sleipnir':
+    stats.damage += 5;
+    break;
+  case 'Pep Pep':
+    stats.quad_strike += 1;
+    break;
+  case 'Blorg Implant':
+    stats.damage += 10;
+    break;
+  case 'Timeweaver Garments':
+    stats.damage_reduction += 5;
+    break;
+  case 'Aquatic Ward':
+    if (count === 2) {
+      stats.damage += 15;
+    }
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);

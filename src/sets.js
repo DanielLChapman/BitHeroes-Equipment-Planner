@@ -238,13 +238,31 @@ export const sets = {
 		},
 	apocalypse:	{
 			name: "Apocalypse",
-			location: "t10 Worldboss",
+			location: "t10 Melvin Worldboss",
 			items: ["Exarkun", "Reflekun", "Solus", "Garplate", "Revenwrap", "Plaguscore"],
 			description: "",
 			setBonuses: {
 				3: "Enchant Bonuses Doubled",
 				4: "Mount Bonuses Doubled",
 				5: "Major Rune Bonuses Doubled "
+			}
+		},
+	virulence:	{
+		name: "Virulence",
+		location: "t10 Ext Worldboss",
+		items: ["Vulcarn", "Ytterbite Scrap"],
+		description: "",
+		setBonuses: {
+			2: "Damage Recieved from Redirect, Ricochet, or Bouncing Attacks deal 20% Less Damage",
+		}
+	},
+	trident:	{
+			name: "Trident",
+			location: "t10 Ext Worldboss",
+			items: ["Aquatic Ward", "Nemo's Tempest"],
+			description: "",
+			setBonuses: {
+				3: "Enchant Bonuses Doubled",
 			}
 		},
 	gatekeeper:	{
