@@ -821,6 +821,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   case 'Empyrean Vindicator':
     stats.damage_reduction += 5;
     break;
+  case 'Phoenix Ravager':
+    stats.damage_reduction += 5;
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);

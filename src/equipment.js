@@ -1967,6 +1967,16 @@ export const equipment = {
 		location: "t11 3xt Worldboss",
 		shareID: "ev"
 	},
+	phoenix_ravager: {
+		name: "Phoenix Ravager",
+		type: "mythic",
+		slot: "Axe",
+		image: "",
+		partOfSet: "",
+		effect: "While At Full Health, Gain 5% Damage Reduction",
+		location: "t11 3xt Worldboss",
+		shareID: "pv"
+	},
 	goldwings_chivalry: {
 		name: "Goldwings Chivalry",
 		type: "legendary",
