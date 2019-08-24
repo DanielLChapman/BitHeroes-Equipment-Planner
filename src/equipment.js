@@ -1957,6 +1957,16 @@ export const equipment = {
 		location: "t11 Melvin Worldboss",
 		shareID: "wz"
 	},
+	empyrean_vindicator: {
+		name: "Empyrean Vindicator",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "Damage recieved from non redirect, ricochet, or bouncing attacks deal 5% less damage",
+		location: "t11 3xt Worldboss",
+		shareID: "ev"
+	},
 }
 /* 
 [name]: {

@@ -813,6 +813,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.richochet_chance += 1.5;
     stats.quad_strike += 0.5;
     break;
+  case 'Empyrean Vindicator':
+    stats.damage_reduction += 5;
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);
