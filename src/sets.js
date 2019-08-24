@@ -65,7 +65,7 @@ export const sets = {
 		},
 	camouflage:	{
 		name: "Camouflage",
-		location: "t11 Heroic Raid",
+		location: "r8 Heroic Raid",
 		items: ["Violenshine", "Violenhell", "Violenmane", "Viobus"],
 		description: "",
 		setBonuses: {
@@ -158,7 +158,7 @@ export const sets = {
 		},
 	venom:	{
 		name: "Venom",
-		location: "t11 Set Trials, 1080",
+		location: "Set Trials, 1080+",
 		items: ["Wigo Wiggins", "Warriorolas", "Shiztiny", "Earendrin"],
 		description: "",
 		setBonuses: {

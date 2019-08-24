@@ -1914,7 +1914,7 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Gain a 0.5%, 1%, 1.5%, 2.5%, 5%, or 25% Absorb Chance Based On A Weighted Chance",
-		location: "t11 Raids",
+		location: "r8 Heroic",
 		shareID: "bs"
 	},
 	conquerors_fury: {
@@ -1944,7 +1944,7 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Deal increased damage the higher your health percentage is, up to a maximum of 8%",
-		location: "t11 Raids",
+		location: "r8 Heroic",
 		shareID: "ws"
 	},
 	proton_beem_zapper: {
@@ -1954,7 +1954,7 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "1.5% Ricochet Chance, 0.5% Quad Strike",
-		location: "t11 Worldboss",
+		location: "t11 Melvin Worldboss",
 		shareID: "wz"
 	},
 }
