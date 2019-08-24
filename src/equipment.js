@@ -1917,6 +1917,16 @@ export const equipment = {
 		location: "r8 Heroic",
 		shareID: "bs"
 	},
+	ironbark_longbow: {
+		name: "Ironbark Longbow",
+		type: "mythic",
+		slot: "Crossbow",
+		image: "",
+		partOfSet: "",
+		effect: "2% Increased Damage, Each Hit on an Enemy Increases the bonus by 1% on them, to a max of 8%",
+		location: "r8 Raid",
+		shareID: "lb"
+	},
 	conquerors_fury: {
 		name: "Conquerors Fury",
 		type: "mythic",
@@ -1944,7 +1954,7 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Deal increased damage the higher your health percentage is, up to a maximum of 8%",
-		location: "r8 Heroic",
+		location: "t11 Melvin Worldboss",
 		shareID: "ws"
 	},
 	proton_beem_zapper: {
@@ -1987,6 +1997,7 @@ export const equipment = {
 		location: "Shop",
 		shareID: "gc"
 	},
+	
 }
 /* 
 [name]: {

@@ -824,6 +824,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   case 'Phoenix Ravager':
     stats.damage_reduction += 5;
     break;
+  case 'Ironbark Longbow':
+    stats.damage += 8;
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);
