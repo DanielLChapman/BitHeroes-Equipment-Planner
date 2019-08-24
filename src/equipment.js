@@ -1947,6 +1947,16 @@ export const equipment = {
 		location: "t11 Raids",
 		shareID: "ws"
 	},
+	proton_beem_zapper: {
+		name: "Proton Beem Zapper",
+		type: "mythic",
+		slot: "Laser Gun",
+		image: "",
+		partOfSet: "",
+		effect: "1.5% Ricochet Chance, 0.5% Quad Strike",
+		location: "t11 Worldboss",
+		shareID: "wz"
+	},
 }
 /* 
 [name]: {

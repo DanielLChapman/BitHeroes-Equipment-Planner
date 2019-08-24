@@ -806,8 +806,12 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   case "Battleplate":
     stats.sp_damage += 5;
     break;
-  case 'windstalker': 
+  case 'Windstalker': 
     stats.damage += 8;
+    break;
+  case 'Proton Beem Zapper':
+    stats.richochet_chance += 1.5;
+    stats.quad_strike += 0.5;
     break;
   //Add in legendary enchant and accessories, mounts too
   default: 
