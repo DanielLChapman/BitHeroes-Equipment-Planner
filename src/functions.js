@@ -459,7 +459,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
       stats.empower_chance += 4;
     }
     if (count === 4) {
-      stats.damage += 20;
+      stats.sp_damage += 20;
     }
     break;
   case 'Requiem':
@@ -697,7 +697,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.damage_reduction += 5;
     break;
   case 'Frostybite':
-    stats.damage += 5;
+    stats.sp_damage += 5;
     break;
   case 'Meteor Chain':
     stats.dual_strike += 1;
@@ -760,10 +760,54 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   case 'Timeweaver Garments':
     stats.damage_reduction += 5;
     break;
-  case 'Aquatic Ward':
+  case 'Trident':
+      if (count === 2) {
+        stats.sp_damage += 15;
+      }
+      break;
+  case 'Venom':
     if (count === 2) {
-      stats.damage += 15;
+      stats.team_enrage += 2;
     }
+    if (count === 3) {
+      stats.damage_reduction += 2.5;
+    }
+    if (count === 4) {
+      stats.damage_reduction += 17.5;
+    }
+    break;
+  case 'Camouflage':
+    if (count === 2) {
+      stats.quad_strike += 1;
+    }
+    if (count === 3) {
+      stats.ignore_defense += 5;
+    }
+    if (count === 4) {
+      stats.damage += 40;
+    }
+    break;
+  case 'Mistery':
+      if (count === 2) {
+        stats.dual_strike += 4;
+      }
+      break;
+  case 'Courage':
+    if (count === 2) {
+      stats.sp_damage += 10;
+    }
+    break;
+  case 'Blind Souls':
+    stats.absorb_chance += 25;
+    break;
+  case "Conquerors Fury":
+    stats.empower_chance += 4;
+    break;
+  case "Battleplate":
+    stats.sp_damage += 5;
+    break;
+  case 'windstalker': 
+    stats.damage += 8;
     break;
   //Add in legendary enchant and accessories, mounts too
   default: 

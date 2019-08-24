@@ -5,6 +5,7 @@ export var base ={
 		agility: 6,
 		total_stats: 18,
 		damage: 0,
+		sp_damage: 0,
 		health: 0,
 		speed: 0,
 		critical_chance: 10,
@@ -23,6 +24,7 @@ export var base ={
 		quad_strike: 0,
 		richochet_chance: 0,
 		team_enrage: 0,
+		ignore_defense: 0,
 		links: {
 			healthEfficiency: 0,
 			damageMitigation: 0,

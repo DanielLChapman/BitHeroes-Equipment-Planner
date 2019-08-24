@@ -63,6 +63,17 @@ export const sets = {
 				4: "+25% Damage Reduction, this is reduced by 3% each time you are attacked and returns to 25% when it drops below 10%",
 			}
 		},
+	camouflage:	{
+		name: "Camouflage",
+		location: "t11 Heroic Raid",
+		items: ["Violenshine", "Violenhell", "Violenmane", "Viobus"],
+		description: "",
+		setBonuses: {
+			2: "+1% Quad Strike",
+			3: "+5% to ignore enemy defenses",
+			4: "+40% Damage, 40% Reduced Shields",
+		}
+	},
 	unity:	{
 			name: "Unity",
 			location: "Trials/Gauntlets 100-109 or from rerolling a t5 set piece",
@@ -145,6 +156,17 @@ export const sets = {
 				4: "15% Increased damage. Each hit on an enemy increases this bonus by 2.5% on them, to a max of 35%. "
 			}
 		},
+	venom:	{
+		name: "Venom",
+		location: "t11 Set Trials, 1080",
+		items: ["Wigo Wiggins", "Warriorolas", "Shiztiny", "Earendrin"],
+		description: "",
+		setBonuses: {
+			2: "+2% Team Enrage",
+			3: "+2.5 Team Damage Reduction",
+			4: "+17.5% Damage Reduction while all teammates are above 30% health",
+		}
+	},
 	lunar_guardian:	{
 			name: "Lunar Guardian",
 			location: "Tier 6 Orlag World Boss",
@@ -247,6 +269,16 @@ export const sets = {
 				5: "Major Rune Bonuses Doubled "
 			}
 		},
+	mistery:	{
+			name: "Mistery",
+			location: "t11 Melvin Worldboss",
+			items: ["Visertal", "Battletal", "Grindymetal"],
+			description: "",
+			setBonuses: {
+				2: "+4% Dual Strike",
+				3: "Ignore Enemy Defense Bonuses on Shielded Targets",
+			}
+		},
 	virulence:	{
 		name: "Virulence",
 		location: "t10 Ext Worldboss",
@@ -262,7 +294,17 @@ export const sets = {
 			items: ["Aquatic Ward", "Nemo's Tempest"],
 			description: "",
 			setBonuses: {
-				3: "Enchant Bonuses Doubled",
+				3: "Skills that cost SP Damage deal 15% increased Damage",
+			}
+		},
+	courage:	{
+			name: "Courage",
+			location: "t11 Ext Worldboss",
+			items: ["Wickedwood", "Malwood", "Woocrusher"],
+			description: "",
+			setBonuses: {
+				2: "+10% SP Damage",
+				3: "Team SP Regen increased by 25%",
 			}
 		},
 	gatekeeper:	{

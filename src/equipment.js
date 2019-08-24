@@ -1773,7 +1773,180 @@ export const equipment = {
 		effect: "",
 		shareID: "t6"
 	},
-	
+	//venom
+	wigo_wiggins: {
+		name: "Wigo Wiggins",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "venom",
+		effect: "",
+		shareID: "v3"
+	},
+	warriorolas: {
+		name: "Warriorolas",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "venom",
+		effect: "",
+		shareID: "v4"
+	},
+	shiztiny: {
+		name: "Shiztiny",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "venom",
+		effect: "",
+		shareID: "v5"
+	},
+	earendrin: {
+		name: "Earendrin",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "venom",
+		effect: "",
+		shareID: "v6"
+	},
+
+	//camouflage
+	violenshine: {
+		name: "Violenshine",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "camouflage",
+		effect: "",
+		shareID: "c7"
+	},
+	violenhell: {
+		name: "Violenhell",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "camouflage",
+		effect: "",
+		shareID: "c8"
+	},
+	violenmane: {
+		name: "Violenmane",
+		type: "set",
+		slot: "Axe",
+		image: "",
+		partOfSet: "camouflage",
+		effect: "",
+		shareID: "c9"
+	},
+	viobus: {
+		name: "Viobus",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "camouflage",
+		effect: "",
+		shareID: "c0"
+	},
+
+	//mistery
+	visertal: {
+		name: "Visertal",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "mistery",
+		effect: "",
+		shareID: "0m"
+	},
+	battletal: {
+		name: "Battletal",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "mistery",
+		effect: "",
+		shareID: "1m"
+	},
+	grindymetal: {
+		name: "Grindymetal",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "mistery",
+		effect: "",
+		shareID: "2m"
+	},
+
+	//courage
+	wickedwood: {
+		name: "Wickedwood",
+		type: "set",
+		slot: "Staff",
+		image: "",
+		partOfSet: "courage",
+		effect: "",
+		shareID: "0c"
+	},
+	malwood: {
+		name: "Malwood",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "courage",
+		effect: "",
+		shareID: "1c"
+	},
+	woocrusher: {
+		name: "Woocrusher",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "courage",
+		effect: "",
+		shareID: "2c"
+	},
+
+	blind_souls: {
+		name: "Blind Souls",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "Gain a 0.5%, 1%, 1.5%, 2.5%, 5%, or 25% Absorb Chance Based On A Weighted Chance",
+		location: "t11 Raids",
+		shareID: "bs"
+	},
+	conquerors_fury: {
+		name: "Conquerors Fury",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "+4% Empower Chance",
+		location: "t11 Trials",
+		shareID: "cf"
+	},
+	battleplate: {
+		name: "Battleplate",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "+5% sp skill damage",
+		location: "t11 trials",
+		shareID: "1b"
+	},
+	windstalker: {
+		name: "Windstalker",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "Deal increased damage the higher your health percentage is, up to a maximum of 8%",
+		location: "t11 Raids",
+		shareID: "ws"
+	},
 }
 /* 
 [name]: {

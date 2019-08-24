@@ -51,6 +51,7 @@ export default class StatWindow extends React.Component {
             </label>
             <ul>
                 <li>Damage Bonus: <span className="stat-view">{this.props.stats.damage}</span></li>
+                <li>SP Damage Bonus: <span className="stat-view">{this.props.stats.sp_damage}</span></li>
                 <li>Health Bonus: <span className="stat-view">{this.props.stats.health}</span></li>
                 <li>Speed Bonus:<span className="stat-view">{this.props.stats.speed}</span> </li>
                 <li>Critical Chance: <span className="stat-view">{this.props.stats.critical_chance}</span></li>
