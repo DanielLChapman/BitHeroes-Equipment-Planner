@@ -48,12 +48,13 @@ export const searchObjectArray = (objectArray, searchQuery, compareTo) => {
 const linkCalculation = (stats) => {
   let rA, rD, rE, rB, rR;
   let s = stats;
+  let dR = stats.damage_reduction > 75 ? 75 : stats.damage_reduction;
   var defaultLinks = JSON.parse(JSON.stringify(base.default_stats.links));
   rA = stats.absorb_chance/100;
   rD = Math.abs((1-rA)*stats.deflect_chance/100);
   rE =  Math.abs((1-rA-rD)*stats.evade/100);
   rB = Math.abs((1-rA-rD-rE)*stats.block/100);
-  rR = Math.abs((1-rA-rD-rE-(rB*.5))*stats.damage_reduction/100);
+  rR = Math.abs((1-rA-rD-rE-(rB*.5))*dR/100);
 
   defaultLinks.damageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(s.damage))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
   defaultLinks.damageBonus = parseFloat(defaultLinks.damageBonus.toFixed(2));
