@@ -1967,6 +1967,16 @@ export const equipment = {
 		location: "t11 3xt Worldboss",
 		shareID: "ev"
 	},
+	goldwings_chivalry: {
+		name: "Goldwings Chivalry",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "17% Damage Reduction, 8% Absorb Chance, -4% Damage",
+		location: "Shop",
+		shareID: "gc"
+	},
 }
 /* 
 [name]: {
