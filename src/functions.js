@@ -55,6 +55,7 @@ const linkCalculation = (stats) => {
   rE =  Math.abs((1-rA-rD)*stats.evade/100);
   rB = Math.abs((1-rA-rD-rE)*stats.block/100);
   rR = Math.abs((1-rA-rD-rE-(rB*.5))*dR/100);
+  s.damage += s.sp_damage;
 
   defaultLinks.damageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(s.damage))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
   defaultLinks.damageBonus = parseFloat(defaultLinks.damageBonus.toFixed(2));
