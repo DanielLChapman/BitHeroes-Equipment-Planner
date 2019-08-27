@@ -1882,7 +1882,7 @@ export const equipment = {
 	wickedwood: {
 		name: "Wickedwood",
 		type: "set",
-		slot: "Staff",
+		slot: "Sword",
 		image: "",
 		partOfSet: "courage",
 		effect: "",
@@ -1993,9 +1993,19 @@ export const equipment = {
 		slot: "Accessory",
 		image: "",
 		partOfSet: "",
-		effect: "17% Damage Reduction, 8% Absorb Chance, -4% Damage",
+		effect: "16% Damage Reduction, 8% Absorb Chance, -4% Damage",
 		location: "Shop",
 		shareID: "gc"
+	},
+	jupingz: {
+		name: "Jupingz",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "12.5% Dual Strike, 12.5% Empower Chance",
+		location: "Shop",
+		shareID: "jg"
 	},
 	
 }

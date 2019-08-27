@@ -340,5 +340,29 @@ export const mountTypes = [
 		effect: "team_enrage",
 		value:  3,
 		key: 'mount'
+	},
+	{
+		id: 15,
+		title: "Ricochet Chance",
+		selected: false,
+		effect: "richochet_chance",
+		value:  3,
+		key: 'mount'
+	},
+	{
+		id: 16,
+		title: "Team Damage",
+		selected: false,
+		effect: "damage",
+		value:  1,
+		key: 'mount'
+	},
+	{
+		id: 17,
+		title: "Team Damage Reduction",
+		selected: false,
+		effect: "damage_reduction",
+		value:  1,
+		key: 'mount'
 	}
 ]

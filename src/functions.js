@@ -716,10 +716,14 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.evade += 5;
     break;
   case 'Goldwings Chivalry':
-      stats.damage_reduction += 17+(1*accessoryUpgrade);
+      stats.damage_reduction += 16+(1*accessoryUpgrade);
       stats.absorb_chance += 8;
       stats.damage += -4;
       break;
+  case 'Jupingz':
+    stats.empower_chance += 12.5+(0.5*accessoryUpgrade);
+    stats.dual_strike += 12.5+(0.5*accessoryUpgrade);
+    break;
   case 'Vortex Band':
     stats.damage_reduction += 4.5;
     break;
