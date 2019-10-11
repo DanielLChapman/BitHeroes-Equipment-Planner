@@ -833,6 +833,43 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   case 'Ironbark Longbow':
     stats.damage += 8;
     break;
+  case 'Hydronus Helmet':
+    stats.speed += 3;
+    stats.critical_chance += 8;
+    break;
+  case 'Hydragar Stone':
+    stats.absorb_chance += 5;
+    break;
+
+  case 'Glamounir':
+    stats.absorb_chance += 1;
+    stats.deflect_chance += 1;
+    stats.evade += 1;
+    break;
+  case 'Bassoul':
+    stats.absorb_chance += 2;
+    stats.damage += 1;
+    break;
+  case 'Demonmullet':
+    stats.damage_reduction += 2;
+    break;
+  case 'Chippity':
+    stats.damage += 1;
+    stats.dual_strike += 1;
+    stats.empower_chance += 1;
+    stats.speed += 1;
+    break;
+
+  case 'Dragonskull':
+    if (count === 2) {
+      stats.damage += 2;
+    }
+    break;
+  case 'Blackarrow':
+    if (count === 2) {
+      stats.absorb_chance += 2;
+    }
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);

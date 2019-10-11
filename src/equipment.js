@@ -2008,6 +2008,67 @@ export const equipment = {
 		shareID: "jg"
 	},
 	
+	glamounir: {
+		name: "Glamounir",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "1% Absorb Chance, 1% Deflect Chance, 1% Evade Chance",
+		location: "Battle Bards Expedition, left",
+		shareID: "b2"
+	},
+	bassoul: {
+		name: "Bassoul",
+		type: "mythic",
+		slot: "Axe",
+		image: "",
+		partOfSet: "",
+		effect: "2% Absorb Chance, Team Gains 1% Increased Damage",
+		location: "Battle Bards Expedition, middle",
+		shareID: "b3"
+	},
+	demonmullet: {
+		name: "Demonmullet",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "Team Gains 2% Damage Reduction",
+		location: "Battle Bards Expedition, top",
+		shareID: "b4"
+	},
+	chippity: {
+		name: "Chippity",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "1% Damage, 1% Speed, 1% Dual Strike, 1% Empower Chance",
+		location: "Battle Bards Expedition, right",
+		shareID: "b5"
+	},
+
+	hydronus_helmet: {
+		name: "Hydronus Helmet",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "3% Crit Chance, 3% Speed",
+		location: "Brimstone t11 Worldboss",
+		shareID: "b6"
+	},
+	hydragar_stone: {
+		name: "Hydragar Stone",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "While Above 50% Health, Gain 5% Absorb",
+		location: "Brimstone t11 Worldboss",
+		shareID: "b7"
+	},
 }
 /* 
 [name]: {
