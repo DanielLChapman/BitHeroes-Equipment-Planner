@@ -334,6 +334,14 @@ class App extends Component {
             state.equipped['necklace'] = {};
           }
         }
+        if (item.name === "Elementarium") {
+          if (tempSlot === 'head' && state.equipped['body'].name === "Elementarium") {
+            state.equipped['body'] = {};
+          }
+          if (tempSlot === 'body' && state.equipped['head'].name === "Elementarium") {
+            state.equipped['head'] = {};
+          }
+        }
         state.equipped[tempSlot] = item;
       }
       if (item.name === "Polychromatic Blaster") {

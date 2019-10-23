@@ -1401,6 +1401,26 @@ export const equipment = {
 		location: "Craft from z8d3",
 		shareID: "sn"
 	},
+	elementarium_body: {
+		name: "Elementarium",
+		type: "ancient",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "Major Rune Bonuses Doubled. Only 1 bonus of this type may be active",
+		location: "Craft from z10d3",
+		shareID: "el"
+	},
+	elementarium_head: {
+		name: "Elementarium",
+		type: "ancient",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "Major Rune Bonuses Doubled. Only 1 bonus of this type may be active",
+		location: "Craft from z10d3",
+		shareID: "ez"
+	},
 	melvin_cloak: {
 		name: "Melvin Cloak",
 		type: "mythic",

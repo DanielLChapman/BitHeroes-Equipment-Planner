@@ -91,6 +91,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
   let stats = {...base.default_stats};
   let ancientEquipped = false;
   let ancientEquipped2 = false;
+  let ancientEquipped3 = false;
   var doubled = {
     enchant: false,
     mount: false,
@@ -107,6 +108,9 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       }
       if (equipmentOn[x].name === "Polychromatic Blaster") {
         ancientEquipped2 = true;
+      }
+      if (equipmentOn[x].name === "Elementarium") {
+        ancientEquipped3 = true;
       }
     }
      else if (equipmentOn[x].type === "mythic" ) {
@@ -146,6 +150,8 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
     }
   }
+
+  
 
   Object.keys(setsToSort).forEach((x) => {
     if (setsToSort[x] >= 2 ) {
@@ -216,7 +222,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       if (runes[i].id !== 'x') {
         let tempRune = runes[i];
         stats[tempRune.effect] += tempRune.value;
-        if (doubled.rune) {
+        if (doubled.rune || ancientEquipped3) {
           stats[tempRune.effect] += tempRune.value;
         }
         runesForURL += tempRune.id;
