@@ -2089,6 +2089,16 @@ export const equipment = {
 		location: "Brimstone t11 Worldboss",
 		shareID: "b7"
 	},
+	scrawny: {
+		name: "Scrawny",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "+2% Empower Chance, +2% Speed",
+		location: "Zombo Invasion",
+		shareID: "sy"
+	},
 }
 /* 
 [name]: {

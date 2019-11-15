@@ -859,6 +859,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   case 'Demonmullet':
     stats.damage_reduction += 2;
     break;
+  case 'Scrawny':
+    stats.empower_chance += 2;
+    stats.speed += 2;
+    break;
   case 'Chippity':
     stats.damage += 1;
     stats.dual_strike += 1;
