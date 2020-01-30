@@ -342,6 +342,26 @@ export const sets = {
 				6: "+4% Absorb Chance"
 			}
 		},
+	ishmaels_bounty:	{
+			name: "Ishmaels Bounty",
+			location: "t11 Titan World Boss",
+			items: ["Abandon Fate", "Tentuhkuhl"],
+			description: "",
+			setBonuses: {
+				2: "Heals received from skills generate 30% shields."
+			}
+		},
+	voltio:	{
+			name: "Voltio",
+			location: "t11 Trials",
+			items: ["Voltio", "Vohltij", "Ihlektron", "Kiluhwot", "Spahrk", "Johlt"],
+			description: "",
+			setBonuses: {
+				2: "When attack: 108 shield to all team.",
+				4: "For Each 5% Shield: +3% Electric Damage",
+				6: "Max shield: +50% Electric Damage"
+			}
+		},
 	
 	
 }

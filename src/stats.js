@@ -30,6 +30,23 @@ export var base ={
 			damageMitigation: 0,
 			damageBonus: 0,
 			damageOutput: 0
+		},
+		fire_damage: 0,
+		fire_resistance: 0,
+		electric_damage: 0,
+		electric_resistance: 0,
+		water_damage: 0,
+		water_resistance: 0,
+		air_damage: 0,
+		air_resistance: 0,
+		earth_damage: 0,
+		earth_resistance: 0,
+		elemental_flat: {
+			fire: 0,
+			electric: 0,
+			water: 0,
+			air: 0,
+			earth: 0
 		}
 	},
 	current_stats: {},

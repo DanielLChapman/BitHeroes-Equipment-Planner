@@ -2099,6 +2099,149 @@ export const equipment = {
 		location: "Zombo Invasion",
 		shareID: "sy"
 	},
+	//elementals
+	voltio: {
+		name: "Voltio",
+		type: "set",
+		slot: "Sword",
+		image: "",
+		partOfSet: "voltio",
+		effect: "",
+		shareID: "V1",
+		elemental: {
+			element_value: 3,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	vohltij: {
+		name: "Vohltij",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "voltio",
+		effect: "",
+		shareID: "V2",
+		elemental: {
+			element_value: 3,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	ihlektron: {
+		name: "Ihlektron",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "voltio",
+		effect: "",
+		shareID: "V3",
+		elemental: {
+			element_value: 3,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	kiluhwot: {
+		name: "Kiluhwot",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "voltio",
+		effect: "",
+		shareID: "V4",
+		elemental: {
+			element_value: 3,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	spahrk: {
+		name: "Spahrk",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "voltio",
+		effect: "",
+		shareID: "V5",
+		elemental: {
+			element_value: 3,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	johlt: {
+		name: "Johlt",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "voltio",
+		effect: "",
+		shareID: "V6",
+		elemental: {
+			element_value: 3,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	abandon_fate: {
+		name: "Abandon Fate",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "ishmaels_bounty",
+		effect: "",
+		shareID: "IA",
+		elemental: {
+			element_value: 3,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		}
+	},
+	tentuhkuhl: {
+		name: "Tentuhkuhl",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "ishmaels_bounty",
+		effect: "",
+		shareID: "IB",
+		elemental: {
+			element_value: 3,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		}
+	},
+	traitors_loop: {
+		name: "Traitors Loop",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		location: "t11 Titan World Boss",
+		effect: "10% Chance for Skills to Not Spend SP, +5% Fire Resist, +39 Water Damage",
+		shareID: "TL",
+		elemental: {
+			element_value: 5,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 39,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: true
+		}
+	},
 }
 /* 
 [name]: {

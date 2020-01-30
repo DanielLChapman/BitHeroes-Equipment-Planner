@@ -98,7 +98,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     rune: false
   }
 
-  Object.keys(equipmentOn).forEach((x) => {
+  Object.keys(equipmentOn).forEach((x, i) => {
     if (equipmentOn[x].type === "ancient") {
       bonuses.ancients.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
@@ -113,7 +113,28 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
         ancientEquipped3 = true;
       }
     }
-     else if (equipmentOn[x].type === "mythic" ) {
+    if (equipmentOn[x]['elemental'] ) {
+      if (! equipmentOn[x]['elemental'].flat) {
+        let temp = equipmentOn[x]['elemental'];
+        stats[temp.element_type + "_" + temp.element_modifier] += parseInt(temp.element_value, 10);
+      } else {
+        let temp = equipmentOn[x]['elemental'];
+        stats.elemental_flat['temp.element_type '] += temp.element_value;
+      }
+      
+    }
+
+    if (equipmentOn[x]['elemental2'] ) {
+      if (! equipmentOn[x]['elemental2'].flat) {
+        let temp = equipmentOn[x]['elemental2'];
+        stats[temp.element_type + "_" + temp.element_modifier] += parseInt(temp.element_value, 10);
+      } else {
+        let temp = equipmentOn[x]['elemental2'];
+        stats.elemental_flat['temp.element_type '] += temp.element_value;
+      }
+      
+    }
+    if (equipmentOn[x].type === "mythic" ) {
       bonuses.mythics.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
       stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
@@ -123,12 +144,25 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
         bonuses.pets.push(equipmentOn[x]);
         stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
       }
+      /*elemental: {
+        element_value: 3,
+        element_type: "water",
+        element_modifier: "resist"
+      }*/
+
 
       urlEnd += equipmentOn[x].shareID;
     } else if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
       bonuses.pets.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
       stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
+    }
+    if (i === 8 ) {
+      stats.fire_damage += "% + " + stats.elemental_flat.fire + " Flat";
+      stats.air_damage += "% + " + stats.elemental_flat.air + " Flat";
+      stats.electric_damage += "% + " + stats.elemental_flat.electric + " Flat";
+      stats.earth_damage += "% + " + stats.elemental_flat.earth + " Flat";
+      stats.water_damage += "% + " + stats.elemental_flat.water + " Flat";
     }
   });
 
