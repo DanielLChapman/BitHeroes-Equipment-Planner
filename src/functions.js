@@ -914,6 +914,22 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
       stats.absorb_chance += 2;
     }
     break;
+  case 'Voltio':
+    if (count === 4) {
+      stats.elemental_flat['electric'] += 60;
+    }
+    if (count === 6) {
+      stats.elemental_flat['electric'] += 100;
+    }
+    break;
+  case 'Nephilim Shield':
+    stats.dual_strike += 4;
+    break;
+  case 'Nephilim Legacy':
+    stats.damage += 4;
+    stats.damage_reduction += 4;
+    break;
+
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);

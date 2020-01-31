@@ -2242,6 +2242,82 @@ export const equipment = {
 			flat: true
 		}
 	},
+	nephilim_shield: {
+		name: "Nephilim Shield",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		location: "t12 Trials",
+		effect: "+4 Air DMG, +4 Electric Resist, +4% Dual Strike",
+		shareID: "NS",
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "resistance",
+			flat: false
+		}
+	},
+	nephilim_scaled_vest: {
+		name: "Nephilim Scaled Vest",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		location: "t12 Trials",
+		effect: "4% Earth Resist, +4% Fire Damage, While Below 30% Health, 10% Chance for Healing Skills Received To Be Doubled.",
+		shareID: "NV",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		}
+	},
+	nephilim_circle: {
+		name: "Nephilim Circle",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		location: "t12 Raids",
+		effect: "4% Electric Resist, +4% Air Damage, Teammates Take 3% Reduced Damage.",
+		shareID: "NC",
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "resistance",
+			flat: false
+		}
+	},
+	nephilim_legacy: {
+		name: "Nephilim Legacy",
+		type: "mythic",
+		slot: "Axe",
+		image: "",
+		partOfSet: "",
+		location: "t12 Brimstone",
+		effect: "+4% Damage, +4% Damage Reduction.",
+		shareID: "NL",
+	},
 }
 /* 
 [name]: {
