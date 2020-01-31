@@ -362,8 +362,50 @@ export const sets = {
 				6: "Max shield: +50% Electric Damage"
 			}
 		},
-	
-	
+	pyroc:	{
+		name: "Pyroc",
+		location: "t12 Brimstone",
+		items: ["Ring Of Hellish Fire", "Raiment Of Hellish Fire", "Wip Of Hellish Fire", "Sleave Of Hellish Fire"],
+		description: "",
+		setBonuses: {
+			2: "+2% empower per enemy alive.",
+			3: "+15% Fire damage against unshielded enemies",
+			4: "+30% Fire damage while above 60% health"
+		}
+	},
+	nepulus: {
+		name: "Nepulus",
+		location: "t12 Titans",
+		items: ["Visage of Atlantis", "Greatplate Of Atlantis", "Battleaxe Of Atlantis", "Gem Of Atlantis"],
+		description: "",
+		setBonuses: {
+			2: "Heals received from skills at 10% more effective",
+			3: "When hit gain 2% deflect, max 8%",
+			4: "+8% Water Resistance, gain 2% when hit, up to 18%"
+		}
+	},
+	pangea:	{
+		name: "Pangea",
+		location: "t12 Trials/Gauntlet",
+		items: ["Last Hope Faceguard","Last Hope Stone","Last Hope Hammer","Last Hope Outbreak"],
+		description: "",
+		setBonuses: {
+			2: "+25% Max Shield",
+			3: "Teammates behind you gain +5% earth resistance",
+			4: "Increase chance to block attacks by 40%"
+		}
+	},
+	lucernas:	{
+		name: "Lucernas",
+		location: "t12 Raid",
+		items: ["Crown Of Zeus", "Chestguard Of Zeus", "Pact Of Zeus", "Battery Of Zeus"],
+		description: "",
+		setBonuses: {
+			2: "Gain .25% team enrage when using a healing skill, up to 2%",
+			3: "+15% air damage while shielded",
+			4: "When using a healing skill, spread shield and gain 1.5% healing bonus, up to 15%"
+		}
+	},
 }
 
 /*

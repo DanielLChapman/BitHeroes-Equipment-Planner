@@ -2318,7 +2318,249 @@ export const equipment = {
 		effect: "+4% Damage, +4% Damage Reduction.",
 		shareID: "NL",
 	},
+	ring_of_hellish_fire: {
+		name: "Ring Of Hellish Fire",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "pyroc",
+		effect: "",
+		shareID: "HF",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	raiment_of_hellish_fire: {
+		name: "Raiment Of Hellish Fire",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "pyroc",
+		effect: "",
+		shareID: "HR",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	wip_of_hellish_fire: {
+		name: "Wip Of Hellish Fire",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "pyroc",
+		effect: "",
+		shareID: "HW",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	sleave_of_hellish_fire: {
+		name: "Sleave Of Hellish Fire",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "pyroc",
+		effect: "",
+		shareID: "HS",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	visage_of_atlantis: {
+		name: "Visage Of Atlantis",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "nepulus",
+		effect: "",
+		shareID: "VA",
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		}
+	},
+	greatplate_of_atlantis: {
+		name: "Greatplate Of Atlantis",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "nepulus",
+		effect: "",
+		shareID: "VG",
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		}
+	},
+	battleaxe_of_atlantis: {
+		name: "Battleaxe Of Atlantis",
+		type: "set",
+		slot: "Axe",
+		image: "",
+		partOfSet: "nepulus",
+		effect: "",
+		shareID: "VB",
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		}
+	},
+	gem_of_atlantis: {
+		name: "Gem Of Atlantis",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "nepulus",
+		effect: "",
+		shareID: "VG",
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		}
+	},
+	last_hope_faceguard: {
+		name: "Last Hope Faceguard",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "pangea",
+		effect: "",
+		shareID: "LF",
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resist",
+			flat: false
+		}
+	},
+	last_hope_stone: {
+		name: "Last Hope Stone",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "pangea",
+		effect: "",
+		shareID: "LS",
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resist",
+			flat: false
+		}
+	},
+	last_hope_hammer: {
+		name: "Last Hope Hammer",
+		type: "set",
+		slot: "Hammer",
+		image: "",
+		partOfSet: "pangea",
+		effect: "",
+		shareID: "V8",
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resist",
+			flat: false
+		}
+	},
+	last_hope_outbreak: {
+		name: "Last Hope Outbreak",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "pangea",
+		effect: "",
+		shareID: "LO",
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resist",
+			flat: false
+		}
+	},
+	crown_of_zeus: {
+		name: "Crown Of Zeus",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "lucernas",
+		effect: "",
+		shareID: "ZC",
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	chestguard_of_zeus: {
+		name: "Chestguard Of Zeus",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "lucernas",
+		effect: "",
+		shareID: "ZB",
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	pact_of_zeus: {
+		name: "Pact Of Zeus",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "lucernas",
+		effect: "",
+		shareID: "ZP",
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+	battery_of_zeus: {
+		name: "Battery Of Zeus",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "lucernas",
+		effect: "",
+		shareID: "ZB",
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		}
+	},
+
 }
+
 /* 
 [name]: {
 		name: "",

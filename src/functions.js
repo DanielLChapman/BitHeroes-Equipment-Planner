@@ -156,14 +156,14 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       bonuses.pets.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
       stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
-    }
+    }/*
     if (i === 8 ) {
       stats.fire_damage += "%"// + " + stats.elemental_flat.fire + " Flat";
       stats.air_damage += "%"// + " + stats.elemental_flat.air + " Flat";
       stats.electric_damage += "%"// + " + stats.elemental_flat.electric + " Flat";
       stats.earth_damage += "%"// + " + stats.elemental_flat.earth + " Flat";
       stats.water_damage += "%"// + " + stats.elemental_flat.water + " Flat";
-    }
+    }*/
   });
 
 
@@ -929,7 +929,44 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.damage += 4;
     stats.damage_reduction += 4;
     break;
-
+  case 'Pyroc':
+    if (count === 2) {
+      stats.empower_chance += 2;
+    }
+    if (count === 3) {
+      stats['fire_damage'] += 15;
+    }
+    if (count === 4) {
+      stats['fire_damage'] += 30;
+    }
+    break;
+  case 'Nepulus':
+    if (count === 3) {
+      stats.deflect_chance += 8;
+    }
+    if (count === 4) {
+      stats['water_resistance'] += 18;
+    }
+    break;
+  case 'Pangea':
+    if (count === 3) {
+      stats['earth_resistance'] += 5;
+    }
+    if (count === 4) {
+      stats.block += 40;
+    }
+    break;
+  case 'Lucernas':
+    if (count === 2) {
+      stats.team_enrage += 2;
+    }
+    if (count === 3) {
+      stats['air_damage'] += 15;
+    }
+    if (count === 4) {
+      stats.healing += 15;
+    }
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);
