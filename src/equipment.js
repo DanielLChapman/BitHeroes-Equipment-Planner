@@ -2239,7 +2239,7 @@ export const equipment = {
 			element_value: 39,
 			element_type: "water",
 			element_modifier: "damage",
-			flat: true
+			flat: false
 		}
 	},
 	nephilim_shield: {

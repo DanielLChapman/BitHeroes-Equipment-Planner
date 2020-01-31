@@ -158,11 +158,11 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
     }
     if (i === 8 ) {
-      stats.fire_damage += "% + " + stats.elemental_flat.fire + " Flat";
-      stats.air_damage += "% + " + stats.elemental_flat.air + " Flat";
-      stats.electric_damage += "% + " + stats.elemental_flat.electric + " Flat";
-      stats.earth_damage += "% + " + stats.elemental_flat.earth + " Flat";
-      stats.water_damage += "% + " + stats.elemental_flat.water + " Flat";
+      stats.fire_damage += "%"// + " + stats.elemental_flat.fire + " Flat";
+      stats.air_damage += "%"// + " + stats.elemental_flat.air + " Flat";
+      stats.electric_damage += "%"// + " + stats.elemental_flat.electric + " Flat";
+      stats.earth_damage += "%"// + " + stats.elemental_flat.earth + " Flat";
+      stats.water_damage += "%"// + " + stats.elemental_flat.water + " Flat";
     }
   });
 
@@ -916,10 +916,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     break;
   case 'Voltio':
     if (count === 4) {
-      stats.elemental_flat['electric'] += 60;
+      stats['electric_damage'] += 60;
     }
     if (count === 6) {
-      stats.elemental_flat['electric'] += 100;
+      stats['electric_damage'] += 100;
     }
     break;
   case 'Nephilim Shield':
