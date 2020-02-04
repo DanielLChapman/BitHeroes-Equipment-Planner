@@ -2378,8 +2378,8 @@ export const equipment = {
 			flat: false
 		}
 	},
-	visage_of_atlantis: {
-		name: "Visage Of Atlantis",
+	visage_of_atlante: {
+		name: "Visage Of Atlante",
 		type: "set",
 		slot: "Head",
 		image: "",
@@ -2393,8 +2393,8 @@ export const equipment = {
 			flat: false
 		}
 	},
-	greatplate_of_atlantis: {
-		name: "Greatplate Of Atlantis",
+	greatplate_of_atlante: {
+		name: "Greatplate Of Atlante",
 		type: "set",
 		slot: "Body",
 		image: "",
@@ -2408,8 +2408,8 @@ export const equipment = {
 			flat: false
 		}
 	},
-	battleaxe_of_atlantis: {
-		name: "Battleaxe Of Atlantis",
+	battleaxe_of_atlante: {
+		name: "Battleaxe Of Atlante",
 		type: "set",
 		slot: "Axe",
 		image: "",
@@ -2423,10 +2423,10 @@ export const equipment = {
 			flat: false
 		}
 	},
-	gem_of_atlantis: {
-		name: "Gem Of Atlantis",
+	gem_of_atlante: {
+		name: "Gem Of Atlante",
 		type: "set",
-		slot: "Ring",
+		slot: "Necklace",
 		image: "",
 		partOfSet: "nepulus",
 		effect: "",
@@ -2486,7 +2486,7 @@ export const equipment = {
 	last_hope_outbreak: {
 		name: "Last Hope Outbreak",
 		type: "set",
-		slot: "Body",
+		slot: "Offhand",
 		image: "",
 		partOfSet: "pangea",
 		effect: "",
@@ -2546,7 +2546,7 @@ export const equipment = {
 	battery_of_zeus: {
 		name: "Battery Of Zeus",
 		type: "set",
-		slot: "Ring",
+		slot: "Necklace",
 		image: "",
 		partOfSet: "lucernas",
 		effect: "",

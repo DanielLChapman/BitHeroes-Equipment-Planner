@@ -376,7 +376,7 @@ export const sets = {
 	nepulus: {
 		name: "Nepulus",
 		location: "t12 Titans",
-		items: ["Visage of Atlantis", "Greatplate Of Atlantis", "Battleaxe Of Atlantis", "Gem Of Atlantis"],
+		items: ["Visage of Atlante", "Greatplate Of Atlante", "Battleaxe Of Atlante", "Gem Of Atlante"],
 		description: "",
 		setBonuses: {
 			2: "Heals received from skills at 10% more effective",
