@@ -929,6 +929,12 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.damage += 4;
     stats.damage_reduction += 4;
     break;
+  case 'Nephilim Casque':
+    stats.speed += 5;
+    break;
+  case 'Nephilim Girdle':
+    stats.empower_chance += 5;
+    break;
   case 'Pyroc':
     if (count === 2) {
       stats.empower_chance += 2;
