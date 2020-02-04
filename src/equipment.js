@@ -2308,6 +2308,50 @@ export const equipment = {
 			flat: false
 		}
 	},
+	nephilim_jewel: {
+		name: "Nephilim Jewel",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		location: "t12 Titans",
+		effect: "4% Earth Resist, +4% Fire Damage, 10% Chance to Heal Self When You Are About To Die.",
+		shareID: "NJ",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		}
+	},
+	nephilim_casque: {
+		name: "Nephilim casque",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		location: "t12 Titans",
+		effect: "4% Fire Resist, +4% Water Damage, While Above 40% Health, Speed Increased By 5%.",
+		shareID: "NQ",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		}
+	},
 	nephilim_legacy: {
 		name: "Nephilim Legacy",
 		type: "mythic",
@@ -2317,6 +2361,28 @@ export const equipment = {
 		location: "t12 Brimstone",
 		effect: "+4% Damage, +4% Damage Reduction.",
 		shareID: "NL",
+	},
+	nephilim_girdle: {
+		name: "Nephilim Girdle",
+		type: "mythic",
+		slot: "Neck",
+		image: "",
+		partOfSet: "",
+		location: "t12 Brimstone",
+		effect: "4% Fire Resist, +4% Water Damage, Empower +1.25% Per Teammate alive",
+		shareID: "Ng",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		}
 	},
 	ring_of_hellish_fire: {
 		name: "Ring Of Hellish Fire",

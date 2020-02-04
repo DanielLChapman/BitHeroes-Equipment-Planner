@@ -70,15 +70,15 @@ export default class StatWindow extends React.Component {
                 <li>Quad Strike:<span className="stat-view">{this.props.stats.quad_strike}</span> </li>
                 <li>Richochet Chance:<span className="stat-view">{this.props.stats.richochet_chance}</span> </li>
                 <li>Healing:<span className="stat-view">{this.props.stats.healing}</span> </li>
-                <li>Fire Damage:<span className="stat-view damage-output">{this.props.stats.fire_damage}</span> </li>
+                <li>Fire Damage:<span className="stat-view ">{this.props.stats.fire_damage}</span> </li>
                 <li>Fire Resistance:<span className="stat-view">{this.props.stats.fire_resistance}</span> </li>
-                <li>Electric Damage:<span className="stat-view damage-output">{this.props.stats.electric_damage}</span> </li>
+                <li>Electric Damage:<span className="stat-view ">{this.props.stats.electric_damage}</span> </li>
                 <li>Electric Resistance:<span className="stat-view">{this.props.stats.electric_resistance}</span> </li>
-                <li>Water Damage:<span className="stat-view damage-output">{this.props.stats.water_damage}</span> </li>
+                <li>Water Damage:<span className="stat-view">{this.props.stats.water_damage}</span> </li>
                 <li>Water Resistance:<span className="stat-view">{this.props.stats.water_resistance}</span> </li>
-                <li>Air Damage:<span className="stat-view damage-output">{this.props.stats.air_damage}</span> </li>
+                <li>Air Damage:<span className="stat-view ">{this.props.stats.air_damage}</span> </li>
                 <li>Air Resistance:<span className="stat-view">{this.props.stats.air_resistance}</span> </li>
-                <li>Earth Damage:<span className="stat-view damage-output">{this.props.stats.earth_damage}</span> </li>
+                <li>Earth Damage:<span className="stat-view ">{this.props.stats.earth_damage}</span> </li>
                 <li>Earth Resistance:<span className="stat-view">{this.props.stats.earth_resistance}</span> </li>
             </ul>
             <h3>Link Calculated Mitigations: </h3>
