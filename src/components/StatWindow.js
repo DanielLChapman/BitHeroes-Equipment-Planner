@@ -20,13 +20,12 @@ export default class StatWindow extends React.Component {
         this.props.updateStats(event.currentTarget.value, typeOfS);
     }
 
-    componentWillReceiveProps(nextProps) {
-        let state = this.state;
-        if (typeof nextProps.currentLevel !== undefined ) {
-            state.accessoryLevel = nextProps.currentLevel
+    static getDerivedStateFromProps(props, state) {
+        if (typeof props.currentLevel !== undefined ) {
+            return {accessoryLevel: props.currentLevel}
         };
     }
-
+    
     render() {
         let linkCalcs = <ul></ul>
         if (this.props.stats.links) {

@@ -13,11 +13,15 @@ export default class Equipment extends Component {
 			slotReveal: false,
 		};
 	}
+	static getDerivedStateFromProps(props, state) {
+		return {mythicReveal: props.mythicReveal, setReveal: props.setReveal, slotReveal: props.slotReveal };
+	}
 
 	toggleState = (item) => {
-		let state = this.state;
-		state[item] = !this.state[item];
-		this.setState({...state});
+		this.props.handleOpenClose(item);
+		//let state = this.state;
+		//state[item] = !this.state[item];
+		//this.setState({...state});
 	}
 
 	render() {

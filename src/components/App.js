@@ -74,7 +74,10 @@ class App extends Component {
       showEnchants: false,
       showStats: false,
       accessoryLevel: 1,
-      stats: {}
+      stats: {},
+      mythicsOpen: false,
+      setsOpen: false,
+      slotsOpen: false
     }
   }
 
@@ -500,6 +503,15 @@ class App extends Component {
       break;
       case 'Stats':
         state.showStats = !state.showStats;
+        break;
+      case 'mythicReveal':
+        state.mythicsOpen = !state.mythicsOpen;
+      break; 
+      case 'setReveal':
+        state.setsOpen = !state.setsOpen;
+      break;
+      case 'slotReveal':
+        state.slotsOpen = !state.slotsOpen;
       break;
       default: 
       break;
@@ -593,7 +605,7 @@ class App extends Component {
           </div>
           <div className="left">
             <div className="equipped">
-              <Equipped removeItem={this.removeItem} equipped={this.state.equipped} />
+              <Equipped  isOpen={this.state.slotsOpen} handleOpenClose={this.handleOpenClose} removeItem={this.removeItem} equipped={this.state.equipped} />
             </div>
           </div>
           <div className="right">
@@ -601,11 +613,10 @@ class App extends Component {
               <BonusView bonuses={this.state.bonuses} />  
             </div>
             <div className="equipment">
-              <Equipment legendaries={this.state.legendaries} equipItem={this.equipItem} mythics={this.state.mythics} sets={this.state.sets} equipment={this.state.equipment} sortedEquipment={this.state.sortedEquipment} mounts={mountTypes}/>
+              <Equipment mythicReveal={this.state.mythicsOpen} setReveal={this.state.setsOpen} slotReveal={this.state.slotsOpen} legendaries={this.state.legendaries} equipItem={this.equipItem} mythics={this.state.mythics} sets={this.state.sets} equipment={this.state.equipment} sortedEquipment={this.state.sortedEquipment} mounts={mountTypes} handleOpenClose={this.handleOpenClose} isOpen={this.state.slotsOpen}/>
             </div>
           </div>
         </section>
-
       </div>
     );
   }

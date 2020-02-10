@@ -36,7 +36,6 @@ export default class RuneWindow extends Component {
         this.setState({...state});
     }
 
-    
     componentWillReceiveProps(nextProps) {
         if (typeof nextProps.runes !== undefined && nextProps.runes.length === 4) {
             let runes = nextProps.runes;
