@@ -15,7 +15,7 @@ export default class Equipped extends Component {
 								<div className={`equipped-container equpped-container-${x} equipped-${this.props.equipped[x].key}`} 
 									 key={x} 
 									 onClick={() => {this.props.removeItem(x)}}>
-									<EquippedView equipped={this.props.equipped[x]} />
+									<EquippedView equipped={this.props.equipped[x]} slot={''}/>
 								</div>
 							)
 						} else {
@@ -23,7 +23,7 @@ export default class Equipped extends Component {
 								<div className={`equipped-container equpped-container-${x} equipped-${this.props.equipped[x].type}`} 
 									 key={x} 
 									 onClick={() => {this.props.removeItem(x)}}>
-									<EquippedView equipped={this.props.equipped[x]} />
+									<EquippedView equipped={this.props.equipped[x]} slot={x}/>
 								</div>
 							)
 						}

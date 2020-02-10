@@ -31,8 +31,11 @@ const EquippedView = (props) => {
     else {
       return (
         <div className="nothing-to-see-here">
-          <h1>?</h1>
-          <span className="slot-name"></span>
+          <a href={`#${props.slot}`} style={{color: 'white', textDecoration: 'none', display: 'block',paddingBottom: '15px'}}>
+            <h1>? </h1>
+            <span className="slot-name"></span>
+          </a>
+          
         </div>
       )
     }
