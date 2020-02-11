@@ -32,8 +32,19 @@ export default class StatWindow extends React.Component {
             linkCalcs = <ul>
             <li>Health Efficiency: <span className="stat-view">{this.props.stats.links.healthEfficiency}</span></li>
             <li>Damage Mitigation: <span className="stat-view">{this.props.stats.links.damageMitigation}</span></li>
-            <li>Damage Bonus:<span className="stat-view">{this.props.stats.links.damageBonus}</span> </li>
-            <li>Damage Output: <span className="stat-view damage-output">{this.props.stats.links.damageOutput}</span></li>
+            <li>Physical Damage Bonus:<span className="stat-view">{this.props.stats.links.physicalDamageBonus}</span> </li>
+            <li>Physical Damage Output: <span className="stat-view damage-output">{this.props.stats.links.physicalDamageOutput}</span></li>
+            <li>Elementals:</li>
+            <li>Electric Damage Bonus:<span className="stat-view">{this.props.stats.links.electricDamageBonus}</span> </li>
+            <li>Electric Damage Output: <span className="stat-view damage-output">{this.props.stats.links.electricDamageOutput}</span></li>
+            <li>Water Damage Bonus:<span className="stat-view">{this.props.stats.links.waterDamageBonus}</span> </li>
+            <li>Water Damage Output: <span className="stat-view damage-output">{this.props.stats.links.waterDamageOutput}</span></li>
+            <li>Fire Damage Bonus:<span className="stat-view">{this.props.stats.links.fireDamageBonus}</span> </li>
+            <li>Fire Damage Output: <span className="stat-view damage-output">{this.props.stats.links.fireDamageOutput}</span></li>
+            <li>Earth Damage Bonus:<span className="stat-view">{this.props.stats.links.earthDamageBonus}</span> </li>
+            <li>Earth Damage Output: <span className="stat-view damage-output">{this.props.stats.links.earthDamageOutput}</span></li>
+            <li>Air Damage Bonus:<span className="stat-view">{this.props.stats.links.airDamageBonus}</span> </li>
+            <li>Air Damage Output: <span className="stat-view damage-output">{this.props.stats.links.airDamageOutput}</span></li>
         </ul> 
         }
         return (<div className="stat-window"  style={this.props.styling}>

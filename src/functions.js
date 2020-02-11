@@ -56,15 +56,73 @@ const linkCalculation = (stats) => {
   rB = Math.abs((1-rA-rD-rE)*stats.block/100);
   rR = Math.abs((1-rA-rD-rE-(rB*.5))*dR/100);
   s.damage += s.sp_damage;
+  s.fire_damage += s.sp_damage;
+  s.electric_damage += s.sp_damage;
+  s.water_damage += s.sp_damage;
+  s.air_damage += s.sp_damage;
+  s.earth_damage += s.sp_damage;
+  /* elementals 
+  fire_damage: 0,
+		fire_resistance: 0,
+		electric_damage: 0,
+		electric_resistance: 0,
+		water_damage: 0,
+		water_resistance: 0,
+		air_damage: 0,
+		air_resistance: 0,
+		earth_damage: 0,
+    earth_resistance: 0,
+  */
+  let tElectric = s.electric_damage*1 + s.water_damage*.0 + s.fire_damage*.75 + s.earth_damage * .75 + s.air_damage * .75 + s.damage * .75;
+  let tWater = s.electric_damage*.75 + s.water_damage*1 + s.fire_damage*0 + s.earth_damage * .75 + s.air_damage * .75 + s.damage * .75;
+  let tFire = s.electric_damage*.75 + s.water_damage*.75 + s.fire_damage*1 + s.earth_damage * 0 + s.air_damage * .75 + s.damage * .75;
+  let tEarth = s.electric_damage*.75 + s.water_damage*.75 + s.fire_damage*.75 + s.earth_damage * 1 + s.air_damage * 0 + s.damage * .75;
+  let tAir = s.electric_damage*.0 + s.water_damage*.75 + s.fire_damage*.75 + s.earth_damage * .75 + s.air_damage * 1 + s.damage * .75;
+  let tPhysical = s.electric_damage*.75 + s.water_damage*.75 + s.fire_damage*.75 + s.earth_damage * .75 + s.air_damage * .75 + s.damage * 1;
 
-  defaultLinks.damageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(s.damage))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
-  defaultLinks.damageBonus = parseFloat(defaultLinks.damageBonus.toFixed(2));
+  //this is now physical
+  defaultLinks.physicalDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tPhysical))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
+  defaultLinks.physicalDamageBonus = parseFloat(defaultLinks.physicalDamageBonus.toFixed(2));
+
+  //electric
+  defaultLinks.electricDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tElectric))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
+  defaultLinks.electricDamageBonus = parseFloat(defaultLinks.electricDamageBonus.toFixed(2));
+  //water
+  defaultLinks.waterDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tWater))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
+  defaultLinks.waterDamageBonus = parseFloat(defaultLinks.waterDamageBonus.toFixed(2));
+  //fire
+  defaultLinks.fireDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tFire))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
+  defaultLinks.fireDamageBonus = parseFloat(defaultLinks.fireDamageBonus.toFixed(2));
+  //earth
+  defaultLinks.earthDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tEarth))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
+  defaultLinks.earthDamageBonus = parseFloat(defaultLinks.earthDamageBonus.toFixed(2));
+  //air
+  defaultLinks.airDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tAir))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
+  defaultLinks.airDamageBonus = parseFloat(defaultLinks.airDamageBonus.toFixed(2));
+
+
 
   let tempTurns = 0;
   tempTurns = (((s.agility+s.power) / 2) * ((s.agility+s.power) / 2))/s.power/(30*(100+s.speed)/100);
 
-  defaultLinks.damageOutput = (tempTurns*2000)*defaultLinks.damageBonus/100;
-  defaultLinks.damageOutput = parseFloat(defaultLinks.damageOutput.toFixed(2));
+  //physical
+  defaultLinks.physicalDamageOutput = (tempTurns*2000)*defaultLinks.physicalDamageBonus/100;
+  defaultLinks.physicalDamageOutput = parseFloat(defaultLinks.physicalDamageOutput.toFixed(2));
+  //electric
+  defaultLinks.electricDamageOutput = (tempTurns*2000)*defaultLinks.electricDamageBonus/100;
+  defaultLinks.electricDamageOutput = parseFloat(defaultLinks.electricDamageOutput.toFixed(2));
+  //water
+  defaultLinks.waterDamageOutput = (tempTurns*2000)*defaultLinks.waterDamageBonus/100;
+  defaultLinks.waterDamageOutput = parseFloat(defaultLinks.waterDamageOutput.toFixed(2));
+  //fire
+  defaultLinks.fireDamageOutput = (tempTurns*2000)*defaultLinks.fireDamageBonus/100;
+  defaultLinks.fireDamageOutput = parseFloat(defaultLinks.fireDamageOutput.toFixed(2));
+  //earth
+  defaultLinks.earthDamageOutput = (tempTurns*2000)*defaultLinks.earthDamageBonus/100;
+  defaultLinks.earthDamageOutput = parseFloat(defaultLinks.earthDamageOutput.toFixed(2));
+  //air
+  defaultLinks.airDamageOutput = (tempTurns*2000)*defaultLinks.airDamageBonus/100;
+  defaultLinks.airDamageOutput = parseFloat(defaultLinks.airDamageOutput.toFixed(2));
 
   //damage mitigation
   defaultLinks.damageMitigation = (1-((1-rD-rE-(rB/2)-rR-rA)))*100;
