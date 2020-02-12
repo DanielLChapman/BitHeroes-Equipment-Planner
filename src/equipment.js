@@ -2616,7 +2616,7 @@ export const equipment = {
 		image: "",
 		partOfSet: "lucernas",
 		effect: "",
-		shareID: "ZB",
+		shareID: "ZO",
 		elemental: {
 			element_value: 4,
 			element_type: "air",

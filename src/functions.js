@@ -80,31 +80,52 @@ const linkCalculation = (stats) => {
   let tAir = s.electric_damage*.0 + s.water_damage*.75 + s.fire_damage*.75 + s.earth_damage * .75 + s.air_damage * 1 + s.damage * .75;
   let tPhysical = s.electric_damage*.75 + s.water_damage*.75 + s.fire_damage*.75 + s.earth_damage * .75 + s.air_damage * .75 + s.damage * 1;
 
-  //this is now physical
-  defaultLinks.physicalDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tPhysical))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
-  defaultLinks.physicalDamageBonus = parseFloat(defaultLinks.physicalDamageBonus.toFixed(2));
+  let elementsFL = [
+    {
+      element: 'electric',
+      tseries: tElectric
+    },
+    {
+      element: 'water',
+      tseries: tWater
+    },
+    {
+      element: 'fire',
+      tseries: tFire
+    },
+    {
+      element: 'earth',
+      tseries: tEarth
+    },
+    {
+      element: 'air',
+      tseries: tAir
+    },
+    {
+      element: 'physical',
+      tseries: tPhysical
+    }
+  ]
 
-  //electric
-  defaultLinks.electricDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tElectric))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
-  defaultLinks.electricDamageBonus = parseFloat(defaultLinks.electricDamageBonus.toFixed(2));
-  //water
-  defaultLinks.waterDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tWater))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
-  defaultLinks.waterDamageBonus = parseFloat(defaultLinks.waterDamageBonus.toFixed(2));
-  //fire
-  defaultLinks.fireDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tFire))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
-  defaultLinks.fireDamageBonus = parseFloat(defaultLinks.fireDamageBonus.toFixed(2));
-  //earth
-  defaultLinks.earthDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tEarth))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
-  defaultLinks.earthDamageBonus = parseFloat(defaultLinks.earthDamageBonus.toFixed(2));
-  //air
-  defaultLinks.airDamageBonus = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(tAir))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
-  defaultLinks.airDamageBonus = parseFloat(defaultLinks.airDamageBonus.toFixed(2));
-
-
+  for (let i = 0; i < elementsFL.length; i++) {
+    defaultLinks[elementsFL[i].element+"DamageBonus"] = ((100+(s.critical_chance*s.critical_damage)/100)*(100+(elementsFL[i].tseries ))/100)*((100+(s.empower_chance))/100)*((100+(s.dual_strike))/100)*(((s.quad_strike)/100*3+100)/100)*(100+(s.richochet_chance))/100;
+    defaultLinks[elementsFL[i].element+"DamageBonus"] = parseFloat(defaultLinks[elementsFL[i].element+"DamageBonus"].toFixed(2));
+  }
+  
 
   let tempTurns = 0;
   tempTurns = (((s.agility+s.power) / 2) * ((s.agility+s.power) / 2))/s.power/(30*(100+s.speed)/100);
 
+
+
+  for (let i = 0; i < elementsFL.length; i++) {
+    let e = elementsFL[i].element;
+    defaultLinks[e+"DamageOutput"] = (tempTurns*2000)*(defaultLinks[e+"DamageBonus"])/100;
+    
+    defaultLinks[e+"DamageOutput"] = parseFloat(defaultLinks[e+"DamageOutput"].toFixed(2));
+    }
+  
+    /*
   //physical
   defaultLinks.physicalDamageOutput = (tempTurns*2000)*defaultLinks.physicalDamageBonus/100;
   defaultLinks.physicalDamageOutput = parseFloat(defaultLinks.physicalDamageOutput.toFixed(2));
@@ -123,6 +144,7 @@ const linkCalculation = (stats) => {
   //air
   defaultLinks.airDamageOutput = (tempTurns*2000)*defaultLinks.airDamageBonus/100;
   defaultLinks.airDamageOutput = parseFloat(defaultLinks.airDamageOutput.toFixed(2));
+  */
 
   //damage mitigation
   defaultLinks.damageMitigation = (1-((1-rD-rE-(rB/2)-rR-rA)))*100;
