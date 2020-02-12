@@ -46,15 +46,14 @@ export const searchObjectArray = (objectArray, searchQuery, compareTo) => {
 }
 
 const linkCalculation = (stats) => {
-  let rA, rD, rE, rB, rR;
+  let rA, rD, rE, rB, pRR;
   let s = stats;
-  let dR = stats.damage_reduction > 75 ? 75 : stats.damage_reduction;
+  
   var defaultLinks = JSON.parse(JSON.stringify(base.default_stats.links));
   rA = stats.absorb_chance/100;
   rD = Math.abs((1-rA)*stats.deflect_chance/100);
   rE =  Math.abs((1-rA-rD)*stats.evade/100);
   rB = Math.abs((1-rA-rD-rE)*stats.block/100);
-  rR = Math.abs((1-rA-rD-rE-(rB*.5))*dR/100);
   s.damage += s.sp_damage;
   s.fire_damage += s.sp_damage;
   s.electric_damage += s.sp_damage;
@@ -73,6 +72,24 @@ const linkCalculation = (stats) => {
 		earth_damage: 0,
     earth_resistance: 0,
   */
+
+  //DEFENSE
+  //cap DR
+  let pDR = stats.damage_reduction > 75 ? 75 : stats.damage_reduction;
+  let eDR = stats.electric_resistance > 75 ? 75 : stats.electric_resistance;
+  let wDR = stats.water_resistance > 75 ? 75 : stats.water_resistance;
+  let fDR = stats.fire_resistance > 75 ? 75 : stats.fire_resistance;
+  let rDR = stats.earth_resistance > 75 ? 75 : stats.earth_resistance;
+  let aDR = stats.air_resistance > 75 ? 75 : stats.air_resistance;
+  //total
+  let trElectric = Math.min(75, eDR*1 + wDR*0 + fDR*.75 + rDR*.75 + aDR*.75 + pDR * .75);
+  let trWater = Math.min(eDR*.75 + wDR*1 + fDR*0 + rDR*.75 + aDR*.75 + pDR * .75);
+  let trFire = Math.min(eDR*.75 + wDR*.75 + fDR*1 + rDR*0 + aDR*.75 + pDR * .75);
+  let trEarth = Math.min(eDR*.75 + wDR*.75 + fDR*.75 + rDR*1 + aDR*0 + pDR * .75);
+  let trAir = Math.min(eDR*0 + wDR*.75 + fDR*.75 + rDR*.75 + aDR*1 + pDR *.75);
+  let trPhysical = Math.min(eDR*.75 + wDR*.75 + fDR*.75 + rDR*.75 + aDR*.75 + pDR * 1);
+
+  //OFFENSE
   let tElectric = s.electric_damage*1 + s.water_damage*.0 + s.fire_damage*.75 + s.earth_damage * .75 + s.air_damage * .75 + s.damage * .75;
   let tWater = s.electric_damage*.75 + s.water_damage*1 + s.fire_damage*0 + s.earth_damage * .75 + s.air_damage * .75 + s.damage * .75;
   let tFire = s.electric_damage*.75 + s.water_damage*.75 + s.fire_damage*1 + s.earth_damage * 0 + s.air_damage * .75 + s.damage * .75;
@@ -83,27 +100,33 @@ const linkCalculation = (stats) => {
   let elementsFL = [
     {
       element: 'electric',
-      tseries: tElectric
+      tseries: tElectric,
+      lowerseries: trElectric,
     },
     {
       element: 'water',
-      tseries: tWater
+      tseries: tWater,
+      lowerseries: trWater,
     },
     {
       element: 'fire',
-      tseries: tFire
+      tseries: tFire,
+      lowerseries: trFire,
     },
     {
       element: 'earth',
-      tseries: tEarth
+      tseries: tEarth,
+      lowerseries: trEarth,
     },
     {
       element: 'air',
-      tseries: tAir
+      tseries: tAir,
+      lowerseries: trAir,
     },
     {
       element: 'physical',
-      tseries: tPhysical
+      tseries: tPhysical,
+      lowerseries: trPhysical,
     }
   ]
 
@@ -118,18 +141,20 @@ const linkCalculation = (stats) => {
   
     defaultLinks[e+"DamageOutput"] = (tempTurns*2000)*(defaultLinks[e+"DamageBonus"])/100;
     defaultLinks[e+"DamageOutput"] = parseFloat(defaultLinks[e+"DamageOutput"].toFixed(2));
+
+    //damage mitigation
+
+    
+    //physical
+    let lseries = elementsFL[i].lowerseries;
+    pRR = Math.abs((1-rA-rD-rE-(rB*.5))*lseries/100);
+    defaultLinks[e+"DamageMitigation"] = (1-((1-rD-rE-(rB/2)-pRR-rA)))*100;
+    defaultLinks[e+"DamageMitigation"] = parseFloat(defaultLinks[e+"DamageMitigation"].toFixed(2));
+
+    //health efficiency
+    defaultLinks[e+'HealthEfficiency'] = (1/(1-rD-rD-(rB/2)-pRR-rA*2))*100;
+    defaultLinks[e+'HealthEfficiency'] = parseFloat(defaultLinks[e+'HealthEfficiency'].toFixed(2));
   }
-  
-
-  
-  //damage mitigation
-  defaultLinks.damageMitigation = (1-((1-rD-rE-(rB/2)-rR-rA)))*100;
-  defaultLinks.damageMitigation = parseFloat(defaultLinks.damageMitigation.toFixed(2));
-
-  //health efficiency
-  defaultLinks.healthEfficiency = (1/(1-rD-rD-(rB/2)-rR-rA*2))*100;
-  defaultLinks.healthEfficiency = parseFloat(defaultLinks.healthEfficiency.toFixed(2));
-
 
   return defaultLinks;
 }
