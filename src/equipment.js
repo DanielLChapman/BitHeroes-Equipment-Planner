@@ -2515,7 +2515,7 @@ export const equipment = {
 		elemental: {
 			element_value: 4,
 			element_type: "earth",
-			element_modifier: "resist",
+			element_modifier: "resistance",
 			flat: false
 		}
 	},
@@ -2530,7 +2530,7 @@ export const equipment = {
 		elemental: {
 			element_value: 4,
 			element_type: "earth",
-			element_modifier: "resist",
+			element_modifier: "resistance",
 			flat: false
 		}
 	},
@@ -2545,7 +2545,7 @@ export const equipment = {
 		elemental: {
 			element_value: 4,
 			element_type: "earth",
-			element_modifier: "resist",
+			element_modifier: "resistance",
 			flat: false
 		}
 	},
@@ -2560,7 +2560,7 @@ export const equipment = {
 		elemental: {
 			element_value: 4,
 			element_type: "earth",
-			element_modifier: "resist",
+			element_modifier: "resistance",
 			flat: false
 		}
 	},
