@@ -691,7 +691,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.redirect_chance += 5;
     break;
   case 'Moon Collage':
-    stats.damage += 50;
+    stats.damage += 5.5;
     break;
   case 'Mewmeck':
     stats.damage += 1;
@@ -714,7 +714,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.evade += 1;
     break;
   case 'Twitch':
-    stats.damage_reduction += 8;
+    stats.damage_reduction += 4.5;
     break;
   case 'Radiance':
     stats.damage += .75 * parseInt(numMythics, 10);
@@ -930,7 +930,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     }
     break;
   case 'Blind Souls':
-    stats.absorb_chance += 25;
+    stats.absorb_chance += 5;
     break;
   case "Conquerors Fury":
     stats.empower_chance += 4;
