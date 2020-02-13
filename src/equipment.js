@@ -2365,7 +2365,7 @@ export const equipment = {
 	nephilim_girdle: {
 		name: "Nephilim Girdle",
 		type: "mythic",
-		slot: "Neck",
+		slot: "Necklace",
 		image: "",
 		partOfSet: "",
 		location: "t12 Brimstone",
