@@ -1,3 +1,72 @@
+export const sortEquipment = (equipment, objectBool = true) => {
+	let oB = objectBool;
+
+	var sortedEquipment, mythics = {}, legendaries = {};
+
+	if (oB) {
+		sortedEquipment= {
+			mainhands: {},
+			offhands: {},
+			heads: {},
+			bodies: {},
+			necklaces: {},
+			rings: {},
+			accessories: {},
+			pets: {}
+		  }
+	} else {
+		sortedEquipment =  {
+			mainhands: [],
+			offhands: [],
+			heads: [],
+			bodies: [],
+			necklaces: [],
+			rings: [],
+			accessories: [],
+			pets: []
+		};
+	}
+
+	Object.keys(equipment).forEach( (x) => {
+
+		equipment[x].image = `${x}.png`
+
+		if (equipment[x].type === "mythic") {
+			mythics[x] = equipment[x];
+		} else if (equipment[x].type ==="legendary") {
+			legendaries[x] = equipment[x];
+		}
+
+		switch(equipment[x].slot) {
+			case 'Offhand':
+				!oB ? sortedEquipment.offhands.push(equipment[x]) : sortedEquipment.offhands[x] = equipment[x];
+				break;
+			case 'Body':
+				!oB ? sortedEquipment.bodies.push(equipment[x]) : sortedEquipment.bodies[x] = equipment[x];
+				break;
+			case 'Head':
+				!oB ? sortedEquipment.heads.push(equipment[x]) : sortedEquipment.heads[x] = equipment[x];
+				break;
+			case 'Ring':
+				!oB ? sortedEquipment.rings.push(equipment[x]) : sortedEquipment.rings[x] = equipment[x];
+				break;
+			case 'Necklace':
+				!oB ? sortedEquipment.necklaces.push(equipment[x]) : sortedEquipment.necklaces[x] = equipment[x];
+				break;
+			case 'Pet':
+				!oB ? sortedEquipment.pets.push(equipment[x]) : sortedEquipment.pets[x] = equipment[x];
+				break;
+			case 'Accessory':
+				!oB ? sortedEquipment.accessories.push(equipment[x]) : sortedEquipment.accessories[x] = equipment[x];
+				break;
+			default: 
+				!oB ? sortedEquipment.mainhands.push(equipment[x]) : sortedEquipment.mainhands[x] = equipment[x];
+		};
+	});
+
+	return [sortedEquipment, mythics, legendaries];
+}
+
 //71
 export const equipment = {
 	phobos: {

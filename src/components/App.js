@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { sets } from '../sets';
-import { equipment } from '../equipment';
+import { equipment, sortEquipment } from '../equipment';
 import { enchantTypes, mountTypes, runeTypes } from '../stats';
 
 import Equipment from './Equipment';
@@ -82,42 +82,9 @@ class App extends Component {
   }
 
   componentDidMount () {
+    
     var sortedEquipment = this.state.sortedEquipment, mythics = {}, legendaries = {};
-
-    Object.keys(equipment).forEach( (x) => {
-      equipment[x].image = `${x}.png`
-
-      if (equipment[x].type === "mythic") {
-        mythics[x] = equipment[x];
-      } else if (equipment[x].type ==="legendary") {
-        legendaries[x] = equipment[x];
-      }
-      switch(equipment[x].slot) {
-        case 'Offhand':
-          sortedEquipment.offhands[x] = equipment[x];
-          break;
-        case 'Body':
-          sortedEquipment.bodies[x] = equipment[x];
-          break;
-        case 'Head':
-          sortedEquipment.heads[x] = equipment[x];
-          break;
-        case 'Ring':
-          sortedEquipment.rings[x] = equipment[x];
-          break;
-        case 'Necklace':
-          sortedEquipment.necklaces[x] = equipment[x];
-          break;
-        case 'Pet':
-          sortedEquipment.pets[x] = equipment[x];
-          break;
-        case 'Accessory':
-          sortedEquipment.accessories[x] = equipment[x];
-          break;
-        default: 
-          sortedEquipment.mainhands[x] = equipment[x];
-      };
-    });
+    [sortedEquipment, mythics, legendaries] = sortEquipment(equipment);
 
     Object.keys(sets).forEach( (x) => {
       Object.keys(sets[x].items).forEach( (y) => {
