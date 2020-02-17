@@ -10,7 +10,6 @@ import BonusView from './BonusView';
 import RuneWindow from './RuneWindow';
 import StatWindow from './StatWindow';
 import EnchantWindow from './EnchantWindow';
-import OptimizerWindow from './OptimizerWindow';
 
 import {calculateBonuses, convertName, searchObjectArray } from '../functions';
 
@@ -74,7 +73,6 @@ class App extends Component {
       showRunes: false,
       showEnchants: false,
       showStats: false,
-      showOptimizer: false,
       accessoryLevel: 1,
       stats: {},
       mythicsOpen: false,
@@ -383,6 +381,9 @@ class App extends Component {
 
   equipEnchants = (enchantObject) => {
     var eTS = enchantObject;
+
+
+
     let c = 0;
     Object.keys(eTS).forEach((x) => {
       if (c <= 5) {
@@ -470,9 +471,6 @@ class App extends Component {
       case 'Stats':
         state.showStats = !state.showStats;
         break;
-      case 'Optimizer':
-        state.showOptimizer = !state.showOptimizer
-        break;
       case 'mythicReveal':
         state.mythicsOpen = !state.mythicsOpen;
       break; 
@@ -541,7 +539,7 @@ class App extends Component {
   }
 
   render() {
-    let runeWindowStyling, enchantWindowStyling, statWindowStyling, optimizerWindowStyling;
+    let runeWindowStyling, enchantWindowStyling, statWindowStyling;
     const showStyling = {
       left: 0
     };
@@ -551,7 +549,6 @@ class App extends Component {
     runeWindowStyling = ((this.state.showRunes) ? showStyling : hideStyling);
     enchantWindowStyling = ((this.state.showEnchants) ? showStyling : hideStyling);
     statWindowStyling = ((this.state.showStats) ? showStyling : hideStyling);
-    optimizerWindowStyling = ((this.state.showOptimizer) ? showStyling : hideStyling);
 
     return (
       <div className="App">
@@ -568,13 +565,10 @@ class App extends Component {
           <StatWindow updateStats={this.updateStats} styling={statWindowStyling} stats={this.state.stats} modifyAccessoryLevel={this.modifyAccessory} currentLevel={this.state.accessoryLevel} openClose={this.handleOpenClose}/>
           <RuneWindow styling={runeWindowStyling} equipRunes={this.equipRunes} runes={this.state.runes} openClose={this.handleOpenClose}/>
           <EnchantWindow styling={enchantWindowStyling} equipEnchants={this.equipEnchants} enchants={this.state.enchants} openClose={this.handleOpenClose} />
-          <OptimizerWindow styling={optimizerWindowStyling} equipEnchants={this.equipEnchants} enchants={this.state.enchants} openClose={this.handleOpenClose} />
-         
           <div className="sideNav">
             <div className="sideNav-stats" onClick={() => {this.handleOpenClose('Stats')}}>Stats</div>
             <div className="sideNav-runes" onClick={() => {this.handleOpenClose('Runes')}}>Runes</div>
             <div className="sideNav-enchants" onClick={() => {this.handleOpenClose('Enchants')}}>Enchants</div>
-            <div className="sideNav-optimizer" onClick={() => {this.handleOpenClose('Optimizer')}}>Optimize</div>
           </div>
           <div className="left">
             <div className="equipped">
