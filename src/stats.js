@@ -381,5 +381,13 @@ export const mountTypes = [
 		effect: "damage_reduction",
 		value:  1,
 		key: 'mount'
+	},
+	{
+		id: 18,
+		title: "Heal Power",
+		selected: false,
+		effect: "healing",
+		value:  8,
+		key: 'mount'
 	}
 ]
