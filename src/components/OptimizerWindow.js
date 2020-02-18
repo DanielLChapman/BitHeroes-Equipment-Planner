@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {searchOptions} from '../investigation';
+import {searchOptions, change} from '../investigation';
 
 export default class OptimizerWindow extends React.Component {
 
@@ -13,6 +13,7 @@ export default class OptimizerWindow extends React.Component {
             searchOptions: searchOptions,
             over4: false,
             searchOption: '',
+            equipmentOptions: [],
 		};
     }
 
@@ -36,11 +37,31 @@ export default class OptimizerWindow extends React.Component {
 
     handleChange = (e, option) => {
         let state = this.state;
+        let q = e.target.value;
         switch(option) {
             case 'SearchOption':
-                state.searchOption = e.target.value;
+                state.searchOption = q;
                 break;
+            case 'EquipmentOption':
+                //first make sure its not already a selected option
+                if (state.equipmentOptions.includes(q)) {
+                    let x = state.equipmentOptions.indexOf(q);
+                    state.equipmentOptions.splice(x, 1);
+                } else {
+                      //make sure its not over 4 selected unless over4 is true
+                       //add it to selected items
+                    if (state.equipmentOptions.length < 4) {
+                        state.equipmentOptions.push(e.target.value);
+                    }
+                    else if (state.over4) {
+                        state.equipmentOptions.push(e.target.value);
+                    }
+                }
 
+                //should be a way to allow them to be selected again, not sure the best way to do that yet.
+                //document.getElemenyById("").options.selected = false
+
+                break;
             default: 
                 console.log('uhhh-2')
         }
@@ -92,16 +113,18 @@ export default class OptimizerWindow extends React.Component {
                 Because of this, this will be limited to a maximum of 4 equipment choices. If you want to use more than 4 slots, then its at your own risk. <br />
                 <button className={`notice-button notice-button-${this.state.over4}`}  onClick={() => {
                     this.handleButtonClick('Four');
-                }}>Click here to allow more than 4</button>
+                }}>{
+                    !this.state.over4 ? 'Click here to allow more than 4' : '4 or more allowed'
+                }</button>
                 <br /><br />
                 Runes and Enchants haven't been added in yet, also planning on adding the option to ignore sets.<br /><br />
                 <b>1.</b> Select which option you want to search for. If nothing is selected, it wont run. <br />
                 <b>2.</b> Select which slots you want to search with, these will be what slots are changed <br />
-                <b>3.</b> Sit and wait, 4 slots can easily get above 1 million options so this might take some processing time <br />
+                <b>3.</b> Sit and wait, 4 slots can easily get above 1 million options so this might take some processing time <br /><br />
             </section>
             <section className="dropdown">
                 <form>
-                    <label for="search-options">Search For:</label>
+                    <label for="search-options">Search For:</label><br />
                     <select id="search-options" className="search-options" name="search-options" onChange={(e) => {
                         this.handleChange(e, 'SearchOption')
                     }}>
@@ -116,7 +139,31 @@ export default class OptimizerWindow extends React.Component {
                     <br />
                     {this.state.searchOption}
                     <br />
-                    {this.state.over4 === true}
+                    
+                </form>
+            </section>
+            <section className="dropdown">
+                <form>
+                    <label for="equipment-options">Search For:</label><br />
+                    <select id="equipment-options" className="equipment-options" name="equipment-options" onChange={(e) => {
+                        this.handleChange(e, 'EquipmentOption')
+                    }} multiple>
+                        {
+                            change.map((x, i) => {
+                                let styling;
+
+
+                                this.state.equipmentOptions.includes(x.reference) ? styling = 'force-color-dropdown'  : styling = ''; 
+
+                                return (
+                                    <option className={styling} value={x.reference} key={i}>{x.slot.toUpperCase()}</option>
+                                )
+                            })
+                        }
+                    </select>
+                    <br />
+                    <br />
+                    
                 </form>
             </section>
         </div>)

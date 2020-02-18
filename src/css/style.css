@@ -686,6 +686,12 @@ select option {
 .optimizer-window .notice-button-true {
   background-color: #fc0f40;
 }
+.optimizer-window .dropdown {
+  padding-top: 10px;
+}
+.optimizer-window .dropdown select {
+  margin-top: 5px;
+}
 .optimizer-window .notes {
   width: 80%;
   height: auto;
@@ -730,4 +736,7 @@ select option {
     padding-right: 0;
     width: 100%;
   }
+}
+.force-color-dropdown {
+  background-color: #0bafe4 !important;
 }

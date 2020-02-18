@@ -568,7 +568,8 @@ class App extends Component {
           <StatWindow updateStats={this.updateStats} styling={statWindowStyling} stats={this.state.stats} modifyAccessoryLevel={this.modifyAccessory} currentLevel={this.state.accessoryLevel} openClose={this.handleOpenClose}/>
           <RuneWindow styling={runeWindowStyling} equipRunes={this.equipRunes} runes={this.state.runes} openClose={this.handleOpenClose}/>
           <EnchantWindow styling={enchantWindowStyling} equipEnchants={this.equipEnchants} enchants={this.state.enchants} openClose={this.handleOpenClose} />
-          
+          <OptimizerWindow styling={optimizerWindowStyling} equipEnchants={this.equipEnchants} enchants={this.state.enchants} openClose={this.handleOpenClose} />
+         
           <div className="sideNav">
             <div className="sideNav-stats" onClick={() => {this.handleOpenClose('Stats')}}>Stats</div>
             <div className="sideNav-runes" onClick={() => {this.handleOpenClose('Runes')}}>Runes</div>

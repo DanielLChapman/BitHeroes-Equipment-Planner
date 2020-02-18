@@ -1,5 +1,4 @@
 
-
 export const searchOptions = [{
     id: 0,
     option: 'damage',
@@ -248,9 +247,10 @@ let runes;
 let enchantsImport;
 
 //will be brought in from application
-let change = [
+*/
+export let change = [
     {
-        symbol: '*',
+        symbol: '',
         slot: 'mainhand',
         reference: 'mainhands'
     },
@@ -280,7 +280,7 @@ let change = [
         reference: 'rings'
     },
     {
-        symbol: '*',
+        symbol: '',
         slot: 'accessory',
         reference: 'accessories'
     },
@@ -291,6 +291,8 @@ let change = [
     },
 
 ];
+
+/*
 
 //let numChange;
 //numChange = [sortedEquipment.mainhands.length,sortedEquipment.offhands.length,sortedEquipment.heads.length,sortedEquipment.bodies.length,sortedEquipment.necklaces.length,sortedEquipment.rings.length,sortedEquipment.accessories.length,16];
