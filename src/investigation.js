@@ -241,7 +241,7 @@ export const searchOptions = [{
     selected: false,
     key: 'Air Health Efficiency'
 }];
-
+/*
 
 //future, would be imported for calculations
 let runes;

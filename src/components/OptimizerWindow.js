@@ -11,20 +11,38 @@ export default class OptimizerWindow extends React.Component {
             note: false,
             howto: false,
             searchOptions: searchOptions,
+            over4: false,
+            searchOption: '',
 		};
     }
 
-    handleChange = (event) => {
+    handleButtonClick = (option) => {
         let state = this.state;
-        switch(event) {
+        switch(option) {
             case 'Note': 
                 state.note = !state.note;
                 break;
             case 'Howto':
                 state.howto = !state.howto;
                 break;
+            case 'Four':
+                state.over4 = !state.over4;
+                break; 
             default: 
                 console.log('uhhh')
+        }
+        this.setState({...state});
+    }
+
+    handleChange = (e, option) => {
+        let state = this.state;
+        switch(option) {
+            case 'SearchOption':
+                state.searchOption = e.target.value;
+                break;
+
+            default: 
+                console.log('uhhh-2')
         }
         this.setState({...state});
     }
@@ -53,7 +71,7 @@ export default class OptimizerWindow extends React.Component {
         return (<div className="optimizer-window"  style={this.props.styling}>
             <span className="x-close" onClick={() => {this.props.openClose('Optimizer')}}>x</span>
             <button className={`notice-button notice-button-${this.state.note}`} onClick={() => {
-                this.handleChange('Note');
+                this.handleButtonClick('Note');
             }}>Notice/Help</button>
             <section className="notes" style={openNote}>
                 First, this is experimental. This will loop through all possible equipment options with the slots selected below, searching for the highest stat value selected below. <br /><br />
@@ -65,13 +83,17 @@ export default class OptimizerWindow extends React.Component {
                 Any other questions, hit me up on discord RustyPeach#6491
             </section>
             <button className={`notice-button notice-button-${this.state.howto}`}  onClick={() => {
-                this.handleChange('Howto');
+                this.handleButtonClick('Howto');
             }}>How To Use</button>
             <section className="notes" style={openHowto}>
                 First, this is based on what is currently equipped in the application, including runes and enchants. <br /> 
                 Please make sure you have everything equipped that you will want to keep the same. If a slot is empty and not selected below, it will stay empty. <br /><br />
                 Second, the number of options available is extreme. Before runes and enchants are added in, there are millions of combinations avaiable. <br />
-                Because of this, this will be limited to a maximum of 4 equipment choices. <br /><br />
+                Because of this, this will be limited to a maximum of 4 equipment choices. If you want to use more than 4 slots, then its at your own risk. <br />
+                <button className={`notice-button notice-button-${this.state.over4}`}  onClick={() => {
+                    this.handleButtonClick('Four');
+                }}>Click here to allow more than 4</button>
+                <br /><br />
                 Runes and Enchants haven't been added in yet, also planning on adding the option to ignore sets.<br /><br />
                 <b>1.</b> Select which option you want to search for. If nothing is selected, it wont run. <br />
                 <b>2.</b> Select which slots you want to search with, these will be what slots are changed <br />
@@ -81,7 +103,7 @@ export default class OptimizerWindow extends React.Component {
                 <form>
                     <label for="search-options">Search For:</label>
                     <select id="search-options" className="search-options" name="search-options" onChange={(e) => {
-                        alert(e.target.value);
+                        this.handleChange(e, 'SearchOption')
                     }}>
                         {
                             this.state.searchOptions.map((x) => {
@@ -91,6 +113,10 @@ export default class OptimizerWindow extends React.Component {
                             })
                         }
                     </select>
+                    <br />
+                    {this.state.searchOption}
+                    <br />
+                    {this.state.over4 === true}
                 </form>
             </section>
         </div>)

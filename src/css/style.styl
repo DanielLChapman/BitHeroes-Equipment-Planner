@@ -78,24 +78,6 @@ body {
   @media screen and (max-width: 900px) {
     display: initial;
   }
-  ul, li {
-    padding: 0; 
-    margin: 0;
-    width: 300px;
-    list-style: none;
-    @media screen and (max-width: 400px) {
-      width: 100%;
-    }
-  }
-
-  li {
-    padding: 15px 40px 15px 40px;
-    @media screen and (max-width: 400px) {
-      padding-left: 0;
-      padding-right: 0;
-      width: 100%;
-    }
-  }
   .by-set-reveal, .by-mythic-reveal, .by-slot-reveal {
     width: 380px;
     margin: 0 auto;
@@ -626,9 +608,40 @@ body {
       left: 130px;
     }
   }
+  @media screen and (min-width: 1500px) {
+    left: 0px;
+    div {
+      &:hover {
+      left: 0;
+      }
+    }
+  }
   @media screen and (max-width: 900px) {
     top: 26px;
+    left: 0px;
+    div {
+      &:hover {
+      left: 0;
+      }
+    }
   }
+  @media screen and (max-width: 700px) {
+    left: -50px;
+    div {
+      &:hover {
+        left: 50px;
+      }
+    }
+  }
+  @media screen and (max-width: 620px) {
+    left: -110px;
+    div {
+      &:hover {
+      left: 110px;
+      }
+    }
+  }
+
   @media screen and (max-width: 414px) {
     left: -140px;
     div {
@@ -667,4 +680,35 @@ select.selector, select option {
   margin: 0 auto;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.menu {
+  padding: 0;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.container, .menu {
+  ul, li {
+    padding: 0; 
+    margin: 0;
+    width: 300px;
+    list-style: none;
+    @media screen and (max-width: 400px) {
+      width: 100%;
+    }
+  }
+
+  li {
+    padding: 15px 40px 15px 40px;
+    @media screen and (max-width: 400px) {
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+  }
 }

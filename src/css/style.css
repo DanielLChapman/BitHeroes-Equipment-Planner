@@ -84,29 +84,6 @@ body {
     display: initial;
   }
 }
-.container ul,
-.container li {
-  padding: 0;
-  margin: 0;
-  width: 300px;
-  list-style: none;
-}
-@media screen and (max-width: 400px) {
-  .container ul,
-  .container li {
-    width: 100%;
-  }
-}
-.container li {
-  padding: 15px 40px 15px 40px;
-}
-@media screen and (max-width: 400px) {
-  .container li {
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
-  }
-}
 .container .by-set-reveal,
 .container .by-mythic-reveal,
 .container .by-slot-reveal {
@@ -650,9 +627,37 @@ body {
 .sideNav div:hover {
   left: 130px;
 }
+@media screen and (min-width: 1500px) {
+  .sideNav {
+    left: 0px;
+  }
+  .sideNav div:hover {
+    left: 0;
+  }
+}
 @media screen and (max-width: 900px) {
   .sideNav {
     top: 26px;
+    left: 0px;
+  }
+  .sideNav div:hover {
+    left: 0;
+  }
+}
+@media screen and (max-width: 700px) {
+  .sideNav {
+    left: -50px;
+  }
+  .sideNav div:hover {
+    left: 50px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .sideNav {
+    left: -110px;
+  }
+  .sideNav div:hover {
+    left: 110px;
   }
 }
 @media screen and (max-width: 414px) {
@@ -687,4 +692,42 @@ select option {
   margin: 0 auto;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+.menu {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  font-family: 'Work Sans', sans-serif;
+}
+.container ul,
+.menu ul,
+.container li,
+.menu li {
+  padding: 0;
+  margin: 0;
+  width: 300px;
+  list-style: none;
+}
+@media screen and (max-width: 400px) {
+  .container ul,
+  .menu ul,
+  .container li,
+  .menu li {
+    width: 100%;
+  }
+}
+.container li,
+.menu li {
+  padding: 15px 40px 15px 40px;
+}
+@media screen and (max-width: 400px) {
+  .container li,
+  .menu li {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
 }
