@@ -57,10 +57,10 @@ export default class OptimizerWindow extends React.Component {
                         state.equipmentOptions.push(e.target.value);
                     }
                 }
-
-                //should be a way to allow them to be selected again, not sure the best way to do that yet.
-                //document.getElemenyById("").options.selected = false
-
+                let elements = document.getElementById("equipment-options").options;
+                for (let i = 0; i < elements.length; i++) {
+                    elements[i].selected = false;
+                }
                 break;
             default: 
                 console.log('uhhh-2')
@@ -124,7 +124,7 @@ export default class OptimizerWindow extends React.Component {
             </section>
             <section className="dropdown">
                 <form>
-                    <label for="search-options">Search For:</label><br />
+                    <label htmlFor="search-options">Search For:</label><br />
                     <select id="search-options" className="search-options" name="search-options" onChange={(e) => {
                         this.handleChange(e, 'SearchOption')
                     }}>
@@ -144,7 +144,7 @@ export default class OptimizerWindow extends React.Component {
             </section>
             <section className="dropdown">
                 <form>
-                    <label for="equipment-options">Search For:</label><br />
+                    <label htmlFor="equipment-options">Search For:</label><br />
                     <select id="equipment-options" className="equipment-options" name="equipment-options" onChange={(e) => {
                         this.handleChange(e, 'EquipmentOption')
                     }} multiple>

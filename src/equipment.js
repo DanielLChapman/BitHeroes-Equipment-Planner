@@ -2693,6 +2693,76 @@ export const equipment = {
 			flat: false
 		}
 	},
+	carbi: {
+		name: "Carbi",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "10% Water Resist, 20% Damage Reduction",
+		location: "Shop",
+		shareID: "bc"
+	},
+	gryphen_resistor: {
+		name: "Gryphen Resistor",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "22% Block Chance, 10% Deflect Chance, 5% Electric Resist",
+		location: "Shop",
+		shareID: "gr"
+	},
+	astaroth_flag: {
+		name: "Astaroth Flag",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "16% Damage, 16% Crit Chance",
+		location: "PvP reward - Astaroth",
+		shareID: "oh"
+	},
+	bit_chain: {
+		name: "Bit Chain",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "16% Damage, 16% Crit Chance",
+		location: "PvP Reward - 'B.I.T'",
+		shareID: "ba"
+	},
+	mirror_wings: {
+		name: "Mirror Wings",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "22% block Chance, 10% Deflect Chance",
+		location: "PvP Reward - Mirror",
+		shareID: "mw"
+	},
+	ancient_pendant: {
+		name: "Ancient Pendant",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "10% Damage, 10% Speed, 4% Dual Strike",
+		location: "PvP reward - Colonial",
+		shareID: "ap"
+	},
+	grim_ward: {
+		name: "Grim Ward",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "10% Damage Enrage, 10% Health, 5% Deflect Chance",
+		location: "PvP Reward - 'Grim'",
+		shareID: "gw"
+	},
 
 }
 

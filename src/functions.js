@@ -1054,6 +1054,38 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
       stats.healing += 15;
     }
     break;
+  case 'Astaroth Flag':
+      stats.critical_chance += 16+(1*accessoryUpgrade);
+      stats.damage += 16+(.5*accessoryUpgrade);
+      break;
+  case 'Bit Chain':
+    stats.critical_chance += 8
+    stats.damage += 10+(.5*accessoryUpgrade);
+    stats.dual_strike += 10+(.5*accessoryUpgrade);
+    break;
+  case 'Mirror Wings':
+    stats.block += 22 + (2*accessoryUpgrade);
+    stats.deflect_chance += 10;
+    break; 
+  case 'Ancient Pendant':
+    stats.speed += 10+(.5*accessoryUpgrade);
+    stats.damage += 10+(.5*accessoryUpgrade);
+    stats.dual_strike += 4;
+    break; 
+  case 'Grim Ward':
+    stats.damage_enrage += 10+(.5*accessoryUpgrade);
+    stats.health += 10+(.5*accessoryUpgrade);
+    stats.deflect_chance += 5;
+    break;  
+  case 'Carbi':
+    stats.water_resistance += 10;
+    stats.damage_reduction += 20+(1*accessoryUpgrade);
+    break;
+  case 'Gryphen Resistor':
+    stats.block += 22+(1*accessoryUpgrade);
+    stats.deflect_chance += 10;
+    setStatBonuses.electric_resistance += 5;
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);
