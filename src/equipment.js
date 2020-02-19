@@ -2763,8 +2763,217 @@ export const equipment = {
 		location: "PvP Reward - 'Grim'",
 		shareID: "gw"
 	},
+	dumglim: {
+		name: "Dumglim",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "61.5% Chance to shield team per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "7k"
+	},
+	beto_ben: {
+		name: "Beto Ben",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "41% Chance to attack furthest enemy per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "7l"
+	},
+	shelly: {
+		name: "Shelly",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "61.5% Chance to heal lowest health teammate and shield self per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "0g"
+	},
+	manila: {
+		name: "Manila",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "41 Chance to shield strongest per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "xl"
+	},
+	ringo: {
+		name: "Ringo",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "40.5 Chance to attack weakest enemy 2 times per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "ii"
+	},
+	jellbi: {
+		name: "Jellbi",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "40.5 Chance to deal electric damage 2 times to furthest enemy per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "hq"
+	},
+	ge: {
+		name: "Ge",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "61.5% Chance to heal weakest teammate per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "9z"
+	},
+	bia: {
+		name: "Bia",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "61.5% Chance to shield team and spread heal per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "vq"
+	},
+	thymos: {
+		name: "Thymos",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "61.5% Chance to heal team per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "qx"
+	},
+	pyr: {
+		name: "Pye",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "41% Chance to deal fire damage to the closest 3 enemies per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "ut"
+	},
+	rhoe: {
+		name: "Rhoe",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "61.5% Chance to deal water damage 3 times to weakest enemy per turn, on hit, OR when you get hit. Choose 1",
+		location: "Shop",
+		shareID: "v0"
+	},
+	boogie: {
+		name: "Boogie",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "20% Chance to spread heal per turn, when you get hit, and when you hit an enemy",
+		location: "Trials Reward - 'Boogie'",
+		shareID: "zp"
+	},
+	nemo: {
+		name: "Nemo",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "10% Channce to attack closest enemy per turn, when you get hit, and when you hit an enemy",
+		location: "PvP Reward - 'nemo",
+		shareID: "zi"
+	},
+	nerder: {
+		name: "DNerder",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "10% Chance to self-heal per turn, when you get hit, and when you hit an enemy",
+		location: "PvP Reward - 'Nerder'",
+		shareID: "lw"
+	},
+	pumkwim: {
+		name: "Pumkwim",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "20% Chance to attack enemy team per turn, when you get hit, and when you hit an enemy",
+		location: "PvP Reward - 'Pumkwim'",
+		shareID: "5o"
+	},
+	snut: {
+		name: "Snut",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "10% Chance to shield team per turn, when you get hit, and when you hit an enemy",
+		location: "PvP Reward - 'Snut'",
+		shareID: "4o"
+	},
+	rendar: {
+		name: "Rendar",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "40% Chance to shield self when you get hit",
+		location: "PvP Reward - 'Rendar'",
+		shareID: "hx"
+	},
+	nemrod: {
+		name: "Nemrod",
+		type: "legendary",
+		slot: "Pet",
+		image: "",
+		partOfSet: "",
+		effect: "41% Chance to heal weakest teammate and attack weakest enemy per turn, on hit, or when you hit an enemy. Choose 1.",
+		location: "PvP Reward - 'Nemrod'",
+		shareID: "7f"
+	}
 
 }
+
+//Not for public to use
+/*
+let x = [];
+
+const generateShareIDCollection = (equipment) => {
+	Object.keys(equipment).forEach((y) => {
+		x.push(equipment[y].shareID);
+	})
+}
+generateShareIDCollection(equipment);
+
+
+const generateShareID = () => {
+	let result           = '';
+   	var characters       = 'abcdefghijklmnopqrstuvwxyz0123456789';
+   	var charactersLength = characters.length;
+   	for ( var i = 0; i < 2; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+	if (x.includes(result)) {
+		generateShareID();
+	} else {
+		x.push(result);
+		console.log(result);
+	}
+}
+
+*/
 
 /* 
 [name]: {
