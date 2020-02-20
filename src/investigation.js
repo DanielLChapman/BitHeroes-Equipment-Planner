@@ -307,19 +307,34 @@ let maximum = {
         pet: {},
         mount: {}
     },
+    runes: [],
+    enchants: {
+
+    },
     value: 0
 };
+
+let currentlyEquipped = {
+    equipped: {
+
+    },
+    enchants: {},
+    runes: []
+}
 
 //what the value would equal
 let searchingFor;
 
 export const optimize = (searchingFor, options, currentlyEquipped, runes, enchants, index=0 ) => {
+    currentlyEquipped = {
+        equipped: currentlyEquipped,
+        enchants: enchants,
+        runes: runes,
+    }
     console.log({
         searchingFor,
         options,
         currentlyEquipped,
-        runes,
-        enchants,
         index
     });
 }

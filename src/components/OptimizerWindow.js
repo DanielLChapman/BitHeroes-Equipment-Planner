@@ -146,6 +146,7 @@ export default class OptimizerWindow extends React.Component {
                     <select id="search-options" className="search-options" name="search-options" onChange={(e) => {
                         this.handleChange(e, 'SearchOption')
                     }}>
+                        <option value="none">None</option>
                         {
                             this.state.searchOptions.map((x) => {
                                 return (

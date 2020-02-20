@@ -135,6 +135,73 @@ export const runeTypes = [{
 	effect: "deflect_chance",
 	value:1.25,
 	key: "rune"
+},{
+	id: '0',
+	title: "Fire Damage",
+	effect: "fire_damage",
+	value:2.5,
+	key: "rune"
+},{
+	id: '1',
+	title: "Water Damage",
+	effect: "water_damage",
+	value:2.5,
+	key: "rune"
+},{
+	id: '2',
+	title: "Electric Damage",
+	effect: "electric_damage",
+	value:2.5,
+	key: "rune"
+},{
+	id: '3',
+	title: "Air Damage",
+	effect: "air_damage",
+	value:2.5,
+	key: "rune"
+},{
+	id: '4',
+	title: "Earth Damage",
+	effect: "earth_damage",
+	value:2.5,
+	key: "rune"
+},{
+	id: '5',
+	title: "Fire Resistance",
+	effect: "fire_resistance",
+	value:2.5,
+	key: "rune"
+},{
+	id: '6',
+	title: "Water Resistance",
+	effect: "water_resistance",
+	value:2.5,
+	key: "rune"
+},{
+	id: '7',
+	title: "Electric Resistance",
+	effect: "electric_resistance",
+	value:2.5,
+	key: "rune"
+},{
+	id: '8',
+	title: "Air Resistance",
+	effect: "air_resistance",
+	value:2.5,
+	key: "rune"
+},{
+	id: '9',
+	title: "Earth Resistance",
+	effect: "earth_resistance",
+	value:2.5,
+	key: "rune"
+},
+{
+	id: 't',
+	title: "Mythic Empower",
+	effect: "empower_chance",
+	value: 3,
+	key: "rune"
 },
 {
 	id: 'x',
@@ -227,6 +294,33 @@ export const enchantTypes = [{
 	selected: false,
 	effect: "absorb_chance",
 	value:  .5,
+	key: 'enchant'
+},{
+	id: 'm',
+	title: "Impatient",
+	selected: false,
+	effect: "block",
+	effect2: "speed",
+	value:  2.5,
+	value2: 1.25,
+	key: 'enchant'
+},{
+	id: 'n',
+	title: "Patient",
+	selected: false,
+	effect: "damage_reduction",
+	effect2: "deflect_chance",
+	value:  1.25,
+	value2: .7,
+	key: 'enchant'
+},{
+	id: 'l',
+	title: "Quarrelsome",
+	selected: false,
+	effect: "deflect_chance",
+	effect2: "dual_strike",
+	value:  .7,
+	value2: 1.25,
 	key: 'enchant'
 },{
 	id: 'x',

@@ -42,6 +42,11 @@ export default class RuneWindow extends Component {
         if (state[enchant]['slot1'] === state[enchant]['slot2']) {
             state[enchant]['slot2'] = 'None';
         }
+        if (['Impatient', 'Patient','Quarrelsome'].includes(state[enchant]['slot1'])) {
+            state[enchant]['slot2'] = 'None';
+        } else if (['Impatient', 'Patient','Quarrelsome'].includes(state[enchant]['slot2'])) {
+            state[enchant]['slot1'] = 'None';
+        }
 
         this.setState({...state});
     }

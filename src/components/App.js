@@ -387,10 +387,10 @@ class App extends Component {
     Object.keys(eTS).forEach((x) => {
       if (c <= 5) {
   
-        let r1 = searchObjectArray(enchantTypes, 'title',eTS[x]['slot1']);
+        let r1 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot1']);
         let r2 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot2']);
   
-        let enchantArray = ["Absorb", "Block", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "None"];
+        let enchantArray = ["Absorb", "Block", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "Impatient", "Patient", "Quarrelsome", "None"];
   
         if (r1.value > 2 || !enchantArray.includes(r1.title)) {
           r1 =  {
@@ -574,7 +574,6 @@ class App extends Component {
             <div className="sideNav-stats" onClick={() => {this.handleOpenClose('Stats')}}>Stats</div>
             <div className="sideNav-runes" onClick={() => {this.handleOpenClose('Runes')}}>Runes</div>
             <div className="sideNav-enchants" onClick={() => {this.handleOpenClose('Enchants')}}>Enchants</div>
-            <div className="sideNav-optimizer" onClick={() => {this.handleOpenClose('Optimizer')}}>Optimize</div>
           </div>
         </section>
         <section className="container">
