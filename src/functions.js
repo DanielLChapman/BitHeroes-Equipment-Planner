@@ -193,6 +193,8 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       if (equipmentOn[x].name === "Elementarium") {
         ancientEquipped3 = true;
       }
+      stats.damage += 5;
+      stats.damage_reduction += 5;
     }
     if (equipmentOn[x]['elemental'] ) {
       if (! equipmentOn[x]['elemental'].flat) {
@@ -215,6 +217,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       }
       
     }
+
     if (equipmentOn[x].type === "mythic" ) {
       bonuses.mythics.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
@@ -371,46 +374,49 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     }
     tempURL += "enchantments=";
     Object.keys(enchantments).forEach((x) => {
-      if (c <= 5) {
+      if (!['alreadyUpdated', 'ownUpdate'].includes(x)) {
+      
+        if (c <= 5) {
 
-        let r1 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot1'].title);
-        let r2 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot2'].title);
+          let r1 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot1'].title);
+          let r2 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot2'].title);
 
-        let enchantArray = ["Block", "Absorb", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "None"];
+          let enchantArray = ["Block", "Absorb", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "None"];
 
-        if (r1.value > 2 || !enchantArray.includes(r1.title)) {
-          r1 =  {
-            id: 'x',
-            title: "None",
-            selected: false,
-            effect: "speed",
-            value:  0,
-            key: 'enchant'
-          };
-        }
-        if (r2.value > 2 || !enchantArray.includes(r2.title)) {
-          r2 =  {
-            id: 'x',
-            title: "None",
-            selected: false,
-            effect: "speed",
-            value:  0,
-            key: 'enchant'
-          };
-        }
+          if (r1.value > 2 || !enchantArray.includes(r1.title)) {
+            r1 =  {
+              id: 'x',
+              title: "None",
+              selected: false,
+              effect: "speed",
+              value:  0,
+              key: 'enchant'
+            };
+          }
+          if (r2.value > 2 || !enchantArray.includes(r2.title)) {
+            r2 =  {
+              id: 'x',
+              title: "None",
+              selected: false,
+              effect: "speed",
+              value:  0,
+              key: 'enchant'
+            };
+          }
 
-        stats[r2.effect] += r2.value;
-        stats[r1.effect] += r1.value;
-
-        if (doubled.enchant) {
           stats[r2.effect] += r2.value;
           stats[r1.effect] += r1.value;
+
+          if (doubled.enchant) {
+            stats[r2.effect] += r2.value;
+            stats[r1.effect] += r1.value;
+          }
+
+          tempURL2 += r1.id + "" + r2.id;
+
         }
-
-        tempURL2 += r1.id + "" + r2.id;
-
+        c++;
       }
-      c++;
     });
 
     if (tempURL2 !== "xxxxxxxxxxxx") {

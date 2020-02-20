@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import {enchantTypes} from '../stats';
 
 
-export default class RuneWindow extends Component {
+export default class EnchantWindow extends Component {
 
 	constructor(props) {
 		super(props);
@@ -286,7 +286,7 @@ export default class RuneWindow extends Component {
 	}
 }
 
-RuneWindow.propTypes = {
+EnchantWindow.propTypes = {
     openClose: PropTypes.func.isRequired,
 	enchants: PropTypes.object.isRequired,
 	equipEnchants: PropTypes.func.isRequired

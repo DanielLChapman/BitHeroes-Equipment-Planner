@@ -255,7 +255,12 @@ class App extends Component {
       } else {
         if (enchantmentsToState['enchantSlot' + eS]['slot1'].title !== r1.title) {
           enchantmentsToState['enchantSlot' + eS]['slot' + s] = r1;
-        } else {
+        } else if (['Impatient', 'Patient', 'Quarrelsome'].includes(enchantmentsToState['enchantSlot' + eS]['slot1'].title)) {
+          enchantmentsToState['enchantSlot' + eS]['slot2'] = searchObjectArray(enchantTypes, 'id', 'x');
+        } else if (['Impatient', 'Patient', 'Quarrelsome'].includes(enchantmentsToState['enchantSlot' + eS]['slot2'].title)) {
+          enchantmentsToState['enchantSlot' + eS]['slot1'] = searchObjectArray(enchantTypes, 'id', 'x');
+        }
+        else {
           enchantmentsToState['enchantSlot' + eS]['slot' + s] = searchObjectArray(enchantTypes, 'id', 'x');
         }
         s--;
@@ -385,38 +390,40 @@ class App extends Component {
     var eTS = enchantObject;
     let c = 0;
     Object.keys(eTS).forEach((x) => {
-      if (c <= 5) {
-  
-        let r1 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot1']);
-        let r2 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot2']);
-  
-        let enchantArray = ["Absorb", "Block", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "Impatient", "Patient", "Quarrelsome", "None"];
-  
-        if (r1.value > 2 || !enchantArray.includes(r1.title)) {
-          r1 =  {
-            id: 'x',
-            title: "None",
-            selected: false,
-            effect: "speed",
-            value:  0,
-            key: 'enchant'
-          };
+      if (!['alreadyUpdated', 'ownUpdate'].includes(x)) {
+        if (c <= 5) {
+    
+          let r1 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot1']);
+          let r2 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot2']);
+    
+          let enchantArray = ["Absorb", "Block", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "Impatient", "Patient", "Quarrelsome", "None"];
+    
+          if (r1.value > 2 || !enchantArray.includes(r1.title)) {
+            r1 =  {
+              id: 'x',
+              title: "None",
+              selected: false,
+              effect: "speed",
+              value:  0,
+              key: 'enchant'
+            };
+          }
+          if (r2.value > 2 || !enchantArray.includes(r2.title)) {
+            r2 =  {
+              id: 'x',
+              title: "None",
+              selected: false,
+              effect: "speed",
+              value:  0,
+              key: 'enchant'
+            };
+          }
+    
+          eTS[x]['slot2'] = r2;
+          eTS[x]['slot1'] = r1;
         }
-        if (r2.value > 2 || !enchantArray.includes(r2.title)) {
-          r2 =  {
-            id: 'x',
-            title: "None",
-            selected: false,
-            effect: "speed",
-            value:  0,
-            key: 'enchant'
-          };
-        }
-  
-        eTS[x]['slot2'] = r2;
-        eTS[x]['slot1'] = r1;
+        c++;
       }
-      c++;
     });
 
     let state = this.state;
@@ -574,6 +581,7 @@ class App extends Component {
             <div className="sideNav-stats" onClick={() => {this.handleOpenClose('Stats')}}>Stats</div>
             <div className="sideNav-runes" onClick={() => {this.handleOpenClose('Runes')}}>Runes</div>
             <div className="sideNav-enchants" onClick={() => {this.handleOpenClose('Enchants')}}>Enchants</div>
+
           </div>
         </section>
         <section className="container">

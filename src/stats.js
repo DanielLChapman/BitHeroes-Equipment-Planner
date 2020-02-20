@@ -314,7 +314,7 @@ export const enchantTypes = [{
 	value2: .7,
 	key: 'enchant'
 },{
-	id: 'l',
+	id: 'o',
 	title: "Quarrelsome",
 	selected: false,
 	effect: "deflect_chance",
