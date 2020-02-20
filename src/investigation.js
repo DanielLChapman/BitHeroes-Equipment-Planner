@@ -292,8 +292,6 @@ export let change = [
 
 ];
 
-/*
-
 //let numChange;
 //numChange = [sortedEquipment.mainhands.length,sortedEquipment.offhands.length,sortedEquipment.heads.length,sortedEquipment.bodies.length,sortedEquipment.necklaces.length,sortedEquipment.rings.length,sortedEquipment.accessories.length,16];
 
@@ -315,7 +313,20 @@ let maximum = {
 //what the value would equal
 let searchingFor;
 
+export const optimize = (searchingFor, options, currentlyEquipped, runes, enchants, index=0 ) => {
+    console.log({
+        searchingFor,
+        options,
+        currentlyEquipped,
+        runes,
+        enchants,
+        index
+    });
+}
+
 /*
+
+
 
 function recurveIncrement(index, equippedInput) {
     let i = index;

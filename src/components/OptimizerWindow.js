@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {searchOptions, change} from '../investigation';
+import {equipment, sortEquipment} from '../equipment';
+import {searchOptions, change, optimize} from '../investigation';
 
 export default class OptimizerWindow extends React.Component {
 
@@ -14,8 +15,16 @@ export default class OptimizerWindow extends React.Component {
             over4: false,
             searchOption: '',
             equipmentOptions: [],
+            sortedEquipment: sortEquipment(equipment, false)[0],
+            numberOfOptions: 0,
 		};
     }
+
+    static getDerivedStateFromProps(props, state) {
+        if (typeof props.equipped !== undefined ) {
+            return {equipped: props.equipped};
+        };
+    };
 
     handleButtonClick = (option) => {
         let state = this.state;
@@ -29,6 +38,9 @@ export default class OptimizerWindow extends React.Component {
             case 'Four':
                 state.over4 = !state.over4;
                 break; 
+            case 'Search':
+                optimize(state.searchOption, state.equipmentOptions, state.equipped, this.props.runes, this.props.enchants, 0);
+                break;
             default: 
                 console.log('uhhh')
         }
@@ -58,10 +70,21 @@ export default class OptimizerWindow extends React.Component {
                     }
                 }
                 let elements = document.getElementById("equipment-options").options;
+                let total = 1;
                 for (let i = 0; i < elements.length; i++) {
+                    if (this.state.equipmentOptions.includes(elements[i].value)) {
+                        if (elements[i].value !== 'mounts') {
+                            total *= this.state.sortedEquipment[elements[i].value].length;
+                        } else {
+                            total *= this.props.mounts.length;
+                        }
+                        
+                    }
                     elements[i].selected = false;
                 }
+                state.numberOfOptions = total;
                 break;
+                
             default: 
                 console.log('uhhh-2')
         }
@@ -72,12 +95,6 @@ export default class OptimizerWindow extends React.Component {
 
     }
 
-    static getDerivedStateFromProps(props, state) {
-        if (typeof props.equipped !== undefined ) {
-            return {equipped: props.equipped}
-        };
-    }
-    
     render() {
         let openNote = {display: 'none'};
         let openHowto = {display: 'none'};
@@ -91,6 +108,7 @@ export default class OptimizerWindow extends React.Component {
         
         return (<div className="optimizer-window"  style={this.props.styling}>
             <span className="x-close" onClick={() => {this.props.openClose('Optimizer')}}>x</span>
+            This is experimental. Read the notice.
             <button className={`notice-button notice-button-${this.state.note}`} onClick={() => {
                 this.handleButtonClick('Note');
             }}>Notice/Help</button>
@@ -101,7 +119,7 @@ export default class OptimizerWindow extends React.Component {
                 Then some items are only for under or over X % of health and not all the time, but those conditional values are calculated in (like divinity set) so it wouldn't be for every hit<br /><br />
                 These calculations are from Link's Excel Sheet with Elemental Effects added into the Calcualtions.<br /><br />
                 Each elemental damage reduction is reduced to 75% before combined damage reduction per element<br /><br />
-                Any other questions, hit me up on discord RustyPeach#6491
+                Any other questions or suggestions, hit me up on discord RustyPeach#6491
             </section>
             <button className={`notice-button notice-button-${this.state.howto}`}  onClick={() => {
                 this.handleButtonClick('Howto');
@@ -154,10 +172,12 @@ export default class OptimizerWindow extends React.Component {
 
 
                                 this.state.equipmentOptions.includes(x.reference) ? styling = 'force-color-dropdown'  : styling = ''; 
-
-                                return (
-                                    <option className={styling} value={x.reference} key={i}>{x.slot.toUpperCase()}</option>
-                                )
+                                if (x.reference !== 'accessories') {
+                                    return (
+                                        <option className={styling} value={x.reference} key={i}>{x.slot.toUpperCase()}</option>
+                                    )
+                                } 
+                                return null;
                             })
                         }
                     </select>
@@ -165,6 +185,15 @@ export default class OptimizerWindow extends React.Component {
                     <br />
                     
                 </form>
+            </section>
+            <section className="counter">
+                Total Number of Combinations To Search : {this.state.numberOfOptions}
+            </section>
+            <section className="submit">
+            <button className={`notice-button notice-button-${this.state.howto}`}  onClick={() => {
+                this.handleButtonClick('Search');
+            }}>Start Searching!</button>
+                
             </section>
         </div>)
     }
@@ -174,6 +203,7 @@ OptimizerWindow.propTypes = {
   equipped: PropTypes.object.isRequired,
   openClose: PropTypes.func.isRequired,
   styling: PropTypes.any.isRequired,
-  equipment: PropTypes.object.isRequired
+  runes: PropTypes.array.isRequired,
+  enchants: PropTypes.object.isRequired
 
 }

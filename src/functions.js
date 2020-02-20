@@ -1082,7 +1082,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.damage_reduction += 20+(1*accessoryUpgrade);
     break;
   case 'Gryphen Resistor':
-    stats.block += 22+(1*accessoryUpgrade);
+    stats.block += 22+(1.5*accessoryUpgrade);
     stats.deflect_chance += 10;
     setStatBonuses.electric_resistance += 5;
     break;
