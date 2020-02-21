@@ -381,7 +381,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
           let r1 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot1'].title);
           let r2 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot2'].title);
 
-          let enchantArray = ["Block", "Absorb", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "None"];
+          let enchantArray = ["Block", "Absorb", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "Impatient", "Patient", "Quarrelsome", "None"];
 
           if (r1.value > 2 || !enchantArray.includes(r1.title)) {
             r1 =  {
@@ -411,6 +411,20 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
             stats[r2.effect] += r2.value;
             stats[r1.effect] += r1.value;
           }
+
+          if (r1.effect2) {
+            stats[r1.effect2] += r1.value2;
+            if (doubled.enchant) {
+              stats[r1.effect2] += r1.value2;
+            }
+          }
+          if (r2.effect2) {
+            stats[r2.effect2] += r2.value2;
+            if (doubled.enchant) {
+              stats[r2.effect2] += r2.value2;
+            }
+          }
+
 
           tempURL2 += r1.id + "" + r2.id;
 

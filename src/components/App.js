@@ -429,6 +429,7 @@ class App extends Component {
     let state = this.state;
 
     state.enchants = {...eTS};
+    console.log(state.enchants);
 
     let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, eTS, this.state.accessoryLevel);
     let stats = bonuses.stats;

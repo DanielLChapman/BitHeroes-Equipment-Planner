@@ -1446,7 +1446,7 @@ export const equipment = {
 		slot: "Sword",
 		image: "",
 		partOfSet: "",
-		effect: "Bonus: 5% chance to use a random skill for free at the start of each turn",
+		effect: "Bonus: 5% chance to use a random skill for free at the start of each turn. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z7d3",
 		shareID: "hv"
 	},
@@ -1456,7 +1456,7 @@ export const equipment = {
 		slot: "Ring",
 		image: "",
 		partOfSet: "",
-		effect: "Reduces the amount of set items required for a set bonus by 1. Must have at least 2 items of a specific set equipped",
+		effect: "Reduces the amount of set items required for a set bonus by 1. Must have at least 2 items of a specific set equipped. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z8d3",
 		shareID: "sr"
 	},
@@ -1466,7 +1466,7 @@ export const equipment = {
 		slot: "Necklace",
 		image: "",
 		partOfSet: "",
-		effect: "Reduces the amount of set items required for a set bonus by 1. Must have at least 2 items of a specific set equipped",
+		effect: "Reduces the amount of set items required for a set bonus by 1. Must have at least 2 items of a specific set equipped, +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z8d3",
 		shareID: "sn"
 	},
@@ -1476,7 +1476,7 @@ export const equipment = {
 		slot: "Body",
 		image: "",
 		partOfSet: "",
-		effect: "Major Rune Bonuses Doubled. Only 1 bonus of this type may be active",
+		effect: "Major Rune Bonuses Doubled. Only 1 bonus of this type may be active. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z10d3",
 		shareID: "el"
 	},
@@ -1486,7 +1486,7 @@ export const equipment = {
 		slot: "Head",
 		image: "",
 		partOfSet: "",
-		effect: "Major Rune Bonuses Doubled. Only 1 bonus of this type may be active",
+		effect: "Major Rune Bonuses Doubled. Only 1 bonus of this type may be active. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z10d3",
 		shareID: "ez"
 	},
@@ -1742,7 +1742,7 @@ export const equipment = {
 		slot: "Laser Gun",
 		image: "",
 		partOfSet: "",
-		effect: "If you have 1 mythic equipped, double the bonuses",
+		effect: "If you have 1 mythic equipped, double the bonuses. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z9d3",
 		shareID: "yc"
 	},
@@ -1752,7 +1752,7 @@ export const equipment = {
 		slot: "Offhand",
 		image: "",
 		partOfSet: "",
-		effect: "If you have 1 mythic equipped, double the bonuses",
+		effect: "If you have 1 mythic equipped, double the bonuses. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z9d3",
 		shareID: "yo"
 	},
@@ -2942,7 +2942,27 @@ export const equipment = {
 		effect: "41% Chance to heal weakest teammate and attack weakest enemy per turn, on hit, or when you hit an enemy. Choose 1.",
 		location: "PvP Reward - 'Nemrod'",
 		shareID: "7f"
-	}
+	},
+	aryagn_sigh: {
+		name: "Aryagn Sigh",
+		type: "ancient",
+		slot: "Bow",
+		image: "",
+		partOfSet: "",
+		effect: "+5% Damage, +5% Damage Reduction, 50% Chance to attack the enemy with their weakest elemental resistance",
+		location: "Craft from z12d4",
+		shareID: "6f"
+	},
+	ladener_broom: {
+		name: "Ladener Broom",
+		type: "ancient",
+		slot: "Staff",
+		image: "",
+		partOfSet: "",
+		effect: "+5% Damage, +5% Damage Reduction, 50% Chance when you get hit to change all elemental resistants to the attack's",
+		location: "Craft from z12d4",
+		shareID: "5f"
+	},
 
 }
 
