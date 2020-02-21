@@ -83,11 +83,18 @@ const linkCalculation = (stats) => {
   let aDR = stats.air_resistance > 75 ? 75 : stats.air_resistance;
   //total
   let trElectric = Math.min(75, eDR*1 + wDR*0 + fDR*.75 + rDR*.75 + aDR*.75 + pDR * .75);
-  let trWater = Math.min(eDR*.75 + wDR*1 + fDR*0 + rDR*.75 + aDR*.75 + pDR * .75);
-  let trFire = Math.min(eDR*.75 + wDR*.75 + fDR*1 + rDR*0 + aDR*.75 + pDR * .75);
-  let trEarth = Math.min(eDR*.75 + wDR*.75 + fDR*.75 + rDR*1 + aDR*0 + pDR * .75);
-  let trAir = Math.min(eDR*0 + wDR*.75 + fDR*.75 + rDR*.75 + aDR*1 + pDR *.75);
-  let trPhysical = Math.min(eDR*.75 + wDR*.75 + fDR*.75 + rDR*.75 + aDR*.75 + pDR * 1);
+  let trWater = Math.min(75, eDR*.75 + wDR*1 + fDR*0 + rDR*.75 + aDR*.75 + pDR * .75);
+  let trFire = Math.min(75, eDR*.75 + wDR*.75 + fDR*1 + rDR*0 + aDR*.75 + pDR * .75);
+  let trEarth = Math.min(75, eDR*.75 + wDR*.75 + fDR*.75 + rDR*1 + aDR*0 + pDR * .75);
+  let trAir = Math.min(75, eDR*0 + wDR*.75 + fDR*.75 + rDR*.75 + aDR*1 + pDR *.75);
+  let trPhysical = Math.min(75, eDR*.75 + wDR*.75 + fDR*.75 + rDR*.75 + aDR*.75 + pDR * 1);
+
+  defaultLinks['totalPhysicalDamageReduction'] = trPhysical;
+  defaultLinks['totalElectricDamageReduction'] = trElectric;
+  defaultLinks['totalWaterDamageReduction'] = trWater;
+  defaultLinks['totalFireDamageReduction'] = trFire;
+  defaultLinks['totalEarthDamageReduction'] = trEarth;
+  defaultLinks['totalAirDamageReduction'] = trAir;
 
   //OFFENSE
   let tElectric = s.electric_damage*1 + s.water_damage*.0 + s.fire_damage*.75 + s.earth_damage * .75 + s.air_damage * .75 + s.damage * .75;

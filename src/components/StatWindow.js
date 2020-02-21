@@ -37,32 +37,38 @@ export default class StatWindow extends React.Component {
             <li>Damage Bonus:<span className="stat-view">{this.props.stats.links.physicalDamageBonus}</span> </li>
             <li>Damage Output: <span className="stat-view damage-output">{this.props.stats.links.physicalDamageOutput}</span></li>
             <li>Health Efficiency: <span className="stat-view">{this.props.stats.links.physicalHealthEfficiency}</span></li>
+            <li>Elemental - Physical DR: <span className="stat-view">{this.props.stats.links.totalPhysicalDamageReduction}</span></li>
             <li>Damage Mitigation: <span className="stat-view">{this.props.stats.links.physicalDamageMitigation}</span></li>
 
             <li>Electric: </li>
             <li style={{color: 'lightblue'}}>Damage Bonus:<span className="stat-view">{this.props.stats.links.electricDamageBonus}</span> </li>
             <li style={{color: 'lightblue'}}>Damage Output: <span className="stat-view damage-output">{this.props.stats.links.electricDamageOutput}</span></li>
             <li style={{color: 'lightblue'}}>Health Efficiency: <span className="stat-view">{this.props.stats.links.electricHealthEfficiency}</span></li>
+            <li style={{color: 'lightblue'}}>Elemental - Electric DR: <span className="stat-view">{this.props.stats.links.totalElectricDamageReduction}</span></li>
             <li style={{color: 'lightblue'}}>Damage Mitigation: <span className="stat-view">{this.props.stats.links.electricDamageMitigation}</span></li>
             <li>Water: </li>
             <li style={{color: 'aquamarine'}}>Damage Bonus:<span className="stat-view">{this.props.stats.links.waterDamageBonus}</span> </li>
             <li style={{color: 'aquamarine'}}>Damage Output: <span className="stat-view damage-output">{this.props.stats.links.waterDamageOutput}</span></li>
             <li style={{color: 'aquamarine'}}>Health Efficiency: <span className="stat-view">{this.props.stats.links.waterHealthEfficiency}</span></li>
+            <li style={{color: 'aquamarine'}}>Elemental - Water DR: <span className="stat-view">{this.props.stats.links.totalWaterDamageReduction}</span></li>
             <li style={{color: 'aquamarine'}}>Damage Mitigation: <span className="stat-view">{this.props.stats.links.waterDamageMitigation}</span></li>
             <li>Fire: </li>
             <li style={{color: 'firebrick'}}>Damage Bonus:<span className="stat-view">{this.props.stats.links.fireDamageBonus}</span> </li>
             <li style={{color: 'firebrick'}}>Damage Output: <span className="stat-view damage-output">{this.props.stats.links.fireDamageOutput}</span></li>
             <li style={{color: 'firebrick'}}>Health Efficiency: <span className="stat-view">{this.props.stats.links.fireHealthEfficiency}</span></li>
+            <li style={{color: 'firebrick'}}>Elemental - Fire DR: <span className="stat-view">{this.props.stats.links.totalFireDamageReduction}</span></li>
             <li style={{color: 'firebrick'}}>Damage Mitigation: <span className="stat-view">{this.props.stats.links.fireDamageMitigation}</span></li>
             <li>Earth:</li>
             <li style={{color: 'darkseagreen'}}>Earth Damage Bonus:<span className="stat-view">{this.props.stats.links.earthDamageBonus}</span> </li>
             <li style={{color: 'darkseagreen'}}>Earth Damage Output: <span className="stat-view damage-output">{this.props.stats.links.earthDamageOutput}</span></li>
             <li style={{color: 'darkseagreen'}}>Health Efficiency: <span className="stat-view">{this.props.stats.links.earthHealthEfficiency}</span></li>
+            <li style={{color: 'darkseagreen'}}>Elemental - Earth DR: <span className="stat-view">{this.props.stats.links.totalEarthDamageReduction}</span></li>
             <li style={{color: 'darkseagreen'}}>Damage Mitigation: <span className="stat-view">{this.props.stats.links.earthDamageMitigation}</span></li>
             <li>Air</li>
             <li style={{color: 'mintcream'}}>Air Damage Bonus:<span className="stat-view">{this.props.stats.links.airDamageBonus}</span> </li>
             <li style={{color: 'mintcream'}}>Air Damage Output: <span className="stat-view damage-output">{this.props.stats.links.airDamageOutput}</span></li>
             <li style={{color: 'mintcream'}}>Health Efficiency: <span className="stat-view">{this.props.stats.links.airHealthEfficiency}</span></li>
+            <li style={{color: 'mintcream'}}>Elemental - Air DR: <span className="stat-view">{this.props.stats.links.totalAirDamageReduction}</span></li>
             <li style={{color: 'mintcream'}}>Damage Mitigation: <span className="stat-view">{this.props.stats.links.airDamageMitigation}</span></li>
             
         </ul> 
