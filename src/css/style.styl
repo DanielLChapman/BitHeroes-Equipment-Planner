@@ -724,3 +724,30 @@ select.selector, select option {
 .force-color-dropdown {
   background-color: #0bafe4 !important
 }
+
+.about-page-ul {
+  text-align: left;  
+  list-style: outside;
+  li {
+    
+    padding: 0;
+    padding-bottom: 15px;
+    &:first-child {
+      padding-top: 15px; 
+    }
+    &:before{
+      content: "→";
+      padding-right: 5px;
+    }
+  }  
+  .about-amendum {
+      padding-left: 15px;
+      font-size: 12px;
+      padding-bottom: 6px;
+      margin-top: -10px;
+      &:before{
+      content: "";
+      padding-right: 0px;
+      }
+    }
+}

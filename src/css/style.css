@@ -740,3 +740,28 @@ select option {
 .force-color-dropdown {
   background-color: #0bafe4 !important;
 }
+.about-page-ul {
+  text-align: left;
+  list-style: outside;
+}
+.about-page-ul li {
+  padding: 0;
+  padding-bottom: 15px;
+}
+.about-page-ul li:first-child {
+  padding-top: 15px;
+}
+.about-page-ul li:before {
+  content: "→";
+  padding-right: 5px;
+}
+.about-page-ul .about-amendum {
+  padding-left: 15px;
+  font-size: 12px;
+  padding-bottom: 6px;
+  margin-top: -10px;
+}
+.about-page-ul .about-amendum:before {
+  content: "";
+  padding-right: 0px;
+}
