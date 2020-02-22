@@ -47,13 +47,17 @@ export const searchObjectArray = (objectArray, searchQuery, compareTo) => {
 
 const linkCalculation = (stats) => {
   let rA, rD, rE, rB, pRR;
+  let q;
+  if(stats.block >= 100) {
+    q = 100;
+  }
   let s = stats;
   
   var defaultLinks = JSON.parse(JSON.stringify(base.default_stats.links));
   rA = stats.absorb_chance/100;
   rD = Math.abs((1-rA)*stats.deflect_chance/100);
   rE =  Math.abs((1-rA-rD)*stats.evade/100);
-  rB = Math.abs((1-rA-rD-rE)*stats.block/100);
+  rB = Math.abs((1-rA-rD-rE)*q/100);
   s.damage += s.sp_damage;
   s.fire_damage += s.sp_damage;
   s.electric_damage += s.sp_damage;
