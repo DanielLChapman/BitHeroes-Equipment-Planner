@@ -2168,6 +2168,16 @@ export const equipment = {
 		location: "Zombo Invasion",
 		shareID: "sy"
 	},
+	amaglon: {
+		name: "Amaglon",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "+8% Block Change",
+		location: "Revenge Of The Turkey",
+		shareID: "y0"
+	},
 	//elementals
 	voltio: {
 		name: "Voltio",

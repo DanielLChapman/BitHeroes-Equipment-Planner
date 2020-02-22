@@ -1113,6 +1113,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.deflect_chance += 10;
     setStatBonuses.electric_resistance += 5;
     break;
+  case 'Amaglon':
+    stats.block += 8;
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);
