@@ -2535,7 +2535,7 @@ export const equipment = {
 		image: "",
 		partOfSet: "nepulus",
 		effect: "",
-		shareID: "VG",
+		shareID: "VQ",
 		elemental: {
 			element_value: 4,
 			element_type: "water",
@@ -2943,8 +2943,8 @@ export const equipment = {
 		location: "PvP Reward - 'Nemrod'",
 		shareID: "7f"
 	},
-	aryagn_sigh: {
-		name: "Aryagn Sigh",
+	aryagn_sight: {
+		name: "Aryagn Sight",
 		type: "ancient",
 		slot: "Bow",
 		image: "",
