@@ -47,7 +47,7 @@ export const searchObjectArray = (objectArray, searchQuery, compareTo) => {
 
 const linkCalculation = (stats) => {
   let rA, rD, rE, rB, pRR;
-  let q;
+  let q = 0;
   if(stats.block >= 100) {
     q = 100;
   }
