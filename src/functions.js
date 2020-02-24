@@ -170,7 +170,7 @@ const linkCalculation = (stats) => {
   return defaultLinks;
 }
 
-export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [], enchantments = {}, accessoryLevel = 1) => {
+export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [], enchantments = {}, accessoryLevel = 1, t12 = true) => {
   let bonuses = {
     mythics: [],
     sets: {},
@@ -204,8 +204,11 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       if (equipmentOn[x].name === "Elementarium") {
         ancientEquipped3 = true;
       }
-      stats.damage += 5;
-      stats.damage_reduction += 5;
+      if (t12) {
+        stats.damage += 5;
+        stats.damage_reduction += 5;
+      }
+      
     }
     if (equipmentOn[x]['elemental'] ) {
       if (! equipmentOn[x]['elemental'].flat) {

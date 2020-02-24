@@ -765,3 +765,61 @@ select option {
   content: "";
   padding-right: 0px;
 }
+.stat-window .switch {
+  display: -webkit-box;
+  display: flex;
+  position: relative;
+  margin-left: 50%;
+  padding-top: 10px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.stat-window .onoffswitch {
+  position: relative;
+  width: 43px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  margin: 0 auto;
+}
+.stat-window .onoffswitch-checkbox {
+  display: none;
+}
+.stat-window .onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  height: 15px;
+  padding: 0;
+  line-height: 15px;
+  border: 2px solid #999;
+  border-radius: 15px;
+  background-color: #eee;
+  -webkit-transition: background-color 0.3s ease-in;
+  transition: background-color 0.3s ease-in;
+}
+.stat-window .onoffswitch-label:before {
+  content: "";
+  display: block;
+  width: 15px;
+  margin: 0px;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 26px;
+  border: 2px solid #999;
+  border-radius: 15px;
+  -webkit-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+.stat-window .onoffswitch-checkbox:checked + .onoffswitch-label {
+  background-color: #34a7c1;
+}
+.stat-window .onoffswitch-checkbox:checked + .onoffswitch-label,
+.stat-window .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+  border-color: #34a7c1;
+}
+.stat-window .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+  right: 0px;
+}

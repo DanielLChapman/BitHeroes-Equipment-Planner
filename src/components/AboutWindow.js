@@ -7,6 +7,8 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>UPDATES:</span>
             <ul className="about-page-ul">
+                <li>Added toggle to stat window for those people who dont have t12 ancients yet. Dont want to inflate numbers for people who haven't uptiered yet.</li>
+                <li>Block wasn't being capped at 100 in stats, so 140 block was adding 70% mitigation. This is corrected now.</li>
                 <li>Added New Mythic Enchants and Runes</li>
                 <li className={'about-amendum'}>Since the new enchants already have two substats, you can not have a second stat.<br />
                 If you are having issues with changing enchants with the new mythic ones, you need to remove them first.</li>

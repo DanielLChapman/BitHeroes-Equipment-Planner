@@ -81,7 +81,8 @@ class App extends Component {
       stats: {},
       mythicsOpen: false,
       setsOpen: false,
-      slotsOpen: false
+      slotsOpen: false,
+      t12: true,
     }
   }
 
@@ -336,7 +337,7 @@ class App extends Component {
       state.equipped.mount = item;
     }
 
-      let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel);
+      let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel, this.state.t12);
       let stats = bonuses.stats;
       state.stats = stats;
       state.bonuses = {...bonuses.bonuses};
@@ -373,7 +374,7 @@ class App extends Component {
     }
 
     state.runes = runes;
-    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, state.enchants, this.state.accessoryLevel, this.state.t12);
     let stats = bonuses.stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
@@ -432,7 +433,7 @@ class App extends Component {
 
     state.enchants = {...eTS};
 
-    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, eTS, this.state.accessoryLevel);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, eTS, this.state.accessoryLevel, this.state.t12);
     let stats = bonuses.stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
@@ -453,7 +454,7 @@ class App extends Component {
     let state = this.state;
     state.equipped[slot] = {};
 
-    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel, this.state.t12);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
     let stats = bonuses.stats;
@@ -493,7 +494,14 @@ class App extends Component {
       break;
       case 'slotReveal':
         state.slotsOpen = !state.slotsOpen;
-      break;
+        break;
+      case 't12DD':
+        state.t12 = !state.t12;
+        let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel, state.t12);
+        state.bonuses = {...bonuses.bonuses};
+        let stats = bonuses.stats;
+        state.stats = stats;
+        break;
       default: 
       break;
     }
@@ -513,7 +521,7 @@ class App extends Component {
         state.accessoryLevel = Math.floor(value);
       }
     }
-    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel,this.state.t12);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
     let stats = bonuses.stats;
@@ -537,7 +545,7 @@ class App extends Component {
       state.stats[stat] = 0;
     }
 
-    let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel);
+    let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12);
     let stats = bonuses.stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
@@ -579,7 +587,7 @@ class App extends Component {
         </header>
         <section className="menu">
           <AboutWindow />
-          <StatWindow updateStats={this.updateStats} styling={statWindowStyling} stats={this.state.stats} modifyAccessoryLevel={this.modifyAccessory} currentLevel={this.state.accessoryLevel} openClose={this.handleOpenClose}/>
+          <StatWindow updateStats={this.updateStats} styling={statWindowStyling} stats={this.state.stats} modifyAccessoryLevel={this.modifyAccessory} currentLevel={this.state.accessoryLevel} openClose={this.handleOpenClose} t12={this.state.t12} />
           <RuneWindow styling={runeWindowStyling} equipRunes={this.equipRunes} runes={this.state.runes} openClose={this.handleOpenClose}/>
           <EnchantWindow styling={enchantWindowStyling} equipEnchants={this.equipEnchants} enchants={this.state.enchants} openClose={this.handleOpenClose} />
           <OptimizerWindow styling={optimizerWindowStyling} equipped={this.state.equipped} mounts={mountTypes} runes={this.state.runes} enchants={this.state.enchants} openClose={this.handleOpenClose} />
