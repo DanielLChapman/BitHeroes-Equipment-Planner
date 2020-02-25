@@ -1070,9 +1070,6 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     }
     break;
   case 'Pangea':
-    if (count === 3) {
-      stats['earth_resistance'] += 5;
-    }
     if (count === 4) {
       stats.block += 40;
     }

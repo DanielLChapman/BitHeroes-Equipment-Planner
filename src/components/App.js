@@ -596,6 +596,7 @@ class App extends Component {
             <div className="sideNav-stats" onClick={() => {this.handleOpenClose('Stats')}}>Stats</div>
             <div className="sideNav-runes" onClick={() => {this.handleOpenClose('Runes')}}>Runes</div>
             <div className="sideNav-enchants" onClick={() => {this.handleOpenClose('Enchants')}}>Enchants</div>
+            <div className="sideNav-optimizer" onClick={() => {this.handleOpenClose('Optimizer')}}>Optimize</div>
             <div className="sideNav-About" onClick={() => {this.handleOpenClose('About')}}>About / Updates</div>
           </div>
         </section>
