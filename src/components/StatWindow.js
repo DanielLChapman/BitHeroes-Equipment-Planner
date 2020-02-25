@@ -87,9 +87,9 @@ export default class StatWindow extends React.Component {
             </label>
             
             <div className="switch"> 
-            T12 Ancients : 
+            
             <div className="onoffswitch">
-                <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch" onChange={() => {this.props.openClose('t12DD')}} checked={this.props.t12}/>
+            T12 Ancients : <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch" onChange={() => {this.props.openClose('t12DD')}} checked={this.props.t12}/>
                 <label className="onoffswitch-label" htmlFor="myonoffswitch"></label>
             </div>
             </div>

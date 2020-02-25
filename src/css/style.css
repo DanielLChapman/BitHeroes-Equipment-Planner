@@ -106,6 +106,17 @@ body {
 .container .by-mythic-reveal li ul li,
 .container .by-slot-reveal li ul li {
   cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.container .by-set-reveal li ul li:active,
+.container .by-mythic-reveal li ul li:active,
+.container .by-slot-reveal li ul li:active,
+.container .by-set-reveal li ul li:hover,
+.container .by-mythic-reveal li ul li:hover,
+.container .by-slot-reveal li ul li:hover {
+  box-shadow: 0 0 5px #000;
+  border: 3px solid #fedc5b;
 }
 .container .left,
 .container .right {
@@ -466,7 +477,8 @@ body {
 .rune-div,
 .enchant-div,
 .stat-window,
-.optimizer-window {
+.optimizer-window,
+.about-window {
   width: 320px;
   height: auto;
   max-height: 350px;
@@ -488,7 +500,8 @@ body {
   .rune-div,
   .enchant-div,
   .stat-window,
-  .optimizer-window {
+  .optimizer-window,
+  .about-window {
     height: 100vh;
   }
 }
@@ -496,7 +509,8 @@ body {
   .rune-div,
   .enchant-div,
   .stat-window,
-  .optimizer-window {
+  .optimizer-window,
+  .about-window {
     width: 220px;
     top: 0;
     margin-top: -20px;
@@ -505,7 +519,8 @@ body {
 .rune-div .x-close,
 .enchant-div .x-close,
 .stat-window .x-close,
-.optimizer-window .x-close {
+.optimizer-window .x-close,
+.about-window .x-close {
   position: absolute;
   right: 17px;
   top: 5px;
@@ -545,7 +560,8 @@ body {
 .rune-div .custom-select,
 .enchant-div .custom-select,
 .stat-window .custom-select,
-.optimizer-window .custom-select {
+.optimizer-window .custom-select,
+.about-window .custom-select {
   position: relative;
   display: block;
   max-width: 400px;
@@ -559,7 +575,8 @@ body {
 .rune-div .custom-select select,
 .enchant-div .custom-select select,
 .stat-window .custom-select select,
-.optimizer-window .custom-select select {
+.optimizer-window .custom-select select,
+.about-window .custom-select select {
   border: none;
   outline: none;
   background: transparent;
@@ -577,7 +594,8 @@ body {
 .rune-div .custom-select:after,
 .enchant-div .custom-select:after,
 .stat-window .custom-select:after,
-.optimizer-window .custom-select:after {
+.optimizer-window .custom-select:after,
+.about-window .custom-select:after {
   position: absolute;
   right: 0;
   top: 0;
@@ -593,7 +611,8 @@ body {
 }
 .rune-div button,
 .enchant-div button,
-.optimizer-window button {
+.optimizer-window button,
+.about-window button {
   margin-top: 15px;
   margin-top: 15px;
   width: 80%;
@@ -660,9 +679,9 @@ body {
     left: 110px;
   }
 }
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 460px) {
   .sideNav {
-    left: -140px;
+    left: -135px;
   }
   .sideNav div:hover {
     left: 140px;
@@ -680,19 +699,24 @@ select option {
   height: 35px;
   border: 1px solid #000;
 }
-.optimizer-window {
+.optimizer-window,
+.about-window {
   height: 350px;
 }
-.optimizer-window .notice-button-true {
+.optimizer-window .notice-button-true,
+.about-window .notice-button-true {
   background-color: #fc0f40;
 }
-.optimizer-window .dropdown {
+.optimizer-window .dropdown,
+.about-window .dropdown {
   padding-top: 10px;
 }
-.optimizer-window .dropdown select {
+.optimizer-window .dropdown select,
+.about-window .dropdown select {
   margin-top: 5px;
 }
-.optimizer-window .notes {
+.optimizer-window .notes,
+.about-window .notes {
   width: 80%;
   height: auto;
   margin: 0 auto;
@@ -722,7 +746,7 @@ select option {
   .menu ul,
   .container li,
   .menu li {
-    width: 100%;
+    width: 100% !important;
   }
 }
 .container li,
@@ -765,61 +789,33 @@ select option {
   content: "";
   padding-right: 0px;
 }
-.stat-window .switch {
-  display: -webkit-box;
-  display: flex;
-  position: relative;
-  margin-left: 50%;
-  padding-top: 10px;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+@media screen and (max-width: 450px) {
+  .about-window section {
+    width: 100%;
+    margin: initial;
+    padding: initial;
+  }
+  .about-window section ul {
+    width: 220px;
+    padding: 0;
+    margin: initial;
+    position: relative;
+  }
+  .about-window section ul li {
+    width: 220px;
+    position: relative;
+  }
 }
-.stat-window .onoffswitch {
-  position: relative;
-  width: 43px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  margin: 0 auto;
+@media screen and (max-width: 450px) {
+  .stat-window ul,
+  .about-window ul {
+    width: 110%;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+  }
 }
-.stat-window .onoffswitch-checkbox {
-  display: none;
-}
-.stat-window .onoffswitch-label {
-  display: block;
-  overflow: hidden;
-  cursor: pointer;
-  height: 15px;
-  padding: 0;
-  line-height: 15px;
-  border: 2px solid #999;
-  border-radius: 15px;
-  background-color: #eee;
-  -webkit-transition: background-color 0.3s ease-in;
-  transition: background-color 0.3s ease-in;
-}
-.stat-window .onoffswitch-label:before {
-  content: "";
-  display: block;
-  width: 15px;
-  margin: 0px;
-  background: #fff;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 26px;
-  border: 2px solid #999;
-  border-radius: 15px;
-  -webkit-transition: all 0.3s ease-in 0s;
-  transition: all 0.3s ease-in 0s;
-}
-.stat-window .onoffswitch-checkbox:checked + .onoffswitch-label {
-  background-color: #34a7c1;
-}
-.stat-window .onoffswitch-checkbox:checked + .onoffswitch-label,
-.stat-window .onoffswitch-checkbox:checked + .onoffswitch-label:before {
-  border-color: #34a7c1;
-}
-.stat-window .onoffswitch-checkbox:checked + .onoffswitch-label:before {
-  right: 0px;
+@media screen and (max-width: 900px) {
+  .current-bonuses {
+    min-height: 250px;
+  }
 }

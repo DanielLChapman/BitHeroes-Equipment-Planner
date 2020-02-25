@@ -92,6 +92,15 @@ body {
     }
     li ul li {
       cursor: pointer;
+      transition: .5s;
+    }
+    li ul li {
+      &:active, &:hover {
+        box-shadow: 0 0 5px #000;
+        border: 3px solid #fedc5b;
+      
+      }
+      
     }
   }
 
@@ -464,7 +473,7 @@ body {
 
 
 
-.rune-div, .enchant-div, .stat-window, .optimizer-window{
+.rune-div, .enchant-div, .stat-window, .optimizer-window, .about-window{
   width: 320px;
   height: auto;
   max-height: 350px;
@@ -529,7 +538,7 @@ body {
     }
   }
 }
-.rune-div, .enchant-div, .stat-window, .optimizer-window {
+.rune-div, .enchant-div, .stat-window, .optimizer-window, .about-window {
 .custom-select {
   position: relative;
   display: block;
@@ -574,7 +583,7 @@ body {
 
 }
 
-.rune-div button, .enchant-div button, .optimizer-window button {
+.rune-div button, .enchant-div button, .optimizer-window button, .about-window button {
   margin-top: 15px;
   margin-top: 15px;
   width: 80%;
@@ -642,8 +651,8 @@ body {
     }
   }
 
-  @media screen and (max-width: 414px) {
-    left: -140px;
+  @media screen and (max-width: 460px) {
+    left: -135px;
     div {
       &:hover {
         left: 140px;
@@ -667,7 +676,7 @@ select.selector, select option {
 
 }
 
-.optimizer-window {
+.optimizer-window, .about-window {
   height: 350px;
   .notice-button-true {
     background-color: mythic-red;  
@@ -680,7 +689,7 @@ select.selector, select option {
   }
 }
 
-.optimizer-window .notes {
+.optimizer-window .notes, .about-window .notes {
   width: 80%;
   height: auto;
   margin: 0 auto;
@@ -705,7 +714,7 @@ select.selector, select option {
     width: 300px;
     list-style: none;
     @media screen and (max-width: 400px) {
-      width: 100%;
+      width: 100% !important;
     }
   }
 
@@ -752,45 +761,39 @@ select.selector, select option {
     }
 }
 
-.stat-window {
-  .switch {
-    display: flex;
-    position: relative;
-    margin-left: 50%;
-    padding-top: 10px;
-    transform: translateX(-50%);
+
+.about-window section {
+  @media screen and (max-width: 450px) {
+    width: 100%;
+    margin: initial;
+    padding: initial;
+    
+    ul {
+      width: 220px;
+      padding: 0;
+      margin: initial;
+      position: relative;
+      li {
+        width: 220px;
+        position: relative;
+        
+      }
+    }  
   }
-  .onoffswitch {
-    position: relative; width: 43px;
-    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-    margin: 0 auto;
+  
 }
-.onoffswitch-checkbox {
-    display: none;
+
+.stat-window ul, .about-window ul {
+  @media screen and (max-width: 450px) {
+    width: 110%;
+    letter-spacing: .5px;
+    font-size: 14px;
+  }  
 }
-.onoffswitch-label {
-    display: block; overflow: hidden; cursor: pointer;
-    height: 15px; padding: 0; line-height: 15px;
-    border: 2px solid #999999; border-radius: 15px;
-    background-color: #EEEEEE;
-    transition: background-color 0.3s ease-in;
-}
-.onoffswitch-label:before {
-    content: "";
-    display: block; width: 15px; margin: 0px;
-    background: #FFFFFF;
-    position: absolute; top: 0; bottom: 0;
-    right: 26px;
-    border: 2px solid #999999; border-radius: 15px;
-    transition: all 0.3s ease-in 0s; 
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label {
-    background-color: #34A7C1;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
-   border-color: #34A7C1;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label:before {
-    right: 0px; 
-}
+
+.current-bonuses {
+  @media screen and (max-width: 900px) {
+    
+  min-height: 250px;
+  }
 }

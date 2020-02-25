@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AboutWindow = (props) => (
-    <div className="optimizer-window"  style={props.styling}>
+    <div className="about-window"  style={props.styling}>
         <span className="x-close" onClick={() => {props.openClose('About')}}>x</span>
         <section style={{paddingTop: '10px'}}>
 

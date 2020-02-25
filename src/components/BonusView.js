@@ -76,7 +76,7 @@ const BonusView = (props) => {
                 </div>
     }
 
-    return (<div>
+    return (<div className="current-bonuses">
       Current Bonuses: 
       {hasAncients}
       {hasMythics}
