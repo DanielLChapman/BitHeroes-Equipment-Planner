@@ -204,6 +204,41 @@ export const runeTypes = [{
 	key: "rune"
 },
 {
+	id: 'j',
+	title: "Mythic Absorb",
+	effect: "absorb_chance",
+	value: 1.5,
+	key: "rune"
+},
+{
+	id: 'k',
+	title: "Mythic Dual Strike",
+	effect: "dual_strike",
+	value: 3,
+	key: "rune"
+},
+{
+	id: 'm',
+	title: "Mythic Damage Enrage",
+	effect: "damage_enrage",
+	value: 3,
+	key: "rune"
+},
+{
+	id: 'n',
+	title: "Mythic Damage",
+	effect: "damage",
+	value: 3,
+	key: "rune"
+},
+{
+	id: 'o',
+	title: "Mythic Deflect",
+	effect: "deflect_chance",
+	value: 3,
+	key: "rune"
+},
+{
 	id: 'x',
 	title: "None",
 	effect: "dual_strike",
