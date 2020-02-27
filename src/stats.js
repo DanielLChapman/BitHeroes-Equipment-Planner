@@ -338,7 +338,8 @@ export const enchantTypes = [{
 	effect2: "speed",
 	value:  2.5,
 	value2: 1.25,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 'n',
 	title: "Passionate (DR Deflect)",
@@ -347,7 +348,8 @@ export const enchantTypes = [{
 	effect2: "deflect_chance",
 	value:  1.25,
 	value2: .7,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 'o',
 	title: "Quarrelsome (Deflect DS)",
@@ -356,7 +358,8 @@ export const enchantTypes = [{
 	effect2: "dual_strike",
 	value:  .7,
 	value2: 1.25,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 'p',
 	title: "Hearty (Block Lifesteal)",
@@ -365,14 +368,16 @@ export const enchantTypes = [{
 	effect2: "life_steal",
 	value:  2.5,
 	value2: 1.25,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 'q',
 	title: "Balanced (Damage)",
 	selected: false,
 	effect: "damage",
 	value:  2.5,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 'r',
 	title: "Unstable (Damage Deflect)",
@@ -381,14 +386,16 @@ export const enchantTypes = [{
 	effect2: "deflect",
 	value:  1.25,
 	value2: .7,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 's',
 	title: "Dextrous (DR)",
 	selected: false,
 	effect: "damage_reduction",
 	value:  2.5,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 't',
 	title: "Respected (DR Empower)",
@@ -397,7 +404,8 @@ export const enchantTypes = [{
 	effect2: "empower_chance",
 	value:  1.25,
 	value2: 1.25,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 'u',
 	title: "Kind (DR + Health)",
@@ -406,7 +414,8 @@ export const enchantTypes = [{
 	effect2: "health",
 	value:  1.25,
 	value2: 1.25,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 'v',
 	title: "Lean (DR Lifesteal)",
@@ -415,14 +424,16 @@ export const enchantTypes = [{
 	effect2: "life_Steal",
 	value:  1.25,
 	value2: 1.25,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 'w',
 	title: "Eager (Deflect)",
 	selected: false,
 	effect: "deflect_chance",
 	value:  1.4,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 'y',
 	title: "Quick (Deflect Evade)",
@@ -431,7 +442,8 @@ export const enchantTypes = [{
 	effect2: "evade",
 	value:  .7,
 	value2: 1.25,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 'z',
 	title: "Modest (Deflect Lifesteal)",
@@ -440,7 +452,8 @@ export const enchantTypes = [{
 	effect2: "life_steal",
 	value:  .7,
 	value2: 1.25,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: '1',
 	title: "Irritable (Deflect Speed)",
@@ -449,7 +462,8 @@ export const enchantTypes = [{
 	effect2: "speed",
 	value:  .7,
 	value2: 1.25,
-	key: 'enchant'
+	key: 'enchant',
+	mythic: true
 },{
 	id: 'x',
 	title: "None",

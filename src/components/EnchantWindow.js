@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
 import {enchantTypes} from '../stats';
+import {searchObjectArray} from '../functions';
 
 
 export default class EnchantWindow extends Component {
@@ -39,12 +40,13 @@ export default class EnchantWindow extends Component {
         
 
         state[enchant][slot] = event.currentTarget.value;
+        let enchantMythic = searchObjectArray(enchantTypes, 'title', state[enchant]['slot1']);
         if (state[enchant]['slot1'] === state[enchant]['slot2']) {
             state[enchant]['slot2'] = 'None';
         }
-        if (['Impatient', 'Patient','Quarrelsome'].includes(state[enchant]['slot1'])) {
+        if (enchantMythic.mythic) {
             state[enchant]['slot2'] = 'None';
-        } else if (['Impatient', 'Patient','Quarrelsome'].includes(state[enchant]['slot2'])) {
+        } else if (enchantMythic.mythic) {
             state[enchant]['slot1'] = 'None';
         }
 
