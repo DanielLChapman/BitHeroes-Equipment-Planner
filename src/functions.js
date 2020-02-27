@@ -395,8 +395,11 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
           let r1 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot1'].title);
           let r2 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot2'].title);
 
-          let enchantArray = ["Block", "Absorb", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "Impatient", "Patient", "Quarrelsome", "None"];
-
+          let enchantArray = [];
+          for (var i = 0; i < enchantTypes.length; i++) {
+            enchantArray.push(enchantTypes[i].title);
+          } 
+          
           if (r1.value > 2 || !enchantArray.includes(r1.title)) {
             r1 =  {
               id: 'x',

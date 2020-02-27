@@ -398,10 +398,13 @@ class App extends Component {
     
           let r1 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot1']);
           let r2 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot2']);
-    
-          let enchantArray = ["Absorb", "Block", "Damage Reduction", "Damage", "Damage Enrage", "Deflect Chance", "Dual Strike", "Empower Chance", "Evade", "Health", "Life Steal", "Speed", "Impatient", "Patient", "Quarrelsome", "None"];
-    
-          if (r1.value > 2 || !enchantArray.includes(r1.title)) {
+          let enchantArray = [];
+          for (var i = 0; i < enchantTypes.length; i++) {
+            enchantArray.push(enchantTypes[i].title);
+          } 
+          
+          
+          if (r1.value > 3 || !enchantArray.includes(r1.title)) {
             r1 =  {
               id: 'x',
               title: "None",
@@ -411,7 +414,7 @@ class App extends Component {
               key: 'enchant'
             };
           }
-          if (r2.value > 2 || !enchantArray.includes(r2.title)) {
+          if (r2.value > 3 || !enchantArray.includes(r2.title)) {
             r2 =  {
               id: 'x',
               title: "None",
@@ -421,7 +424,7 @@ class App extends Component {
               key: 'enchant'
             };
           }
-    
+          console.log({r1, r2});
           eTS[x]['slot2'] = r2;
           eTS[x]['slot1'] = r1;
         }

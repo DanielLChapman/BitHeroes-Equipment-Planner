@@ -297,7 +297,7 @@ export const enchantTypes = [{
 	key: 'enchant'
 },{
 	id: 'm',
-	title: "Impatient",
+	title: "Impatient (Block Speed)",
 	selected: false,
 	effect: "block",
 	effect2: "speed",
@@ -306,7 +306,7 @@ export const enchantTypes = [{
 	key: 'enchant'
 },{
 	id: 'n',
-	title: "Patient",
+	title: "Passionate (DR Deflect)",
 	selected: false,
 	effect: "damage_reduction",
 	effect2: "deflect_chance",
@@ -315,10 +315,103 @@ export const enchantTypes = [{
 	key: 'enchant'
 },{
 	id: 'o',
-	title: "Quarrelsome",
+	title: "Quarrelsome (Deflect DS)",
 	selected: false,
 	effect: "deflect_chance",
 	effect2: "dual_strike",
+	value:  .7,
+	value2: 1.25,
+	key: 'enchant'
+},{
+	id: 'p',
+	title: "Hearty (Block Lifesteal)",
+	selected: false,
+	effect: "block",
+	effect2: "life_steal",
+	value:  2.5,
+	value2: 1.25,
+	key: 'enchant'
+},{
+	id: 'q',
+	title: "Balanced (Damage)",
+	selected: false,
+	effect: "damage",
+	value:  2.5,
+	key: 'enchant'
+},{
+	id: 'r',
+	title: "Unstable (Damage Deflect)",
+	selected: false,
+	effect: "damage",
+	effect2: "deflect",
+	value:  1.25,
+	value2: .7,
+	key: 'enchant'
+},{
+	id: 's',
+	title: "Dextrous (DR)",
+	selected: false,
+	effect: "damage_reduction",
+	value:  2.5,
+	key: 'enchant'
+},{
+	id: 't',
+	title: "Respected (DR Empower)",
+	selected: false,
+	effect: "damage_reduction",
+	effect2: "empower_chance",
+	value:  1.25,
+	value2: 1.25,
+	key: 'enchant'
+},{
+	id: 'u',
+	title: "Kind (DR + Health)",
+	selected: false,
+	effect: "damage_reduction",
+	effect2: "health",
+	value:  1.25,
+	value2: 1.25,
+	key: 'enchant'
+},{
+	id: 'v',
+	title: "Lean (DR Lifesteal)",
+	selected: false,
+	effect: "damage_reduction",
+	effect2: "life_Steal",
+	value:  1.25,
+	value2: 1.25,
+	key: 'enchant'
+},{
+	id: 'w',
+	title: "Eager (Deflect)",
+	selected: false,
+	effect: "deflect_chance",
+	value:  1.4,
+	key: 'enchant'
+},{
+	id: 'y',
+	title: "Quick (Deflect Evade)",
+	selected: false,
+	effect: "deflect_chance",
+	effect2: "evade",
+	value:  .7,
+	value2: 1.25,
+	key: 'enchant'
+},{
+	id: 'z',
+	title: "Modest (Deflect Lifesteal)",
+	selected: false,
+	effect: "deflect_chance",
+	effect2: "life_steal",
+	value:  .7,
+	value2: 1.25,
+	key: 'enchant'
+},{
+	id: '1',
+	title: "Irritable (Deflect Speed)",
+	selected: false,
+	effect: "deflect_chance",
+	effect2: "speed",
 	value:  .7,
 	value2: 1.25,
 	key: 'enchant'
