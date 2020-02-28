@@ -52,7 +52,10 @@ export default class Equipment extends Component {
 											<div className="set-bonuses">
 												{
 													Object.keys(this.props.sets[x].setBonuses).map((q, i) => {
-														return <p key={`${q}-i`}>{i + 2}/{this.props.sets[x].items.length}: {this.props.sets[x].setBonuses[q]}</p>
+														//if (this.props.sets[x].name === 'Apocalypse') {
+														//	console.log({q, i});
+														//}
+														return <p key={`${q}-i`}>{q}/{this.props.sets[x].items.length}: {this.props.sets[x].setBonuses[q]}</p>
 													})
 												}
 											</div>
