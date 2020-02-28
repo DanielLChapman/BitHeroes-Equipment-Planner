@@ -421,24 +421,32 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
             };
           }
 
-          stats[r2.effect] += r2.value;
-          stats[r1.effect] += r1.value;
+          //stats[r2.effect] += r2.value;
+          //stats[r1.effect] += r1.value;
+          //adding decimals seems to become a repeating decimal, this is a team fix. 
+          stats[r1.effect] = Math.round((stats[r1.effect]+r1.value)*1000)/1000;
+          stats[r2.effect] = Math.round((stats[r2.effect]+r2.value)*1000)/1000;
 
           if (doubled.enchant) {
-            stats[r2.effect] += r2.value;
-            stats[r1.effect] += r1.value;
+            stats[r1.effect] = Math.round((stats[r1.effect]+r1.value)*1000)/1000;
+            stats[r2.effect] = Math.round((stats[r2.effect]+r2.value)*1000)/1000;
+
           }
 
           if (r1.effect2) {
-            stats[r1.effect2] += r1.value2;
+            //stats[r1.effect2] += r1.value2;
+            stats[r1.effect2] = Math.round((stats[r1.effect2]+r1.value2)*1000)/1000;
             if (doubled.enchant) {
-              stats[r1.effect2] += r1.value2;
+              //stats[r1.effect2] += r1.value2;
+              stats[r1.effect2] = Math.round((stats[r1.effect2]+r1.value2)*1000)/1000;
             }
           }
           if (r2.effect2) {
-            stats[r2.effect2] += r2.value2;
+            //stats[r2.effect2] += r2.value2;
+            stats[r2.effect2] = Math.round((stats[r2.effect2]+r2.value2)*1000)/1000;
             if (doubled.enchant) {
-              stats[r2.effect2] += r2.value2;
+              //stats[r2.effect2] += r2.value2;
+              stats[r2.effect2] = Math.round((stats[r2.effect2]+r2.value2)*1000)/1000;
             }
           }
 

@@ -424,7 +424,7 @@ class App extends Component {
               key: 'enchant'
             };
           }
-          console.log({r1, r2});
+
           eTS[x]['slot2'] = r2;
           eTS[x]['slot1'] = r1;
         }
