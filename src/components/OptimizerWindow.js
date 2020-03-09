@@ -39,7 +39,7 @@ export default class OptimizerWindow extends React.Component {
                 state.over4 = !state.over4;
                 break; 
             case 'Search':
-                optimize(state.searchOption, state.equipmentOptions, state.equipped, this.props.runes, this.props.enchants, 0);
+                optimize(state.searchOption, state.equipmentOptions, state.equipped, this.props.runes, this.props.enchants, this.props.stats, this.state.sortedEquipment, 0);
                 break;
             default: 
                 console.log('uhhh')

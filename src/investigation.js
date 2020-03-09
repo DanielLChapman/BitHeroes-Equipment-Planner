@@ -1,3 +1,4 @@
+import {calculateBonuses} from './functions';
 
 export const searchOptions = [{
     id: 0,
@@ -243,8 +244,6 @@ export const searchOptions = [{
 /*
 
 //future, would be imported for calculations
-let runes;
-let enchantsImport;
 
 //will be brought in from application
 */
@@ -292,8 +291,7 @@ export let change = [
 
 ];
 
-//let numChange;
-//numChange = [sortedEquipment.mainhands.length,sortedEquipment.offhands.length,sortedEquipment.heads.length,sortedEquipment.bodies.length,sortedEquipment.necklaces.length,sortedEquipment.rings.length,sortedEquipment.accessories.length,16];
+let numChange, sortedE;
 
 let maximum = {
     equipment: {
@@ -314,79 +312,97 @@ let maximum = {
     value: 0
 };
 
-let currentlyEquipped = {
-    equipped: {
+let equip = 0;
 
-    },
-    enchants: {},
-    runes: []
-}
 
-//what the value would equal
-let searchingFor;
-
-export const optimize = (searchingFor, options, currentlyEquipped, runes, enchants, index=0 ) => {
+export const optimize = (searchingFor, options, currentlyEquipped, runes, enchants, stats, sortedEquipment, index=0 ) => {
     currentlyEquipped = {
         equipped: currentlyEquipped,
-        enchants: enchants,
-        runes: runes,
+        enchants,
+        runes,
+        stats,
+
     }
-    console.log({
-        searchingFor,
-        options,
-        currentlyEquipped,
-        index
-    });
+    //modifiying searchingFor to fit with algorithm already made
+    let sFR = [...change];
+
+    numChange = [sortedEquipment.mainhands.length,sortedEquipment.offhands.length,sortedEquipment.heads.length,sortedEquipment.bodies.length,sortedEquipment.necklaces.length,sortedEquipment.rings.length,sortedEquipment.accessories.length,16];
+
+    sortedE = sortedEquipment;
+
+    for (var x = 0; x < sFR.length; x++) {
+        if (options.includes(sFR[x].reference)) {
+            sFR[x].symbol = '*';
+        }
+    }
+
+    equip = 0;
+
+    recurveIncrement(0, currentlyEquipped, sFR);
 }
 
-/*
 
-
-
-function recurveIncrement(index, equippedInput) {
+function recurveIncrement(index, equippedInput, whatToChange) {
     let i = index;
-    let r = {
-        mainhand: equippedInput.mainhand || {},
-        offhand: equippedInput.offhand || {},
-        head: equippedInput.head || {},
-        body: equippedInput.body || {},
-        necklace: equippedInput.necklace || {},
-        ring: equippedInput.ring || {},
-        accessory: equippedInput.accessory || {},
-        pet: equippedInput.pet || {},
-        mount: equippedInput.mount || {}
+    let equipped = {
+        mainhand: equippedInput.equipped.mainhand || {},
+        offhand: equippedInput.equipped.offhand || {},
+        head: equippedInput.equipped.head || {},
+        body: equippedInput.equipped.body || {},
+        necklace: equippedInput.equipped.necklace || {},
+        ring: equippedInput.equipped.ring || {},
+        accessory: equippedInput.equipped.accessory || {},
+        pet: equippedInput.equipped.pet || {},
+        mount: equippedInput.equipped.mount || {}
     };
+    let runes = equippedInput.runes;
+    let enchants = equippedInput.enchants;
+    let stats = equippedInput.stats;
+    let r;
     
-    if (i >= equip.length-1) {
-        count++;
-        let bonuses = calculateBonuses([3500, 1800, 3000], r, runes, enchantsImport, 2);
+    console.log(whatToChange.length);
+    if (i === 8 ) {
+        let bonuses = calculateBonuses(stats, equipped, runes, enchants, 2);
         console.log(bonuses);
         //This is where calculations would be.
 
         //Would set a maximum of specified result
         return ; 
     }
-    if (change[i].symbol === '*') {
+    else if (whatToChange[i].symbol === '*') {
         //only change equipment on this stage
         let t = index + 1;
         for(let x = 0; x < numChange[i]; x++) {
             equip[i]+=1;
             try {
-                r[change[i].slot] = sortedEquipment[change[i].reference][x];
+                equipped[change[i].slot] = sortedE[whatToChange[i].reference][x];
             } catch (error) {
                 console.log({
                     i: i,
                     x: x,
                 });
-                console.log(sortedEquipment[change[i].reference][x]);
-                console.log(r[change[i].slot]);
+                console.log(sortedE[whatToChange[i].reference][x]);
+                console.log(equipped[change[i].slot]);
             }
-            recurveIncrement(t, r);
+            r = {
+                equipped,
+                enchants,
+                runes,
+                stats,
+        
+            }
+            recurveIncrement(t, r, whatToChange);
         }
     } else {
         i+=1;
-        recurveIncrement(i, r);
+        r = {
+            equipped,
+            enchants,
+            runes,
+            stats,
+    
+        }
+        recurveIncrement(i, r, whatToChange);
     }
     
 }
-*/
