@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {equipment, sortEquipment} from '../equipment';
 import {searchOptions, change, optimize} from '../investigation';
+import OptimizerNotice from './Optimizer/OptimizerNotice';
 
 export default class OptimizerWindow extends React.Component {
 
@@ -17,6 +18,8 @@ export default class OptimizerWindow extends React.Component {
             equipmentOptions: [],
             sortedEquipment: sortEquipment(equipment, false)[0],
             numberOfOptions: 0,
+            optimized: false,
+            optimizedEquipment: {}
 		};
     }
 
@@ -39,7 +42,8 @@ export default class OptimizerWindow extends React.Component {
                 state.over4 = !state.over4;
                 break; 
             case 'Search':
-                optimize(state.searchOption, state.equipmentOptions, state.equipped, this.props.runes, this.props.enchants, this.props.stats, this.state.sortedEquipment, 0);
+                document.getElementsByClassName('testing-space')[0].innerText = 'Loading';
+                optimize(state.searchOption, state.equipmentOptions, state.equipped, this.props.runes, this.props.enchants, this.props.stats, this.state.sortedEquipment, 0);             
                 break;
             default: 
                 console.log('uhhh')
@@ -83,6 +87,7 @@ export default class OptimizerWindow extends React.Component {
                     elements[i].selected = false;
                 }
                 state.numberOfOptions = total;
+                document.getElementsByClassName('testing-space')[0].innerText = 'Waiting' ;
                 break;
                 
             default: 
@@ -93,6 +98,14 @@ export default class OptimizerWindow extends React.Component {
 
     updateInputValue = (event) => {
 
+    }
+
+    handleOptimizedEquipment = (dataObject) => {
+        let state = this.state;
+        state.optimized = true; 
+        state.optimizedEquipment = dataObject;
+        this.setState(state);
+        window.optimizeEquipment = this;
     }
 
     render() {
@@ -109,37 +122,9 @@ export default class OptimizerWindow extends React.Component {
         return (<div className="optimizer-window"  style={this.props.styling}>
             <span className="x-close" onClick={() => {this.props.openClose('Optimizer')}}>x</span>
             This is experimental. Read the notice.
-            <button className={`notice-button notice-button-${this.state.note}`} onClick={() => {
-                this.handleButtonClick('Note');
-            }}>Notice/Help</button>
-            <section className="notes" style={openNote}>
-                First, this is experimental. This will loop through all possible equipment options with the slots selected below, searching for the highest stat value selected below. <br /><br />
-                Some of the equipment had to be normalized to a value that may not be accurate (like moon collage with weighted chances).<br /><br />
-                Other equipment doesn't even affect these values because I wasn't sure of how to add it to the calculations (like Necrosis)<br /><br />
-                Then some items are only for under or over X % of health and not all the time, but those conditional values are calculated in (like divinity set) so it wouldn't be for every hit<br /><br />
-                These calculations are from Link's Excel Sheet with Elemental Effects added into the Calcualtions.<br /><br />
-                Each elemental damage reduction is reduced to 75% before combined damage reduction per element<br /><br />
-                Any other questions or suggestions, hit me up on discord RustyPeach#6491
-            </section>
-            <button className={`notice-button notice-button-${this.state.howto}`}  onClick={() => {
-                this.handleButtonClick('Howto');
-            }}>How To Use</button>
-            <section className="notes" style={openHowto}>
-                First, this is based on what is currently equipped in the application, including runes and enchants. <br /> 
-                Please make sure you have everything equipped that you will want to keep the same. If a slot is empty and not selected below, it will stay empty. <br /><br />
-                Second, the number of options available is extreme. Before runes and enchants are added in, there are millions of combinations avaiable. <br />
-                Because of this, this will be limited to a maximum of 4 equipment choices. If you want to use more than 4 slots, then its at your own risk. <br />
-                <button className={`notice-button notice-button-${this.state.over4}`}  onClick={() => {
-                    this.handleButtonClick('Four');
-                }}>{
-                    !this.state.over4 ? 'Click here to allow more than 4' : '4 or more allowed'
-                }</button>
-                <br /><br />
-                Runes and Enchants haven't been added in yet, also planning on adding the option to ignore sets.<br /><br />
-                <b>1.</b> Select which option you want to search for. If nothing is selected, it wont run. <br />
-                <b>2.</b> Select which slots you want to search with, these will be what slots are changed <br />
-                <b>3.</b> Sit and wait, 4 slots can easily get above 1 million options so this might take some processing time <br /><br />
-            </section>
+            <OptimizerNotice styleProp={openNote} clickHandler={this.handleButtonClick} title={'Notice/Help'} note={this.state.note} />
+            <OptimizerNotice styleProp={openHowto} clickHandler={this.handleButtonClick} title={'How To Use'} note={this.state.howto} over4={this.state.over4}/>
+
             <section className="dropdown">
                 <form>
                     <label htmlFor="search-options">Search For:</label><br />
@@ -156,8 +141,7 @@ export default class OptimizerWindow extends React.Component {
                         }
                     </select>
                     <br />
-                    {this.state.searchOption}
-                    <br />
+
                     
                 </form>
             </section>
@@ -191,11 +175,23 @@ export default class OptimizerWindow extends React.Component {
                 Total Number of Combinations To Search : {this.state.numberOfOptions}
             </section>
             <section className="submit">
-            <button className={`notice-button notice-button-${this.state.howto}`}  onClick={() => {
-                this.handleButtonClick('Search');
-            }}>Start Searching!</button>
-                
+                <button className={`notice-button notice-button-${this.state.howto}`}  onClick={() => {
+                    this.handleButtonClick('Search');
+                }}>Start Searching!</button>
             </section>
+            <section className="counter counter-testing counter-results">
+                <span className="testing-space"> Waiting </span>
+                <br /><br />
+                {this.state.searchOption && this.state.searchOption !== 'none' && (
+                    `Current: ${this.state.searchOption}: ${this.props.stats[`${this.state.searchOption}`]}`
+                )}
+                <br />
+                <span className='output-investigation'> </span>
+                <button onClick={() => {
+                    this.handleButtonClick('Equip New Items');
+                }}></button>
+            </section>
+            
         </div>)
     }
 };

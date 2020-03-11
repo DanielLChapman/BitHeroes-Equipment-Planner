@@ -480,6 +480,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
 
   stats.links = linkCalculation(stats);
 
+  bonuses.equipmentOn = equipmentOn;
   base.current_stats = stats;
 
   return {bonuses, urlEnd, stats};

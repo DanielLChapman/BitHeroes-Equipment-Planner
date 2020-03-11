@@ -227,7 +227,7 @@ export const searchOptions = [{
     key: 'Air Damage Bonus'
 },{
     id: 51,
-    option: 'aircDamageOutput',
+    option: 'airDamageOutput',
     selected: false,
     key: 'Air Damage Output'
 },{
@@ -312,8 +312,6 @@ let maximum = {
     value: 0
 };
 
-let equip = 0;
-
 
 export const optimize = (searchingFor, options, currentlyEquipped, runes, enchants, stats, sortedEquipment, index=0 ) => {
     currentlyEquipped = {
@@ -336,13 +334,16 @@ export const optimize = (searchingFor, options, currentlyEquipped, runes, enchan
         }
     }
 
-    equip = 0;
+    setTimeout(function() {recurveIncrement(0, currentlyEquipped, sFR, searchingFor)}, 500);
+    setTimeout(function() {
+        window.optimizeEquipment({here: 'here'});
+    }, 1000)
 
-    recurveIncrement(0, currentlyEquipped, sFR);
+    
 }
 
 
-function recurveIncrement(index, equippedInput, whatToChange) {
+function recurveIncrement(index, equippedInput, whatToChange, searchingForIdentifier) {
     let i = index;
     let equipped = {
         mainhand: equippedInput.equipped.mainhand || {},
@@ -358,22 +359,36 @@ function recurveIncrement(index, equippedInput, whatToChange) {
     let runes = equippedInput.runes;
     let enchants = equippedInput.enchants;
     let stats = equippedInput.stats;
+    let sI = searchingForIdentifier;
     let r;
     
-    console.log(whatToChange.length);
     if (i === 8 ) {
-        let bonuses = calculateBonuses(stats, equipped, runes, enchants, 2);
-        console.log(bonuses);
+        let bonuses = calculateBonuses([stats.power, stats.stamina, stats.agility], equipped, runes, enchants, 2);
+        let equippedAfter = bonuses.bonuses;
+        let newStats = bonuses.stats;
         //This is where calculations would be.
-
         //Would set a maximum of specified result
+
+
+        if (newStats[sI] > maximum.value) {
+
+            maximum.value = newStats[sI];
+            maximum.equipment = equippedAfter.equipmentOn;
+            maximum.runes = runes;
+            maximum.enchants = enchants;
+            
+        }
+
+        document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
+        document.getElementsByClassName('output-investigation')[0].innerText = '\n \n New ' + sI + ": " + maximum.value;
+        
         return ; 
     }
     else if (whatToChange[i].symbol === '*') {
         //only change equipment on this stage
         let t = index + 1;
         for(let x = 0; x < numChange[i]; x++) {
-            equip[i]+=1;
+            //equip[i]+=1;
             try {
                 equipped[change[i].slot] = sortedE[whatToChange[i].reference][x];
             } catch (error) {
@@ -391,7 +406,7 @@ function recurveIncrement(index, equippedInput, whatToChange) {
                 stats,
         
             }
-            recurveIncrement(t, r, whatToChange);
+            recurveIncrement(t, r, whatToChange, sI);
         }
     } else {
         i+=1;
@@ -402,7 +417,7 @@ function recurveIncrement(index, equippedInput, whatToChange) {
             stats,
     
         }
-        recurveIncrement(i, r, whatToChange);
+        recurveIncrement(i, r, whatToChange, sI);
     }
     
 }
