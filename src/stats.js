@@ -235,6 +235,48 @@ export const runeTypes = [{
 	id: 'o',
 	title: "Mythic Deflect",
 	effect: "deflect_chance",
+	value: 1.5,
+	key: "rune"
+},
+{
+	id: 'p',
+	title: "Mythic DR",
+	effect: "damage_reduction",
+	value: 3,
+	key: "rune"
+},
+{
+	id: 'u',
+	title: "Mythic Life Steal",
+	effect: "life_steal",
+	value: 3,
+	key: "rune"
+},
+{
+	id: 'v',
+	title: "Mythic Evade",
+	effect: "evade",
+	value: 3,
+	key: "rune"
+},
+{
+	id: 'w',
+	title: "Mythic Block",
+	effect: "block",
+	value: 6,
+	key: "rune"
+},
+{
+	id: 'y',
+	title: "Mythic Speed",
+	effect: "speed",
+	value: 3,
+	key: "rune"
+},
+{
+	id: 'z',
+	title: "Mythic Health",
+	effect: "health",
 	value: 3,
 	key: "rune"
 },
@@ -461,6 +503,74 @@ export const enchantTypes = [{
 	effect: "deflect_chance",
 	effect2: "speed",
 	value:  .7,
+	value2: 1.25,
+	key: 'enchant',
+	mythic: true
+},{
+	id: '2',
+	title: "Able (Block Chance",
+	selected: false,
+	effect: "block",
+	value:  5,
+	key: 'enchant',
+	mythic: true
+},{
+	id: '3',
+	title: "Maternal (Block Speed",
+	selected: false,
+	effect: "block",
+	effect2: "speed",
+	value:  2.5,
+	value2: 1.25,
+	key: 'enchant',
+	mythic: true
+},{
+	id: '4',
+	title: "Noisy (Block Enrage)",
+	selected: false,
+	effect: "deflect_chance",
+	effect2: "damage_enrage",
+	value:  2.5,
+	value2: 1.25,
+	key: 'enchant',
+	mythic: true
+},{
+	id: '5',
+	title: "Tranquil (Block DR)",
+	selected: false,
+	effect: "deflect_chance",
+	effect2: "damage_reduction",
+	value:  2.5,
+	value2: 1.25,
+	key: 'enchant',
+	mythic: true
+},{
+	id: '6',
+	title: "Outgoing (Block Deflect)",
+	selected: false,
+	effect: "deflect_chance",
+	effect2: "block",
+	value:  .7,
+	value2: 2.5,
+	key: 'enchant',
+	mythic: true
+},{
+	id: '7',
+	title: "Bright (Block DS)",
+	selected: false,
+	effect: "block",
+	effect2: "dual_strike",
+	value:  2.5,
+	value2: 1.25,
+	key: 'enchant',
+	mythic: true
+},{
+	id: '8',
+	title: "Composed (Block Empower)",
+	selected: false,
+	effect: "block",
+	effect2: "empower_chance",
+	value:  2.5,
 	value2: 1.25,
 	key: 'enchant',
 	mythic: true

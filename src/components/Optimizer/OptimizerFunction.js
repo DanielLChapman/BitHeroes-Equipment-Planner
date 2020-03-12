@@ -5,6 +5,7 @@ import {calculateBonuses} from '../../functions';
 import { mountTypes } from '../../stats';
 
 let numChange;
+let count = 0;
 
 export default class OptimizerFunction extends Component {
 
@@ -20,6 +21,12 @@ export default class OptimizerFunction extends Component {
             runes: [],
             enchants: [],
             numChange: [],
+            preparing: {
+                currentlyEquipped: {
+
+                }
+            },
+            maximum: {}
 		};
     }
 
@@ -44,6 +51,7 @@ export default class OptimizerFunction extends Component {
     };
 
     perparing = () => {
+        count = 0;
         let currentlyEquipped = {
             equipped: this.props.currentlyEquipped,
             enchants: this.state.enchants,
@@ -56,14 +64,17 @@ export default class OptimizerFunction extends Component {
 
     
     //     sortedE = sortedEquipment;
-    
+        
         for (var x = 0; x < sFR.length; x++) {
             if (this.props.options.includes(sFR[x].reference)) {
                 sFR[x].symbol = '*';
             }
         };
+
+        maximum.value =  this.props.stats[this.state.searchOption];
     
-        this.recurveIncrement(0, currentlyEquipped, sFR, this.state.searchOption)
+        //Maybe move this to own function and have preparing done on every prop input
+        this.recurveIncrement(0, currentlyEquipped, sFR, this.state.searchOption);
 
     }
 
@@ -72,6 +83,7 @@ export default class OptimizerFunction extends Component {
         //
         let i = index;
         let c = 0;
+        
 
         //Clean up equipped into a better format, or create a null object if one is empty for some reason
         let equipped = {
@@ -95,7 +107,9 @@ export default class OptimizerFunction extends Component {
         
         //At the end of the line for equipment, we run the calculate bonuses
         if (i === 8 ) {
-
+            count+=1;
+            //counting total
+            
             //calculate bonuses
             let bonuses = calculateBonuses([equippedInput.stats.power, equippedInput.stats.stamina, equippedInput.stats.agility], equipped, equippedInput.runes, equippedInput.enchants, 2);
             //grab the new equipment incase its in the maximum
@@ -104,7 +118,6 @@ export default class OptimizerFunction extends Component {
             let newStats = bonuses.stats;
             //This is where calculations would be.
             //Would set a maximum of specified result
-
 
             if (newStats[sI] > maximum.value) {
 
@@ -115,12 +128,15 @@ export default class OptimizerFunction extends Component {
                 
             }
 
-            console.log(maximum);
             document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
             document.getElementsByClassName('output-investigation')[0].innerText = '\n \n New ' + sI + ": " + maximum.value;
             
-            
-            return ; 
+            if (count === this.props.numberOfOptions) {
+                console.log('done');
+                if (maximum.value > this.props.stats[this.state.searchOption]) {
+                    console.log('here');
+                }
+            }
         }
         else if (whatToChange[i].symbol === '*') {
             //only change equipment on this stage
