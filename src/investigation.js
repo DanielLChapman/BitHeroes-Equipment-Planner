@@ -1,4 +1,4 @@
-import {calculateBonuses} from './functions';
+import {calculateBonuses} from './functions'
 
 export const searchOptions = [{
     id: 0,
@@ -293,7 +293,7 @@ export let change = [
 
 let numChange, sortedE;
 
-let maximum = {
+export let maximum = {
     equipment: {
         mainhand: {},
         offhand: {},
@@ -312,7 +312,7 @@ let maximum = {
     value: 0
 };
 
-
+/* 
 export const optimize = (searchingFor, options, currentlyEquipped, runes, enchants, stats, sortedEquipment, index=0 ) => {
     currentlyEquipped = {
         equipped: currentlyEquipped,
@@ -334,10 +334,7 @@ export const optimize = (searchingFor, options, currentlyEquipped, runes, enchan
         }
     }
 
-    setTimeout(function() {recurveIncrement(0, currentlyEquipped, sFR, searchingFor)}, 500);
-    setTimeout(function() {
-        window.optimizeEquipment({here: 'here'});
-    }, 1000)
+    recurveIncrement(0, currentlyEquipped, sFR, searchingFor)
 
     
 }
@@ -421,3 +418,4 @@ function recurveIncrement(index, equippedInput, whatToChange, searchingForIdenti
     }
     
 }
+ */

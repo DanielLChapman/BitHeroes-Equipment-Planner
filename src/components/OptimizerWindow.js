@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {equipment, sortEquipment} from '../equipment';
-import {searchOptions, change, optimize} from '../investigation';
+import {searchOptions, change} from '../investigation';
 import OptimizerNotice from './Optimizer/OptimizerNotice';
+import OptimizerDropdown from './Optimizer/OptimizerDropdown';
+import OptimizerFunction from './Optimizer/OptimizerFunction';
 
 export default class OptimizerWindow extends React.Component {
 
@@ -42,8 +44,6 @@ export default class OptimizerWindow extends React.Component {
                 state.over4 = !state.over4;
                 break; 
             case 'Search':
-                document.getElementsByClassName('testing-space')[0].innerText = 'Loading';
-                optimize(state.searchOption, state.equipmentOptions, state.equipped, this.props.runes, this.props.enchants, this.props.stats, this.state.sortedEquipment, 0);             
                 break;
             default: 
                 console.log('uhhh')
@@ -87,7 +87,6 @@ export default class OptimizerWindow extends React.Component {
                     elements[i].selected = false;
                 }
                 state.numberOfOptions = total;
-                document.getElementsByClassName('testing-space')[0].innerText = 'Waiting' ;
                 break;
                 
             default: 
@@ -98,14 +97,6 @@ export default class OptimizerWindow extends React.Component {
 
     updateInputValue = (event) => {
 
-    }
-
-    handleOptimizedEquipment = (dataObject) => {
-        let state = this.state;
-        state.optimized = true; 
-        state.optimizedEquipment = dataObject;
-        this.setState(state);
-        window.optimizeEquipment = this;
     }
 
     render() {
@@ -125,26 +116,9 @@ export default class OptimizerWindow extends React.Component {
             <OptimizerNotice styleProp={openNote} clickHandler={this.handleButtonClick} title={'Notice/Help'} note={this.state.note} />
             <OptimizerNotice styleProp={openHowto} clickHandler={this.handleButtonClick} title={'How To Use'} note={this.state.howto} over4={this.state.over4}/>
 
-            <section className="dropdown">
-                <form>
-                    <label htmlFor="search-options">Search For:</label><br />
-                    <select id="search-options" className="search-options" name="search-options" onChange={(e) => {
-                        this.handleChange(e, 'SearchOption')
-                    }}>
-                        <option value="none">None</option>
-                        {
-                            this.state.searchOptions.map((x) => {
-                                return (
-                                <option value={x.option} key={x.id}>{x.key}</option>
-                                )
-                            })
-                        }
-                    </select>
-                    <br />
-
-                    
-                </form>
-            </section>
+            <OptimizerDropdown title={'Search For: '} handleChange={this.handleChange} switchOperator={'SearchOption'} multiple={false} data={this.state.searchOptions} special={false} />
+           
+           {/* Special Rendering, errors when trying to get it into dropdown because of equipmentOptions */}
             <section className="dropdown">
                 <form>
                     <label htmlFor="equipment-options">Search For:</label><br />
@@ -171,26 +145,18 @@ export default class OptimizerWindow extends React.Component {
                     
                 </form>
             </section>
-            <section className="counter">
-                Total Number of Combinations To Search : {this.state.numberOfOptions}
-            </section>
-            <section className="submit">
-                <button className={`notice-button notice-button-${this.state.howto}`}  onClick={() => {
-                    this.handleButtonClick('Search');
-                }}>Start Searching!</button>
-            </section>
-            <section className="counter counter-testing counter-results">
-                <span className="testing-space"> Waiting </span>
-                <br /><br />
-                {this.state.searchOption && this.state.searchOption !== 'none' && (
-                    `Current: ${this.state.searchOption}: ${this.props.stats[`${this.state.searchOption}`]}`
-                )}
-                <br />
-                <span className='output-investigation'> </span>
-                <button onClick={() => {
-                    this.handleButtonClick('Equip New Items');
-                }}></button>
-            </section>
+
+            <OptimizerFunction 
+                clickHandler={this.handleButtonClick} 
+                searchOption={this.state.searchOption} 
+                numberOfOptions={this.state.numberOfOptions} 
+                stats={this.props.stats}
+                currentlyEquipped={this.state.equipped}
+                enchants={this.props.enchants}
+                runes={this.props.runes}
+                options={this.state.equipmentOptions}
+                 />
+        
             
         </div>)
     }
