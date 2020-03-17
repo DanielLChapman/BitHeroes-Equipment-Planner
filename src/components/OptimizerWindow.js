@@ -43,8 +43,6 @@ export default class OptimizerWindow extends React.Component {
             case 'Four':
                 state.over4 = !state.over4;
                 break; 
-            case 'Search':
-                break;
             default: 
                 console.log('uhhh')
         }
@@ -112,7 +110,7 @@ export default class OptimizerWindow extends React.Component {
         
         return (<div className="optimizer-window"  style={this.props.styling}>
             <span className="x-close" onClick={() => {this.props.openClose('Optimizer')}}>x</span>
-            This is experimental. Read the notice.
+            This is experimental and still being worked on. Read the notice.
             <OptimizerNotice styleProp={openNote} clickHandler={this.handleButtonClick} title={'Notice/Help'} note={this.state.note} />
             <OptimizerNotice styleProp={openHowto} clickHandler={this.handleButtonClick} title={'How To Use'} note={this.state.howto} over4={this.state.over4}/>
 
@@ -121,7 +119,7 @@ export default class OptimizerWindow extends React.Component {
            {/* Special Rendering, errors when trying to get it into dropdown because of equipmentOptions */}
             <section className="dropdown">
                 <form>
-                    <label htmlFor="equipment-options">Search For:</label><br />
+                    <label htmlFor="equipment-options">Which Slots To Change</label><br />
                     <select id="equipment-options" className="equipment-options" name="equipment-options" onChange={(e) => {
                         this.handleChange(e, 'EquipmentOption')
                     }} multiple>
@@ -155,6 +153,7 @@ export default class OptimizerWindow extends React.Component {
                 enchants={this.props.enchants}
                 runes={this.props.runes}
                 options={this.state.equipmentOptions}
+                optimizeEquip={this.props.optimizeEquip}
                  />
         
             

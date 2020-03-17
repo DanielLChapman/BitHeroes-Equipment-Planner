@@ -701,7 +701,8 @@ select option {
 }
 .optimizer-window,
 .about-window {
-  height: 350px;
+  padding-top: 10px;
+  height: 340px;
 }
 .optimizer-window .notice-button-true,
 .about-window .notice-button-true {
@@ -714,6 +715,37 @@ select option {
 .optimizer-window .dropdown select,
 .about-window .dropdown select {
   margin-top: 5px;
+  font-family: Arial;
+  position: relative;
+  width: 200px;
+  height: 35px;
+  border: 1px solid #000;
+}
+.optimizer-window .dropdown .equipment-options,
+.about-window .dropdown .equipment-options {
+  height: 105px;
+}
+.optimizer-window .dropdown .equipment-options option,
+.about-window .dropdown .equipment-options option {
+  height: 25px;
+  border: 1px solid #000;
+  position: relative;
+  vertical-align: top;
+  padding-top: 15px;
+  text-align: center;
+}
+.optimizer-window .counter-testing,
+.about-window .counter-testing {
+  margin-top: 11px;
+}
+.optimizer-window .testing-space,
+.about-window .testing-space {
+  padding-top: 8px;
+}
+.optimizer-window ul li,
+.about-window ul li {
+  padding: 0;
+  font-size: 14px;
 }
 .optimizer-window .notes,
 .about-window .notes {
@@ -819,6 +851,6 @@ select option {
     min-height: 250px;
   }
 }
-.counter-testing {
-  margin-top: 5px;
+.button-hidden {
+  display: none;
 }

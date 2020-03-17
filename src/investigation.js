@@ -1,4 +1,4 @@
-import {calculateBonuses} from './functions'
+
 
 export const searchOptions = [{
     id: 0,
@@ -42,7 +42,7 @@ export const searchOptions = [{
     key: 'Deflect'
 },{
     id: 8,
-    option: 'lifesteal',
+    option: 'life_steal',
     selected: false,
     key: 'Lifesteal'
 },{
@@ -74,27 +74,31 @@ export const searchOptions = [{
     id: 14,
     option: 'physicalDamageBonus',
     selected: false,
-    key: 'Physical Damage Bonus'
+    key: 'Physical Damage Bonus',
+    links: true
 },{
     id: 15,
     option: 'physicalDamageOutput',
     selected: false,
-    key: 'Physical Damage Output'
+    key: 'Physical Damage Output',
+    links: true
 },{
     id: 16,
     option: 'physicalDamageMitigation',
     selected: false,
     key: 'Physical Damage Mitigation',
+    links: true
 },{
     id: 17,
     option: 'physicalHealthEfficiency',
     selected: false,
-    key: 'Physical Health Efficiency'
+    key: 'Physical Health Efficiency',
+    links: true
 },{
     id: 20,
     option: 'electric_damage',
     selected: false,
-    key: 'Electric Damage Bonus'
+    key: 'Electric Damage'
 },{
     id: 21,
     option: 'electric_resistance',
@@ -104,27 +108,31 @@ export const searchOptions = [{
     id: 22,
     option: 'electricDamageBonus',
     selected: false,
-    key: 'Electric Damage Bonus'
+    key: 'Electric Damage Bonus',
+    links: true
 },{
     id: 23,
     option: 'electricDamageOutput',
     selected: false,
-    key: 'Electric Damage Output'
+    key: 'Electric Damage Output',
+    links: true
 },{
     id: 24,
     option: 'electricDamageMitigation',
     selected: false,
-    key: 'Electric Damage Mitigation'
+    key: 'Electric Damage Mitigation',
+    links: true
 },{
     id: 25,
     option: 'electricHealthEfficiency',
     selected: false,
-    key: 'Electric Health Efficiency'
+    key: 'Electric Health Efficiency',
+    links: true
 },{
     id: 30,
     option: 'water_damage',
     selected: false,
-    key: 'Water Damage Bonus'
+    key: 'Water Damage'
 },{
     id: 31,
     option: 'water_resistance',
@@ -134,27 +142,31 @@ export const searchOptions = [{
     id: 32,
     option: 'waterDamageBonus',
     selected: false,
-    key: 'Water Damage Bonus'
+    key: 'Water Damage Bonus',
+    links: true
 },{
     id: 33,
     option: 'waterDamageOutput',
     selected: false,
-    key: 'Water Damage Output'
+    key: 'Water Damage Output',
+    links: true
 },{
     id: 34,
     option: 'waterDamageMitigation',
     selected: false,
-    key: 'Water Damage Mitigation'
+    key: 'Water Damage Mitigation',
+    links: true
 },{
     id: 35,
     option: 'waterHealthEfficiency',
     selected: false,
-    key: 'Water Health Efficiency'
+    key: 'Water Health Efficiency',
+    links: true
 },{
     id: 36,
     option: 'fire_damage',
     selected: false,
-    key: 'Fire Damage Bonus'
+    key: 'Fire Damage'
 },{
     id: 37,
     option: 'fire_resistance',
@@ -164,27 +176,31 @@ export const searchOptions = [{
     id: 38,
     option: 'fireDamageBonus',
     selected: false,
-    key: 'Fire Damage Bonus'
+    key: 'Fire Damage Bonus',
+    links: true
 },{
     id: 39,
     option: 'fireDamageOutput',
     selected: false,
-    key: 'Fire Damage Output'
+    key: 'Fire Damage Output',
+    links: true
 },{
     id: 40,
     option: 'fireDamageMitigation',
     selected: false,
-    key: 'Fire Damage Mitigation'
+    key: 'Fire Damage Mitigation',
+    links: true
 },{
     id: 41,
     option: 'fireHealthEfficiency',
     selected: false,
-    key: 'Fire Health Efficiency'
+    key: 'Fire Health Efficiency',
+    links: true
 },{
     id: 42,
     option: 'earth_damage',
     selected: false,
-    key: 'Earth Damage Bonus'
+    key: 'Earth Damage'
 },{
     id: 43,
     option: 'earth_resistance',
@@ -194,27 +210,31 @@ export const searchOptions = [{
     id: 44,
     option: 'earthDamageBonus',
     selected: false,
-    key: 'Earth Damage Bonus'
+    key: 'Earth Damage Bonus',
+    links: true
 },{
     id: 45,
     option: 'earthDamageOutput',
     selected: false,
-    key: 'Earth Damage Output'
+    key: 'Earth Damage Output',
+    links: true
 },{
     id: 46,
     option: 'earthDamageMitigation',
     selected: false,
-    key: 'Earth Damage Mitigation'
+    key: 'Earth Damage Mitigation',
+    links: true
 },{
     id: 47,
     option: 'earthHealthEfficiency',
     selected: false,
-    key: 'Earth Health Efficiency'
+    key: 'Earth Health Efficiency',
+    links: true
 },{
     id: 48,
     option: 'air_damage',
     selected: false,
-    key: 'Air Damage Bonus'
+    key: 'Air Damage'
 },{
     id: 49,
     option: 'air_resistance',
@@ -224,22 +244,26 @@ export const searchOptions = [{
     id: 50,
     option: 'airDamageBonus',
     selected: false,
-    key: 'Air Damage Bonus'
+    key: 'Air Damage Bonus',
+    links: true
 },{
     id: 51,
     option: 'airDamageOutput',
     selected: false,
-    key: 'Air Damage Output'
+    key: 'Air Damage Output',
+    links: true
 },{
     id: 52,
     option: 'airDamageMitigation',
     selected: false,
-    key: 'Air Damage Mitigation'
+    key: 'Air Damage Mitigation',
+    links: true
 },{
     id: 53,
     option: 'airHealthEfficiency',
     selected: false,
-    key: 'Air Health Efficiency'
+    key: 'Air Health Efficiency',
+    links: true
 }];
 /*
 
@@ -291,7 +315,6 @@ export let change = [
 
 ];
 
-let numChange, sortedE;
 
 export let maximum = {
     equipment: {

@@ -3,6 +3,7 @@ export const sets = {
 	ares_legacy:{
 			name: "Ares Legacy",
 			location: "From r2 or from re-rolling any t5 set",
+			tier: 5,
 			items: ["Phobos", "Deimos"],
 			description: "",
 			setBonuses: {
@@ -12,6 +13,7 @@ export const sets = {
 	divinity:	{
 			name: "Divinity",
 			location: "From r3 or from re-rolling a set piece from Trials/Gauntlets",
+			tier: 6,
 			items: ["Phantom Light", "Legacy Of Truth", "Trinity Plate"],
 			description: "",
 			setBonuses: {
@@ -23,6 +25,7 @@ export const sets = {
 			name: "M.A.R.U",
 			location: "From r4",
 			items: ["Visortron", "Mechcoat", "ROM BIOS", "Blast Protocol"],
+			tier: 7,
 			description: "Does not affect pets",
 			setBonuses: {
 				2: "10% of your Healing Skills also generate shields",
@@ -33,6 +36,7 @@ export const sets = {
 	night_walker:	{
 			name: "Night Walker",
 			location: "From r5 or from rerolling any t8 set piece",
+			tier: 8,
 			items: ["Moonlight", "Discordiant Power", "Dominance", "Adorned Malice"],
 			description: "",
 			setBonuses: {
@@ -44,6 +48,7 @@ export const sets = {
 	arsenal:	{
 			name: "Arsenal",
 			location: "R6",
+			tier: 9,
 			items: ["UMD Lazzault", "Aimbot 80", "A M H", "Nanovectal Plating"],
 			description: "",
 			setBonuses: {
@@ -55,6 +60,7 @@ export const sets = {
 	earthen_might:	{
 			name: "Earthen Might",
 			location: "r7 Heroic Raids",
+			tier: 10,
 			items: ["Tectonica", "Quartzar", "Shatterguard", "Omenstone"],
 			description: "",
 			setBonuses: {
@@ -66,6 +72,7 @@ export const sets = {
 	camouflage:	{
 		name: "Camouflage",
 		location: "r8 Heroic Raid",
+		tier: 11,
 		items: ["Violenshine", "Violenhell", "Violenmane", "Viobus"],
 		description: "",
 		setBonuses: {
@@ -77,6 +84,7 @@ export const sets = {
 	unity:	{
 			name: "Unity",
 			location: "Trials/Gauntlets 100-109 or from rerolling a t5 set piece",
+			tier: 5,
 			items: ["Despair", "Sorrow"],
 			description: "",
 			setBonuses: {
@@ -86,6 +94,7 @@ export const sets = {
 	trugdors_call:	{
 			name: "Trugdor's Call",
 			location: "Trials/Gauntlets 100-109 or from rerolling a t5 set piece",
+			tier: 5,
 			items: ["Trugdor's Bite", "Scaled Vambrace", "Dragons Breath"],
 			description: "",
 			setBonuses: {
@@ -96,6 +105,7 @@ export const sets = {
 	taldrilths_artifacts:	{
 			name: "Taldrilth's Artifacts",
 			location: "Trials/Gauntlets 140-149 or from rerolling a t6 set piece",
+			tier: 6,
 			items: ["Eternal Fire", "Scaled Dragon's Bone", "Taldrilth's Soul"],
 			description: "",
 			setBonuses: {
@@ -106,6 +116,7 @@ export const sets = {
 	bushido:	{
 			name: "Bushido",
 			location: "Trials/Gauntlets 140-149 or from rerolling a t6 set piece",
+			tier: 6,
 			items: ["Matsukura", "Yashiro's Dou"],
 			description: "",
 			setBonuses: {
@@ -115,6 +126,7 @@ export const sets = {
 	conduction:	{
 			name: "Conduction",
 			location: "Trials/Gauntlets 200-209",
+			tier: 7,
 			items: ["Gigastrike", "Magnetron", "Flow Plate", "Power Amp"],
 			description: "",
 			setBonuses: {
@@ -126,6 +138,7 @@ export const sets = {
 	luminary:	{
 			name: "Luminary",
 			location: "Trials/Gauntlets Difficulty 260-289",
+			tier: 8,
 			items: ["Yak Blade", "Stillness", "Hylidae", "Flowing Silk Sash"],
 			description: "",
 			setBonuses: {
@@ -137,6 +150,7 @@ export const sets = {
 	polaris:	{
 			name: "Polaris",
 			location: "Trials/Gauntlets 510+",
+			tier: 9,
 			items: ["Sky Vapor", "Sky Vault", "Champions Helm", "Whale Plate"],
 			description: "",
 			setBonuses: {
@@ -148,6 +162,7 @@ export const sets = {
 	merciless:	{
 			name: "Merciless",
 			location: "Trials/Gauntlets 680+",
+			tier: 10,
 			items: ["Phantomate", "Reptor", "Ikoscale", "Retilio"],
 			description: "",
 			setBonuses: {
@@ -159,6 +174,7 @@ export const sets = {
 	venom:	{
 		name: "Venom",
 		location: "Set Trials, 1080+",
+		tier: 11,
 		items: ["Wigo Wiggins", "Warriorolas", "Shiztiny", "Earendrin"],
 		description: "",
 		setBonuses: {
@@ -170,6 +186,7 @@ export const sets = {
 	lunar_guardian:	{
 			name: "Lunar Guardian",
 			location: "Tier 6 Orlag World Boss",
+			tier: 6,
 			items: ["Maelstrom", "Eclipse Barrier"],
 			description: "Does not affect healing pets",
 			setBonuses: {
@@ -179,6 +196,7 @@ export const sets = {
 	jynx:	{
 			name: "Jynx",
 			location: "Tier 6 Orlag World Boss",
+			tier: 6,
 			items: ["Moku", "Ku"],
 			description: "",
 			setBonuses: {
@@ -188,6 +206,7 @@ export const sets = {
 	obliteration:	{
 			name: "Obliteration",
 			location: "Tier 7 Orlag World Boss",
+			tier: 7,
 			items: ["Wraithguard", "Last Sight", "Dark Wrap", "Black Omen"],
 			description: "",
 			setBonuses: {
@@ -199,6 +218,7 @@ export const sets = {
 	agony:	{
 			name: "Agony",
 			location: "Tier 8 Orlag World Boss or from rerolling a t8 set piece",
+			tier: 8,
 			items: ["Arcusbolt", "Tormented Soul", "Gravetouch", "Crypt Hunter"],
 			description: "",
 			setBonuses: {
@@ -210,6 +230,7 @@ export const sets = {
 	eruption:	{
 			name: "Eruption",
 			location: "T9 Orlag HC",
+			tier: 9,
 			items: ["SlagHelm", "Molten Chasis", "Magmight"],
 			description: "",
 			setBonuses: {
@@ -220,6 +241,7 @@ export const sets = {
 	illustrious_artifacts:	{
 			name: "Illustrious Artifacts",
 			location: "Tier 6 Netherworld World Boss",
+			tier: 6,
 			items: ["Ancient Tiara", "Heavenly Garb", "Exalted Binding"],
 			description: "Scales with Power Stat",
 			setBonuses: {
@@ -230,6 +252,7 @@ export const sets = {
 	taters:	{
 			name: "Taters",
 			location: "Tier 7 Netherworld World Boss",
+			tier: 7,
 			items: ["Tayto Sword", "Tayto Sack", "Hangin Tayto"],
 			description: "",
 			setBonuses: {
@@ -240,6 +263,7 @@ export const sets = {
 	inferno:	{
 			name: "Inferno",
 			location: "Tier 8 Nethworld World Boss or from rerolling a t8 set piece",
+			tier: 8,
 			items: ["Final Gaze", "Final Flash", "Melding Cloak", "Brimstone"],
 			description: "",
 			setBonuses: {
@@ -251,6 +275,7 @@ export const sets = {
 	requiem:	{
 			name: "Requiem",
 			location: "T9 Nether HC",
+			tier: 9,
 			items: ["Veilstrike", "Cloudsinge", "Oscillation"],
 			description: "",
 			setBonuses: {
@@ -261,6 +286,7 @@ export const sets = {
 	apocalypse:	{
 			name: "Apocalypse",
 			location: "t10 Melvin Worldboss",
+			tier: 10,
 			items: ["Exarkun", "Reflekun", "Solus", "Garplate", "Revenwrap", "Plaguscore"],
 			description: "",
 			setBonuses: {
@@ -272,6 +298,7 @@ export const sets = {
 	mistery:	{
 			name: "Mistery",
 			location: "t11 Melvin Worldboss",
+			tier: 11,
 			items: ["Visertal", "Battletal", "Grindymetal"],
 			description: "",
 			setBonuses: {
@@ -282,6 +309,7 @@ export const sets = {
 	virulence:	{
 		name: "Virulence",
 		location: "t10 Ext Worldboss",
+		tier: 10,
 		items: ["Vulcarn", "Ytterbite Scrap"],
 		description: "",
 		setBonuses: {
@@ -291,6 +319,7 @@ export const sets = {
 	trident:	{
 			name: "Trident",
 			location: "t10 Ext Worldboss",
+			tier: 10,
 			items: ["Aquatic Ward", "Nemo's Tempest"],
 			description: "",
 			setBonuses: {
@@ -300,6 +329,7 @@ export const sets = {
 	courage:	{
 			name: "Courage",
 			location: "t11 Ext Worldboss",
+			tier: 11,
 			items: ["Wickedwood", "Malwood", "Woocrusher"],
 			description: "",
 			setBonuses: {
@@ -319,6 +349,7 @@ export const sets = {
 	featherfall:	{
 			name: "Featherfall",
 			location: "Invasion or Expedition",
+			tier: 12,
 			items: ["Maplestrike", "Emberling", "Windspirit", "Nimble", "Clarity", "Peacesong"],
 			description: "",
 			setBonuses: {
@@ -332,6 +363,7 @@ export const sets = {
 	hellfire:	{
 			name: "Hellfire",
 			location: "Invasion or Expedition",
+			tier: 12,
 			items: ["Dawn Of Mercy", "Idol Of Decay", "Deception", "Soulkeeper", "Dementia", "Ferocity"],
 			description: "",
 			setBonuses: {
@@ -345,6 +377,7 @@ export const sets = {
 	ishmaels_bounty:	{
 			name: "Ishmaels Bounty",
 			location: "t11 Titan World Boss",
+			tier: 11,
 			items: ["Abandon Fate", "Tentuhkuhl"],
 			description: "",
 			setBonuses: {
@@ -354,6 +387,7 @@ export const sets = {
 	voltio:	{
 			name: "Voltio",
 			location: "t11 Trials",
+			tier: 11,
 			items: ["Voltio", "Vohltij", "Ihlektron", "Kiluhwot", "Spahrk", "Johlt"],
 			description: "",
 			setBonuses: {
@@ -365,6 +399,7 @@ export const sets = {
 	pyroc:	{
 		name: "Pyroc",
 		location: "t12 Brimstone",
+		tier: 12,
 		items: ["Ring Of Hellish Fire", "Raiment Of Hellish Fire", "Wip Of Hellish Fire", "Sleave Of Hellish Fire"],
 		description: "",
 		setBonuses: {
@@ -376,6 +411,7 @@ export const sets = {
 	nepulus: {
 		name: "Nepulus",
 		location: "t12 Titans",
+		tier: 12,
 		items: ["Visage of Atlante", "Greatplate Of Atlante", "Battleaxe Of Atlante", "Gem Of Atlante"],
 		description: "",
 		setBonuses: {
@@ -387,6 +423,7 @@ export const sets = {
 	pangea:	{
 		name: "Pangea",
 		location: "t12 Trials/Gauntlet",
+		tier: 12,
 		items: ["Last Hope Faceguard","Last Hope Stone","Last Hope Hammer","Last Hope Outbreak"],
 		description: "",
 		setBonuses: {
@@ -398,6 +435,7 @@ export const sets = {
 	lucernas:	{
 		name: "Lucernas",
 		location: "t12 Raid",
+		tier: 12,
 		items: ["Crown Of Zeus", "Chestguard Of Zeus", "Pact Of Zeus", "Battery Of Zeus"],
 		description: "",
 		setBonuses: {

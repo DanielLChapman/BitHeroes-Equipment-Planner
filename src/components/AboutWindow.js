@@ -7,6 +7,7 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>UPDATES:</span>
             <ul className="about-page-ul">
+                <li>3/12/2020  -   Added New Mythic Enchants and Runes</li>
                 <li>Added New Mythic Enchants and Runes</li>
                 <li>Added toggle to stat window for those people who dont have t12 ancients yet. Dont want to inflate numbers for people who haven't uptiered yet.</li>
                 <li>Block wasn't being capped at 100 in stats, so 140 block was adding 70% mitigation. This is corrected now.</li>

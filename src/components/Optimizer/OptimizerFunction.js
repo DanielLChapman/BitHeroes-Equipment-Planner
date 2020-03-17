@@ -1,11 +1,29 @@
 import React, {Component} from 'react';
 import {equipment, sortEquipment} from '../../equipment';
-import {searchOptions, change, optimize, maximum} from '../../investigation';
+import {searchOptions, change} from '../../investigation';
 import {calculateBonuses} from '../../functions';
 import { mountTypes } from '../../stats';
 
-let numChange;
 let count = 0;
+
+let maximum = {
+    equipment: {
+        mainhand: {},
+        offhand: {},
+        head: {},
+        body: {},
+        necklace: {},
+        ring: {},
+        accessory: {},
+        pet: {},
+        mount: {}
+    },
+    runes: [],
+    enchants: {
+
+    },
+    value: 0
+};
 
 export default class OptimizerFunction extends Component {
 
@@ -31,6 +49,9 @@ export default class OptimizerFunction extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
+        //Load most recent equipment and stats into state
+
+        //Load the number of options to search through into function
         let x = [state.sortedEquipment.mainhands.length,
             state.sortedEquipment.offhands.length,
             state.sortedEquipment.heads.length,
@@ -50,7 +71,21 @@ export default class OptimizerFunction extends Component {
         };
     };
 
+    searchSearchOptions = (inputValue) => {
+        for (var x = 0; x < searchOptions.length; x++) {
+            if (searchOptions[x].option === inputValue) {
+                return searchOptions[x]
+            }
+        }
+        return inputValue;
+    }
+
     perparing = () => {
+        if (this.props.options.length <= 0) {
+            return alert('Please make sure it has something to search');
+        }
+        document.getElementsByClassName('button-new-equipment')[0].classList = 'notice-button button-new-equipment button-hidden';
+        document.getElementsByClassName('testing-space')[0].innerText = 'Loading';
         count = 0;
         let currentlyEquipped = {
             equipped: this.props.currentlyEquipped,
@@ -65,16 +100,30 @@ export default class OptimizerFunction extends Component {
     
     //     sortedE = sortedEquipment;
         
+        
         for (var x = 0; x < sFR.length; x++) {
             if (this.props.options.includes(sFR[x].reference)) {
                 sFR[x].symbol = '*';
             }
         };
 
-        maximum.value =  this.props.stats[this.state.searchOption];
+        maximum.value = 0;
+/* 
+
+
+        maximum = {
+            equipment: currentlyEquipped.equipped,
+            runes: currentlyEquipped.runes,
+            enchants: currentlyEquipped.enchants,
+            value: this.props.stats[this.state.searchOption] || this.props.stats.links[this.state.searchOption]
+        }; */
+
     
         //Maybe move this to own function and have preparing done on every prop input
-        this.recurveIncrement(0, currentlyEquipped, sFR, this.state.searchOption);
+        setTimeout( () => {
+            this.recurveIncrement(0, currentlyEquipped, sFR, this.state.searchOption);
+        }, 250)
+        
 
     }
 
@@ -82,7 +131,6 @@ export default class OptimizerFunction extends Component {
     recurveIncrement = (index, equippedInput, whatToChange, searchingFor) => {
         //
         let i = index;
-        let c = 0;
         
 
         //Clean up equipped into a better format, or create a null object if one is empty for some reason
@@ -119,50 +167,104 @@ export default class OptimizerFunction extends Component {
             //This is where calculations would be.
             //Would set a maximum of specified result
 
-            if (newStats[sI] > maximum.value) {
+            //If the new stat is higher than maximum, equip it to maximum
+            //this is to separate the links and non links in the bonuse object
+            
+            let newStatsValue = newStats[sI] || newStats.links[sI] || 0;
+            if (newStatsValue === undefined) {
+                console.log({
+                    newStats,
+                    sI,
+                    sI2: this.searchSearchOptions(sI),
+                    sI3: newStats[sI],
+                    sI4: newStats.links[sI],
+                    sI5: newStats[sI] || newStats.links[sI]
+                });
+            }
 
-                maximum.value = newStats[sI];
+            //greater than equal to for best chance at most recent equipment
+            if (newStatsValue >= maximum.value) {
+                maximum.value = newStatsValue;
                 maximum.equipment = equippedAfter.equipmentOn;
                 maximum.runes = equippedInput.runes;
                 maximum.enchants = equippedInput.enchants;
                 
-            }
+            } 
 
-            document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
-            document.getElementsByClassName('output-investigation')[0].innerText = '\n \n New ' + sI + ": " + maximum.value;
-            
+            //temporary, need to clean up
             if (count === this.props.numberOfOptions) {
-                console.log('done');
-                if (maximum.value > this.props.stats[this.state.searchOption]) {
-                    console.log('here');
+
+                /*
+                    TODO: IF AN EQUIPMENT CHANGE DOESN'T AFFECT THE FINAL TOTAL, THEN WE SHOULDN'T CHANGE IT
+                    CANT DO TWO STARWEAVES, DIDN'T CHECK FOR ANCIENTS
+
+                    ADD ABILITY TO REMOVE ITEMS FROM APPEARING
+                    ADD ABILITY TO REMOVE ANCIENTS
+                
+                */
+                document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
+                
+                if (maximum.value > this.props.stats[this.state.searchOption] || maximum.value > this.props.stats.links[this.state.searchOption]) {
+                    document.getElementsByClassName('button-new-equipment')[0].classList = 'notice-button button-new-equipment';
+                    document.getElementsByClassName('output-investigation')[0].innerText =  'New ' + this.searchSearchOptions(sI).key + ": " + (maximum.value || 0);
+                } else {
+                    document.getElementsByClassName('output-investigation')[0].innerText =  'Sorry, nothing better found'
+                
                 }
             }
         }
         else if (whatToChange[i].symbol === '*') {
             //only change equipment on this stage
+            //this was giving me an issue, t= index + 1 solved it
             let t = index + 1;
-            for(let x = 0; x < this.state.numChange[i]; x++) {
-                //equip[i]+=1;
-                try {
-                    equipped[change[i].slot] = this.state.sortedEquipment[whatToChange[i].reference][x];
-                } catch (error) {
-                    console.log({
-                        i: i,
-                        x: x,
-                    });
-                    console.log(this.state.sortedEquipment[whatToChange[i].reference][x]);
-                    console.log(equipped[change[i].slot]);
+            //mounts are not in sorted equipment so take it out, would be the same for runes, enchants
+            if (i===7) {
+                //loop over all the mounts
+                for(let x = 0; x < this.state.numChange[i]; x++) {
+                    //equip it
+                    equipped[change[i].slot] = mountTypes[i];
+
+                    //send it back in for future testing
+                    r = {   
+                        equipped,
+                        enchants: equippedInput.enchants,
+                        runes: equippedInput.runes,
+                        stats,
+                
+                    }
+                    //call it
+                    this.recurveIncrement(t, r, whatToChange, sI);
                 }
-                r = {
-                    equipped,
-                    enchants: equippedInput.enchants,
-                    runes: equippedInput.runes,
-                    stats,
-            
-                }
-                this.recurveIncrement(t, r, whatToChange, sI);
+
             }
+            else {
+
+                for(let x = 0; x < this.state.numChange[i]; x++) {
+                    //equip[i]+=1;
+                    try {
+                        //for all equipment in sorted equipment, try to add
+                        equipped[change[i].slot] = this.state.sortedEquipment[whatToChange[i].reference][x];
+                    } catch (error) {
+                        //think the error was from mounts, so try catch may no longer be necessary but will keep for debugging
+                        console.log({
+                            i: i,
+                            x: x,
+                        });
+                    }
+                    //send back in for future testing
+                    r = {
+                        equipped,
+                        enchants: equippedInput.enchants,
+                        runes: equippedInput.runes,
+                        stats,
+                
+                    }
+                    this.recurveIncrement(t, r, whatToChange, sI);
+                }
+            }
+            
         } else {
+            //if its not supposed to be changed, skip it.
             i+=1;
             r = {
                 equipped,
@@ -184,22 +286,29 @@ export default class OptimizerFunction extends Component {
                     Total Number of Combinations To Search : {this.props.numberOfOptions}
                 </section>
                 <section className="submit">
-                    <button className={`notice-button notice-button-false`}  onClick={() => {
+                    <button className={`notice-button notice-button-false`} disabled={!this.props.searchOption} onClick={() => {
                         this.perparing();
                     }}>Start Searching!</button>
                 </section>
                 <section className="counter counter-testing counter-results">
+
                     <span className="testing-space"> Waiting </span>
                     <br /><br />
+                    <ul>
+                        <li></li>
                     {this.state.searchOption && this.state.searchOption !== 'none' && (
-                        `Current: ${this.state.searchOption}: ${this.props.stats[`${this.state.searchOption}`]}`
+                        <>
+                        <li>Current {this.searchSearchOptions(this.state.searchOption).key}: {this.props.stats[this.state.searchOption] || 0}</li>
+                        <li className='output-investigation'></li>
+                        </>
                     )}
                     <br />
-                    <span className='output-investigation'> </span>
-                    <button onClick={() => {
+                    </ul>
+                    <button className="notice-button button-new-equipment button-hidden" onClick={() => {
                         //this.handleButtonClick('Equip New Items');
-                        this.perparing();
-                    }}></button>
+                        //</section>this.perparing();
+                        this.props.optimizeEquip(maximum);
+                    }}>Equip New Items</button>
                 </section>
             </>
         )

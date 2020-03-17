@@ -3,6 +3,17 @@ import PropTypes from "prop-types";
 
 import {convertName} from '../functions';
 
+export const types = [
+	{l: 'mainhands', c: 'Mainhands', np: 'mainhand'},
+	{l: 'offhands', c: 'Offhands', np: 'offhand'},
+	{l: 'heads', c: 'Heads', np: 'head'},
+	{l: 'bodies', c: 'Bodies', np: 'offhand'},
+	{l: 'necklaces', c: 'Necklaces', np: 'necklace'},
+	{l: 'rings', c: 'Rings', np: 'ring'},
+	{l: 'accessories', c: 'Accessories', np: 'accessory'},
+	{l: 'pets', c: 'Pets', np: 'pet'},
+];
+
 export default class Equipment extends Component {
 
 	constructor(props) {
@@ -37,6 +48,8 @@ export default class Equipment extends Component {
 		if (this.state.slotReveal) {
 			slotRevealStyling = {'display': 'block'};
 		}
+
+		
 		return (	
 			<div className="empty-div">
 				<button className="by-set by-main-buttons" onClick={() => {
@@ -105,132 +118,29 @@ export default class Equipment extends Component {
 				<button className="by-slot by-main-buttons" onClick={() => {
 					this.toggleState('slotReveal')
 				}}>Open Slots</button>
+				
 				<ul className="by-slot-reveal" style={slotRevealStyling}>
-					<li className="by-slot-types by-slots-mainhand" id="slot-mainhand">
-						<span className="item-name" >Mainhands</span>
-						<ul className="by-slot-types-reveal by-slots-mainhand-reveal">
-							{
-								Object.keys(this.props.sortedEquipment.mainhands).map((x) => {
-									var returnVal;
-										if (typeof this.props.sortedEquipment.mainhands[x] === 'string') {
-											returnVal = convertName(this.props.sortedEquipment.mainhands[x]);
-										} else {
-											returnVal = convertName(this.props.sortedEquipment.mainhands[x].name);
+					{/* mounts have special aspects */}
+					{
+						types.map((y, i) => (
+							
+							<li key={i} className={`by-slot-types by-slots-${y.np}`} id={`slot-${y.np}`}>
+								<span className="item-name" >{y.c}</span>
+								<ul className={`by-slot-types-reveal by-slots-${y.np}-reveal`}>
+									{
+										Object.keys(this.props.sortedEquipment[y.l]).map((x) => {
+											return <li 
+													className={`by-slots-type-${this.props.sortedEquipment[y.l][x].type}`} 
+													key={x} 
+													onClick={() => {this.props.equipItem(x)}}>
+													{this.props.sortedEquipment[y.l][x].name}
+													</li>
+										})
 									}
-									return <li
-											className={`by-slots-type-${this.props.sortedEquipment.mainhands[x].type}`} 
-											key={x} 
-											onClick={() => {this.props.equipItem(returnVal)}}>
-											{this.props.sortedEquipment.mainhands[x].name}
-											</li>
-								})
-							}
-						</ul>
-					</li>
-					<li className="by-slot-types by-slots-offhand" id="slot-offhand">
-						<span className="item-name" >Offhands</span>
-						<ul className="by-slot-types-reveal by-slots-offhand-reveal">
-							{
-								Object.keys(this.props.sortedEquipment.offhands).map((x) => {
-									return <li 
-											className={`by-slots-type-${this.props.sortedEquipment.offhands[x].type}`} 
-											key={x} 
-											onClick={() => {this.props.equipItem(x)}}>
-											{this.props.sortedEquipment.offhands[x].name}
-											</li>
-								})
-							}
-						</ul>
-					</li>
-					<li className="by-slot-types by-slots-body">
-						<span className="item-name" >Bodies</span>
-						<ul className="by-slot-types-reveal by-slots-body-reveal" id="slot-body">
-							{
-								Object.keys(this.props.sortedEquipment.bodies).map((x) => {
-									return <li
-									 		className={`by-slots-type-${this.props.sortedEquipment.bodies[x].type}`}  
-									 		key={x} 
-									 		onClick={() => {this.props.equipItem(x)}}>
-									 		{this.props.sortedEquipment.bodies[x].name}
-									 		</li>
-								})
-							}
-						</ul>
-					</li>
-					<li className="by-slot-types by-slots-head">
-						<span className="item-name" >Heads</span>
-						<ul className="by-slot-types-reveal by-slots-head-reveal" id="slot-head">
-							{
-								Object.keys(this.props.sortedEquipment.heads).map((x) => {
-									return <li 
-											className={`by-slots-type-${this.props.sortedEquipment.heads[x].type}`}  
-											key={x} 
-											onClick={() => {this.props.equipItem(x)}}>
-											{this.props.sortedEquipment.heads[x].name}
-											</li>
-								})
-							}
-						</ul>
-					</li>
-					<li className="by-slot-types by-slots-necklace">
-						<span className="item-name" >Necklaces</span>
-						<ul className="by-slot-types-reveal by-slots-necklace-reveal" id="slot-necklace">
-							{
-								Object.keys(this.props.sortedEquipment.necklaces).map((x) => {
-									return <li 
-											className={`by-slots-type-${this.props.sortedEquipment.necklaces[x].type}`} 
-											key={x} 
-											onClick={() => {this.props.equipItem(x)}}>
-											{this.props.sortedEquipment.necklaces[x].name}
-											</li>
-								})
-							}
-						</ul>
-					</li>
-					<li className="by-slot-types by-slots-ring">
-						<span className="item-name" >Rings</span>
-						<ul className="by-slot-types-reveal by-slots-ring-reveal" id="slot-ring">
-							{
-								Object.keys(this.props.sortedEquipment.rings).map((x) => {
-									return <li 
-											className={`by-slots-type-${this.props.sortedEquipment.rings[x].type}`} 
-											key={x} onClick={() => {this.props.equipItem(x)}}>
-											{this.props.sortedEquipment.rings[x].name}
-											</li>
-								})
-							}
-						</ul>
-					</li>
-					<li className="by-slot-types by-slots-pet">
-						<span className="item-name" >Pets</span>
-						<ul className="by-slot-types-reveal by-slots-pet-reveal" id="slot-pet">
-							{
-								Object.keys(this.props.sortedEquipment.pets).map((x) => {
-									return <li
-											className={`by-slots-type-pet-${this.props.sortedEquipment.pets[x].type}`} 
-											key={x} 
-											onClick={() => {this.props.equipItem(x)}}>
-											{this.props.sortedEquipment.pets[x].name}
-											</li>
-								})
-							}
-						</ul>
-					</li>
-					<li className="by-slot-types by-slots-accessory">
-						<span className="item-name" >Acccessories</span>
-						<ul className="by-slot-types-reveal by-slots-accessory-reveal" id="slot-accessory">
-							{
-								Object.keys(this.props.sortedEquipment.accessories).map((x) => {
-									return <li
-											className={`by-slots-type-pet-${this.props.sortedEquipment.accessories[x].type}`} 
-									 		key={x} 
-									 		onClick={() => {this.props.equipItem(x)}}>
-									 		{this.props.sortedEquipment.accessories[x].name}
-									 		</li>
-								})
-							}
-						</ul>
-					</li>
+								</ul>
+							</li>
+						))
+					}
 					<li className="by-slot-types by-slots-mount">
 						<span className="item-name" >Mounts</span>
 						<ul className="by-slot-types-reveal by-slots-mount-reveal" id="slot-mount">

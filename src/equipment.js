@@ -65,7 +65,105 @@ export const sortEquipment = (equipment, objectBool = true) => {
 	});
 
 	return [sortedEquipment, mythics, legendaries];
+};
+
+export const filteringEquipment = (equipment, filters) => {
+	/*
+		filters: {
+			searching: String,
+			tiers: [],
+			mythicsOnly: bool,
+			setsOnly: bool,
+			
+		}
+	
+	*/
+	let sortedEquipment = {
+		mainhands: {},
+		offhands: {},
+		heads: {},
+		bodies: {},
+		necklaces: {},
+		rings: {},
+		accessories: {},
+		pets: {}
+	  };
+	var mythics = {}, legendaries = {};
+
+	Object.keys(equipment).forEach( (x) => {
+
+		let pass = true;
+		equipment[x].image = `${x}.png`;
+
+		// first search through
+		if (filters.mythicsOnly && equipment[x].type !== 'mythic') {
+			pass = false;
+		} else if (filters.setsOnly && equipment[x].type !== 'set') {
+			pass = false;
+		}
+
+		//if it fails, we can just skip the rest)
+		if (pass) {
+			//if searching by tiers
+			if (filters.tiers) {
+				if (!filters.tiers.includes(equipment[x].tier)) {
+					pass = false;
+				}
+			}
+		} 
+
+		//text searching
+		if (pass) {
+			if (filters.searching.length > 0) {
+				pass = false;
+				if (equipment[x].name.includes(filters.searching) || equipment[x].name.includes(filters.searching.toUpperCase()) || equipment[x].name.includes(filters.searching.toLowerCase())) {
+					pass=true;
+				}
+			}
+		}
+
+		//push into correct spaces
+		if (pass) {
+
+			if (equipment[x].type === "mythic") {
+				mythics[x] = equipment[x];
+			} else if (equipment[x].type ==="legendary") {
+				legendaries[x] = equipment[x];
+			}
+
+			switch(equipment[x].slot) {
+				case 'Offhand':
+					sortedEquipment.offhands[x] = equipment[x];
+					break;
+				case 'Body':
+					sortedEquipment.bodies[x] = equipment[x];
+					break;
+				case 'Head':
+					sortedEquipment.heads[x] = equipment[x];
+					break;
+				case 'Ring':
+					sortedEquipment.rings[x] = equipment[x];
+					break;
+				case 'Necklace':
+					sortedEquipment.necklaces[x] = equipment[x];
+					break;
+				case 'Pet':
+					sortedEquipment.pets[x] = equipment[x];
+					break;
+				case 'Accessory':
+					sortedEquipment.accessories[x] = equipment[x];
+					break;
+				default: 
+					sortedEquipment.mainhands[x] = equipment[x];
+			};
+
+		}
+
+	}) 
+	return [sortedEquipment, mythics, legendaries];
 }
+
+
 
 //71
 export const equipment = {
@@ -76,7 +174,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "ares_legacy",
 		effect: "",
-		shareID: "ph"
+		shareID: "ph",
+		tier: 5,
 	},
 	deimos: {
 		name: "Deimos",
@@ -85,7 +184,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "ares_legacy",
 		effect: "",
-		shareID: "de"
+		shareID: "de",
+		tier: 5,
 	},
 	phantom_light: {
 		name: "Phantom Light",
@@ -94,7 +194,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "divinity",
 		effect: "",
-		shareID: "pl"
+		shareID: "pl",
+		tier: 6,
 	},
 	legacy_of_truth: {
 		name: "Legacy Of Truth",
@@ -103,7 +204,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "divinity",
 		effect: "",
-		shareID: "lt"
+		shareID: "lt",
+		tier: 6,
 	},
 	trinity_plate: {
 		name: "Trinity Plate",
@@ -112,7 +214,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "divinity",
 		effect: "",
-		shareID: "tp"
+		shareID: "tp",
+		tier: 6,
 	},
 	visortron: {
 		name: "Visortron",
@@ -121,7 +224,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "maru",
 		effect: "",
-		shareID: "vi"
+		shareID: "vi",
+		tier: 7,
 	},
 	mechcoat: {
 		name: "Mechcoat",
@@ -130,7 +234,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "maru",
 		effect: "",
-		shareID: "me"
+		shareID: "me",
+		tier: 7,
 	},
 	rom_bios: {
 		name: "ROM BIOS",
@@ -139,7 +244,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "maru",
 		effect: "",
-		shareID: "rb"
+		shareID: "rb",
+		tier: 7,
 	},
 	blast_protocol: {
 		name: "Blast Protocol",
@@ -148,7 +254,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "maru",
 		effect: "",
-		shareID: "bp"
+		shareID: "bp",
+		tier: 7,
 	},
 	moonlight: {
 		name: "Moonlight",
@@ -157,7 +264,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "night_walker",
 		effect: "",
-		shareID: "mo"
+		shareID: "mo",
+		tier: 8,
 	},
 	discordiant_power: {
 		name: "Discordiant Power",
@@ -166,7 +274,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "night_walker",
 		effect: "",
-		shareID: "dp"
+		shareID: "dp",
+		tier: 8,
 	},
 	dominance: {
 		name: "Dominance",
@@ -175,7 +284,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "night_walker",
 		effect: "",
-		shareID: "do"
+		shareID: "do",
+		tier: 8,
 	},
 	adorned_malice: {
 		name: "Adorned Malice",
@@ -184,7 +294,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "night_walker",
 		effect: "",
-		shareID: "am"
+		shareID: "am",
+		tier: 8,
 	},
 	umd_lazzault: {
 		name: "UMD Lazzault",
@@ -193,7 +304,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "arsenal",
 		effect: "",
-		shareID: "a1"
+		shareID: "a1",
+		tier: 9,
 	},
 	aimbot_80: {
 		name: "Aimbot 80",
@@ -202,7 +314,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "arsenal",
 		effect: "",
-		shareID: "a2"
+		shareID: "a2",
+		tier: 9,
 	},
 	a_m_h: {
 		name: "A M H",
@@ -211,7 +324,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "arsenal",
 		effect: "",
-		shareID: "a3"
+		shareID: "a3",
+		tier: 9,
 	},
 	nanovectal_plating: {
 		name: "Nanovectal Plating",
@@ -220,7 +334,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "arsenal",
 		effect: "",
-		shareID: "a4"
+		shareID: "a4",
+		tier: 9,
 	},
 	despair: {
 		name: "Despair",
@@ -229,7 +344,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "unity",
 		effect: "",
-		shareID: "ds"
+		shareID: "ds",
+		tier: 5,
 	},
 	sorrow: {
 		name: "Sorrow",
@@ -238,7 +354,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "unity",
 		effect: "",
-		shareID: "so"
+		shareID: "so",
+		tier: 5,
 	},
 	trugdors_bite: {
 		name: "Trugdor's Bite",
@@ -247,7 +364,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "trugdors_call",
 		effect: "",
-		shareID: "tb"
+		shareID: "tb",
+		tier: 5,
 	},
 	scaled_vambrace: {
 		name: "Scaled Vambrace",
@@ -256,7 +374,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "trugdors_call",
 		effect: "",
-		shareID: "sv"
+		shareID: "sv",
+		tier: 5,
 	},
 	dragons_breath: {
 		name: "Dragons Breath",
@@ -265,7 +384,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "trugdors_call",
 		effect: "",
-		shareID: "db"
+		shareID: "db",
+		tier: 5,
 	},
 	eternal_fire: {
 		name: "Eternal Fire",
@@ -274,7 +394,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "taldrilths_artifacts",
 		effect: "",
-		shareID: "ef"
+		shareID: "ef",
+		tier: 6,
 	},
 	scaled_dragons_bone: {
 		name: "Scaled Dragon's Bone",
@@ -283,7 +404,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "taldrilths_artifacts",
 		effect: "",
-		shareID: "sd"
+		shareID: "sd",
+		tier: 6,
 	},
 	taldrilths_soul: {
 		name: "Taldrilth's Soul",
@@ -292,7 +414,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "taldrilths_artifacts",
 		effect: "",
-		shareID: "ts"
+		shareID: "ts",
+		tier: 6,
 	},
 	matsukura: {
 		name: "Matsukura",
@@ -301,7 +424,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "bushido",
 		effect: "",
-		shareID: "mt"
+		shareID: "mt",
+		tier: 6,
 	},
 	yashiros_dou: {
 		name: "Yashiro's Dou",
@@ -310,7 +434,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "bushido",
 		effect: "",
-		shareID: "yd"
+		shareID: "yd",
+		tier: 6,
 	},
 	gigastrike: {
 		name: "Gigastrike",
@@ -319,7 +444,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "conduction",
 		effect: "",
-		shareID: "gi"
+		shareID: "gi",
+		tier: 7,
 	},
 	magnetron: {
 		name: "Magnetron",
@@ -328,7 +454,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "conduction",
 		effect: "",
-		shareID: "ma"
+		shareID: "ma",
+		tier: 7,
 	},
 	flow_plate: {
 		name: "Flow Plate",
@@ -337,7 +464,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "conduction",
 		effect: "",
-		shareID: "fp"
+		shareID: "fp",
+		tier: 7,
 	},
 	power_amp: {
 		name: "Power Amp",
@@ -346,7 +474,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "conduction",
 		effect: "",
-		shareID: "pa"
+		shareID: "pa",
+		tier: 7,
 	},
 	yak_blade: {
 		name: "Yak Blade",
@@ -355,7 +484,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "luminary",
 		effect: "",
-		shareID: "yb"
+		shareID: "yb",
+		tier: 8,
 	},
 	stillness: {
 		name: "Stillness",
@@ -364,7 +494,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "luminary",
 		effect: "",
-		shareID: "st"
+		shareID: "st",
+		tier: 8,
 	},
 	hylidae: {
 		name: "Hylidae",
@@ -373,7 +504,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "luminary",
 		effect: "",
-		shareID: "hy"
+		shareID: "hy",
+		tier: 8,
 	},
 	flowing_silk_sash: {
 		name: "Flowing Silk Sash",
@@ -382,7 +514,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "luminary",
 		effect: "",
-		shareID: "fs"
+		shareID: "fs",
+		tier: 8,
 	},
 	sky_vapor: {
 		name: "Sky Vapor",
@@ -391,7 +524,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "polaris",
 		effect: "",
-		shareID: "p1"
+		shareID: "p1",
+		tier: 9,
 	},
 	sky_vault: {
 		name: "Sky Vault",
@@ -400,7 +534,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "polaris",
 		effect: "",
-		shareID: "p2"
+		shareID: "p2",
+		tier: 9,
 	},
 	champions_helm: {
 		name: "Champions Helm",
@@ -409,7 +544,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "polaris",
 		effect: "",
-		shareID: "p3"
+		shareID: "p3",
+		tier: 9,
 	},
 	whale_plate: {
 		name: "Whale Plate",
@@ -418,7 +554,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "polaris",
 		effect: "",
-		shareID: "p4"
+		shareID: "p4",
+		tier: 9,
 	},
 	maelstrom: {
 		name: "Maelstrom",
@@ -427,7 +564,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "lunar_guardian",
 		effect: "",
-		shareID: "ms"
+		shareID: "ms",
+		tier: 6,
 	},
 	eclipse_barrier: {
 		name: "Eclipse Barrier",
@@ -436,7 +574,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "lunar_guardian",
 		effect: "",
-		shareID: "eb"
+		shareID: "eb",
+		tier: 6,
 	},
 	moku: {
 		name: "Moku",
@@ -445,7 +584,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "jynx",
 		effect: "",
-		shareID: "mk"
+		shareID: "mk",
+		tier: 6,
 	},
 	ku: {
 		name: "Ku",
@@ -454,7 +594,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "jynx",
 		effect: "",
-		shareID: "ku"
+		shareID: "ku",
+		tier: 6,
 	},
 	wraithguard: {
 		name: "Wraithguard",
@@ -463,7 +604,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "obliteration",
 		effect: "",
-		shareID: "wr"
+		shareID: "wr",
+		tier: 7,
 	},
 	last_sight: {
 		name: "Last Sight",
@@ -472,7 +614,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "obliteration",
 		effect: "",
-		shareID: "ls"
+		shareID: "ls",
+		tier: 7,
 	},
 	dark_wrap: {
 		name: "Dark Wrap",
@@ -481,7 +624,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "obliteration",
 		effect: "",
-		shareID: "dw"
+		shareID: "dw",
+		tier: 7,
 	},
 	black_omen: {
 		name: "Black Omen",
@@ -490,7 +634,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "obliteration",
 		effect: "",
-		shareID: "bo"
+		shareID: "bo",
+		tier: 7,
 	},
 	arcusbolt: {
 		name: "Arcusbolt",
@@ -499,7 +644,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "agony",
 		effect: "",
-		shareID: "ar"
+		shareID: "ar",
+		tier: 8,
 	},
 	tormented_soul: {
 		name: "Tormented Soul",
@@ -508,7 +654,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "agony",
 		effect: "",
-		shareID: "tu"
+		shareID: "tu",
+		tier: 8,
 	},
 	gravetouch: {
 		name: "Gravetouch",
@@ -517,7 +664,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "agony",
 		effect: "",
-		shareID: "gt"
+		shareID: "gt",
+		tier: 8,
 	},
 	crypt_hunter: {
 		name: "Crypt Hunter",
@@ -526,7 +674,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "agony",
 		effect: "",
-		shareID: "ch"
+		shareID: "ch",
+		tier: 8,
 	},
 	slaghelm: {
 		name: "Slaghelm",
@@ -535,7 +684,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "eruption",
 		effect: "",
-		shareID: "e1"
+		shareID: "e1",
+		tier: 9,
 	},
 	molten_chasis: {
 		name: "Molten Chasis",
@@ -544,7 +694,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "eruption",
 		effect: "",
-		shareID: "e2"
+		shareID: "e2",
+		tier: 9,
 	},
 	magmight: {
 		name: "Magmight",
@@ -553,7 +704,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "eruption",
 		effect: "",
-		shareID: "e3"
+		shareID: "e3",
+		tier: 9,
 	},
 	ancient_tiara: {
 		name: "Ancient Tiara",
@@ -562,7 +714,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "illustrious_artifacts",
 		effect: "",
-		shareID: "ai"
+		shareID: "ai",
+		tier: 6,
 	},
 	heavenly_garb: {
 		name: "Heavenly Garb",
@@ -570,9 +723,9 @@ export const equipment = {
 		slot: "Body",
 		image: "",
 		partOfSet: "illustrious_artifacts",
-		effect: ""
-		,
-		shareID: "hg"
+		effect: "",
+		shareID: "hg",
+		tier: 6,
 	},
 	exalted_binding: {
 		name: "Exalted Binding",
@@ -581,7 +734,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "illustrious_artifacts",
 		effect: "",
-		shareID: "ex"
+		shareID: "ex",
+		tier: 6,
 	},
 	tayto_sword: {
 		name: "Tayto Sword",
@@ -590,7 +744,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "taters",
 		effect: "",
-		shareID: "ty"
+		shareID: "ty",
+		tier: 7,
 	},
 	tayto_sack: {
 		name: "Tayto Sack",
@@ -599,7 +754,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "taters",
 		effect: "",
-		shareID: "tc"
+		shareID: "tc",
+		tier: 7,
 	},
 	hangin_tayto: {
 		name: "Hangin Tayto",
@@ -608,7 +764,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "taters",
 		effect: "",
-		shareID: "ht"
+		shareID: "ht",
+		tier: 7,
 	},
 	final_gaze: {
 		name: "Final Gaze",
@@ -617,7 +774,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "inferno",
 		effect: "",
-		shareID: "fg"
+		shareID: "fg",
+		tier: 8,
 	},
 	final_flash: {
 		name: "Final Flash",
@@ -626,7 +784,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "inferno",
 		effect: "",
-		shareID: "ff"
+		shareID: "ff",
+		tier: 8,
 	},
 	melding_cloak: {
 		name: "Melding Cloak",
@@ -635,7 +794,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "inferno",
 		effect: "",
-		shareID: "mc"
+		shareID: "mc",
+		tier: 8,
 	},
 	brimstone: {
 		name: "Brimstone",
@@ -644,7 +804,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "inferno",
 		effect: "",
-		shareID: "br"
+		shareID: "br",
+		tier: 8,
 	},
 	veilstrike: {
 		name: "Veilstrike",
@@ -653,7 +814,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "requiem",
 		effect: "",
-		shareID: "r1"
+		shareID: "r1",
+		tier: 9,
 	},
 	cloudsinge: {
 		name: "Cloudsinge",
@@ -662,7 +824,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "requiem",
 		effect: "",
-		shareID: "r2"
+		shareID: "r2",
+		tier: 9,
 	},
 	oscillation: {
 		name: "Oscillation",
@@ -671,7 +834,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "requiem",
 		effect: "",
-		shareID: "r3"
+		shareID: "r3",
+		tier: 9,
 	},
 	acropodium: {
 		name: "Acropodium",
@@ -680,7 +844,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "gatekeeper",
 		effect: "+24.5% Damage",
-		shareID: "ac"
+		shareID: "ac",
+		tier: 0,
 	},
 	karlorr: {
 		name: "Karlorr",
@@ -689,7 +854,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "gatekeeper",
 		effect: "30% chance to attack weakest enemy per turn, when you get hit, and when you hit an enemy",
-		shareID: "ka"
+		shareID: "ka",
+		tier: 0,
 	},
 	pew_pew: {
 		name: "Pew Pew",
@@ -699,7 +865,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "3% Ricochet Chance",
 		location: "r4 heroic",
-		shareID: "pp"
+		shareID: "pp",
+		tier: 7,
 	},
 	hysteria: {
 		name: "Hysteria",
@@ -709,7 +876,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Gain increased damage the lower your health percentage becomes, up to 10%",
 		location: "t7 Netherworld World Boss Heroic",
-		shareID: "hs"
+		shareID: "hs",
+		tier: 7,
 	},
 	bub: {
 		name: "Bub",
@@ -719,7 +887,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "2% Absorb Chance",
 		location: "t7 Orlag World Boss Heroic",
-		shareID: "bb"
+		shareID: "bb",
+		tier: 7,
 	},
 	superstition: {
 		name: "Superstition",
@@ -729,7 +898,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Convert 3% of all team damage recieved to your enrage meter",
 		location: "t7 Netherworld World Boss Heroic",
-		shareID: "sp"
+		shareID: "sp",
+		tier: 7,
 	},
 	night_visage: {
 		name: "Night Visage",
@@ -739,7 +909,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "While at full health, damage increased by 5%",
 		location: "t7 Set Trials and Gauntlets 200-209",
-		shareID: "ni"
+		shareID: "ni",
+		tier: 7,
 	},
 	consumption: {
 		name: "Consumption",
@@ -749,7 +920,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "5% chance to heal a teammate for 85-115% when they are about to die",
 		location: "t7 Set Trials and Gauntlets 200-209",
-		shareID: "cn"
+		shareID: "cn",
+		tier: 7,
 	},
 	decay: {
 		name: "Decay",
@@ -759,7 +931,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "5% chance for healing skills recieved to be twice as effective",
 		location: "r4 Heroic",
-		shareID: "dc"
+		shareID: "dc",
+		tier: 7,
 	},
 	necrosis: {
 		name: "Necrosis",
@@ -769,7 +942,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10% chance to gain 1 SP per turn",
 		location: "t7 Orlag World Boss Heroic",
-		shareID: "no"
+		shareID: "no",
+		tier: 7,
 	},
 	cometfell: {
 		name: "Cometfell",
@@ -779,7 +953,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "1% Quad Strike",
 		location: "r5 Heroic",
-		shareID: "cm"
+		shareID: "cm",
+		tier: 8,
 	},
 	nebuleye: {
 		name: "Nebuleye",
@@ -789,7 +964,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Damage increased by 1% for every legendary item equipped",
 		location: "r5 Heroic",
-		shareID: "nb"
+		shareID: "nb",
+		tier: 8,
 	},
 	hood_of_menace: {
 		name: "Hood Of Menace",
@@ -799,7 +975,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "While above 75% health, evade chance increased by 5%",
 		location: "t8 Netherworld World Boss Heroic",
-		shareID: "hm"
+		shareID: "hm",
+		tier: 8,
 	},
 	crypt_tunic: {
 		name: "Crypt Tunic",
@@ -809,7 +986,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+3% Deflect Chance",
 		location: "t8 Netherworld World Boss Heroic",
-		shareID: "ct"
+		shareID: "ct",
+		tier: 8,
 	},
 	fish_n_barrel: {
 		name: "Fish N' Barrel",
@@ -819,7 +997,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Gain 5% damage reduction, but deal 5% reduced damage",
 		location: "t8 Orlag World Boss Heroic",
-		shareID: "fn"
+		shareID: "fn",
+		tier: 8,
 	},
 	engulfing_artifact: {
 		name: "Engulfing Artifact",
@@ -829,7 +1008,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "At the start of each turn, shield team for 22-27%",
 		location: "t8 Orlag World Boss Heroic",
-		shareID: "ea"
+		shareID: "ea",
+		tier: 8,
 	},
 	nemesis: {
 		name: "Nemesis",
@@ -839,7 +1019,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "4% Dual Strike",
 		location: "t8 Set Trials & Gauntlets 340+",
-		shareID: "ne"
+		shareID: "ne",
+		tier: 8,
 	},
 	bedlam: {
 		name: "Bedlam",
@@ -849,7 +1030,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Increase the poteny of your healing skills by 8%",
 		location: "t8 Set Trials & Gauntlets 340+",
-		shareID: "bd"
+		shareID: "bd",
+		tier: 8,
 	},
 	widowmaker: {
 		name: "Widowmaker",
@@ -859,7 +1041,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "16% Crit Chance, 50% Crit Damage, 4% Empower Chance",
 		location: "Shop",
-		shareID: "WM"
+		shareID: "WM",
+		tier: 0,
 	},
 	seraphims_grace: {
 		name: "Seraphims Grace",
@@ -869,7 +1052,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Block Chance, 10% Evade Chance, 5% Deflect Chance",
 		location: "Shop",
-		shareID: "sg"
+		shareID: "sg",
+		tier: 0,
 	},
 	melvin_champ: {
 		name: "Melvin Champ",
@@ -879,7 +1063,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Dual Strike, 9% Crit Chance",
 		location: "Shop",
-		shareID: "MH"
+		shareID: "MH",
+		tier: 0,
 	},
 	abominable_trophy: {
 		name: "Abominable Trophy",
@@ -889,7 +1074,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Damage Reduction, 5% Absorb Chance",
 		location: "Shop",
-		shareID: "ao"
+		shareID: "ao",
+		tier: 0,
 	},
 
 	wrath: {
@@ -900,7 +1086,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10% Deflect Chance, 7.5% Absorb Chance",
 		location: "Shop",
-		shareID: "WR"
+		shareID: "WR",
+		tier: 0,
 	},
 	baronets: {
 		name: "Baronets",
@@ -910,7 +1097,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Empower Chance, 4.5% Dual Strike",
 		location: "Shop",
-		shareID: "ec"
+		shareID: "ec",
+		tier: 0,
 	},
 	astaroths_diadem: {
 		name: "Astaroths Diadem",
@@ -920,7 +1108,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "2.5% Empower, 2.5% Dual, 5% Damage, 5% Speed, 5% Crit Chance, 50% Crit Damage",
 		location: "Shop",
-		shareID: "ad"
+		shareID: "ad",
+		tier: 0,
 	},
 	melvin_stew: {
 		name: "Melvin Stew",
@@ -930,7 +1119,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "15% Absorb Chance",
 		location: "Shop",
-		shareID: "es"
+		shareID: "es",
+		tier: 0,
 	},
 	the_atomising_neutrino_accelerator: {
 		name: "The Atomising Neutrino Accelerator",
@@ -940,7 +1130,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "60% Block Chance",
 		location: "Shop",
-		shareID: "aa"
+		shareID: "aa",
+		tier: 0,
 	},
 	travelling_forge: {
 		name: "Travelling Forge",
@@ -950,7 +1141,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10% Dual Strike, 10% Empower Chance, 10% Crit Chance",
 		location: "Shop",
-		shareID: "TF"
+		shareID: "TF",
+		tier: 0,
 	},
 	transcendence: {
 		name: "Transcendence",
@@ -960,7 +1152,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "40% Crit Chance, 3% Dual Strike, 3% Empower Chance",
 		location: "Shop",
-		shareID: "tr"
+		shareID: "tr",
+		tier: 0,
 	},
 	nelson: {
 		name: "Nelson",
@@ -970,7 +1163,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Chance to Attack Closest enemy per turn, get hit, and when hit",
 		location: "Shop",
-		shareID: "nl"
+		shareID: "nl",
+		tier: 0,
 	},
 	gemmi: {
 		name: "Gemmi",
@@ -980,7 +1174,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Chance To Heal per turn, on hit, and when hit",
 		location: "Shop",
-		shareID: "mm"
+		shareID: "mm",
+		tier: 0,
 	},
 	boiguh: {
 		name: "Boiguh",
@@ -990,7 +1185,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Chance to shield team per turn, on hit, and when hit",
 		location: "Shop",
-		shareID: "uh"
+		shareID: "uh",
+		tier: 0,
 	},
 	quimby: {
 		name: "Quimby",
@@ -1000,7 +1196,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Chance to attack weakest per turn, on hit, and when hit",
 		location: "Shop",
-		shareID: "qu"
+		shareID: "qu",
+		tier: 0,
 	},
 	wuvboi: {
 		name: "Wubvoi",
@@ -1010,7 +1207,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Chance to heal and shield team per turn, on hit, and when hit",
 		location: "Shop",
-		shareID: "wv"
+		shareID: "wv",
+		tier: 0,
 	},
 	buvboi: {
 		name: "Buvboi",
@@ -1020,7 +1218,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Chance to attack random enemy per turn, on hit, and when hit",
 		location: "Shop",
-		shareID: "bi"
+		shareID: "bi",
+		tier: 0,
 	},
 	skulldemort: {
 		name: "Skulldemort",
@@ -1030,7 +1229,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Chance to heal lowest health teammate per turn, on hit, and when hit",
 		location: "Shop",
-		shareID: "sk"
+		shareID: "sk",
+		tier: 0,
 	},
 	fuvboi: {
 		name: "Fuvboi",
@@ -1040,7 +1240,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10% Chance to heal and shield team per turn, on hit, and when hit",
 		location: "Shop",
-		shareID: "uv"
+		shareID: "uv",
+		tier: 0,
 	},
 	toebert: {
 		name: "Toebert",
@@ -1050,7 +1251,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "61.5% Chance to heal and shield team per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "te"
+		shareID: "te",
+		tier: 0,
 	},
 	urgoff: {
 		name: "Urgoff",
@@ -1060,7 +1262,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "61.5% Chance to heal team per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "uf"
+		shareID: "uf",
+		tier: 0,
 	},
 	prisby: {
 		name: "Prisby",
@@ -1070,7 +1273,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "41% Chance to attack strongest enemy per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "pb"
+		shareID: "pb",
+		tier: 0,
 	},
 	roogamenz: {
 		name: "Roogamenz",
@@ -1080,7 +1284,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "61.5% Chance to shield team per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "oo"
+		shareID: "oo",
+		tier: 0,
 	},
 	crem: {
 		name: "Crem",
@@ -1090,7 +1295,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10 Chance to heal team per turn, on hit, and when hit",
 		location: "Shop",
-		shareID: "rm"
+		shareID: "rm",
+		tier: 0,
 	},
 	dawn_of_mercy: {
 		name: "Dawn Of Mercy",
@@ -1099,7 +1305,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "hellfire",
 		effect: "",
-		shareID: "dm"
+		shareID: "dm",
+		tier: 1,
 	},
 	idol_of_decay: {
 		name: "Idol Of Decay",
@@ -1108,7 +1315,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "hellfire",
 		effect: "",
-		shareID: "io"
+		shareID: "io",
+		tier: 1,
 	},
 	deception: {
 		name: "Deception",
@@ -1117,7 +1325,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "hellfire",
 		effect: "",
-		shareID: "h3"
+		shareID: "h3",
+		tier: 1,
 	},
 	soulkeeper: {
 		name: "Soulkeeper",
@@ -1126,7 +1335,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "hellfire",
 		effect: "",
-		shareID: "h4"
+		shareID: "h4",
+		tier: 1,
 	},
 	dementia: {
 		name: "Dementia",
@@ -1135,7 +1345,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "hellfire",
 		effect: "",
-		shareID: "h5"
+		shareID: "h5",
+		tier: 1,
 	},
 	ferocity: {
 		name: "Ferocity",
@@ -1144,7 +1355,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "hellfire",
 		effect: "",
-		shareID: "h6"
+		shareID: "h6",
+		tier: 1,
 	},
 	maplestrike: {
 		name: "Maplestrike",
@@ -1153,7 +1365,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "featherfall",
 		effect: "",
-		shareID: "f1"
+		shareID: "f1",
+		tier: 1,
 	},
 	peacesong: {
 		name: "Peacesong",
@@ -1162,7 +1375,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "featherfall",
 		effect: "",
-		shareID: "f6"
+		shareID: "f6",
+		tier: 1,
 	},
 	emberling: {
 		name: "Emberling",
@@ -1171,7 +1385,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "featherfall",
 		effect: "",
-		shareID: "f2"
+		shareID: "f2",
+		tier: 1,
 	},
 	windspirit: {
 		name: "Windspirit",
@@ -1180,7 +1395,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "featherfall",
 		effect: "",
-		shareID: "f3"
+		shareID: "f3",
+		tier: 1,
 	},
 	nimble: {
 		name: "Nimble",
@@ -1189,7 +1405,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "featherfall",
 		effect: "",
-		shareID: "f4"
+		shareID: "f4",
+		tier: 1,
 	},
 	clarity: {
 		name: "Clarity",
@@ -1198,7 +1415,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "featherfall",
 		effect: "",
-		shareID: "f5"
+		shareID: "f5",
+		tier: 1,
 	},
 	veilage: {
 		name: "Veilage",
@@ -1208,7 +1426,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "4% Empower Chance",
 		location: "r6 heroic",
-		shareID: "vl"
+		shareID: "vl",
+		tier: 9,
 	},
 	flickerate: {
 		name: "Flickerate",
@@ -1218,7 +1437,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "2% Absorb Chance",
 		location: "r6 heroic",
-		shareID: "fr"
+		shareID: "fr",
+		tier: 9,
 	},
 	moon_collage: {
 		name: "Moon Collage",
@@ -1228,7 +1448,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Gain a 1%, 2%, 3%, 5%, 10% or 50% damage increase based on a weighted chance",
 		location: "t9 trials",
-		shareID: "ml"
+		shareID: "ml",
+		tier: 9,
 	},
 	lava_defender: {
 		name: "Lava Defender",
@@ -1238,7 +1459,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "5% Redirect chance",
 		location: "t9 trials",
-		shareID: "ld"
+		shareID: "ld",
+		tier: 9,
 	},
 	dewey_decal: {
 		name: "Dewey Decal",
@@ -1248,7 +1470,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Gain 5% increased damage while all teammates are alive",
 		location: "t9 orlag hc",
-		shareID: "dy"
+		shareID: "dy",
+		tier: 9,
 	},
 	magmasher: {
 		name: "Magmasher",
@@ -1258,7 +1481,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Heals received from skills are 10% more effective",
 		location: "t9 orlag hc",
-		shareID: "mg"
+		shareID: "mg",
+		tier: 9,
 	},
 	brightstar: {
 		name: "Brightstar",
@@ -1268,7 +1492,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "3% Deflect Chance",
 		location: "t9 nether hc",
-		shareID: "bt"
+		shareID: "bt",
+		tier: 9,
 	},
 	shifting_breeze: {
 		name: "Shifting Breeze",
@@ -1278,7 +1503,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "4% Speed",
 		location: "t9 nether hc",
-		shareID: "sb"
+		shareID: "sb",
+		tier: 9,
 	},
 	oblivion: {
 		name: "Oblivion",
@@ -1288,7 +1514,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+1% Absorb Chance, +1% Deflect Chance, +1% Evade Chance",
 		location: "Expedition (Relaeib Portal)",
-		shareID: "ov"
+		shareID: "ov",
+		tier: 1,
 	},
 	peeper: {
 		name: "Peeper",
@@ -1298,7 +1525,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+1-8% Damage",
 		location: "Expedition (Zarlock Portal)",
-		shareID: "ee"
+		shareID: "ee",
+		tier: 1,
 	},
 	ataraxia: {
 		name: "Ataraxia",
@@ -1308,7 +1536,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Gain 1% increase damage for every set item equipped",
 		location: "Expedition (Blemo Portal)",
-		shareID: "xi"
+		shareID: "xi",
+		tier: 1,
 	},
 	twitch: {
 		name: "Twitch",
@@ -1318,7 +1547,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+1-8% Damage Reduction",
 		location: "Expedition (Gummy's Portal)",
-		shareID: "wi"
+		shareID: "wi",
+		tier: 1,
 	},
 	abhorence: {
 		name: "Abhorence",
@@ -1328,7 +1558,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+1.5% Ricochet Chance, 1% Empower Chance, 1% Dual Strike",
 		location: "Expedition (Googarum's)",
-		shareID: "ah"
+		shareID: "ah",
+		tier: 1,
 	},
 	radiance: {
 		name: "Radiance",
@@ -1337,8 +1568,9 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Gain 0.75% Increase damage and damage reduction for every Mythic item equipped",
-		location: "Svord's",
-		shareID: "re"
+		location: "Expedition (Svord's)",
+		shareID: "re",
+		tier: 1,
 	},
 	vile_focus: {
 		name: "Vile Focus",
@@ -1348,7 +1580,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "While above 50% health, Absorb Chance increased by 3%",
 		location: "Expedition (Twinmbo's)",
-		shareID: "vf"
+		shareID: "vf",
+		tier: 1,
 	},
 	cloak_of_dark_tides: {
 		name: "Cloak Of Dark Tides",
@@ -1358,7 +1591,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Deal 5% increased damage, but take 5% increased damage",
 		location: "Expedition (X5-T34M's)",
-		shareID: "dt"
+		shareID: "dt",
+		tier: 1,
 	},
 	mewmeck: {
 		name: "Mewmeck",
@@ -1368,7 +1602,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+1% Damage, +1% Speed, +1% Dual Strike, +1% Empower Chance",
 		location: "Jelly Event",
-		shareID: "wc"
+		shareID: "wc",
+		tier: 1,
 	},
 	peppermint_ring: {
 		name: "Peppermint Ring",
@@ -1378,7 +1613,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+2 Team Enrage, You and nearby teammates gain 1% increased Damage",
 		location: "Holiday Invasion",
-		shareID: "pr"
+		shareID: "pr",
+		tier: 1,
 	},
 	sakura: {
 		name: "Sakura",
@@ -1388,7 +1624,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "25% Damage Reduction, 10% Block Chance",
 		location: "Shop",
-		shareID: "ur"
+		shareID: "ur",
+		tier: 0,
 	},
 	zaserite_wings: {
 		name: "Zaserite Wings",
@@ -1398,7 +1635,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10% Crit Chance, 5% Empower Chance, 5% Dual Strike, 5% Damage, 5% Speed, 5% Life Steal",
 		location: "Shop",
-		shareID: "za"
+		shareID: "za",
+		tier: 0,
 	},
 	drozgul: {
 		name: "Drozgul",
@@ -1408,7 +1646,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "8% Damage Reduction, 5% Evade Chance, 5% Absorb Chance, 5% Deflect Chance",
 		location: "Shop",
-		shareID: "gu"
+		shareID: "gu",
+		tier: 0,
 	},
 	kiwi: {
 		name: "Kiwi",
@@ -1418,7 +1657,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20.5% Chance to attack weakest per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "iw"
+		shareID: "iw",
+		tier: 0,
 	},
 	sardines: {
 		name: "Sardines",
@@ -1428,7 +1668,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "61.5% Chance to spread heal and shield per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "da"
+		shareID: "da",
+		tier: 0,
 	},
 	crintie: {
 		name: "Crintie",
@@ -1438,7 +1679,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "61.5% chance to heal weakest teammate and attack weakest enemy per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "cr"
+		shareID: "cr",
+		tier: 0,
 	},
 	harvester: {
 		name: "Harvester",
@@ -1448,7 +1690,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Bonus: 5% chance to use a random skill for free at the start of each turn. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z7d3",
-		shareID: "hv"
+		shareID: "hv",
+		tier: 2,
 	},
 	starweave_ring: {
 		name: "Starweave",
@@ -1458,7 +1701,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Reduces the amount of set items required for a set bonus by 1. Must have at least 2 items of a specific set equipped. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z8d3",
-		shareID: "sr"
+		shareID: "sr",
+		tier: 2,
 	},
 	starweave_necklace: {
 		name: "Starweave",
@@ -1468,7 +1712,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Reduces the amount of set items required for a set bonus by 1. Must have at least 2 items of a specific set equipped, +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z8d3",
-		shareID: "sn"
+		shareID: "sn",
+		tier: 2,
 	},
 	elementarium_body: {
 		name: "Elementarium",
@@ -1478,7 +1723,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Major Rune Bonuses Doubled. Only 1 bonus of this type may be active. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z10d3",
-		shareID: "el"
+		shareID: "el",
+		tier: 2,
 	},
 	elementarium_head: {
 		name: "Elementarium",
@@ -1488,7 +1734,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Major Rune Bonuses Doubled. Only 1 bonus of this type may be active. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z10d3",
-		shareID: "ez"
+		shareID: "ez",
+		tier: 2,
 	},
 	melvin_cloak: {
 		name: "Melvin Cloak",
@@ -1498,7 +1745,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "You and nearby teammates gain 2% increased damage",
 		location: "R7 heroic",
-		shareID: "m1"
+		shareID: "m1",
+		tier: 10,
 	},
 	melvin_head: {
 		name: "Melvin Head",
@@ -1508,7 +1756,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Increase maximum shields to 75% of total health",
 		location: "R7 Trials 680+",
-		shareID: "m2"
+		shareID: "m2",
+		tier: 10,
 	},
 	frostybite: {
 		name: "Frostybite",
@@ -1518,7 +1767,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "5% SP skill damage increase",
 		location: "R7 heroic",
-		shareID: "f1"
+		shareID: "f1",
+		tier: 10,
 	},
 	bassault: {
 		name: "Bassault",
@@ -1528,7 +1778,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Gain 5% damage reduction while shielded",
 		location: "R7 Trials 680+",
-		shareID: "b1"
+		shareID: "b1",
+		tier: 10,
 	},
 	ikoscale: {
 		name: "Ikoscale",
@@ -1537,7 +1788,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "merciless",
 		effect: "",
-		shareID: "m3"
+		shareID: "m3",
+		tier: 10,
 	},
 	phantomate: {
 		name: "Phantomate",
@@ -1546,7 +1798,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "merciless",
 		effect: "",
-		shareID: "m4"
+		shareID: "m4",
+		tier: 10,
 	},
 	reptor: {
 		name: "Reptor",
@@ -1555,7 +1808,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "merciless",
 		effect: "",
-		shareID: "m5"
+		shareID: "m5",
+		tier: 10,
 	},
 	retilio: {
 		name: "Retilio",
@@ -1564,7 +1818,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "merciless",
 		effect: "",
-		shareID: "m6"
+		shareID: "m6",
+		tier: 10,
 	},
 	exarkun: {
 		name: "Exarkun",
@@ -1573,7 +1828,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "apocalypse",
 		effect: "",
-		shareID: "c1"
+		shareID: "c1",
+		tier: 10,
 	},
 	reflekun: {
 		name: "Reflekun",
@@ -1582,7 +1838,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "apocalypse",
 		effect: "",
-		shareID: "c2"
+		shareID: "c2",
+		tier: 10,
 	},
 	solus: {
 		name: "Solus",
@@ -1591,7 +1848,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "apocalypse",
 		effect: "",
-		shareID: "c3"
+		shareID: "c3",
+		tier: 10,
 	},
 	garplate: {
 		name: "Garplate",
@@ -1600,7 +1858,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "apocalypse",
 		effect: "",
-		shareID: "c4"
+		shareID: "c4",
+		tier: 10,
 	},
 	revenwrap: {
 		name: "Revenwrap",
@@ -1609,7 +1868,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "apocalypse",
 		effect: "",
-		shareID: "c5"
+		shareID: "c5",
+		tier: 10,
 	},
 	plaguscore: {
 		name: "Plaguscore",
@@ -1618,7 +1878,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "apocalypse",
 		effect: "",
-		shareID: "c6"
+		shareID: "c6",
+		tier: 10,
 	},
 	tectonica: {
 		name: "Tectonica",
@@ -1627,7 +1888,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "earthen_might",
 		effect: "",
-		shareID: "t1"
+		shareID: "t1",
+		tier: 10,
 	},
 	quartzar: {
 		name: "Quartzar",
@@ -1636,7 +1898,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "earthen_might",
 		effect: "",
-		shareID: "t2"
+		shareID: "t2",
+		tier: 10,
 	},
 	shatterguard: {
 		name: "Shatterguard",
@@ -1645,7 +1908,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "earthen_might",
 		effect: "",
-		shareID: "t3"
+		shareID: "t3",
+		tier: 10,
 	},
 	omenstone: {
 		name: "Omenstone",
@@ -1654,7 +1918,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "earthen_might",
 		effect: "",
-		shareID: "t4"
+		shareID: "t4",
+		tier: 10,
 	},
 	degenera: {
 		name: "Degenera",
@@ -1664,7 +1929,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "1% Absorb, 1% Deflect, 1% Damage Reduction",
 		location: "T10 Melvin World Boss",
-		shareID: "m7"
+		shareID: "m7",
+		tier: 10,
 	},
 	rabid_skeever: {
 		name: "Rabid Skeever",
@@ -1674,7 +1940,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "When you hit an enemy, launch a skeever at the weakest eneemy for 47-87 damage.",
 		location: "T10 Melvin World Boss",
-		shareID: "m8"
+		shareID: "m8",
+		tier: 10,
 	},
 	meteor_blaster: {
 		name: "Meteor Blaster",
@@ -1684,7 +1951,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "5% Bonus Healing + 1 each time an ally is healed up to 10",
 		location: "Expedition Zorgo Crossing",
-		shareID: "mb"
+		shareID: "mb",
+		tier: 1,
 	},
 	vortex_zapper: {
 		name: "Vortex Zapper",
@@ -1694,7 +1962,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "3% Ricochet Chance",
 		location: "Expedition Yackerz Tundra",
-		shareID: "vz"
+		shareID: "vz",
+		tier: 1,
 	},
 	meteor_chain: {
 		name: "Meteor Chain",
@@ -1704,7 +1973,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "1% Dual Strike, 1% Empower Chance 5% to gain SP",
 		location: "Expedition Vionot Sewer",
-		shareID: "md"
+		shareID: "md",
+		tier: 1,
 	},
 	power_core: {
 		name: "Power Core",
@@ -1714,7 +1984,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "25% Damage Reduction, 5% Evade  Chance",
 		location: "Shop",
-		shareID: "pw"
+		shareID: "pw",
+		tier: 0,
 	},
 	vortex_band: {
 		name: "Vortex Band",
@@ -1724,7 +1995,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Gain Damage reduction the higher health percentage is up to 4.5%",
 		location: "Expedition",
-		shareID: "vb"
+		shareID: "vb",
+		tier: 1,
 	},
 	nice_to_meat_ya: {
 		name: "Nice To Meat Ya",
@@ -1734,7 +2006,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+1% Absorb, +2% Damage Reduction",
 		location: "Papoz Invasion",
-		shareID: "my"
+		shareID: "my",
+		tier: 1,
 	},
 	polychromatic_blaster_main: {
 		name: "Polychromatic Blaster",
@@ -1744,7 +2017,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "If you have 1 mythic equipped, double the bonuses. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z9d3",
-		shareID: "yc"
+		shareID: "yc",
+		tier: 2,
 	},
 	polychromatic_blaster_offhand: {
 		name: "Polychromatic Blaster",
@@ -1754,7 +2028,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "If you have 1 mythic equipped, double the bonuses. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z9d3",
-		shareID: "yo"
+		shareID: "yo",
+		tier: 2,
 	},
 	sleipnir: {
 		name: "Sleipnir",
@@ -1764,7 +2039,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "While above 50% health, damage increased by 5%",
 		location: "Blublix Portal (IDOL)",
-		shareID: "xs"
+		shareID: "xs",
+		tier: 1,
 	},
 	slibinas: {
 		name: "Slibinas",
@@ -1774,7 +2050,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+1% Block, 1% Evade, 1% Damage Reduction, 0.5% absorb, 0.5% Deflect chance",
 		location: "Mowhi Portal ( IDOL )",
-		shareID: "xa"
+		shareID: "xa",
+		tier: 1,
 	},
 	eternal_resolve: {
 		name: "Eternal Resolve",
@@ -1784,7 +2061,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "5% chance to gain 2 sp per turn",
 		location: "Wizbot Portal ( IDOL )",
-		shareID: "xe"
+		shareID: "xe",
+		tier: 1,
 	},
 	ultimatum: {
 		name: "Ultimatum",
@@ -1794,7 +2072,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+2% Dual Strike, +0.5% Quad Strike",
 		location: "Astamus Portal ( IDOL )",
-		shareID: "xu"
+		shareID: "xu",
+		tier: 1,
 	},
 	pep_pep: {
 		name: "Pep Pep",
@@ -1804,7 +2083,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+1% Quad Strike",
 		location: "Ninja Invasion Mythic",
-		shareID: "pq"
+		shareID: "pq",
+		tier: 1,
 	},
 	blorg_implant: {
 		name: "Blorg Implant",
@@ -1814,7 +2094,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Deal 10% increased Damage when the enemy team only has 1 unit alive",
 		location: "t10 Extermination Worldboss",
-		shareID: "bh"
+		shareID: "bh",
+		tier: 10,
 	},
 	timeweaver_garments: {
 		name: "Timeweaver Garments",
@@ -1824,7 +2105,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+5% damage reduction while all teammates are alive",
 		location: "t10 Extermination Worldboss",
-		shareID: "tg"
+		shareID: "tg",
+		tier: 10,
 	},
 	vulcarn: {
 		name: "Vulcarn",
@@ -1833,7 +2115,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "virulence",
 		effect: "",
-		shareID: "v1"
+		shareID: "v1",
+		tier: 10,
 	},
 	ytterbite_scrap: {
 		name: "Ytterbite Scrap",
@@ -1842,7 +2125,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "virulence",
 		effect: "",
-		shareID: "v2"
+		shareID: "v2",
+		tier: 10,
 	},
 	aquatic_ward: {
 		name: "Aquatic Ward",
@@ -1851,7 +2135,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "trident",
 		effect: "",
-		shareID: "t5"
+		shareID: "t5",
+		tier: 10,
 	},
 	nemos_tempest: {
 		name: "Nemo's Tempest",
@@ -1860,7 +2145,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "trident",
 		effect: "",
-		shareID: "t6"
+		shareID: "t6",
+		tier: 10,
 	},
 	//venom
 	wigo_wiggins: {
@@ -1870,7 +2156,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "venom",
 		effect: "",
-		shareID: "v3"
+		shareID: "v3",
+		tier: 11,
 	},
 	warriorolas: {
 		name: "Warriorolas",
@@ -1879,7 +2166,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "venom",
 		effect: "",
-		shareID: "v4"
+		shareID: "v4",
+		tier: 11,
 	},
 	shiztiny: {
 		name: "Shiztiny",
@@ -1888,7 +2176,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "venom",
 		effect: "",
-		shareID: "v5"
+		shareID: "v5",
+		tier: 11,
 	},
 	earendrin: {
 		name: "Earendrin",
@@ -1897,7 +2186,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "venom",
 		effect: "",
-		shareID: "v6"
+		shareID: "v6",
+		tier: 11,
 	},
 
 	//camouflage
@@ -1908,7 +2198,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "camouflage",
 		effect: "",
-		shareID: "c7"
+		shareID: "c7",
+		tier: 11,
 	},
 	violenhell: {
 		name: "Violenhell",
@@ -1917,7 +2208,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "camouflage",
 		effect: "",
-		shareID: "c8"
+		shareID: "c8",
+		tier: 11,
 	},
 	violenmane: {
 		name: "Violenmane",
@@ -1926,7 +2218,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "camouflage",
 		effect: "",
-		shareID: "c9"
+		shareID: "c9",
+		tier: 11,
 	},
 	viobus: {
 		name: "Viobus",
@@ -1935,7 +2228,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "camouflage",
 		effect: "",
-		shareID: "c0"
+		shareID: "c0",
+		tier: 11,
 	},
 
 	//mistery
@@ -1946,7 +2240,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "mistery",
 		effect: "",
-		shareID: "0m"
+		shareID: "0m",
+		tier: 11,
 	},
 	battletal: {
 		name: "Battletal",
@@ -1955,7 +2250,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "mistery",
 		effect: "",
-		shareID: "1m"
+		shareID: "1m",
+		tier: 11,
 	},
 	grindymetal: {
 		name: "Grindymetal",
@@ -1964,7 +2260,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "mistery",
 		effect: "",
-		shareID: "2m"
+		shareID: "2m",
+		tier: 11,
 	},
 
 	//courage
@@ -1975,7 +2272,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "courage",
 		effect: "",
-		shareID: "0c"
+		shareID: "0c",
+		tier:11,
 	},
 	malwood: {
 		name: "Malwood",
@@ -1984,7 +2282,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "courage",
 		effect: "",
-		shareID: "1c"
+		shareID: "1c",
+		tier: 11,
 	},
 	woocrusher: {
 		name: "Woocrusher",
@@ -1993,7 +2292,8 @@ export const equipment = {
 		image: "",
 		partOfSet: "courage",
 		effect: "",
-		shareID: "2c"
+		shareID: "2c",
+		tier: 11,
 	},
 
 	blind_souls: {
@@ -2004,7 +2304,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Gain a 0.5%, 1%, 1.5%, 2.5%, 5%, or 25% Absorb Chance Based On A Weighted Chance",
 		location: "r8 Heroic",
-		shareID: "bs"
+		shareID: "bs",
+		tier: 11,
 	},
 	ironbark_longbow: {
 		name: "Ironbark Longbow",
@@ -2014,7 +2315,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "2% Increased Damage, Each Hit on an Enemy Increases the bonus by 1% on them, to a max of 8%",
 		location: "r8 Raid",
-		shareID: "lb"
+		shareID: "lb",
+		tier: 11,
 	},
 	conquerors_fury: {
 		name: "Conquerors Fury",
@@ -2024,7 +2326,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+4% Empower Chance",
 		location: "t11 Trials",
-		shareID: "cf"
+		shareID: "cf",
+		tier: 11,
 	},
 	battleplate: {
 		name: "Battleplate",
@@ -2034,7 +2337,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+5% sp skill damage",
 		location: "t11 trials",
-		shareID: "1b"
+		shareID: "1b",
+		tier: 11,
 	},
 	windstalker: {
 		name: "Windstalker",
@@ -2044,7 +2348,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Deal increased damage the higher your health percentage is, up to a maximum of 8%",
 		location: "t11 Melvin Worldboss",
-		shareID: "ws"
+		shareID: "ws",
+		tier: 11,
 	},
 	proton_beem_zapper: {
 		name: "Proton Beem Zapper",
@@ -2054,7 +2359,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "1.5% Ricochet Chance, 0.5% Quad Strike",
 		location: "t11 Melvin Worldboss",
-		shareID: "wz"
+		shareID: "wz",
+		tier: 11,
 	},
 	empyrean_vindicator: {
 		name: "Empyrean Vindicator",
@@ -2064,7 +2370,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Damage recieved from non redirect, ricochet, or bouncing attacks deal 5% less damage",
 		location: "t11 3xt Worldboss",
-		shareID: "ev"
+		shareID: "ev",
+		tier: 11,
 	},
 	phoenix_ravager: {
 		name: "Phoenix Ravager",
@@ -2074,7 +2381,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "While At Full Health, Gain 5% Damage Reduction",
 		location: "t11 3xt Worldboss",
-		shareID: "pv"
+		shareID: "pv",
+		tier: 11,
 	},
 	goldwings_chivalry: {
 		name: "Goldwings Chivalry",
@@ -2084,7 +2392,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "16% Damage Reduction, 8% Absorb Chance, -4% Damage",
 		location: "Shop",
-		shareID: "gc"
+		shareID: "gc",
+		tier: 0,
 	},
 	jupingz: {
 		name: "Jupingz",
@@ -2094,7 +2403,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "12.5% Dual Strike, 12.5% Empower Chance",
 		location: "Shop",
-		shareID: "jg"
+		shareID: "jg",
+		tier: 0,
 	},
 	
 	glamounir: {
@@ -2105,7 +2415,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "1% Absorb Chance, 1% Deflect Chance, 1% Evade Chance",
 		location: "Battle Bards Expedition, left",
-		shareID: "b2"
+		shareID: "b2",
+		tier: 1,
 	},
 	bassoul: {
 		name: "Bassoul",
@@ -2115,7 +2426,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "2% Absorb Chance, Team Gains 1% Increased Damage",
 		location: "Battle Bards Expedition, middle",
-		shareID: "b3"
+		shareID: "b3",
+		tier: 1,
 	},
 	demonmullet: {
 		name: "Demonmullet",
@@ -2125,7 +2437,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "Team Gains 2% Damage Reduction",
 		location: "Battle Bards Expedition, top",
-		shareID: "b4"
+		shareID: "b4",
+		tier: 1,
 	},
 	chippity: {
 		name: "Chippity",
@@ -2135,7 +2448,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "1% Damage, 1% Speed, 1% Dual Strike, 1% Empower Chance",
 		location: "Battle Bards Expedition, right",
-		shareID: "b5"
+		shareID: "b5",
+		tier: 1,
 	},
 
 	hydronus_helmet: {
@@ -2146,7 +2460,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "3% Crit Chance, 3% Speed",
 		location: "Brimstone t11 Worldboss",
-		shareID: "b6"
+		shareID: "b6",
+		tier: 11,
 	},
 	hydragar_stone: {
 		name: "Hydragar Stone",
@@ -2156,7 +2471,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "While Above 50% Health, Gain 5% Absorb",
 		location: "Brimstone t11 Worldboss",
-		shareID: "b7"
+		shareID: "b7",
+		tier: 11,
 	},
 	scrawny: {
 		name: "Scrawny",
@@ -2166,7 +2482,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+2% Empower Chance, +2% Speed",
 		location: "Zombo Invasion",
-		shareID: "sy"
+		shareID: "sy",
+		tier: 1,
 	},
 	amaglon: {
 		name: "Amaglon",
@@ -2176,7 +2493,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+8% Block Change",
 		location: "Revenge Of The Turkey",
-		shareID: "y0"
+		shareID: "y0",
+		tier: 1,
 	},
 	//elementals
 	voltio: {
@@ -2192,7 +2510,8 @@ export const equipment = {
 			element_type: "electric",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 11,
 	},
 	vohltij: {
 		name: "Vohltij",
@@ -2207,7 +2526,8 @@ export const equipment = {
 			element_type: "electric",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 11,
 	},
 	ihlektron: {
 		name: "Ihlektron",
@@ -2222,7 +2542,8 @@ export const equipment = {
 			element_type: "electric",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 11,
 	},
 	kiluhwot: {
 		name: "Kiluhwot",
@@ -2237,7 +2558,8 @@ export const equipment = {
 			element_type: "electric",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 11,
 	},
 	spahrk: {
 		name: "Spahrk",
@@ -2252,7 +2574,8 @@ export const equipment = {
 			element_type: "electric",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 11,
 	},
 	johlt: {
 		name: "Johlt",
@@ -2267,7 +2590,8 @@ export const equipment = {
 			element_type: "electric",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 11,
 	},
 	abandon_fate: {
 		name: "Abandon Fate",
@@ -2282,7 +2606,8 @@ export const equipment = {
 			element_type: "water",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 11,
 	},
 	tentuhkuhl: {
 		name: "Tentuhkuhl",
@@ -2297,7 +2622,8 @@ export const equipment = {
 			element_type: "water",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 11,
 	},
 	traitors_loop: {
 		name: "Traitors Loop",
@@ -2306,7 +2632,7 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		location: "t11 Titan World Boss",
-		effect: "10% Chance for Skills to Not Spend SP, +5% Fire Resist, +39 Water Damage",
+		effect: "10% Chance for Skills to Not Spend SP, +5% Fire Resist, +4 Water Damage",
 		shareID: "TL",
 		elemental: {
 			element_value: 5,
@@ -2315,11 +2641,12 @@ export const equipment = {
 			flat: false
 		},
 		elemental2: {
-			element_value: 39,
+			element_value: 4,
 			element_type: "water",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 11,
 	},
 	nephilim_shield: {
 		name: "Nephilim Shield",
@@ -2341,7 +2668,8 @@ export const equipment = {
 			element_type: "electric",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	nephilim_scaled_vest: {
 		name: "Nephilim Scaled Vest",
@@ -2363,7 +2691,8 @@ export const equipment = {
 			element_type: "earth",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	nephilim_circle: {
 		name: "Nephilim Circle",
@@ -2385,7 +2714,8 @@ export const equipment = {
 			element_type: "electric",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	nephilim_jewel: {
 		name: "Nephilim Jewel",
@@ -2407,7 +2737,8 @@ export const equipment = {
 			element_type: "earth",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	nephilim_casque: {
 		name: "Nephilim casque",
@@ -2429,7 +2760,8 @@ export const equipment = {
 			element_type: "earth",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	nephilim_legacy: {
 		name: "Nephilim Legacy",
@@ -2440,6 +2772,7 @@ export const equipment = {
 		location: "t12 Brimstone",
 		effect: "+4% Damage, +4% Damage Reduction.",
 		shareID: "NL",
+		tier: 12,
 	},
 	nephilim_girdle: {
 		name: "Nephilim Girdle",
@@ -2461,7 +2794,8 @@ export const equipment = {
 			element_type: "earth",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	ring_of_hellish_fire: {
 		name: "Ring Of Hellish Fire",
@@ -2476,7 +2810,8 @@ export const equipment = {
 			element_type: "fire",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	raiment_of_hellish_fire: {
 		name: "Raiment Of Hellish Fire",
@@ -2491,7 +2826,8 @@ export const equipment = {
 			element_type: "fire",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	wip_of_hellish_fire: {
 		name: "Wip Of Hellish Fire",
@@ -2506,7 +2842,8 @@ export const equipment = {
 			element_type: "fire",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	sleave_of_hellish_fire: {
 		name: "Sleave Of Hellish Fire",
@@ -2521,7 +2858,8 @@ export const equipment = {
 			element_type: "fire",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	visage_of_atlante: {
 		name: "Visage Of Atlante",
@@ -2536,7 +2874,8 @@ export const equipment = {
 			element_type: "water",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	greatplate_of_atlante: {
 		name: "Greatplate Of Atlante",
@@ -2551,7 +2890,8 @@ export const equipment = {
 			element_type: "water",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	battleaxe_of_atlante: {
 		name: "Battleaxe Of Atlante",
@@ -2566,7 +2906,8 @@ export const equipment = {
 			element_type: "water",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	gem_of_atlante: {
 		name: "Gem Of Atlante",
@@ -2581,7 +2922,8 @@ export const equipment = {
 			element_type: "water",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	last_hope_faceguard: {
 		name: "Last Hope Faceguard",
@@ -2596,7 +2938,8 @@ export const equipment = {
 			element_type: "earth",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	last_hope_stone: {
 		name: "Last Hope Stone",
@@ -2611,7 +2954,8 @@ export const equipment = {
 			element_type: "earth",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	last_hope_hammer: {
 		name: "Last Hope Hammer",
@@ -2626,7 +2970,8 @@ export const equipment = {
 			element_type: "earth",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	last_hope_outbreak: {
 		name: "Last Hope Outbreak",
@@ -2641,7 +2986,8 @@ export const equipment = {
 			element_type: "earth",
 			element_modifier: "resistance",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	crown_of_zeus: {
 		name: "Crown Of Zeus",
@@ -2656,7 +3002,8 @@ export const equipment = {
 			element_type: "air",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	chestguard_of_zeus: {
 		name: "Chestguard Of Zeus",
@@ -2671,7 +3018,8 @@ export const equipment = {
 			element_type: "air",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	pact_of_zeus: {
 		name: "Pact Of Zeus",
@@ -2686,7 +3034,8 @@ export const equipment = {
 			element_type: "air",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	battery_of_zeus: {
 		name: "Battery Of Zeus",
@@ -2701,7 +3050,8 @@ export const equipment = {
 			element_type: "air",
 			element_modifier: "damage",
 			flat: false
-		}
+		},
+		tier: 12,
 	},
 	carbi: {
 		name: "Carbi",
@@ -2711,7 +3061,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10% Water Resist, 20% Damage Reduction",
 		location: "Shop",
-		shareID: "bc"
+		shareID: "bc",
+		tier: 0,
 	},
 	gryphen_resistor: {
 		name: "Gryphen Resistor",
@@ -2721,7 +3072,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "22% Block Chance, 10% Deflect Chance, 5% Electric Resist",
 		location: "Shop",
-		shareID: "gr"
+		shareID: "gr",
+		tier: 0,
 	},
 	astaroth_flag: {
 		name: "Astaroth Flag",
@@ -2731,7 +3083,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "16% Damage, 16% Crit Chance",
 		location: "PvP reward - Astaroth",
-		shareID: "oh"
+		shareID: "oh",
+		tier: 0,
 	},
 	bit_chain: {
 		name: "Bit Chain",
@@ -2741,7 +3094,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "16% Damage, 16% Crit Chance",
 		location: "PvP Reward - 'B.I.T'",
-		shareID: "ba"
+		shareID: "ba",
+		tier: 0,
 	},
 	mirror_wings: {
 		name: "Mirror Wings",
@@ -2751,7 +3105,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "22% block Chance, 10% Deflect Chance",
 		location: "PvP Reward - Mirror",
-		shareID: "mw"
+		shareID: "mw",
+		tier: 0,
 	},
 	ancient_pendant: {
 		name: "Ancient Pendant",
@@ -2761,7 +3116,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10% Damage, 10% Speed, 4% Dual Strike",
 		location: "PvP reward - Colonial",
-		shareID: "ap"
+		shareID: "ap",
+		tier: 0,
 	},
 	grim_ward: {
 		name: "Grim Ward",
@@ -2771,7 +3127,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10% Damage Enrage, 10% Health, 5% Deflect Chance",
 		location: "PvP Reward - 'Grim'",
-		shareID: "gw"
+		shareID: "gw",
+		tier: 0,
 	},
 	dumglim: {
 		name: "Dumglim",
@@ -2781,7 +3138,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "61.5% Chance to shield team per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "7k"
+		shareID: "7k",
+		tier: 0,
 	},
 	beto_ben: {
 		name: "Beto Ben",
@@ -2791,7 +3149,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "41% Chance to attack furthest enemy per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "7l"
+		shareID: "7l",
+		tier: 0,
 	},
 	shelly: {
 		name: "Shelly",
@@ -2801,7 +3160,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "61.5% Chance to heal lowest health teammate and shield self per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "0g"
+		shareID: "0g",
+		tier: 0,
 	},
 	manila: {
 		name: "Manila",
@@ -2811,7 +3171,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "41 Chance to shield strongest per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "xl"
+		shareID: "xl",
+		tier: 0,
 	},
 	ringo: {
 		name: "Ringo",
@@ -2821,7 +3182,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "40.5 Chance to attack weakest enemy 2 times per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "ii"
+		shareID: "ii",
+		tier: 0,
 	},
 	jellbi: {
 		name: "Jellbi",
@@ -2831,7 +3193,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "40.5 Chance to deal electric damage 2 times to furthest enemy per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "hq"
+		shareID: "hq",
+		tier: 0,
 	},
 	ge: {
 		name: "Ge",
@@ -2841,7 +3204,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "61.5% Chance to heal weakest teammate per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "9z"
+		shareID: "9z",
+		tier: 0,
 	},
 	bia: {
 		name: "Bia",
@@ -2851,7 +3215,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "61.5% Chance to shield team and spread heal per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "vq"
+		shareID: "vq",
+		tier: 0,
 	},
 	thymos: {
 		name: "Thymos",
@@ -2861,7 +3226,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "61.5% Chance to heal team per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "qx"
+		shareID: "qx",
+		tier: 0,
 	},
 	pyr: {
 		name: "Pye",
@@ -2871,7 +3237,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "41% Chance to deal fire damage to the closest 3 enemies per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "ut"
+		shareID: "ut",
+		tier: 0,
 	},
 	rhoe: {
 		name: "Rhoe",
@@ -2881,7 +3248,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "61.5% Chance to deal water damage 3 times to weakest enemy per turn, on hit, OR when you get hit. Choose 1",
 		location: "Shop",
-		shareID: "v0"
+		shareID: "v0",
+		tier: 0,
 	},
 	boogie: {
 		name: "Boogie",
@@ -2891,7 +3259,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Chance to spread heal per turn, when you get hit, and when you hit an enemy",
 		location: "Trials Reward - 'Boogie'",
-		shareID: "zp"
+		shareID: "zp",
+		tier: 0,
 	},
 	nemo: {
 		name: "Nemo",
@@ -2901,7 +3270,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10% Channce to attack closest enemy per turn, when you get hit, and when you hit an enemy",
 		location: "PvP Reward - 'nemo",
-		shareID: "zi"
+		shareID: "zi",
+		tier: 0,
 	},
 	nerder: {
 		name: "DNerder",
@@ -2911,7 +3281,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10% Chance to self-heal per turn, when you get hit, and when you hit an enemy",
 		location: "PvP Reward - 'Nerder'",
-		shareID: "lw"
+		shareID: "lw",
+		tier: 0,
 	},
 	pumkwim: {
 		name: "Pumkwim",
@@ -2921,7 +3292,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "20% Chance to attack enemy team per turn, when you get hit, and when you hit an enemy",
 		location: "PvP Reward - 'Pumkwim'",
-		shareID: "5o"
+		shareID: "5o",
+		tier: 0,
 	},
 	snut: {
 		name: "Snut",
@@ -2931,7 +3303,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "10% Chance to shield team per turn, when you get hit, and when you hit an enemy",
 		location: "PvP Reward - 'Snut'",
-		shareID: "4o"
+		shareID: "4o",
+		tier: 0,
 	},
 	rendar: {
 		name: "Rendar",
@@ -2941,7 +3314,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "40% Chance to shield self when you get hit",
 		location: "PvP Reward - 'Rendar'",
-		shareID: "hx"
+		shareID: "hx",
+		tier: 0,
 	},
 	nemrod: {
 		name: "Nemrod",
@@ -2951,7 +3325,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "41% Chance to heal weakest teammate and attack weakest enemy per turn, on hit, or when you hit an enemy. Choose 1.",
 		location: "PvP Reward - 'Nemrod'",
-		shareID: "7f"
+		shareID: "7f",
+		tier: 0,
 	},
 	aryagn_sight: {
 		name: "Aryagn Sight",
@@ -2961,7 +3336,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+5% Damage, +5% Damage Reduction, 50% Chance to attack the enemy with their weakest elemental resistance",
 		location: "Craft from z12d4",
-		shareID: "6f"
+		shareID: "6f",
+		tier: 2,
 	},
 	ladener_broom: {
 		name: "Ladener Broom",
@@ -2971,7 +3347,8 @@ export const equipment = {
 		partOfSet: "",
 		effect: "+5% Damage, +5% Damage Reduction, 50% Chance when you get hit to change all elemental resistants to the attack's",
 		location: "Craft from z12d4",
-		shareID: "5f"
+		shareID: "5f",
+		tier: 2,
 	},
 
 }

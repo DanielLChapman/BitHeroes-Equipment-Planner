@@ -677,7 +677,8 @@ select.selector, select option {
 }
 
 .optimizer-window, .about-window {
-  height: 350px;
+  padding-top: 10px;
+  height: 340px;
   .notice-button-true {
     background-color: mythic-red;  
   }
@@ -685,9 +686,36 @@ select.selector, select option {
     padding-top: 10px;
     select {
       margin-top: 5px;
+      font-family: Arial;
+      position: relative;
+      width: 200px;
+      height: 35px;
+      border:1px solid black;
+    }
+    .equipment-options {
+      height: 105px;
+      option {
+        height: 25px;
+        border:1px solid black;
+        position: relative;
+        vertical-align: top;
+        padding-top: 15px;
+        text-align: center;
+      }
     }
   }
-}
+  .counter-testing { 
+    margin-top 11px;
+  }
+  .testing-space {
+    padding-top: 8px;
+  }
+  ul li {
+    padding: 0;
+    font-size: 14px;
+  }
+
+} 
 
 .optimizer-window .notes, .about-window .notes {
   width: 80%;
@@ -798,6 +826,8 @@ select.selector, select option {
   }
 }
 
-.counter-testing { 
-margin-top 5px;
+
+
+.button-hidden { 
+  display: none;
 }

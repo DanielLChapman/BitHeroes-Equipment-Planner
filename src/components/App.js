@@ -563,6 +563,37 @@ class App extends Component {
     this.setState({...state});
   }
 
+  optimizeEquip = (inputObject) => {
+    let state = this.state;
+    console.log(inputObject);
+    //Find out whats been changed
+    if (inputObject.enchants && inputObject.enchants !== this.state.enchants) {
+      state.enchants = inputObject.enchants;
+    }
+    if (inputObject.runes && inputObject.runes !== this.state.runes) {
+      state.runes = inputObject.runes;
+    }
+    state.equipped = inputObject.equipment;
+
+
+    let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12);
+    let stats = bonuses.stats;
+    state.stats = stats;
+    state.bonuses = {...bonuses.bonuses};
+    state.urlEnd = bonuses.urlEnd;
+
+    try {
+      this.props.history.push(`/${state.urlEnd}`);
+    }
+    catch (err) {
+    }
+
+    //update state
+
+    this.setState({...state});
+
+  }
+
   render() {
     let runeWindowStyling, enchantWindowStyling, statWindowStyling, optimizerWindowStyling, aboutWindowStyling;
     const showStyling = {
@@ -590,16 +621,42 @@ class App extends Component {
         </header>
         <section className="menu">
           <AboutWindow />
-          <StatWindow updateStats={this.updateStats} styling={statWindowStyling} stats={this.state.stats} modifyAccessoryLevel={this.modifyAccessory} currentLevel={this.state.accessoryLevel} openClose={this.handleOpenClose} t12={this.state.t12} />
-          <RuneWindow styling={runeWindowStyling} equipRunes={this.equipRunes} runes={this.state.runes} openClose={this.handleOpenClose}/>
-          <EnchantWindow styling={enchantWindowStyling} equipEnchants={this.equipEnchants} enchants={this.state.enchants} openClose={this.handleOpenClose} />
-          <OptimizerWindow styling={optimizerWindowStyling} equipped={this.state.equipped} mounts={mountTypes} runes={this.state.runes} enchants={this.state.enchants} stats={this.state.stats} sortedEquipment={this.state.sortedEquipment} openClose={this.handleOpenClose} />
-          <AboutWindow styling={aboutWindowStyling} openClose={this.handleOpenClose}/>
+          <StatWindow 
+            updateStats={this.updateStats} 
+            styling={statWindowStyling} 
+            stats={this.state.stats} 
+            modifyAccessoryLevel={this.modifyAccessory} 
+            currentLevel={this.state.accessoryLevel} 
+            openClose={this.handleOpenClose} 
+            t12={this.state.t12} />
+          <RuneWindow 
+            styling={runeWindowStyling} 
+            equipRunes={this.equipRunes} 
+            runes={this.state.runes} 
+            openClose={this.handleOpenClose}/>
+          <EnchantWindow 
+            styling={enchantWindowStyling} 
+            equipEnchants={this.equipEnchants} 
+            enchants={this.state.enchants} 
+            openClose={this.handleOpenClose} />
+          <OptimizerWindow 
+            styling={optimizerWindowStyling}  
+            equipped={this.state.equipped} 
+            mounts={mountTypes} 
+            runes={this.state.runes} 
+            enchants={this.state.enchants} 
+            stats={this.state.stats} 
+            sortedEquipment={this.state.sortedEquipment} 
+            openClose={this.handleOpenClose} 
+            optimizeEquip={this.optimizeEquip} />
+          <AboutWindow 
+            styling={aboutWindowStyling} 
+            openClose={this.handleOpenClose}/>
           <div className="sideNav">
             <div className="sideNav-stats" onClick={() => {this.handleOpenClose('Stats')}}>Stats</div>
             <div className="sideNav-runes" onClick={() => {this.handleOpenClose('Runes')}}>Runes</div>
             <div className="sideNav-enchants" onClick={() => {this.handleOpenClose('Enchants')}}>Enchants</div>
-          
+            <div className="sideNav-optimizer" onClick={() => {this.handleOpenClose('Optimizer')}}>Equipment Filler</div>
 
             <div className="sideNav-About" onClick={() => {this.handleOpenClose('About')}}>About / Updates</div>
           </div>
