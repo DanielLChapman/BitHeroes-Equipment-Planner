@@ -141,9 +141,7 @@ export default class Equipment extends Component {
 		
 		return (	
 			<div className="empty-div">
-				<span className="filter-button" onClick={(e) => {
-						this.bySlotFiltering(e, 'styling');
-				}}>Filters {this.state.equipmentFiltering.filteringReveal ? "↑" : "↓" }</span>
+				
 					<section className="by-slot-filtering" style={bySlotFilteringStyling}>
 
 						{/*
@@ -191,20 +189,19 @@ export default class Equipment extends Component {
 											let styling;
 
 											this.state.equipmentFiltering.tiers.includes(x) ? styling = '' : styling = 'force-color-dropdown'; 
-											if (x !== 1 && x!==2) {
-												return (
-													<option className={styling} value={x} key={i}>Tier: {x}</option>
-												)
-											}  else if (x === 2) {
-												return (
-													<option className={styling} value={x} key={i}>Ancients</option>
-												)
-											}
-											else {
+											if (x === 1) {
 												return (
 													<option className={styling} value={x} key={i}>Invasion Expedition</option>
 												)
 											}
+											if (x === 2) {
+												return (
+													<option className={styling} value={x} key={i}>Ancients</option>
+												)
+											}
+											return (
+												<option className={styling} value={x} key={i}>Tier: {x}</option>
+											)
 										})
 									}
 								</select>

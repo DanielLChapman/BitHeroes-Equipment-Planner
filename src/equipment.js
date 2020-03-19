@@ -102,7 +102,7 @@ const filterSearching = (testing, searching) => {
 			testing.toLowerCase().includes(searching.toLowerCase()) ||
 			// eslint-disable-next-line 
 			capitalizeFirstLetter(testing).includes(capitalizeFirstLetter(searching)) ||
-			
+
 			splitCapitalizeFirstLetter(testing).includes(splitCapitalizeFirstLetter(searching))
 			) {
 				return true;
@@ -226,6 +226,12 @@ export const filteringEquipment = (equipment, filters, sets = {}) => {
 	if (Object.keys(setsSort).length > 0) {
 		Object.keys(setsSort).forEach( (x) => {
 			let pass = true;
+
+			console.log({
+				1: filters.tiers,
+				2: setsSort[x].tier,
+				3: setsSort[x].name
+			})
 
 			if (filters.tiers) {
 				if (!filters.tiers.includes(setsSort[x].tier)) {

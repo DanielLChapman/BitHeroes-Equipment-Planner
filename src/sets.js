@@ -1,4 +1,6 @@
 //18
+
+
 export const sets = {
 	ares_legacy:{
 			name: "Ares Legacy",
@@ -341,6 +343,7 @@ export const sets = {
 			name: "Gatekeeper",
 			location: "Small/Large Dragon Egg",
 			items: ["Acropodium", "Karlorr"],
+			tier: 0,
 			description: "",
 			setBonuses: {
 				2: "0.5% chance for skills to trigger four additional times."
@@ -349,7 +352,7 @@ export const sets = {
 	featherfall:	{
 			name: "Featherfall",
 			location: "Invasion or Expedition",
-			tier: 12,
+			tier: 1,
 			items: ["Maplestrike", "Emberling", "Windspirit", "Nimble", "Clarity", "Peacesong"],
 			description: "",
 			setBonuses: {
@@ -363,7 +366,7 @@ export const sets = {
 	hellfire:	{
 			name: "Hellfire",
 			location: "Invasion or Expedition",
-			tier: 12,
+			tier: 1,
 			items: ["Dawn Of Mercy", "Idol Of Decay", "Deception", "Soulkeeper", "Dementia", "Ferocity"],
 			description: "",
 			setBonuses: {
