@@ -155,6 +155,8 @@ export default class Equipment extends Component {
 							if any are active, change sorted equipment to filtered equipment
 
 						*/}
+						'Open Slots' Only : <br />
+						<br />
 						<label>
 						Mythics Only: 
 						<input
@@ -165,6 +167,7 @@ export default class Equipment extends Component {
 								this.bySlotFiltering(e, 'mythicsOnly');
 							} }/>
 						</label>
+						<br />
 						<label>
 						Sets Only: 
 						<input
@@ -175,10 +178,9 @@ export default class Equipment extends Component {
 								this.bySlotFiltering(e, 'setsOnly');
 							} }/>
 						</label>
-						<br />
-
+						<br /><br />
+						All Categories:
 						<div className="filtering-tiers">
-							Tiers: 
 							<form className="tier-options-form">
 								<label htmlFor="equipment-options">Select Tiers To Remove: </label><br />
 								<select id="tier-options" className="equipment-options tier-options" name="tier-options" onChange={(e) => {
