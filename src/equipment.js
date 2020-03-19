@@ -1,3 +1,16 @@
+function capitalizeFirstLetter(string) {
+    return string[0].toUpperCase() + string.substring(1)
+}
+
+function splitCapitalizeFirstLetter(string) {
+	let x = string.split(' ');
+	let r = "";
+	for (var i = 0; i < x.length; i++) {
+		r += x[i][0].toUpperCase() + x[i].substring(1)
+	}
+    return r;
+}
+
 export const sortEquipment = (equipment, objectBool = true) => {
 	let oB = objectBool;
 
@@ -67,7 +80,44 @@ export const sortEquipment = (equipment, objectBool = true) => {
 	return [sortedEquipment, mythics, legendaries];
 };
 
-export const filteringEquipment = (equipment, filters) => {
+const filterSearching = (testing, searching) => {
+	try {
+		if (testing.includes(searching) || 
+			// eslint-disable-next-line 
+			testing.includes(searching.toUpperCase()) || 
+			// eslint-disable-next-line 
+			testing.includes(searching.toLowerCase()) ||
+			// eslint-disable-next-line 
+			testing.includes(capitalizeFirstLetter(searching)) ||
+
+			testing.includes(splitCapitalizeFirstLetter(searching))
+			) {
+				return true;
+		}
+
+		if (testing.toUpperCase().includes(searching) || 
+			// eslint-disable-next-line 
+			testing.toUpperCase().includes(searching.toUpperCase()) || 
+			// eslint-disable-next-line 
+			testing.toLowerCase().includes(searching.toLowerCase()) ||
+			// eslint-disable-next-line 
+			capitalizeFirstLetter(testing).includes(capitalizeFirstLetter(searching)) ||
+			
+			splitCapitalizeFirstLetter(testing).includes(splitCapitalizeFirstLetter(searching))
+			) {
+				return true;
+		}
+
+
+
+	} catch (err) {
+		return false;
+	}
+	
+	return false;
+}
+
+export const filteringEquipment = (equipment, filters, sets = {}) => {
 	/*
 		filters: {
 			searching: String,
@@ -78,6 +128,7 @@ export const filteringEquipment = (equipment, filters) => {
 		}
 	
 	*/
+
 	let sortedEquipment = {
 		mainhands: {},
 		offhands: {},
@@ -89,7 +140,10 @@ export const filteringEquipment = (equipment, filters) => {
 		pets: {}
 	  };
 	var mythics = {}, legendaries = {};
+	let setsSort = sets;
+	let returnSets = {};
 
+	//Equipment + Mythics
 	Object.keys(equipment).forEach( (x) => {
 
 		let pass = true;
@@ -116,8 +170,15 @@ export const filteringEquipment = (equipment, filters) => {
 		if (pass) {
 			if (filters.searching.length > 0) {
 				pass = false;
-				if (equipment[x].name.includes(filters.searching) || equipment[x].name.includes(filters.searching.toUpperCase()) || equipment[x].name.includes(filters.searching.toLowerCase())) {
-					pass=true;
+				// eslint-disable-next-line 
+				if (filterSearching(equipment[x].name, filters.searching)) {
+					pass = true;
+				}
+				if (equipment[x].partOfSet && filterSearching(equipment[x].partOfSet, filters.searching)) {
+					pass = true;
+				}
+				if (equipment[x].effect && filterSearching(equipment[x].effect, filters.searching)) {
+					pass = true;
 				}
 			}
 		}
@@ -159,8 +220,58 @@ export const filteringEquipment = (equipment, filters) => {
 
 		}
 
-	}) 
-	return [sortedEquipment, mythics, legendaries];
+	});
+
+	//sets
+	if (Object.keys(setsSort).length > 0) {
+		Object.keys(setsSort).forEach( (x) => {
+			let pass = true;
+
+			if (filters.tiers) {
+				if (!filters.tiers.includes(setsSort[x].tier)) {
+					pass = false;
+				}
+			}
+
+			if (pass) {
+				if (filters.searching.length > 0) {
+					pass = false;
+					// eslint-disable-next-line 
+					if (filterSearching(setsSort[x].name, filters.searching)) {
+						pass = true;
+					}
+					if (filterSearching(setsSort[x].location, filters.searching)) {
+						pass = true;
+					}
+					//set bonuses
+					Object.keys(setsSort[x].setBonuses).forEach((y) => {
+						if (filterSearching(setsSort[x].setBonuses[y], filters.searching)) {
+							pass = true;
+						}
+					})
+
+					//items in set
+					Object.keys(setsSort[x].items).forEach((y) => {
+						if (filterSearching(setsSort[x].items[y].name, filters.searching)) {
+							pass = true;
+						}
+						if (filterSearching(setsSort[x].items[y].slot, filters.searching)) {
+							pass = true;
+						}
+					})
+				}
+			}
+
+
+			if(pass) {
+				returnSets[x] = setsSort[x];
+			}
+
+		})
+	}
+
+
+	return [sortedEquipment, mythics, legendaries, returnSets];
 }
 
 

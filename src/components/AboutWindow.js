@@ -7,6 +7,8 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>UPDATES:</span>
             <ul className="about-page-ul">
+                <li>3/19/2020  -   Added Filters for Sets, Mythics, and By Slot. You can remove Tiers, Expedition, Ancients, or text search</li>
+                <li className={'about-amendum'}>For example, you can search for dual strike equipment, or "sp" will return any equipment that has "sp" anywhere in it.</li> <br />
                 <li>3/12/2020  -   Added New Mythic Enchants and Runes</li>
                 <li>Added New Mythic Enchants and Runes</li>
                 <li>Added toggle to stat window for those people who dont have t12 ancients yet. Dont want to inflate numbers for people who haven't uptiered yet.</li>

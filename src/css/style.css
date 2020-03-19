@@ -814,8 +814,8 @@ select option {
 .about-page-ul .about-amendum {
   padding-left: 15px;
   font-size: 12px;
-  padding-bottom: 6px;
-  margin-top: -10px;
+  padding-bottom: 5px;
+  padding-top: 10px;
 }
 .about-page-ul .about-amendum:before {
   content: "";
@@ -853,4 +853,42 @@ select option {
 }
 .button-hidden {
   display: none;
+}
+.filtering-tiers {
+  padding-top: 15px;
+}
+.filter-button {
+  margin-bottom: 10px;
+  display: block;
+  cursor: pointer;
+  font-size: 16px;
+}
+.by-slot-filtering {
+  padding-bottom: 15px;
+}
+.by-slot-filtering .tier-options-form {
+  padding-top: 10px;
+}
+.by-slot-filtering .tier-options-form select {
+  margin-top: 5px;
+  font-family: Arial;
+  position: relative;
+  width: 200px;
+  height: 35px;
+  border: 1px solid #000;
+}
+.by-slot-filtering .tier-options-form .equipment-options {
+  height: 155px;
+}
+.by-slot-filtering .tier-options-form .equipment-options option {
+  height: 25px;
+  border: 1px solid #000;
+  position: relative;
+  vertical-align: top;
+  padding-top: 15px;
+  text-align: center;
+}
+.filter-searching {
+  padding-top: 15px;
+  position: relative;
 }

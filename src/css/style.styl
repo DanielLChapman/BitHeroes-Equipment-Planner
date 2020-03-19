@@ -780,8 +780,8 @@ select.selector, select option {
   .about-amendum {
       padding-left: 15px;
       font-size: 12px;
-      padding-bottom: 6px;
-      margin-top: -10px;
+      padding-bottom: 5px;
+      padding-top: 10px;
       &:before{
       content: "";
       padding-right: 0px;
@@ -830,4 +830,49 @@ select.selector, select option {
 
 .button-hidden { 
   display: none;
+}
+
+.filtering-tiers {
+  padding-top: 15px;
+}
+.filter-button {
+  margin-bottom: 10px;
+  display: block;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.by-slot-filtering {
+  padding-bottom: 15px;
+
+  .tier-options-form {
+    padding-top: 10px;
+    select {
+      margin-top: 5px;
+      font-family: Arial;
+      position: relative;
+      width: 200px;
+      height: 35px;
+      border:1px solid black;
+    }
+    .equipment-options {
+      height: 155px;
+      option {
+        height: 25px;
+        border:1px solid black;
+        position: relative;
+        vertical-align: top;
+        padding-top: 15px;
+        text-align: center;
+      }
+    }
+  }
+
+
+
+}
+
+.filter-searching {
+  padding-top: 15px;
+  position: relative;  
 }
