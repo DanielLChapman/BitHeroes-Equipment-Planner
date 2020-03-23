@@ -148,6 +148,7 @@ export default class Equipment extends Component {
 					equipmentFiltering={this.state.equipmentFiltering} 
 					bySlotFiltering={this.bySlotFiltering}
 					bySlotFilteringStyling={bySlotFilteringStyling}
+					openSlotStyling={{display: 'block'}}
 					/>
 				<button className="by-set by-main-buttons" onClick={() => {
 					this.toggleState('setReveal')

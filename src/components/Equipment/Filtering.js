@@ -18,8 +18,10 @@ class Filtering extends Component {
 							if any are active, change sorted equipment to filtered equipment
 
 						*/}
+                        <span style={this.props.openSlotStyling}>
 						'Open Slots' Only : <br />
 						<br />
+                        </span>
 						<label>
 						Mythics Only: 
 						<input

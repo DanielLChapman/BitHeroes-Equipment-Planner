@@ -6,6 +6,10 @@ import OptimizerNotice from './Optimizer/OptimizerNotice';
 import OptimizerDropdown from './Optimizer/OptimizerDropdown';
 import OptimizerFunction from './Optimizer/OptimizerFunction';
 
+import Filtering from './Equipment/Filtering';
+import {filteringEquipment} from '../equipment';
+import {tiers} from './Equipment';
+
 export default class OptimizerWindow extends React.Component {
 
     constructor(props) {
@@ -21,15 +25,107 @@ export default class OptimizerWindow extends React.Component {
             sortedEquipment: sortEquipment(equipment, false)[0],
             numberOfOptions: 0,
             optimized: false,
-            optimizedEquipment: {}
+            optimizedEquipment: {},
+            equipmentFiltering: {
+				filtering: false,
+				filteringReveal: false,
+				searching: '',
+				mythicsOnly: false,
+				setsOnly: false,
+				tiers: [0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12]
+			}
 		};
     }
 
     static getDerivedStateFromProps(props, state) {
         if (typeof props.equipped !== undefined ) {
+
             return {equipped: props.equipped};
+             
         };
     };
+
+    bySlotFiltering = (e, w2C) => {
+		let state = this.state;
+		let ef = state.equipmentFiltering;
+
+		switch(w2C) {
+			case 'styling':
+				ef.filteringReveal = !ef.filteringReveal;
+				break;
+			case 'mythicsOnly':
+				ef.mythicsOnly = !ef.mythicsOnly;
+				ef.setsOnly = false;
+				break;
+			case 'setsOnly':
+				ef.setsOnly = !ef.setsOnly;
+				ef.mythicsOnly = false;
+				break;
+			case 'tiers':
+				let f = parseInt(e.target.value, 10);
+				//if its in the area remove it,
+				console.log(e.target);
+				if (![0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12].includes(f)) {
+					break;
+				}
+				if (!ef.tiers.includes(f) ) {
+					ef.tiers.push(f);
+				} else {
+					let index = ef.tiers.indexOf(f);
+					if (index > -1) {
+						ef.tiers.splice(index, 1);
+					}
+				}
+				//otherwise push it
+				
+				ef.tiers.sort();
+				break;
+			case 'searching': 
+				ef.searching = e.target.value;
+				break;
+			default: 
+				console.log(e)
+        }
+
+		//Need a better comparison here to check if anything is being filtered but will work for now
+		if (ef.searching === '' &&
+		 !ef.mythicsOnly && 
+		 !ef.setsOnly && 
+		 JSON.stringify(ef.tiers) === JSON.stringify(tiers)) {
+			ef.filtering = false; 
+		} else {
+			ef.filtering = true;
+        }
+        
+        //Sorting equipment here
+
+        if (ef.filtering) {
+            state.sortedEquipment = filteringEquipment(equipment, this.state.equipmentFiltering)[0];
+            let elements = document.getElementById("equipment-options").options;
+            let total = 1;
+            console.log(elements);
+            for (let i = 0; i < elements.length; i++) {
+                if (this.state.equipmentOptions.includes(elements[i].value)) {
+                    if (elements[i].value !== 'mounts') {
+                        total *= state.sortedEquipment[elements[i].value].length;
+                    } else {
+                        total *= this.props.mounts.length;
+                    }
+                    
+                } else {
+                    console.log('here');
+                }
+                elements[i].selected = false;
+            }
+            state.numberOfOptions = total;
+        } else {
+            state.sortedEquipment = sortEquipment(equipment, false)[0];
+        }
+
+		state.equipmentFiltering = ef;
+		
+		this.setState({...state});
+	}
 
     handleButtonClick = (option) => {
         let state = this.state;
@@ -93,13 +189,14 @@ export default class OptimizerWindow extends React.Component {
         this.setState({...state});
     }
 
-    updateInputValue = (event) => {
-
-    }
-
     render() {
         let openNote = {display: 'none'};
         let openHowto = {display: 'none'};
+
+        let bySlotFilteringStyling = {'display': 'none'};
+        if (this.state.equipmentFiltering.filteringReveal) {
+			bySlotFilteringStyling = {'display': 'block'}
+        }
 
         if (this.state.note) {
             openNote = {display: 'block'};
@@ -143,6 +240,13 @@ export default class OptimizerWindow extends React.Component {
                     
                 </form>
             </section>
+
+            <Filtering 
+					equipmentFiltering={this.state.equipmentFiltering} 
+					bySlotFiltering={this.bySlotFiltering}
+                    bySlotFilteringStyling={bySlotFilteringStyling}
+                    openSlotStyling={{display: 'none'}}
+					/>
 
             <OptimizerFunction 
                 clickHandler={this.handleButtonClick} 
