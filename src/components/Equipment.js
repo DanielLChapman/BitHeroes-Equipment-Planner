@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import {convertName} from '../functions';
 import {filteringEquipment} from '../equipment';
 
+import Filtering from './Equipment/Filtering';
+
 export const types = [
 	{l: 'mainhands', c: 'Mainhands', np: 'mainhand'},
 	{l: 'offhands', c: 'Offhands', np: 'offhand'},
@@ -82,6 +84,7 @@ export default class Equipment extends Component {
 			case 'tiers':
 				let f = parseInt(e.target.value, 10);
 				//if its in the area remove it,
+				console.log(e.target);
 				if (![0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12].includes(f)) {
 					break;
 				}
@@ -141,84 +144,11 @@ export default class Equipment extends Component {
 		
 		return (	
 			<div className="empty-div">
-				
-					<section className="by-slot-filtering" style={bySlotFilteringStyling}>
-
-						{/*
-
-							2. Need drop down for tiers
-							3. Need search bar for searching
-								a. Maybe check box for search bar
-
-							if any are active, change sorted equipment to filtered equipment
-
-						*/}
-						'Open Slots' Only : <br />
-						<br />
-						<label>
-						Mythics Only: 
-						<input
-							name="mythicsOnly"
-							type="checkbox"
-							checked={this.state.equipmentFiltering.mythicsOnly}
-							onChange={(e) => {
-								this.bySlotFiltering(e, 'mythicsOnly');
-							} }/>
-						</label>
-						<br />
-						<label>
-						Sets Only: 
-						<input
-							name="setsOnly"
-							type="checkbox"
-							checked={this.state.equipmentFiltering.setsOnly}
-							onChange={(e) => {
-								this.bySlotFiltering(e, 'setsOnly');
-							} }/>
-						</label>
-						<br /><br />
-						All Categories:
-						<div className="filtering-tiers">
-							<form className="tier-options-form">
-								<label htmlFor="equipment-options">Select Tiers To Remove: </label><br />
-								<select id="tier-options" className="equipment-options tier-options" name="tier-options" onChange={(e) => {
-									this.bySlotFiltering(e, 'tiers')
-								}} multiple>
-									{
-										[1, 2, 5, 6, 7, 8, 9, 10, 11, 12].map((x, i) => {
-											let styling;
-
-											this.state.equipmentFiltering.tiers.includes(x) ? styling = '' : styling = 'force-color-dropdown'; 
-											if (x === 1) {
-												return (
-													<option className={styling} value={x} key={i}>Invasion Expedition</option>
-												)
-											}
-											if (x === 2) {
-												return (
-													<option className={styling} value={x} key={i}>Ancients</option>
-												)
-											}
-											return (
-												<option className={styling} value={x} key={i}>Tier: {x}</option>
-											)
-										})
-									}
-								</select>
-								
-							</form>
-						</div>
-						<div className="filter-searching">
-							<label>
-								Information Contains: &nbsp;&nbsp;
-								<input type="text" value={this.state.equipmentFiltering.searching} onChange={(e) => {
-										this.bySlotFiltering(e, 'searching')
-									}} />
-							</label>
-						</div>
-						
-
-					</section>
+				<Filtering 
+					equipmentFiltering={this.state.equipmentFiltering} 
+					bySlotFiltering={this.bySlotFiltering}
+					bySlotFilteringStyling={bySlotFilteringStyling}
+					/>
 				<button className="by-set by-main-buttons" onClick={() => {
 					this.toggleState('setReveal')
 				}}>Open Sets</button>

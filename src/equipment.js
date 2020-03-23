@@ -227,12 +227,6 @@ export const filteringEquipment = (equipment, filters, sets = {}) => {
 		Object.keys(setsSort).forEach( (x) => {
 			let pass = true;
 
-			console.log({
-				1: filters.tiers,
-				2: setsSort[x].tier,
-				3: setsSort[x].name
-			})
-
 			if (filters.tiers) {
 				if (!filters.tiers.includes(setsSort[x].tier)) {
 					pass = false;

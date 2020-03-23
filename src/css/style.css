@@ -892,3 +892,15 @@ select option {
   padding-top: 15px;
   position: relative;
 }
+.equipment-options-by-tiers-checkboxes {
+  display: -webkit-box;
+  display: flex;
+  width: 250px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+          flex-direction: column-reverse;
+  margin: 0 auto;
+}
+.equipment-options-by-tiers-checkboxes label {
+  display: block;
+}
