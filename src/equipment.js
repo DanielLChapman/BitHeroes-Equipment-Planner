@@ -117,7 +117,7 @@ const filterSearching = (testing, searching) => {
 	return false;
 }
 
-export const filteringEquipment = (equipment, filters, sets = {}) => {
+export const filteringEquipment = (equipment, filters, sets = {}, objectBool = true) => {
 	/*
 		filters: {
 			searching: String,
@@ -129,16 +129,31 @@ export const filteringEquipment = (equipment, filters, sets = {}) => {
 	
 	*/
 
-	let sortedEquipment = {
-		mainhands: {},
-		offhands: {},
-		heads: {},
-		bodies: {},
-		necklaces: {},
-		rings: {},
-		accessories: {},
-		pets: {}
-	  };
+	let oB = objectBool;
+	let sortedEquipment;
+	if (oB) {
+		sortedEquipment= {
+			mainhands: {},
+			offhands: {},
+			heads: {},
+			bodies: {},
+			necklaces: {},
+			rings: {},
+			accessories: {},
+			pets: {}
+		  }
+	} else {
+		sortedEquipment =  {
+			mainhands: [],
+			offhands: [],
+			heads: [],
+			bodies: [],
+			necklaces: [],
+			rings: [],
+			accessories: [],
+			pets: []
+		};
+	}
 	var mythics = {}, legendaries = {};
 	let setsSort = sets;
 	let returnSets = {};
@@ -183,41 +198,38 @@ export const filteringEquipment = (equipment, filters, sets = {}) => {
 			}
 		}
 
-		//push into correct spaces
 		if (pass) {
-
 			if (equipment[x].type === "mythic") {
 				mythics[x] = equipment[x];
 			} else if (equipment[x].type ==="legendary") {
 				legendaries[x] = equipment[x];
 			}
-
+	
 			switch(equipment[x].slot) {
 				case 'Offhand':
-					sortedEquipment.offhands[x] = equipment[x];
+					!oB ? sortedEquipment.offhands.push(equipment[x]) : sortedEquipment.offhands[x] = equipment[x];
 					break;
 				case 'Body':
-					sortedEquipment.bodies[x] = equipment[x];
+					!oB ? sortedEquipment.bodies.push(equipment[x]) : sortedEquipment.bodies[x] = equipment[x];
 					break;
 				case 'Head':
-					sortedEquipment.heads[x] = equipment[x];
+					!oB ? sortedEquipment.heads.push(equipment[x]) : sortedEquipment.heads[x] = equipment[x];
 					break;
 				case 'Ring':
-					sortedEquipment.rings[x] = equipment[x];
+					!oB ? sortedEquipment.rings.push(equipment[x]) : sortedEquipment.rings[x] = equipment[x];
 					break;
 				case 'Necklace':
-					sortedEquipment.necklaces[x] = equipment[x];
+					!oB ? sortedEquipment.necklaces.push(equipment[x]) : sortedEquipment.necklaces[x] = equipment[x];
 					break;
 				case 'Pet':
-					sortedEquipment.pets[x] = equipment[x];
+					!oB ? sortedEquipment.pets.push(equipment[x]) : sortedEquipment.pets[x] = equipment[x];
 					break;
 				case 'Accessory':
-					sortedEquipment.accessories[x] = equipment[x];
+					!oB ? sortedEquipment.accessories.push(equipment[x]) : sortedEquipment.accessories[x] = equipment[x];
 					break;
 				default: 
-					sortedEquipment.mainhands[x] = equipment[x];
+					!oB ? sortedEquipment.mainhands.push(equipment[x]) : sortedEquipment.mainhands[x] = equipment[x];
 			};
-
 		}
 
 	});

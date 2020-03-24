@@ -54,7 +54,7 @@ export default class EnchantWindow extends Component {
     }
 
     
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
 
         if (typeof nextProps.enchants !== undefined && Object.keys(nextProps.enchants).length === 6) {
             let enchants = nextProps.enchants;

@@ -98,29 +98,36 @@ export default class OptimizerWindow extends React.Component {
         }
         
         //Sorting equipment here
+        let elements = document.getElementById("equipment-options").options;
+        let total = 1;
 
         if (ef.filtering) {
-            state.sortedEquipment = filteringEquipment(equipment, this.state.equipmentFiltering)[0];
-            let elements = document.getElementById("equipment-options").options;
-            let total = 1;
-            console.log(elements);
-            for (let i = 0; i < elements.length; i++) {
-                if (this.state.equipmentOptions.includes(elements[i].value)) {
-                    if (elements[i].value !== 'mounts') {
-                        total *= state.sortedEquipment[elements[i].value].length;
-                    } else {
-                        total *= this.props.mounts.length;
-                    }
-                    
-                } else {
-                    console.log('here');
-                }
-                elements[i].selected = false;
-            }
-            state.numberOfOptions = total;
+            state.sortedEquipment = filteringEquipment(equipment, this.state.equipmentFiltering, {}, false)[0];
         } else {
             state.sortedEquipment = sortEquipment(equipment, false)[0];
         }
+
+        console.log(state.sortedEquipment);
+        console.log(elements);
+        for (let i = 0; i < elements.length; i++) {
+            
+            if (state.equipmentOptions.includes(elements[i].value)) {
+                if (elements[i].value !== 'mounts') {
+                    if (state.sortedEquipment[elements[i].value].length === 0) {
+                        total = total + state.sortedEquipment[elements[i].value].length;
+                    } else {
+                        total = total * state.sortedEquipment[elements[i].value].length;
+                    }
+                    
+                } else {
+                    total *= this.props.mounts.length;
+                }
+            }
+            elements[i].selected = false;
+        }
+
+        console.log(total);
+        state.numberOfOptions = total;
 
 		state.equipmentFiltering = ef;
 		
@@ -172,7 +179,11 @@ export default class OptimizerWindow extends React.Component {
                 for (let i = 0; i < elements.length; i++) {
                     if (this.state.equipmentOptions.includes(elements[i].value)) {
                         if (elements[i].value !== 'mounts') {
-                            total *= this.state.sortedEquipment[elements[i].value].length;
+                            if (this.state.sortedEquipment[elements[i].value].length === 0) {
+                                total = total + this.state.sortedEquipment[elements[i].value].length;
+                            } else {
+                                total = total * this.state.sortedEquipment[elements[i].value].length;
+                            }
                         } else {
                             total *= this.props.mounts.length;
                         }
@@ -226,7 +237,7 @@ export default class OptimizerWindow extends React.Component {
 
 
                                 this.state.equipmentOptions.includes(x.reference) ? styling = 'force-color-dropdown'  : styling = ''; 
-                                if (x.reference !== 'accessories') {
+                                if (x.reference !== 'pets') {
                                     return (
                                         <option className={styling} value={x.reference} key={i}>{x.slot.toUpperCase()}</option>
                                     )
@@ -258,6 +269,7 @@ export default class OptimizerWindow extends React.Component {
                 runes={this.props.runes}
                 options={this.state.equipmentOptions}
                 optimizeEquip={this.props.optimizeEquip}
+                sortedEquipment={this.state.sortedEquipment}
                  />
         
             

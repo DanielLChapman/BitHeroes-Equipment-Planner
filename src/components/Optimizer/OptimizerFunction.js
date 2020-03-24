@@ -30,7 +30,7 @@ export default class OptimizerFunction extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
-            sortedEquipment: sortEquipment(equipment, false)[0],
+            sortedEquipment: {},
             searchOption: '',
             searchOptions: searchOptions,
             stats: {},
@@ -49,17 +49,26 @@ export default class OptimizerFunction extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
+        let y = sortEquipment(equipment, false)[0];
         //Load most recent equipment and stats into state
+        if (props.sortedEquipment) {
+            y = props.sortedEquipment;
+        }
+
+        console.log(y);
 
         //Load the number of options to search through into function
-        let x = [state.sortedEquipment.mainhands.length,
-            state.sortedEquipment.offhands.length,
-            state.sortedEquipment.heads.length,
-            state.sortedEquipment.bodies.length,
-            state.sortedEquipment.necklaces.length,
-            state.sortedEquipment.rings.length,
-            state.sortedEquipment.accessories.length,mountTypes.length];
+        let x = [y.mainhands.length,
+            y.offhands.length,
+            y.heads.length,
+            y.bodies.length,
+            y.necklaces.length,
+            y.rings.length,
+            y.accessories.length,mountTypes.length];
 
+
+        console.log(x);
+        
         return {
             clickHandler: props.clickHandler,
             searchOption: props.searchOption,
@@ -68,6 +77,7 @@ export default class OptimizerFunction extends Component {
             runes: props.runes,
             enchants: props.enchants,
             numChange: x,
+            sortedEquipment: y,
         };
     };
 
@@ -238,7 +248,16 @@ export default class OptimizerFunction extends Component {
 
             }
             else {
-
+                if (this.state.numChange[i] <= 0) {
+                    r = {
+                        equipped,
+                        enchants: equippedInput.enchants,
+                        runes: equippedInput.runes,
+                        stats,
+                
+                    }
+                    return this.recurveIncrement(t, r, whatToChange, sI);
+                }
                 for(let x = 0; x < this.state.numChange[i]; x++) {
                     //equip[i]+=1;
                     try {
