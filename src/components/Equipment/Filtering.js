@@ -129,7 +129,7 @@ class Filtering extends Component {
 								
 							</form>
 						</div>
-						<div className="filter-searching">
+						<div className="filter-searching"  style={this.props.openSlotStyling}>
 							<label>
 								Information Contains: &nbsp;&nbsp;
 								<input type="text" value={this.props.equipmentFiltering.searching} onChange={(e) => {

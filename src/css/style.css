@@ -6,7 +6,6 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#56abd8), to(#27313e));
   background: linear-gradient(#56abd8, #27313e);
   padding: 0;
 }
@@ -73,9 +72,9 @@ body {
   margin: 0;
   width: 100%;
   height: auto;
-  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: center;
+  -webkit-justify-content: center;
           justify-content: center;
   font-family: 'Work Sans', sans-serif;
 }
@@ -106,7 +105,6 @@ body {
 .container .by-mythic-reveal li ul li,
 .container .by-slot-reveal li ul li {
   cursor: pointer;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 .container .by-set-reveal li ul li:active,
@@ -120,7 +118,7 @@ body {
 }
 .container .left,
 .container .right {
-  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
           flex-grow: 1;
   padding-top: 25px;
 }
@@ -492,7 +490,6 @@ body {
   z-index: 11;
   top: 5%;
   left: -420px;
-  -webkit-transition: 1s;
   transition: 1s;
   font-family: 'Roboto', sans-serif;
 }
@@ -639,7 +636,6 @@ body {
   position: relative;
   padding-top: 20px;
   cursor: pointer;
-  -webkit-transition: 1s;
   transition: 1s;
   background: #a2b8d6;
 }
@@ -893,11 +889,10 @@ select option {
   position: relative;
 }
 .equipment-options-by-tiers-checkboxes {
-  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
   width: 250px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
           flex-direction: column-reverse;
   margin: 0 auto;
 }

@@ -247,7 +247,7 @@ export const sets = {
 			items: ["Ancient Tiara", "Heavenly Garb", "Exalted Binding"],
 			description: "Scales with Power Stat",
 			setBonuses: {
-				2: "+4% Damage",
+				2: "+4% Damage, +4% Healing",
 				3: "Divine Protection: Instantly revive on first death per adventure"
 			}
 		},

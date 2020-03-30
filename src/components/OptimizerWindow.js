@@ -10,6 +10,8 @@ import Filtering from './Equipment/Filtering';
 import {filteringEquipment} from '../equipment';
 import {tiers} from './Equipment';
 
+
+
 export default class OptimizerWindow extends React.Component {
 
     constructor(props) {
@@ -33,17 +35,20 @@ export default class OptimizerWindow extends React.Component {
 				mythicsOnly: false,
 				setsOnly: false,
 				tiers: [0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12]
-			}
+            },
 		};
     }
 
     static getDerivedStateFromProps(props, state) {
-        if (typeof props.equipped !== undefined ) {
 
+        
+        if (typeof props.equipped !== undefined ) {
             return {equipped: props.equipped};
              
         };
     };
+
+    
 
     bySlotFiltering = (e, w2C) => {
 		let state = this.state;
@@ -64,7 +69,6 @@ export default class OptimizerWindow extends React.Component {
 			case 'tiers':
 				let f = parseInt(e.target.value, 10);
 				//if its in the area remove it,
-				console.log(e.target);
 				if (![0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12].includes(f)) {
 					break;
 				}
@@ -107,8 +111,6 @@ export default class OptimizerWindow extends React.Component {
             state.sortedEquipment = sortEquipment(equipment, false)[0];
         }
 
-        console.log(state.sortedEquipment);
-        console.log(elements);
         for (let i = 0; i < elements.length; i++) {
             
             if (state.equipmentOptions.includes(elements[i].value)) {
@@ -126,7 +128,6 @@ export default class OptimizerWindow extends React.Component {
             elements[i].selected = false;
         }
 
-        console.log(total);
         state.numberOfOptions = total;
 
 		state.equipmentFiltering = ef;
@@ -217,6 +218,7 @@ export default class OptimizerWindow extends React.Component {
         }
         
         return (<div className="optimizer-window"  style={this.props.styling}>
+            
             <span className="x-close" onClick={() => {this.props.openClose('Optimizer')}}>x</span>
             This is experimental and still being worked on. Read the notice.
             <OptimizerNotice styleProp={openNote} clickHandler={this.handleButtonClick} title={'Notice/Help'} note={this.state.note} />
@@ -272,8 +274,11 @@ export default class OptimizerWindow extends React.Component {
                 sortedEquipment={this.state.sortedEquipment}
                  />
         
+
             
-        </div>)
+            
+        </div>
+        )
     }
 };
 

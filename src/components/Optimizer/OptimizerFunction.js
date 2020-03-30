@@ -4,6 +4,9 @@ import {searchOptions, change} from '../../investigation';
 import {calculateBonuses} from '../../functions';
 import { mountTypes } from '../../stats';
 
+import worker from '../../app.worker.js';
+import WebWorker from '../../WebWorker';
+
 let count = 0;
 
 let maximum = {
@@ -44,8 +47,29 @@ export default class OptimizerFunction extends Component {
 
                 }
             },
-            maximum: {}
+            maximum: {},
+            count: 0,
 		};
+    }
+
+    componentDidMount() {
+        if (window.Worker) {
+            this.worker = new WebWorker(worker);
+    
+            this.worker.addEventListener('message', event => {
+                maximum = event.data;
+
+                document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
+                
+                if (maximum.value > this.props.stats[this.state.searchOption] || maximum.value > this.props.stats.links[this.state.searchOption]) {
+                    document.getElementsByClassName('button-new-equipment')[0].classList = 'notice-button button-new-equipment';
+                    document.getElementsByClassName('output-investigation')[0].innerText =  'New ' + this.searchSearchOptions(this.state.searchOption).key + ": " + (maximum.value || 0);
+                } else {
+                    document.getElementsByClassName('output-investigation')[0].innerText =  'Sorry, nothing better found'
+                
+                }
+            });
+        }
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -54,8 +78,6 @@ export default class OptimizerFunction extends Component {
         if (props.sortedEquipment) {
             y = props.sortedEquipment;
         }
-
-        console.log(y);
 
         //Load the number of options to search through into function
         let x = [y.mainhands.length,
@@ -66,9 +88,6 @@ export default class OptimizerFunction extends Component {
             y.rings.length,
             y.accessories.length,mountTypes.length];
 
-
-        console.log(x);
-        
         return {
             clickHandler: props.clickHandler,
             searchOption: props.searchOption,
@@ -96,6 +115,8 @@ export default class OptimizerFunction extends Component {
         }
         document.getElementsByClassName('button-new-equipment')[0].classList = 'notice-button button-new-equipment button-hidden';
         document.getElementsByClassName('testing-space')[0].innerText = 'Loading';
+        document.getElementsByClassName('output-investigation')[0].innerText =  '';
+
         count = 0;
         let currentlyEquipped = {
             equipped: this.props.currentlyEquipped,
@@ -130,9 +151,22 @@ export default class OptimizerFunction extends Component {
 
     
         //Maybe move this to own function and have preparing done on every prop input
-        setTimeout( () => {
-            this.recurveIncrement(0, currentlyEquipped, sFR, this.state.searchOption);
-        }, 250)
+        if (window.Worker) {
+            this.worker.postMessage({
+                index: 0,
+                currentlyEquipped,
+                sFR,
+                searchOption: this.state.searchOption,
+                sortedEquipment: this.state.sortedEquipment,
+                numChange: this.state.numChange,
+                numberOfOptions: this.props.numberOfOptions,
+            });
+        } else {
+            setTimeout( () => {
+                this.recurveIncrement(0, currentlyEquipped, sFR, this.state.searchOption);
+            }, 250)
+        }
+        
         
 
     }
@@ -301,7 +335,7 @@ export default class OptimizerFunction extends Component {
     render() {
         return (
             <>
-                <section className="counter">
+           <section className="counter">
                     Total Number of Combinations To Search : {this.props.numberOfOptions}
                 </section>
                 <section className="submit">
