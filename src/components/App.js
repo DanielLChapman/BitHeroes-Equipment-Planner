@@ -565,7 +565,6 @@ class App extends Component {
 
   optimizeEquip = (inputObject) => {
     let state = this.state;
-    console.log(inputObject);
     //Find out whats been changed
     if (inputObject.enchants && inputObject.enchants !== this.state.enchants) {
       state.enchants = inputObject.enchants;
