@@ -447,6 +447,37 @@ export const sets = {
 			4: "When using a healing skill, spread shield and gain 1.5% healing bonus, up to 15%"
 		}
 	},
+	blackarrow: {
+		name: "Blackarrow",
+		location: "t11 Worldboss",
+		tier: 11,
+		items: ["Black Arrow Spear", "Fire Scaler"],
+		description: "",
+		setBonuses: {
+			2: "2% Absorb Chance. Gain 0.5 Absorb for each 10% Health Missing"
+		}
+	},
+	dragonskull: {
+		name: "Dragonskull",
+		location: "t11 Worldboss",
+		tier: 11,
+		items: ["Triumph Bones Shield", "Nail Storm"],
+		description: "",
+		setBonuses: {
+			2: "2% Damage. Damage increases 1% for every 10% health target is missing"
+		}
+	},
+	ceraunos:	{
+		name: "Ceraunos",
+		location: "t12 Orlag Worldboss",
+		tier: 12,
+		items: ["Orb Of Fleeting Voices", "Fleeting Voices Chest", "Tiara Of Fleeting Voices"],
+		description: "",
+		setBonuses: {
+			2: "Gain 2.5% evade each time you dont evade, up to 10%. Resets on Evade",
+			3: "Gain 3% Air Resistance when you evade, up to 12%",
+		}
+	},
 }
 
 /*

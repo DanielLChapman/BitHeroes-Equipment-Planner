@@ -1132,6 +1132,17 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   case 'Amaglon':
     stats.block += 8;
     break;
+  case 'Tatooi':
+    stats.block += 70+(2*accessoryUpgrade);
+    break;
+  case 'Ceraunos':
+    if (count === 2) {
+      stats.evade += 10;
+    }
+    if (count === 3) {
+      stats.air_resistance += 12;
+    }
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);

@@ -735,5 +735,13 @@ export const mountTypes = [
 		effect: "healing",
 		value:  8,
 		key: 'mount'
+	},
+	{
+		id: 19,
+		title: "Mythic Block",
+		selected: false,
+		effect: "block",
+		value:  10,
+		key: 'mount'
 	}
 ]

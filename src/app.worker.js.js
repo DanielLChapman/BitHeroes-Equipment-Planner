@@ -98,6 +98,7 @@ export default () => {
     //At the end of the line for equipment, we run the calculate bonuses
     if (i === 8 ) {
       count+=1;
+      postMessage(count);
       //counting total
       
       //calculate bonuses
@@ -185,8 +186,54 @@ export default () => {
           for(let x = 0; x < numChange[i]; x++) {
               //equip[i]+=1;
               try {
-                  //for all equipment in sorted equipment, try to add
+                if (sortedEquipment[whatToChange[i].reference][x].type === "ancient") {
+                  if (['Polychromatic Blaster', 'Starweave', 'Elementarium'].includes(sortedEquipment[whatToChange[i].reference][x].name)) {
+                    let q = x-1;
+                    switch(sortedEquipment[whatToChange[i].reference][x].name) {
+                      case 'Polychromatic Blaster':
+
+                        if (whatToChange[i].slot === 'offhand') {
+                          if (equipped.mainhand.name !== "Polychromatic Blaster") {
+                            q = x;
+                          }
+                        } else {
+                          if (equipped.offhand.name !== "Polychromatic Blaster") {
+                            q = x;
+                          }
+                        }
+                        break;
+                      case 'Starweave':
+                        if (whatToChange[i].slot === 'necklace') {
+                          if (equipped.ring.name !== "Starweave") {
+                            q = x;
+                          }
+                        } else {
+                          if (equipped.necklace.name !== "Starweave") {
+                            q = x;
+                          }
+                        }
+                        break;
+                      case 'Elementarium':
+                        if (whatToChange[i].slot === 'body') {
+                          if (equipped.head.name !== "Elementarium") {
+                            q = x;
+                          }
+                        } else {
+                          if (equipped.body.name !== "Elementarium") {
+                            q = x;
+                          }
+                        }
+                        break;
+                      default: 
+                        console.log(sortedEquipment[whatToChange[i].reference][x].name);
+                    }
+                    equipped[whatToChange[i].slot] = sortedEquipment[whatToChange[i].reference][q];  
+                  }
+                } else {
                   equipped[whatToChange[i].slot] = sortedEquipment[whatToChange[i].reference][x];
+                }
+                  //for all equipment in sorted equipment, try to add
+                  
               } catch (error) {
                   //think the error was from mounts, so try catch may no longer be necessary but will keep for debugging
                   console.log({
@@ -667,20 +714,39 @@ export default () => {
         4: "When using a healing skill, spread shield and gain 1.5% healing bonus, up to 15%"
       }
     },
-  
-  
-
-//   const testing = (i, counter) => {
-//     let r = counter + 1;
-//     let q = i + 1;
-//     if (r < Math.random()*25+1) {
-//       return testing(q, r);
-//     } else {
-//       return parseInt(q, 10);
-//     }
-
-//  } 
+    blackarrow: {
+      name: "Blackarrow",
+      location: "t11 Worldboss",
+      tier: 11,
+      items: ["Black Arrow Spear", "Fire Scaler"],
+      description: "",
+      setBonuses: {
+        2: "2% Absorb Chance. Gain 0.5 Absorb for each 10% Health Missing"
+      }
+    },
+    dragonskull: {
+      name: "Dragonskull",
+      location: "t11 Worldboss",
+      tier: 11,
+      items: ["Triumph Bones Shield", "Nail Storm"],
+      description: "",
+      setBonuses: {
+        2: "2% Damage. Damage increases 1% for every 10% health target is missing"
+      }
+    },
+    ceraunos:	{
+      name: "Ceraunos",
+      location: "t12 Orlag Worldboss",
+      tier: 12,
+      items: ["Orb Of Fleeting Voices", "Fleeting Voices Chest", "Tiara Of Fleeting Voices"],
+      description: "",
+      setBonuses: {
+        2: "Gain 2.5% evade each time you dont evade, up to 10%. Resets on Evade",
+        3: "Gain 3% Air Resistance when you evade, up to 12%",
+      }
+    },
   }
+  
 
   var base ={
     default_stats: {
@@ -1185,6 +1251,14 @@ export default () => {
       effect: "healing",
       value:  8,
       key: 'mount'
+    },
+    {
+      id: 19,
+      title: "Mythic Block",
+      selected: false,
+      effect: "block",
+      value:  10,
+      key: 'mount'
     }
   ]
 
@@ -1481,6 +1555,8 @@ export default () => {
         if (ancientEquipped) {
             setsToSort[x] += 1;
           }
+
+
         Object.keys(setWorkingOn.setBonuses).forEach((y) => {
           if (setsToSort[x] >= parseInt(y, 10)) {
             bonuses.sets[x].push(setWorkingOn.setBonuses[y]);
@@ -2311,6 +2387,21 @@ export default () => {
       break;
     case 'Amaglon':
       stats.block += 8;
+      break;
+    case 'Tatooi':
+      stats.block += 70+(2*accessoryUpgrade);
+      break;
+    case 'Ceraunos':
+      if (count === 2) {
+        stats.evade += 10;
+      }
+      if (count === 3) {
+        stats.air_resistance += 12;
+      }
+      break;
+    case 'Nugget Of Grasberg':
+      stats.evade += 1.5;
+      stats.block += 5;
       break;
     //Add in legendary enchant and accessories, mounts too
     default: 

@@ -58,17 +58,28 @@ export default class OptimizerFunction extends Component {
     
             this.worker.addEventListener('message', event => {
                 maximum = event.data;
-
-                document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
-                
-                if (maximum.value > this.props.stats[this.state.searchOption] || maximum.value > this.props.stats.links[this.state.searchOption]) {
-                    document.getElementsByClassName('button-new-equipment')[0].classList = 'notice-button button-new-equipment';
-                    document.getElementsByClassName('output-investigation')[0].innerText =  'New ' + this.searchSearchOptions(this.state.searchOption).key + ": " + (maximum.value || 0);
+                if (!isNaN(maximum)) {
+                    document.getElementsByClassName('testing-space')[0].innerText = `Loading: ${maximum} / ${this.props.numberOfOptions}`;
                 } else {
-                    document.getElementsByClassName('output-investigation')[0].innerText =  'Sorry, nothing better found'
+                    document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
                 
+                    if (maximum.value > this.props.stats[this.state.searchOption] || maximum.value > this.props.stats.links[this.state.searchOption]) {
+                        document.getElementsByClassName('button-new-equipment')[0].classList = 'notice-button button-new-equipment';
+                        document.getElementsByClassName('output-investigation')[0].innerText =  'New ' + this.searchSearchOptions(this.state.searchOption).key + ": " + (maximum.value || 0);
+                    } else {
+                        document.getElementsByClassName('output-investigation')[0].innerText =  'Sorry, nothing better found'
+                    
+                    }
                 }
+
+                
             });
+        }
+    }
+
+    componentWillUnmount() {
+        if (window.Worker) {
+            this.worker.terminate();
         }
     }
 
@@ -240,10 +251,10 @@ export default class OptimizerFunction extends Component {
 
                 /*
                     TODO: IF AN EQUIPMENT CHANGE DOESN'T AFFECT THE FINAL TOTAL, THEN WE SHOULDN'T CHANGE IT
-                    CANT DO TWO STARWEAVES, DIDN'T CHECK FOR ANCIENTS
+                    Done - CANT DO TWO STARWEAVES, DIDN'T CHECK FOR ANCIENTS
 
-                    ADD ABILITY TO REMOVE ITEMS FROM APPEARING
-                    ADD ABILITY TO REMOVE ANCIENTS
+                    Kind of done - ADD ABILITY TO REMOVE ITEMS FROM APPEARING
+                    Done - ADD ABILITY TO REMOVE ANCIENTS
                 
                 */
                 document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
@@ -296,7 +307,52 @@ export default class OptimizerFunction extends Component {
                     //equip[i]+=1;
                     try {
                         //for all equipment in sorted equipment, try to add
-                        equipped[change[i].slot] = this.state.sortedEquipment[whatToChange[i].reference][x];
+                        if (this.state.sortedEquipment[whatToChange[i].reference][x].type === "ancient") {
+                            if (['Polychromatic Blaster', 'Starweave', 'Elementarium'].includes(this.state.sortedEquipment[whatToChange[i].reference][x].name)) {
+                              let q = x-1;
+                              switch(this.state.sortedEquipment[whatToChange[i].reference][x].name) {
+                                case 'Polychromatic Blaster':
+          
+                                  if (whatToChange[i].slot === 'offhand') {
+                                    if (equipped.mainhand.name !== "Polychromatic Blaster") {
+                                      q = x;
+                                    }
+                                  } else {
+                                    if (equipped.offhand.name !== "Polychromatic Blaster") {
+                                      q = x;
+                                    }
+                                  }
+                                  break;
+                                case 'Starweave':
+                                  if (whatToChange[i].slot === 'necklace') {
+                                    if (equipped.ring.name !== "Starweave") {
+                                      q = x;
+                                    }
+                                  } else {
+                                    if (equipped.necklace.name !== "Starweave") {
+                                      q = x;
+                                    }
+                                  }
+                                  break;
+                                case 'Elementarium':
+                                  if (whatToChange[i].slot === 'body') {
+                                    if (equipped.head.name !== "Elementarium") {
+                                      q = x;
+                                    }
+                                  } else {
+                                    if (equipped.body.name !== "Elementarium") {
+                                      q = x;
+                                    }
+                                  }
+                                  break;
+                                default: 
+                                  console.log(this.state.sortedEquipment[whatToChange[i].reference][x].name);
+                              }
+                              equipped[whatToChange[i].slot] = this.state.sortedEquipment[whatToChange[i].reference][q];  
+                            }
+                          } else {
+                            equipped[whatToChange[i].slot] = this.state.sortedEquipment[whatToChange[i].reference][x];
+                          }
                     } catch (error) {
                         //think the error was from mounts, so try catch may no longer be necessary but will keep for debugging
                         console.log({
