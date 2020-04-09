@@ -467,6 +467,28 @@ export const sets = {
 			2: "2% Damage. Damage increases 1% for every 10% health target is missing"
 		}
 	},
+	grasberg: {
+		name: "Grasberg",
+		location: "t10 Orlad Worldboss",
+		tier: 10,
+		items: ["Lamp Of Grasberg", "Hat of Grasberg", "Pants of Grasberg"],
+		description: "",
+		setBonuses: {
+			2: "+3% Team Enrage",
+			3: "+7.5% Deflect"
+		}
+	},
+	vanpels: {
+		name: "Vanpels",
+		location: "t11 Orlad Worldboss",
+		tier: 11,
+		items: ["Vanpels Steak","Vanpels Fedora", "Vanpels Suit"],
+		description: "",
+		setBonuses: {
+			2: "+5% Empower chance while using a spear.",
+			3: "+8% Damage to you and your familiars."
+		}
+	},
 	ceraunos:	{
 		name: "Ceraunos",
 		location: "t12 Orlag Worldboss",

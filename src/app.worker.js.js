@@ -734,6 +734,28 @@ export default () => {
         2: "2% Damage. Damage increases 1% for every 10% health target is missing"
       }
     },
+    grasberg: {
+      name: "Grasberg",
+      location: "t10 Orlad Worldboss",
+      tier: 10,
+      items: ["Lamp Of Grasberg", "Hat of Grasberg", "Pants of Grasberg"],
+      description: "",
+      setBonuses: {
+        2: "+3% Team Enrage",
+        3: "+7.5% Deflect"
+      }
+    },
+    vanpels: {
+      name: "Vanpels",
+      location: "t11 Orlad Worldboss",
+      tier: 11,
+      items: ["Vanpels Steak","Vanpels Fedora", "Vanpels Suit"],
+      description: "",
+      setBonuses: {
+        2: "+5% Empower chance while using a spear.",
+        3: "+8% Damage to you and your familiars."
+      }
+    },
     ceraunos:	{
       name: "Ceraunos",
       location: "t12 Orlag Worldboss",
@@ -746,6 +768,7 @@ export default () => {
       }
     },
   }
+  
   
 
   var base ={
@@ -1829,6 +1852,22 @@ export default () => {
         stats.empower_chance += 25;
       }
       break;
+    case 'Grasberg':
+      if (count ===2 ) {
+        stats.team_enrage += 3;
+      }
+      if (count ===3 ) {
+        stats.deflect_chance += 7.5;
+      }
+      break;
+    case 'Vanpels':
+      if (count === 2 && equipped.mainhand.slot === 'Spear') {
+        stats.empower_chance += 5;
+      }
+      if (count === 3 ) {
+        stats.damage += 8;
+      }
+      break;
     case 'Luminary':
       if (count === 2) {
         stats.damage_enrage += 5;
@@ -2037,7 +2076,7 @@ export default () => {
     case 'Widowmaker':
       stats.critical_chance += 16+(1*accessoryUpgrade);
       stats.critical_damage += 50;
-      stats.empower_chance += 4;
+      stats.empower_chance += 8;
       break;
     case 'Seaphims Grace':
       stats.block += 20+(1*accessoryUpgrade);
@@ -2046,7 +2085,7 @@ export default () => {
       break;
     case 'Melvin Champ':
       stats.dual_strike += 20+(.5*accessoryUpgrade);
-      stats.critical_chance += 9+(1*accessoryUpgrade);
+      stats.critical_chance += 16+(1*accessoryUpgrade);
       break;
     case 'Abominable Trophy':
       stats.damage_reduction += 20+(1*accessoryUpgrade);
@@ -2058,13 +2097,13 @@ export default () => {
       break
     case 'Baronets':
       stats.empower_chance += 20+(1*accessoryUpgrade);
-      stats.dual_strike += 4.5;
+      stats.dual_strike += 9;
       break;
     case 'Astaroths Diadem':
-      stats.empower_chance += 2.5+(.5*accessoryUpgrade);
-      stats.dual_strike += 2.5+(.5*accessoryUpgrade);
-      stats.damage += 5;
-      stats.speed += 5;
+      stats.empower_chance += 3.5+(.5*accessoryUpgrade);
+      stats.dual_strike += 3.5+(.5*accessoryUpgrade);
+      stats.damage += 6;
+      stats.speed += 6;
       stats.critical_chance += 5;
       stats.critical_damage += 50;
       break;
@@ -2075,14 +2114,14 @@ export default () => {
       stats.block += 60+(2*accessoryUpgrade);
       break;
     case 'Travelling Forge':
-      stats.dual_strike += 10+(.5*accessoryUpgrade);
-      stats.empower_chance += 10+(.5*accessoryUpgrade)
+      stats.dual_strike += 12+(.5*accessoryUpgrade);
+      stats.empower_chance += 12+(.5*accessoryUpgrade)
       stats.critical_chance += 10;
       break;
     case 'Transcendence':
       stats.critical_chance += 40+(1*accessoryUpgrade);
-      stats.dual_strike += 3+(.25*accessoryUpgrade);
-      stats.empower_chance += 3+(.25*accessoryUpgrade)
+      stats.dual_strike += 4.5+(.25*accessoryUpgrade);
+      stats.empower_chance += 4.5+(.25*accessoryUpgrade)
       break;
     case 'Sakura':
       stats.damage_reduction += 25;
@@ -2090,11 +2129,11 @@ export default () => {
       break;
     case 'Zaserite Wings':
       stats.critical_chance+=10+(.4*accessoryUpgrade);
-      stats.empower_chance+=5+(.2*accessoryUpgrade);
-      stats.dual_strike+=5+(.2*accessoryUpgrade);
-      stats.damage+=5+(.2*accessoryUpgrade);
-      stats.speed+=5+(.2*accessoryUpgrade);
-      stats.life_steal += 5;
+      stats.empower_chance+=6+(.2*accessoryUpgrade);
+      stats.dual_strike+=6+(.2*accessoryUpgrade);
+      stats.damage+=6+(.2*accessoryUpgrade);
+      stats.speed+=6+(.2*accessoryUpgrade);
+      stats.life_steal += 6;
       break;
     case 'Drozgul':
       stats.damage_reduction+=8+(1*accessoryUpgrade);
@@ -2108,7 +2147,7 @@ export default () => {
       stats.deflect_chance += 5;
       break;
     case 'Acropodium':
-      stats.damage+=24.5+(1*accessoryUpgrade);
+      stats.damage+=30.5+(1*accessoryUpgrade);
       break;
     case 'Melvin Cloak':
       stats.damage += 2;
@@ -2144,8 +2183,8 @@ export default () => {
         stats.damage += -4;
         break;
     case 'Jupingz':
-      stats.empower_chance += 12.5+(0.5*accessoryUpgrade);
-      stats.dual_strike += 12.5+(0.5*accessoryUpgrade);
+      stats.empower_chance += 14.5+(0.5*accessoryUpgrade);
+      stats.dual_strike += 14.5+(0.5*accessoryUpgrade);
       break;
     case 'Vortex Band':
       stats.damage_reduction += 4.5;
@@ -2153,6 +2192,15 @@ export default () => {
     case 'Nice To Meat Ya':
       stats.damage_reduction += 2;
       stats.absorb_chance += 1;
+      break;
+    case 'Gold Pendant':
+      stats.damage += 10+(.5*accessoryUpgrade);
+      stats.speed += 10+(.5*accessoryUpgrade);
+      stats.dual_strike += 9;
+      break;
+    case 'Honor Cloud':
+      stats.critical_chance += 30;
+      stats.evade += 10;
       break;
     case 'Merciless':
       if (count === 2 && equipped.mainhand.slot === "Spear") {
@@ -2354,13 +2402,13 @@ export default () => {
       }
       break;
     case 'Astaroth Flag':
-        stats.critical_chance += 16+(1*accessoryUpgrade);
-        stats.damage += 16+(.5*accessoryUpgrade);
+        stats.critical_chance += 20+(1*accessoryUpgrade);
+        stats.damage += 18+(.5*accessoryUpgrade);
         break;
     case 'Bit Chain':
-      stats.critical_chance += 8
-      stats.damage += 10+(.5*accessoryUpgrade);
-      stats.dual_strike += 10+(.5*accessoryUpgrade);
+      stats.critical_chance += 14
+      stats.damage += 11+(.5*accessoryUpgrade);
+      stats.dual_strike += 11+(.5*accessoryUpgrade);
       break;
     case 'Mirror Wings':
       stats.block += 22 + (2*accessoryUpgrade);
