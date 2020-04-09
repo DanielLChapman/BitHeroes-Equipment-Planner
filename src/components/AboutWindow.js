@@ -7,6 +7,7 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>UPDATES:</span>
             <ul className="about-page-ul">
+                <li>4/9/2020   -   Added Vapnels and Grasberg sets, and updated equipment with new values from 4/9 update.</li>
                 <li>3/31/2020  -   Added some of the new equipment from orlag, dont have the t10 or t11 sets data to add. </li>
                 <li>Testing out equipment filler. It has plenty of issues, so dont take its word as law. </li>
                 <li>3/19/2020  -   Added Filters for Sets, Mythics, and By Slot. You can remove Tiers, Expedition, Ancients, or text search</li>
