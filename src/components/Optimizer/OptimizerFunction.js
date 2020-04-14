@@ -8,6 +8,11 @@ import worker from '../../app.worker.js';
 import WebWorker from '../../WebWorker';
 
 let count = 0;
+let counterLeft = 0;
+let counterRight = 0;
+let leftDone = false;
+let rightDone = false;
+let storedMaximum = {};
 
 let maximum = {
     equipment: {
@@ -55,20 +60,88 @@ export default class OptimizerFunction extends Component {
     componentDidMount() {
         if (window.Worker) {
             this.worker = new WebWorker(worker);
+            this.worker2 = new WebWorker(worker);
     
             this.worker.addEventListener('message', event => {
                 maximum = event.data;
                 if (!isNaN(maximum)) {
-                    document.getElementsByClassName('testing-space')[0].innerText = `Loading: ${maximum} / ${this.props.numberOfOptions}`;
+                    counterLeft = maximum;
+                    document.getElementsByClassName('testing-space')[0].innerText = `Loading: ${counterLeft + counterRight} / ${this.props.numberOfOptions}`;
                 } else {
-                    document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
-                
-                    if (maximum.value > this.props.stats[this.state.searchOption] || maximum.value > this.props.stats.links[this.state.searchOption]) {
-                        document.getElementsByClassName('button-new-equipment')[0].classList = 'notice-button button-new-equipment';
-                        document.getElementsByClassName('output-investigation')[0].innerText =  'New ' + this.searchSearchOptions(this.state.searchOption).key + ": " + (maximum.value || 0);
+                    if (rightDone) {
+                        document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
+                        
+                        let newMaximumValueToShow = false;
+
+                        if (storedMaximum !== {}) {
+                            if (maximum.value <= storedMaximum.value) {
+                                maximum = storedMaximum;
+                            }
+                        } 
+                        if (maximum.value > this.props.stats[this.state.searchOption] || maximum.value > this.props.stats.links[this.state.searchOption]) {
+                            newMaximumValueToShow = true;
+                        }
+    
+                        if (newMaximumValueToShow) {
+                            document.getElementsByClassName('button-new-equipment')[0].classList = 'notice-button button-new-equipment';
+                            document.getElementsByClassName('output-investigation')[0].innerText =  'New ' + this.searchSearchOptions(this.state.searchOption).key + ": " + (maximum.value || 0);
+                        } else {
+                            document.getElementsByClassName('output-investigation')[0].innerText =  'Sorry, nothing better found'
+                        
+                        }
                     } else {
-                        document.getElementsByClassName('output-investigation')[0].innerText =  'Sorry, nothing better found'
-                    
+                        leftDone = true;
+                        if (maximum.value > this.props.stats[this.state.searchOption] || maximum.value > this.props.stats.links[this.state.searchOption]) {
+                            storedMaximum = maximum;
+                        }
+                    }    
+                }
+            });
+
+            this.worker2.addEventListener('message', event => {
+                maximum = event.data;
+                if (!isNaN(maximum)) {
+                    counterRight = maximum;
+                    document.getElementsByClassName('testing-space')[0].innerText = `Loading: ${counterLeft + counterRight} / ${this.props.numberOfOptions}`;
+                } else {
+                    if (leftDone) {
+                        document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
+                        
+                        let newMaximumValueToShow = false;
+
+                        if (storedMaximum !== {}) {
+                            if (maximum.value <= storedMaximum.value) {
+                                maximum = storedMaximum;
+                            }
+                        } 
+                        if (maximum.value > this.props.stats[this.state.searchOption] || maximum.value > this.props.stats.links[this.state.searchOption]) {
+                            newMaximumValueToShow = true;
+                        }
+    
+                        if (newMaximumValueToShow) {
+                            document.getElementsByClassName('button-new-equipment')[0].classList = 'notice-button button-new-equipment';
+                            document.getElementsByClassName('output-investigation')[0].innerText =  'New ' + this.searchSearchOptions(this.state.searchOption).key + ": " + (maximum.value || 0);
+                        } else {
+                            document.getElementsByClassName('output-investigation')[0].innerText =  'Sorry, nothing better found'
+                        
+                        }
+                    }/* {
+                        document.getElementsByClassName('testing-space')[0].innerText = 'Complete ↓↓';
+                        if (storedMaximum !== {}) {
+                            console.log('here');
+                        }
+                        if (maximum.value > this.props.stats[this.state.searchOption] || maximum.value > this.props.stats.links[this.state.searchOption]) {
+                            document.getElementsByClassName('button-new-equipment')[0].classList = 'notice-button button-new-equipment';
+                            document.getElementsByClassName('output-investigation')[0].innerText =  'New ' + this.searchSearchOptions(this.state.searchOption).key + ": " + (maximum.value || 0);
+                        } else {
+                            document.getElementsByClassName('output-investigation')[0].innerText =  'Sorry, nothing better found'
+                        
+                        }
+                    } */ else {
+                        rightDone = true;
+                        if (maximum.value > this.props.stats[this.state.searchOption] || maximum.value > this.props.stats.links[this.state.searchOption]) {
+                            storedMaximum = maximum;
+                        }
                     }
                 }
 
@@ -80,6 +153,7 @@ export default class OptimizerFunction extends Component {
     componentWillUnmount() {
         if (window.Worker) {
             this.worker.terminate();
+            this.worker2.terminate();
         }
     }
 
@@ -142,36 +216,63 @@ export default class OptimizerFunction extends Component {
     
     //     sortedE = sortedEquipment;
         
+        let splitOption = "";
+        let splitNum = 0;
         
         for (var x = 0; x < sFR.length; x++) {
             if (this.props.options.includes(sFR[x].reference)) {
+                if (splitOption === "") {
+                    splitOption = sFR[x].reference;
+                    splitNum = x;
+                }
                 sFR[x].symbol = '*';
             }
         };
 
         maximum.value = 0;
-/* 
 
+        //create variable equal to rounded down sortedEquipment split option
+        //cut in half
+        let half_length = Math.ceil(this.state.sortedEquipment[splitOption].length / 2);
 
-        maximum = {
-            equipment: currentlyEquipped.equipped,
-            runes: currentlyEquipped.runes,
-            enchants: currentlyEquipped.enchants,
-            value: this.props.stats[this.state.searchOption] || this.props.stats.links[this.state.searchOption]
-        }; */
+        //create two new sorted equipments[options]
+        let copiedSortedEquipment = Object.assign(this.state.sortedEquipment);
+        let rightSlice = [...this.state.sortedEquipment[splitOption]];
+        //set first one equal to 0-variable inclusive
+        //second to variable-exclusive - length-1
+        let leftSlice = rightSlice.splice(0, half_length);
 
+        //update numChange
+        let newNumChange = [...this.state.numChange];
     
         //Maybe move this to own function and have preparing done on every prop input
         if (window.Worker) {
+            copiedSortedEquipment[splitOption] = leftSlice;
+            newNumChange[splitNum] = half_length;
+            leftDone = false;
+            rightDone = false;
+            counterLeft = 0;
+            counterRight = 0;
             this.worker.postMessage({
                 index: 0,
                 currentlyEquipped,
                 sFR,
                 searchOption: this.state.searchOption,
-                sortedEquipment: this.state.sortedEquipment,
-                numChange: this.state.numChange,
-                numberOfOptions: this.props.numberOfOptions,
+                sortedEquipment: copiedSortedEquipment,
+                numChange: newNumChange,
+                numberOfOptions: this.props.numberOfOptions
             });
+            copiedSortedEquipment[splitOption] = rightSlice;
+            newNumChange[splitNum] = this.state.sortedEquipment[splitOption].length - half_length;
+            this.worker2.postMessage({
+                index: 0,
+                currentlyEquipped,
+                sFR,
+                searchOption: this.state.searchOption,
+                sortedEquipment: copiedSortedEquipment,
+                numChange: newNumChange,
+                numberOfOptions: this.props.numberOfOptions
+            })
         } else {
             setTimeout( () => {
                 this.recurveIncrement(0, currentlyEquipped, sFR, this.state.searchOption);
