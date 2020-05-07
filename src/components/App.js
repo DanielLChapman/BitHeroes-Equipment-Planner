@@ -239,37 +239,49 @@ class App extends Component {
     let enchantmentsToState = Object.assign({}, enchants);
 
     if (enchantValues.length <= 0) {
-      enchantValues = "xxxxxxxxxxxx".split('');
+      enchantValues = "xxxxxxxxxxxxxxxxxxxxxxxx".split('');
     }
-    else if (enchantValues.length > 12) {
-      enchantValues.splice(12);
+    else if (enchantValues.length > 24) {
+      enchantValues.splice(24);
     }
-    else if (enchantValues.length < 12) {
-      enchantValues = enchantValues.concat("xxxxxxxxxxxx".split(''));
-      enchantValues.splice(12);
+    else if (enchantValues.length <= 24) {
+      enchantValues = enchantValues.concat("xxxxxxxxxxxxxxxxxxxxxxxx".split(''));
+      enchantValues.splice(24);
     }
 
     let u = 0, eS = 1, s = 1;
     for (let x = 0; x < enchantValues.length; x++) {
-      let r1 = searchObjectArray(enchantTypes, 'id', enchantValues[x]);
+      let enchantValuesSorted = enchantValues[x]
+      try {
+        enchantValuesSorted = enchantValues[x] + "" + enchantValues[x+1];
+      } catch (error ) {
+        console.log(error);
+      }
+
+      console.log(enchantValuesSorted);
+
+      let r1 = searchObjectArray(enchantTypes, 'id', enchantValuesSorted);
+      console.log(r1);
+
       if (u%2 === 0 ) {
         enchantmentsToState['enchantSlot' + eS]['slot' + s] = r1;
         s++;
       } else {
         if (enchantmentsToState['enchantSlot' + eS]['slot1'].title !== r1.title) {
           enchantmentsToState['enchantSlot' + eS]['slot' + s] = r1;
-        } else if (['Impatient', 'Patient', 'Quarrelsome'].includes(enchantmentsToState['enchantSlot' + eS]['slot1'].title)) {
-          enchantmentsToState['enchantSlot' + eS]['slot2'] = searchObjectArray(enchantTypes, 'id', 'x');
-        } else if (['Impatient', 'Patient', 'Quarrelsome'].includes(enchantmentsToState['enchantSlot' + eS]['slot2'].title)) {
-          enchantmentsToState['enchantSlot' + eS]['slot1'] = searchObjectArray(enchantTypes, 'id', 'x');
+        } else if (enchantmentsToState['enchantSlot' + eS]['slot1'].mythic) {
+          enchantmentsToState['enchantSlot' + eS]['slot2'] = searchObjectArray(enchantTypes, 'id', 'xx');
+        } else if (enchantmentsToState['enchantSlot' + eS]['slot2'].mythic) {
+          enchantmentsToState['enchantSlot' + eS]['slot1'] = searchObjectArray(enchantTypes, 'id', 'xx');
         }
         else {
-          enchantmentsToState['enchantSlot' + eS]['slot' + s] = searchObjectArray(enchantTypes, 'id', 'x');
+          enchantmentsToState['enchantSlot' + eS]['slot' + s] = searchObjectArray(enchantTypes, 'id', 'xx');
         }
         s--;
         eS++;
       }
       u++;
+      x++;
     }
 
     let tempBonus = calculateBonuses(baseStats, equipped, runeValues, enchantmentsToState, accessoryLevel);
@@ -406,7 +418,7 @@ class App extends Component {
           
           if (r1.value > 3 || !enchantArray.includes(r1.title)) {
             r1 =  {
-              id: 'x',
+              id: 'xx',
               title: "None",
               selected: false,
               effect: "speed",
@@ -416,7 +428,7 @@ class App extends Component {
           }
           if (r2.value > 3 || !enchantArray.includes(r2.title)) {
             r2 =  {
-              id: 'x',
+              id: 'xx',
               title: "None",
               selected: false,
               effect: "speed",

@@ -402,7 +402,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
           
           if (r1.value > 2 || !enchantArray.includes(r1.title)) {
             r1 =  {
-              id: 'x',
+              id: 'xx',
               title: "None",
               selected: false,
               effect: "speed",
@@ -412,7 +412,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
           }
           if (r2.value > 2 || !enchantArray.includes(r2.title)) {
             r2 =  {
-              id: 'x',
+              id: 'xx',
               title: "None",
               selected: false,
               effect: "speed",
@@ -458,7 +458,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       }
     });
 
-    if (tempURL2 !== "xxxxxxxxxxxx") {
+    if (tempURL2 !== "xxxxxxxxxxxxxxxxxxxxxxxx") {
       urlEnd += tempURL + tempURL2;
     }
   }
