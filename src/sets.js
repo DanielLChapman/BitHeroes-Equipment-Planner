@@ -377,6 +377,20 @@ export const sets = {
 				6: "+4% Absorb Chance"
 			}
 		},
+	icarus:	{
+		name: "Icarus",
+		location: "Invasion or Expedition",
+		tier: 1,
+		items: ["Empyreal Sunbow", "Golden Lyre", "Wreath of Sungold", "Solar Gown", "Phoebus", "Amber Necklace"],
+		description: "",
+		setBonuses: {
+			2: "40% Overheal Converted To Shields",
+			3: "Gain +5% Healing Bonus for SP Spent. Up to 35%",
+			4: "+30% SP Regen",
+			5: "25% Overheal Converted To Damage Enrage",
+			6: "Prevent A Teammate Death Once per Adventure. Heal for 125%"
+		}
+	},
 	ishmaels_bounty:	{
 			name: "Ishmaels Bounty",
 			location: "t11 Titan World Boss",

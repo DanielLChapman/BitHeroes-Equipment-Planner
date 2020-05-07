@@ -10,8 +10,6 @@ import Filtering from './Equipment/Filtering';
 import {filteringEquipment} from '../equipment';
 import {tiers} from './Equipment';
 
-
-
 export default class OptimizerWindow extends React.Component {
 
     constructor(props) {

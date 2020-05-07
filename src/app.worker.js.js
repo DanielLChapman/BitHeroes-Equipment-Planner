@@ -34,6 +34,11 @@ export default () => {
       let numChange = users.numChange;
       let nOF = users.numberOfOptions;
 
+      //0 or 1;
+      //0 is bottom half,
+      //1 is top half of first
+      let split = users.split;
+
       maximum = {
         equipment: {
             mainhand: {},
