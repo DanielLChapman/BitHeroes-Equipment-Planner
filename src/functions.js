@@ -1172,6 +1172,65 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.evade += 1.5;
     stats.block += 5;
     break;
+  case 'Tatooi':
+    stats.block += 70 + (2.5*accessoryUpgrade);
+    break;
+  case 'Misty Shrowd':
+    stats.damage_reduction += 26;
+    stats.block += 18;
+    break;
+  case 'Hunter Trophy':
+    stats.damage_reduction += 26;
+    stats.absorb_chance += 5;
+    break;
+  case 'Resistor':
+    stats.block += 32;
+    stats.damage_reduction += 10;
+    stats.deflect_chance += 5;
+    break;
+  case 'Mythic Core':
+    stats.damage_reduction += 28;
+    stats.evade += 8;
+    break;
+  case 'Seraphim Ascendence':
+    stats.evade += 22;
+    stats.block += 26;
+    break;
+  case 'Ascendancy':
+    stats.dual_strike += 7;
+    stats.empower_chance += 7;
+    stats.critical_chance += 50;
+    stats.critical_damage += 10;
+    break;
+  case 'Astaroths Crown':
+    stats.empower_chance += 6;
+    stats.dual_strike += 6;
+    stats.damage += 6;
+    stats.speed += 6;
+    stats.critical_chance += 6;
+    stats.critical_damage += 88;
+    break;
+  case 'Shokan Attachment':
+    stats.damage += 7;
+    stats.speed += 8;
+    stats.empower_chance += 8;
+    stats.dual_strike += 8;
+    stats.critical_chance += 15;
+    stats.life_steal += 10;
+    break;
+  case 'Hailes Power Supply':
+    stats.empower_chance += 18;
+    stats.dual_strike += 20;
+    break;
+  case 'Divine Ward':
+    stats.dual_strike += 17;
+    stats.quad_strike += 5;
+    stats.richochet_chance += 3;
+    break;
+  case' Fobett':
+    stats.critical_chance += 30;
+    stats.critical_damage += 70;
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);
