@@ -1157,9 +1157,6 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   case 'Amaglon':
     stats.block += 8;
     break;
-  case 'Tatooi':
-    stats.block += 70+(2*accessoryUpgrade);
-    break;
   case 'Ceraunos':
     if (count === 2) {
       stats.evade += 10;
@@ -1176,12 +1173,12 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.block += 70 + (2.5*accessoryUpgrade);
     break;
   case 'Misty Shrowd':
-    stats.damage_reduction += 26;
-    stats.block += 18;
+    stats.damage_reduction += 26+(1*accessoryUpgrade);
+    stats.block += 18+(.5*accessoryUpgrade);
     break;
   case 'Hunter Trophy':
     stats.damage_reduction += 26;
-    stats.absorb_chance += 5;
+    stats.absorb_chance += 5 + (0.5*accessoryUpgrade);
     break;
   case 'Resistor':
     stats.block += 32;
@@ -1194,41 +1191,41 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     break;
   case 'Seraphim Ascendence':
     stats.evade += 22;
-    stats.block += 26;
+    stats.block += 26+(2.5*accessoryUpgrade);
     break;
   case 'Ascendancy':
     stats.dual_strike += 7;
     stats.empower_chance += 7;
-    stats.critical_chance += 50;
+    stats.critical_chance += 50 + (3*accessoryUpgrade);
     stats.critical_damage += 10;
     break;
   case 'Astaroths Crown':
-    stats.empower_chance += 6;
-    stats.dual_strike += 6;
-    stats.damage += 6;
-    stats.speed += 6;
-    stats.critical_chance += 6;
+    stats.empower_chance += 6+(.25*accessoryUpgrade);
+    stats.dual_strike += 6+(.25*accessoryUpgrade);
+    stats.damage += 6+(.25*accessoryUpgrade);
+    stats.speed += 6+(.25*accessoryUpgrade);
+    stats.critical_chance += 6+(.25*accessoryUpgrade);
     stats.critical_damage += 88;
     break;
   case 'Shokan Attachment':
-    stats.damage += 7;
+    stats.damage += 7+(.75*accessoryUpgrade);
     stats.speed += 8;
     stats.empower_chance += 8;
     stats.dual_strike += 8;
-    stats.critical_chance += 15;
+    stats.critical_chance += 15+(.75*accessoryUpgrade);
     stats.life_steal += 10;
     break;
   case 'Hailes Power Supply':
-    stats.empower_chance += 18;
-    stats.dual_strike += 20;
+    stats.empower_chance += 18+(.5*accessoryUpgrade);
+    stats.dual_strike += 20+(1*accessoryUpgrade);
     break;
   case 'Divine Ward':
-    stats.dual_strike += 17;
-    stats.quad_strike += 5;
+    stats.dual_strike += 17+(.5*accessoryUpgrade);
+    stats.quad_strike += 5+(.25*accessoryUpgrade);
     stats.richochet_chance += 3;
     break;
   case' Fobett':
-    stats.critical_chance += 30;
+    stats.critical_chance += 30+(1.25*accessoryUpgrade);
     stats.critical_damage += 70;
     break;
   //Add in legendary enchant and accessories, mounts too

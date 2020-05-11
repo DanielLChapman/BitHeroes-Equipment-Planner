@@ -7,6 +7,7 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>UPDATES:</span>
             <ul className="about-page-ul">
+                <li>5/11/2020  -   Updated new mythic equipment and enchants, dont have stat upgrades for Resistor and Mythic Core. If you have either let me know what gets upgraded each time.</li>
                 <li>4/9/2020   -   Added Vapnels and Grasberg sets, and updated equipment with new values from 4/9 update.</li>
                 <li>3/31/2020  -   Added some of the new equipment from orlag, dont have the t10 or t11 sets data to add. </li>
                 <li>Testing out equipment filler. It has plenty of issues, so dont take its word as law. </li>
