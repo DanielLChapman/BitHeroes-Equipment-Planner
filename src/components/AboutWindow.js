@@ -7,6 +7,7 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>UPDATES:</span>
             <ul className="about-page-ul">
+                <li>5/31/2020  -   Updated With new t13 mythic and set equipment!</li>
                 <li>5/11/2020  -   Updated new mythic equipment and enchants, dont have stat upgrades for Resistor and Mythic Core. If you have either let me know what gets upgraded each time.</li>
                 <li>4/9/2020   -   Added Vapnels and Grasberg sets, and updated equipment with new values from 4/9 update.</li>
                 <li>3/31/2020  -   Added some of the new equipment from orlag, dont have the t10 or t11 sets data to add. </li>
@@ -32,11 +33,7 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>TODO:</span>
             <ul className="about-page-ul">
-                <li>Filtering on sets and mythics, by tier first. </li>
                 <li>Add any tank/dps/healer/etc identifiers to equipment/sets/mythics for future filtering</li>
-                <li>Search for specific sets/mythics to make it easier to find them.</li>
-                <li>Optimizer function that searches through possible combinations of items to finish your build, maximizing a specific stat you are looking for.</li>
-                <li className={'about-amendum'}>This wouldn't be 100% accurate because of mythics like moon collage or necrosis where their contributions to stats like damage, or mitigation, are hard to lock down to a specific number.<br /></li>
             </ul>
 
         </section>
