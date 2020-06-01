@@ -514,6 +514,43 @@ export const sets = {
 			3: "Gain 3% Air Resistance when you evade, up to 12%",
 		}
 	},
+	manticore:	{
+		name: "Manticore",
+		location: "t13 Trials",
+		tier: 13,
+		items: ["Manticore Spikes", "Manticore Mane", "Manticore Flames", "Manticore Tail"],
+		description: "",
+		setBonuses: {
+			2: "Gain 2% Redirect Chance and 2% Absorb",
+			3: "15% Chance to heal when you get hit",
+			4: "Gain 20% Damage Reduction and 15% Redirect if you have the lowest health on your team"
+		}
+	},
+	behemoth:	{
+		name: "Behemoth",
+		location: "t13 Raids",
+		tier: 13,
+		items: ["Boneblade Of The Behemoth", "Cowl Of The Behemoth", "Skull Of The Behemoth", "Scrap Of The Behemoth"],
+		description: "",
+		setBonuses: {
+			2: "+4% empower for each SP you have",
+			3: "25% Chance to deal +50% Earth Damage",
+			4: "+15% Dual Strike. Gain 30% earth damage to enemies above 75% health"
+		}
+	},
+	raiju:	{
+		name: "Raiju",
+		location: "t13 Titans",
+		tier: 13,
+		items: ["Raiju Reaper", "Raiju Muscle", "Raiju Reactor", "Raiju Coil"],
+		description: "",
+		setBonuses: {
+			2: "Deal +10% electric damage when at least 3 enemies are alive",
+			3: "+10% empower each normal hit, resets on empower",
+			4: "+10% speed, +30% Electric Daamge. -3% Damage each normal hit. Resets on empower"
+		}
+	},
+
 }
 
 /*

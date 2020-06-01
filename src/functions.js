@@ -1228,6 +1228,53 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.critical_chance += 30+(1.25*accessoryUpgrade);
     stats.critical_damage += 70;
     break;
+  case 'Manticore':
+    if (count === 2) {
+      stats.redirect_chance += 2;
+      stats.absorb_chance += 2;
+    }
+    if (count === 4) {
+      stats.damage_reduction += 20;
+      stats.redirect_chance += 15;
+    }
+    break;
+  case "Behemoth": 
+    if (count === 2) {
+      stats.empower_chance += 4;
+    }
+    if (count === 3) {
+      stats.earth_damage += 50;
+    }
+    if (count === 4) {
+      stats.dual_strike += 15;
+      stats.earth_damage += 30;
+    }
+    break;
+  case 'Raiju':
+    if (count === 2) {
+      stats.electric_damage += 10;
+    }
+    if (count === 3) {
+      stats.empower_chance += 10;
+    }
+    if (count === 4) {
+      stats.speed += 10;
+      stats.electric_damage += 30;
+      stats.damage -= 3;
+    }
+    break;
+  case 'Kaijin Fang':
+    stats.damage_reduction += 8;
+    break;
+  case 'Kaijin Ring':
+    stats.healing += 16;
+    break;
+  case 'Kaijin Reminder ':
+    stats.damage += 25;
+    break;
+  case 'Kaijin Furnace':
+    stats.damage += 12;
+    break;
   //Add in legendary enchant and accessories, mounts too
   default: 
     //console.log(name, equipped, stats);

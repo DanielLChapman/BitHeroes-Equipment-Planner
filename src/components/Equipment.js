@@ -17,7 +17,7 @@ export const types = [
 	{l: 'pets', c: 'Pets', np: 'pet'},
 ];
 
-export const tiers = [0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12];
+export const tiers = [0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
 export default class Equipment extends Component {
 
@@ -36,7 +36,7 @@ export default class Equipment extends Component {
 				searching: '',
 				mythicsOnly: false,
 				setsOnly: false,
-				tiers: [0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12]
+				tiers: [0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 			}
 		};
 	}
@@ -85,7 +85,7 @@ export default class Equipment extends Component {
 				let f = parseInt(e.target.value, 10);
 				//if its in the area remove it,
 				console.log(e.target);
-				if (![0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12].includes(f)) {
+				if (![0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13].includes(f)) {
 					break;
 				}
 				if (!ef.tiers.includes(f) ) {
