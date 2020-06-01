@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {equipment, sortEquipment} from '../../equipment';
+import {sets} from '../../sets';
+import {base, runeTypes, enchantTypes, mountTypes } from '../../stats';
 import {searchOptions, change} from '../../investigation';
 import {calculateBonuses} from '../../functions';
-import { mountTypes } from '../../stats';
 
 import worker from '../../app.worker.js';
 import WebWorker from '../../WebWorker';
@@ -260,7 +261,13 @@ export default class OptimizerFunction extends Component {
                 searchOption: this.state.searchOption,
                 sortedEquipment: copiedSortedEquipment,
                 numChange: newNumChange,
-                numberOfOptions: this.props.numberOfOptions
+                numberOfOptions: this.props.numberOfOptions,
+                sets: sets,
+                base: base,
+                runeTypes: runeTypes,
+                enchantTypes: enchantTypes,
+                mountTypes: mountTypes,
+
             });
             copiedSortedEquipment[splitOption] = rightSlice;
             newNumChange[splitNum] = this.state.sortedEquipment[splitOption].length - half_length;
@@ -271,7 +278,12 @@ export default class OptimizerFunction extends Component {
                 searchOption: this.state.searchOption,
                 sortedEquipment: copiedSortedEquipment,
                 numChange: newNumChange,
-                numberOfOptions: this.props.numberOfOptions
+                numberOfOptions: this.props.numberOfOptions,
+                sets: sets,
+                base: base,
+                runeTypes: runeTypes,
+                enchantTypes: enchantTypes,
+                mountTypes: mountTypes,
             })
         } else {
             setTimeout( () => {

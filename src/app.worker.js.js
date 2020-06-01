@@ -20,6 +20,10 @@ export default () => {
 
   let count = 0;
   let numberOfOptions = 0;
+  let sets = {};
+  let base = {};
+  let enchantTypes = {};
+  let mountTypes = {};
 
   self.addEventListener('message', e => { // eslint-disable-line no-restricted-globals
       if (typeof e === 'undefined') return;
@@ -33,6 +37,10 @@ export default () => {
       let sortedEquipment = users.sortedEquipment;
       let numChange = users.numChange;
       let nOF = users.numberOfOptions;
+      sets = users.sets;
+      base = users.base;
+      enchantTypes = users.enchantTypes;
+      mountTypes = users.mountTypes;
 
       //0 or 1;
       //0 is bottom half,
@@ -272,1023 +280,6 @@ export default () => {
   }
     
   }
-
-  const sets = {
-    ares_legacy:{
-        name: "Ares Legacy",
-        location: "From r2 or from re-rolling any t5 set",
-        tier: 5,
-        items: ["Phobos", "Deimos"],
-        description: "",
-        setBonuses: {
-          2: "20% Chance for skills to not spend SP"
-        }
-      },
-    divinity:	{
-        name: "Divinity",
-        location: "From r3 or from re-rolling a set piece from Trials/Gauntlets",
-        tier: 6,
-        items: ["Phantom Light", "Legacy Of Truth", "Trinity Plate"],
-        description: "",
-        setBonuses: {
-          2: "Damage increased by 5% while using a sword",
-          3: "Execute: Damage increased by 30% to enemies below 30% health"
-        }
-      },
-    maru:	{
-        name: "M.A.R.U",
-        location: "From r4",
-        items: ["Visortron", "Mechcoat", "ROM BIOS", "Blast Protocol"],
-        tier: 7,
-        description: "Does not affect pets",
-        setBonuses: {
-          2: "10% of your Healing Skills also generate shields",
-          3: "Over Healing converts to shield",
-          4: "Gain the Defibrillator Skill"
-        }
-      },
-    night_walker:	{
-        name: "Night Walker",
-        location: "From r5 or from rerolling any t8 set piece",
-        tier: 8,
-        items: ["Moonlight", "Discordiant Power", "Dominance", "Adorned Malice"],
-        description: "",
-        setBonuses: {
-          2: "Increase absorb by 2%",
-          3: "Gain full shields the first time you drop below 50% health",
-          4: "Gain 15% damage reduction while shielded"
-        }
-      },
-    arsenal:	{
-        name: "Arsenal",
-        location: "R6",
-        tier: 9,
-        items: ["UMD Lazzault", "Aimbot 80", "A M H", "Nanovectal Plating"],
-        description: "",
-        setBonuses: {
-          2: "+2% Richochet",
-          3: "Damage increase by 10% to enemies above 75% Health or below 25% health",
-          4: "Gain increased damage the higher your targets health percentage is, up to 30%"
-        }
-      },
-    earthen_might:	{
-        name: "Earthen Might",
-        location: "r7 Heroic Raids",
-        tier: 10,
-        items: ["Tectonica", "Quartzar", "Shatterguard", "Omenstone"],
-        description: "",
-        setBonuses: {
-          2: "+2% Deflect Chance",
-          3: "Automatically Prevent the first death upon your team, also shields target for half shields",
-          4: "+25% Damage Reduction, this is reduced by 3% each time you are attacked and returns to 25% when it drops below 10%",
-        }
-      },
-    camouflage:	{
-      name: "Camouflage",
-      location: "r8 Heroic Raid",
-      tier: 11,
-      items: ["Violenshine", "Violenhell", "Violenmane", "Viobus"],
-      description: "",
-      setBonuses: {
-        2: "+1% Quad Strike",
-        3: "+5% to ignore enemy defenses",
-        4: "+40% Damage, 40% Reduced Shields",
-      }
-    },
-    unity:	{
-        name: "Unity",
-        location: "Trials/Gauntlets 100-109 or from rerolling a t5 set piece",
-        tier: 5,
-        items: ["Despair", "Sorrow"],
-        description: "",
-        setBonuses: {
-          2: "Gain the Unity Skill"
-        }
-      },
-    trugdors_call:	{
-        name: "Trugdor's Call",
-        location: "Trials/Gauntlets 100-109 or from rerolling a t5 set piece",
-        tier: 5,
-        items: ["Trugdor's Bite", "Scaled Vambrace", "Dragons Breath"],
-        description: "",
-        setBonuses: {
-          2: "4% Chance for skills to trigger twice",
-          3: "7% Chance for projectiles to ricochet to a nearby enemy"
-        }
-      },
-    taldrilths_artifacts:	{
-        name: "Taldrilth's Artifacts",
-        location: "Trials/Gauntlets 140-149 or from rerolling a t6 set piece",
-        tier: 6,
-        items: ["Eternal Fire", "Scaled Dragon's Bone", "Taldrilth's Soul"],
-        description: "",
-        setBonuses: {
-          2: "Increase deflect by 3%",
-          3: "Increase absorb by 6%"
-        }
-      },
-    bushido:	{
-        name: "Bushido",
-        location: "Trials/Gauntlets 140-149 or from rerolling a t6 set piece",
-        tier: 6,
-        items: ["Matsukura", "Yashiro's Dou"],
-        description: "",
-        setBonuses: {
-          2: "Berserk: +10% damage, but take 10% more damage"
-        }
-      },
-    conduction:	{
-        name: "Conduction",
-        location: "Trials/Gauntlets 200-209",
-        tier: 7,
-        items: ["Gigastrike", "Magnetron", "Flow Plate", "Power Amp"],
-        description: "",
-        setBonuses: {
-          2: "Projectiles deal 5% more damage",
-          3: "5% chance for skills to be twice as powerful",
-          4: "Deal 25% increased damage when the enemy team only has 1 unit alive"
-        }
-      },
-    luminary:	{
-        name: "Luminary",
-        location: "Trials/Gauntlets Difficulty 260-289",
-        tier: 8,
-        items: ["Yak Blade", "Stillness", "Hylidae", "Flowing Silk Sash"],
-        description: "",
-        setBonuses: {
-          2: "Gain enrage equal to 5% of heals",
-          3: "Increases potency of your healing by 15%",
-          4: "Automatically prevent the first death upon your team"
-        }
-      },
-    polaris:	{
-        name: "Polaris",
-        location: "Trials/Gauntlets 510+",
-        tier: 9,
-        items: ["Sky Vapor", "Sky Vault", "Champions Helm", "Whale Plate"],
-        description: "",
-        setBonuses: {
-          2: "+5% Damage Enrage",
-          3: "Heal to full the first time you drop below 50% health.",
-          4: "Gain Damage Reduction the higher your health percentage is, up to a maximum of 20%"
-        }
-      },
-    merciless:	{
-        name: "Merciless",
-        location: "Trials/Gauntlets 680+",
-        tier: 10,
-        items: ["Phantomate", "Reptor", "Ikoscale", "Retilio"],
-        description: "",
-        setBonuses: {
-          2: "+5% Damage while using a spear",
-          3: "75% of overkill projectile damage richochets",
-          4: "15% Increased damage. Each hit on an enemy increases this bonus by 2.5% on them, to a max of 35%. "
-        }
-      },
-    venom:	{
-      name: "Venom",
-      location: "Set Trials, 1080+",
-      tier: 11,
-      items: ["Wigo Wiggins", "Warriorolas", "Shiztiny", "Earendrin"],
-      description: "",
-      setBonuses: {
-        2: "+2% Team Enrage",
-        3: "+2.5 Team Damage Reduction",
-        4: "+17.5% Damage Reduction while all teammates are above 30% health",
-      }
-    },
-    lunar_guardian:	{
-        name: "Lunar Guardian",
-        location: "Tier 6 Orlag World Boss",
-        tier: 6,
-        items: ["Maelstrom", "Eclipse Barrier"],
-        description: "Does not affect healing pets",
-        setBonuses: {
-          2: "Increase potency of your healing skills by 15%"
-        }
-      },
-    jynx:	{
-        name: "Jynx",
-        location: "Tier 6 Orlag World Boss",
-        tier: 6,
-        items: ["Moku", "Ku"],
-        description: "",
-        setBonuses: {
-          2: "Regenerate 20% of your shields at the start of each battle"
-        }
-      },
-    obliteration:	{
-        name: "Obliteration",
-        location: "Tier 7 Orlag World Boss",
-        tier: 7,
-        items: ["Wraithguard", "Last Sight", "Dark Wrap", "Black Omen"],
-        description: "",
-        setBonuses: {
-          2: "Teammates behind you take 5% reduced damage",
-          3: "Teammates behind you deal 5% increased damage",
-          4: "Gain 15% Damage Reduction while all teammates are alive"
-        }
-      },
-    agony:	{
-        name: "Agony",
-        location: "Tier 8 Orlag World Boss or from rerolling a t8 set piece",
-        tier: 8,
-        items: ["Arcusbolt", "Tormented Soul", "Gravetouch", "Crypt Hunter"],
-        description: "",
-        setBonuses: {
-          2: "You and nearby teamates gain 3% increased damage",
-          3: "You and your nearby teammates gain 10% SP Regeneration",
-          4: "10% chance for projectiles to ricochet to a nearby enemy"
-        }
-      },
-    eruption:	{
-        name: "Eruption",
-        location: "T9 Orlag HC",
-        tier: 9,
-        items: ["SlagHelm", "Molten Chasis", "Magmight"],
-        description: "",
-        setBonuses: {
-          2: "First attack against you per battle is absorbed",
-          3: "12% evade chance"
-        }
-      },
-    illustrious_artifacts:	{
-        name: "Illustrious Artifacts",
-        location: "Tier 6 Netherworld World Boss",
-        tier: 6,
-        items: ["Ancient Tiara", "Heavenly Garb", "Exalted Binding"],
-        description: "Scales with Power Stat",
-        setBonuses: {
-          2: "+4% Damage, +4% Healing",
-          3: "Divine Protection: Instantly revive on first death per adventure"
-        }
-      },
-    taters:	{
-        name: "Taters",
-        location: "Tier 7 Netherworld World Boss",
-        tier: 7,
-        items: ["Tayto Sword", "Tayto Sack", "Hangin Tayto"],
-        description: "",
-        setBonuses: {
-          2: "4% Speed",
-          3: "At the start of each turn, launch a Tayto at the weakest enemy for 3.25-22,75% damage"
-        }
-      },
-    inferno:	{
-        name: "Inferno",
-        location: "Tier 8 Nethworld World Boss or from rerolling a t8 set piece",
-        tier: 8,
-        items: ["Final Gaze", "Final Flash", "Melding Cloak", "Brimstone"],
-        description: "",
-        setBonuses: {
-          2: "4% chance for skills to be twice as powerful",
-          3: "20% chance for skills to not spend SP",
-          4: "Skills that cost SP deal 20% increased damage"
-        }
-      },
-    requiem:	{
-        name: "Requiem",
-        location: "T9 Nether HC",
-        tier: 9,
-        items: ["Veilstrike", "Cloudsinge", "Oscillation"],
-        description: "",
-        setBonuses: {
-          2: "20% Chance to deal 25% increased damage",
-          3: "1-24% damage increase"
-        }
-      },
-    apocalypse:	{
-        name: "Apocalypse",
-        location: "t10 Melvin Worldboss",
-        tier: 10,
-        items: ["Exarkun", "Reflekun", "Solus", "Garplate", "Revenwrap", "Plaguscore"],
-        description: "",
-        setBonuses: {
-          3: "Enchant Bonuses Doubled",
-          4: "Mount Bonuses Doubled",
-          5: "Major Rune Bonuses Doubled "
-        }
-      },
-    mistery:	{
-        name: "Mistery",
-        location: "t11 Melvin Worldboss",
-        tier: 11,
-        items: ["Visertal", "Battletal", "Grindymetal"],
-        description: "",
-        setBonuses: {
-          2: "+4% Dual Strike",
-          3: "Ignore Enemy Defense Bonuses on Shielded Targets",
-        }
-      },
-    virulence:	{
-      name: "Virulence",
-      location: "t10 Ext Worldboss",
-      tier: 10,
-      items: ["Vulcarn", "Ytterbite Scrap"],
-      description: "",
-      setBonuses: {
-        2: "Damage Recieved from Redirect, Ricochet, or Bouncing Attacks deal 20% Less Damage",
-      }
-    },
-    trident:	{
-        name: "Trident",
-        location: "t10 Ext Worldboss",
-        tier: 10,
-        items: ["Aquatic Ward", "Nemo's Tempest"],
-        description: "",
-        setBonuses: {
-          3: "Skills that cost SP Damage deal 15% increased Damage",
-        }
-      },
-    courage:	{
-        name: "Courage",
-        location: "t11 Ext Worldboss",
-        tier: 11,
-        items: ["Wickedwood", "Malwood", "Woocrusher"],
-        description: "",
-        setBonuses: {
-          2: "+10% SP Damage",
-          3: "Team SP Regen increased by 25%",
-        }
-      },
-    gatekeeper:	{
-        name: "Gatekeeper",
-        location: "Small/Large Dragon Egg",
-        items: ["Acropodium", "Karlorr"],
-        tier: 0,
-        description: "",
-        setBonuses: {
-          2: "0.5% chance for skills to trigger four additional times."
-        }
-      },
-    featherfall:	{
-        name: "Featherfall",
-        location: "Invasion or Expedition",
-        tier: 1,
-        items: ["Maplestrike", "Emberling", "Windspirit", "Nimble", "Clarity", "Peacesong"],
-        description: "",
-        setBonuses: {
-          2: "+4% Damage",
-          3: "+4% Speed",
-          4: "+4% Dual Strike",
-          5: "+4% Empower Chance",
-          6: "+2% Quad Strike"
-        }
-      },
-    hellfire:	{
-        name: "Hellfire",
-        location: "Invasion or Expedition",
-        tier: 1,
-        items: ["Dawn Of Mercy", "Idol Of Decay", "Deception", "Soulkeeper", "Dementia", "Ferocity"],
-        description: "",
-        setBonuses: {
-          2: "+4% Damage Reduction",
-          3: "+8% Block Chance",
-          4: "+4% Evade Chance",
-          5: "+3% Deflect Chance",
-          6: "+4% Absorb Chance"
-        }
-      },
-    ishmaels_bounty:	{
-        name: "Ishmaels Bounty",
-        location: "t11 Titan World Boss",
-        tier: 11,
-        items: ["Abandon Fate", "Tentuhkuhl"],
-        description: "",
-        setBonuses: {
-          2: "Heals received from skills generate 30% shields."
-        }
-      },
-    voltio:	{
-        name: "Voltio",
-        location: "t11 Trials",
-        tier: 11,
-        items: ["Voltio", "Vohltij", "Ihlektron", "Kiluhwot", "Spahrk", "Johlt"],
-        description: "",
-        setBonuses: {
-          2: "When attack: 108 shield to all team.",
-          4: "For Each 5% Shield: +3% Electric Damage",
-          6: "Max shield: +50% Electric Damage"
-        }
-      },
-    pyroc:	{
-      name: "Pyroc",
-      location: "t12 Brimstone",
-      tier: 12,
-      items: ["Ring Of Hellish Fire", "Raiment Of Hellish Fire", "Wip Of Hellish Fire", "Sleave Of Hellish Fire"],
-      description: "",
-      setBonuses: {
-        2: "+2% empower per enemy alive.",
-        3: "+15% Fire damage against unshielded enemies",
-        4: "+30% Fire damage while above 60% health"
-      }
-    },
-    nepulus: {
-      name: "Nepulus",
-      location: "t12 Titans",
-      tier: 12,
-      items: ["Visage of Atlante", "Greatplate Of Atlante", "Battleaxe Of Atlante", "Gem Of Atlante"],
-      description: "",
-      setBonuses: {
-        2: "Heals received from skills at 10% more effective",
-        3: "When hit gain 2% deflect, max 8%",
-        4: "+8% Water Resistance, gain 2% when hit, up to 18%"
-      }
-    },
-    pangea:	{
-      name: "Pangea",
-      location: "t12 Trials/Gauntlet",
-      tier: 12,
-      items: ["Last Hope Faceguard","Last Hope Stone","Last Hope Hammer","Last Hope Outbreak"],
-      description: "",
-      setBonuses: {
-        2: "+25% Max Shield",
-        3: "Teammates behind you gain +5% earth resistance",
-        4: "Increase chance to block attacks by 40%"
-      }
-    },
-    lucernas:	{
-      name: "Lucernas",
-      location: "t12 Raid",
-      tier: 12,
-      items: ["Crown Of Zeus", "Chestguard Of Zeus", "Pact Of Zeus", "Battery Of Zeus"],
-      description: "",
-      setBonuses: {
-        2: "Gain .25% team enrage when using a healing skill, up to 2%",
-        3: "+15% air damage while shielded",
-        4: "When using a healing skill, spread shield and gain 1.5% healing bonus, up to 15%"
-      }
-    },
-    blackarrow: {
-      name: "Blackarrow",
-      location: "t11 Worldboss",
-      tier: 11,
-      items: ["Black Arrow Spear", "Fire Scaler"],
-      description: "",
-      setBonuses: {
-        2: "2% Absorb Chance. Gain 0.5 Absorb for each 10% Health Missing"
-      }
-    },
-    dragonskull: {
-      name: "Dragonskull",
-      location: "t11 Worldboss",
-      tier: 11,
-      items: ["Triumph Bones Shield", "Nail Storm"],
-      description: "",
-      setBonuses: {
-        2: "2% Damage. Damage increases 1% for every 10% health target is missing"
-      }
-    },
-    grasberg: {
-      name: "Grasberg",
-      location: "t10 Orlad Worldboss",
-      tier: 10,
-      items: ["Lamp Of Grasberg", "Hat of Grasberg", "Pants of Grasberg"],
-      description: "",
-      setBonuses: {
-        2: "+3% Team Enrage",
-        3: "+7.5% Deflect"
-      }
-    },
-    vanpels: {
-      name: "Vanpels",
-      location: "t11 Orlad Worldboss",
-      tier: 11,
-      items: ["Vanpels Steak","Vanpels Fedora", "Vanpels Suit"],
-      description: "",
-      setBonuses: {
-        2: "+5% Empower chance while using a spear.",
-        3: "+8% Damage to you and your familiars."
-      }
-    },
-    ceraunos:	{
-      name: "Ceraunos",
-      location: "t12 Orlag Worldboss",
-      tier: 12,
-      items: ["Orb Of Fleeting Voices", "Fleeting Voices Chest", "Tiara Of Fleeting Voices"],
-      description: "",
-      setBonuses: {
-        2: "Gain 2.5% evade each time you dont evade, up to 10%. Resets on Evade",
-        3: "Gain 3% Air Resistance when you evade, up to 12%",
-      }
-    },
-  }
-  
-  
-
-  var base ={
-    default_stats: {
-      power: 6,
-      stamina: 6,
-      agility: 6,
-      total_stats: 18,
-      damage: 0,
-      sp_damage: 0,
-      health: 0,
-      speed: 0,
-      critical_chance: 10,
-      critical_damage: 50,
-      evade: 2.5,
-      block: 0,
-      life_steal: 0,
-      damage_enrage: 0,
-      deflect_chance: 0,
-      absorb_chance: 0,
-      damage_reduction: 0,
-      dual_strike: 0,
-      empower_chance: 0,
-      redirect_chance: 0,
-      healing: 0, 
-      quad_strike: 0,
-      richochet_chance: 0,
-      team_enrage: 0,
-      ignore_defense: 0,
-      links: {
-        healthEfficiency: 0,
-        damageMitigation: 0,
-        damageBonus: 0,
-        damageOutput: 0
-      },
-      fire_damage: 0,
-      fire_resistance: 0,
-      electric_damage: 0,
-      electric_resistance: 0,
-      water_damage: 0,
-      water_resistance: 0,
-      air_damage: 0,
-      air_resistance: 0,
-      earth_damage: 0,
-      earth_resistance: 0,
-      elemental_flat: {
-        fire: 0,
-        electric: 0,
-        water: 0,
-        air: 0,
-        earth: 0
-      }
-    },
-    current_stats: {},
-    runes: [],
-    enchants: [],
-  };
-  
-  const enchantTypes = [{
-    id: 'a',
-    title: "Block",
-    selected: false,
-    effect: "block",
-    value:  2,
-    key: 'enchant'
-  },{
-    id: 'b',
-    title: "Damage Reduction",
-    selected: false,
-    effect: "damage_reduction",
-    value:  1,
-    key: 'enchant'
-  },{
-    id: 'c',
-    title: "Damage",
-    selected: false,
-    effect: "damage",
-    value:  1,
-    key: 'enchant'
-  },{
-    id: 'd',
-    title: "Damage Enrage",
-    selected: false,
-    effect: "damage_enrage",
-    value:  1,
-    key: 'enchant'
-  }, {
-    id: 'e',
-    title: "Deflect Chance",
-    selected: false,
-    effect: "deflect_chance",
-    value:  .5,
-    key: 'enchant'
-  },{
-    id: 'f',
-    title: "Dual Strike",
-    selected: false,
-    effect: "dual_strike",
-    value:  1,
-    key: 'enchant'
-  },{
-    id: 'g',
-    title: "Empower Chance",
-    selected: false,
-    effect: "empower_chance",
-    value:  1,
-    key: 'enchant'
-  },{
-    id: 'h',
-    title: "Evade",
-    selected: false,
-    effect: "evade",
-    value:  1,
-    key: 'enchant'
-  },{
-    id: 'i',
-    title: "Health",
-    selected: false,
-    effect: "health",
-    value:  1,
-    key: 'enchant'
-  },{
-    id: 'j',
-    title: "Life Steal",
-    selected: false,
-    effect: "life_steal",
-    value:  1,
-    key: 'enchant'
-  },{
-    id: 'k',
-    title: "Speed",
-    selected: false,
-    effect: "speed",
-    value:  1,
-    key: 'enchant'
-  },{
-    id: 'l',
-    title: "Absorb",
-    selected: false,
-    effect: "absorb_chance",
-    value:  .5,
-    key: 'enchant'
-  },{
-    id: 'm',
-    title: "Impatient (Block Speed)",
-    selected: false,
-    effect: "block",
-    effect2: "speed",
-    value:  2.5,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 'n',
-    title: "Passionate (DR Deflect)",
-    selected: false,
-    effect: "damage_reduction",
-    effect2: "deflect_chance",
-    value:  1.25,
-    value2: .7,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 'o',
-    title: "Quarrelsome (Deflect DS)",
-    selected: false,
-    effect: "deflect_chance",
-    effect2: "dual_strike",
-    value:  .7,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 'p',
-    title: "Hearty (Block Lifesteal)",
-    selected: false,
-    effect: "block",
-    effect2: "life_steal",
-    value:  2.5,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 'q',
-    title: "Balanced (Damage)",
-    selected: false,
-    effect: "damage",
-    value:  2.5,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 'r',
-    title: "Unstable (Damage Deflect)",
-    selected: false,
-    effect: "damage",
-    effect2: "deflect",
-    value:  1.25,
-    value2: .7,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 's',
-    title: "Dextrous (DR)",
-    selected: false,
-    effect: "damage_reduction",
-    value:  2.5,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 't',
-    title: "Respected (DR Empower)",
-    selected: false,
-    effect: "damage_reduction",
-    effect2: "empower_chance",
-    value:  1.25,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 'u',
-    title: "Kind (DR + Health)",
-    selected: false,
-    effect: "damage_reduction",
-    effect2: "health",
-    value:  1.25,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 'v',
-    title: "Lean (DR Lifesteal)",
-    selected: false,
-    effect: "damage_reduction",
-    effect2: "life_Steal",
-    value:  1.25,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 'w',
-    title: "Eager (Deflect)",
-    selected: false,
-    effect: "deflect_chance",
-    value:  1.4,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 'y',
-    title: "Quick (Deflect Evade)",
-    selected: false,
-    effect: "deflect_chance",
-    effect2: "evade",
-    value:  .7,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 'z',
-    title: "Modest (Deflect Lifesteal)",
-    selected: false,
-    effect: "deflect_chance",
-    effect2: "life_steal",
-    value:  .7,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: '1',
-    title: "Irritable (Deflect Speed)",
-    selected: false,
-    effect: "deflect_chance",
-    effect2: "speed",
-    value:  .7,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: '2',
-    title: "Able (Block Chance",
-    selected: false,
-    effect: "block",
-    value:  5,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: '3',
-    title: "Maternal (Block Speed",
-    selected: false,
-    effect: "block",
-    effect2: "speed",
-    value:  2.5,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: '4',
-    title: "Noisy (Block Enrage)",
-    selected: false,
-    effect: "deflect_chance",
-    effect2: "damage_enrage",
-    value:  2.5,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: '5',
-    title: "Tranquil (Block DR)",
-    selected: false,
-    effect: "deflect_chance",
-    effect2: "damage_reduction",
-    value:  2.5,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: '6',
-    title: "Outgoing (Block Deflect)",
-    selected: false,
-    effect: "deflect_chance",
-    effect2: "block",
-    value:  .7,
-    value2: 2.5,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: '7',
-    title: "Bright (Block DS)",
-    selected: false,
-    effect: "block",
-    effect2: "dual_strike",
-    value:  2.5,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: '8',
-    title: "Composed (Block Empower)",
-    selected: false,
-    effect: "block",
-    effect2: "empower_chance",
-    value:  2.5,
-    value2: 1.25,
-    key: 'enchant',
-    mythic: true
-  },{
-    id: 'x',
-    title: "None",
-    selected: false,
-    effect: "speed",
-    value:  0,
-    key: 'enchant'
-  }];
-  
-  const mountTypes = [
-    {
-      id: 0,
-      title: "Quad Strike",
-      selected: false,
-      effect: "quad_strike",
-      value:  1,
-      key: 'mount'
-    },
-    {
-      id: 1,
-      title: "Absorb",
-      selected: false,
-      effect: "absorb_chance",
-      value:  2,
-      key: 'mount'
-    },
-    {
-      id: 2,
-      title: "Damage",
-      selected: false,
-      effect: "damage",
-      value:  4,
-      key: 'mount'
-    },
-    {
-      id: 3,
-      title: "Damage Reduction",
-      selected: false,
-      effect: "damage_reduction",
-      value:  4,
-      key: 'mount'
-    },
-    {
-      id: 4,
-      title: "SP Skill Damage",
-      selected: false,
-      effect: "damage",
-      value:  6,
-      key: 'mount'
-    },
-    {
-      id: 5,
-      title: "Block",
-      selected: false,
-      effect: "block",
-      value:  8,
-      key: 'mount'
-    },
-    {
-      id: 6,
-      title: "Damage Enrage",
-      selected: false,
-      effect: "damage_enrage",
-      value:  4,
-      key: 'mount'
-    },
-    {
-      id: 7,
-      title: "Deflect Chance",
-      selected: false,
-      effect: "deflect_chance",
-      value:  2,
-      key: 'mount'
-    },
-    {
-      id: 8,
-      title: "Dual Strike",
-      selected: false,
-      effect: "dual_strike",
-      value:  4,
-      key: 'mount'
-    },
-    {
-      id: 9,
-      title: "Empower Chance",
-      selected: false,
-      effect: "empower_chance",
-      value:  4,
-      key: 'mount'
-    },
-    {
-      id: 10,
-      title: "Evade Chance",
-      selected: false,
-      effect: "evade",
-      value:  4,
-      key: 'mount'
-    },
-    {
-      id: 11,
-      title: "Health",
-      selected: false,
-      effect: "health",
-      value:  4,
-      key: 'mount'
-    },
-    {
-      id: 12,
-      title: "Life Steal",
-      selected: false,
-      effect: "life_steal",
-      value:  4,
-      key: 'mount'
-    },
-    {
-      id: 13,
-      title: "Speed",
-      selected: false,
-      effect: "speed",
-      value:  4,
-      key: 'mount'
-    },
-    {
-      id: 14,
-      title: "Team Enrage",
-      selected: false,
-      effect: "team_enrage",
-      value:  3,
-      key: 'mount'
-    },
-    {
-      id: 15,
-      title: "Ricochet Chance",
-      selected: false,
-      effect: "richochet_chance",
-      value:  3,
-      key: 'mount'
-    },
-    {
-      id: 16,
-      title: "Team Damage",
-      selected: false,
-      effect: "damage",
-      value:  1,
-      key: 'mount'
-    },
-    {
-      id: 17,
-      title: "Team Damage Reduction",
-      selected: false,
-      effect: "damage_reduction",
-      value:  1,
-      key: 'mount'
-    },
-    {
-      id: 18,
-      title: "Heal Power",
-      selected: false,
-      effect: "healing",
-      value:  8,
-      key: 'mount'
-    },
-    {
-      id: 19,
-      title: "Mythic Block",
-      selected: false,
-      effect: "block",
-      value:  10,
-      key: 'mount'
-    }
-  ]
 
   const enchants = {
     enchantSlot1: {
@@ -2441,9 +1432,6 @@ export default () => {
     case 'Amaglon':
       stats.block += 8;
       break;
-    case 'Tatooi':
-      stats.block += 70+(2*accessoryUpgrade);
-      break;
     case 'Ceraunos':
       if (count === 2) {
         stats.evade += 10;
@@ -2455,6 +1443,112 @@ export default () => {
     case 'Nugget Of Grasberg':
       stats.evade += 1.5;
       stats.block += 5;
+      break;
+    case 'Tatooi':
+      stats.block += 70 + (2.5*accessoryUpgrade);
+      break;
+    case 'Misty Shrowd':
+      stats.damage_reduction += 26+(1*accessoryUpgrade);
+      stats.block += 18+(.5*accessoryUpgrade);
+      break;
+    case 'Hunter Trophy':
+      stats.damage_reduction += 26;
+      stats.absorb_chance += 5 + (0.5*accessoryUpgrade);
+      break;
+    case 'Resistor':
+      stats.block += 32;
+      stats.damage_reduction += 10;
+      stats.deflect_chance += 5;
+      break;
+    case 'Mythic Core':
+      stats.damage_reduction += 28;
+      stats.evade += 8;
+      break;
+    case 'Seraphim Ascendence':
+      stats.evade += 22;
+      stats.block += 26+(2.5*accessoryUpgrade);
+      break;
+    case 'Ascendancy':
+      stats.dual_strike += 7;
+      stats.empower_chance += 7;
+      stats.critical_chance += 50 + (3*accessoryUpgrade);
+      stats.critical_damage += 10;
+      break;
+    case 'Astaroths Crown':
+      stats.empower_chance += 6+(.25*accessoryUpgrade);
+      stats.dual_strike += 6+(.25*accessoryUpgrade);
+      stats.damage += 6+(.25*accessoryUpgrade);
+      stats.speed += 6+(.25*accessoryUpgrade);
+      stats.critical_chance += 6+(.25*accessoryUpgrade);
+      stats.critical_damage += 88;
+      break;
+    case 'Shokan Attachment':
+      stats.damage += 7+(.75*accessoryUpgrade);
+      stats.speed += 8;
+      stats.empower_chance += 8;
+      stats.dual_strike += 8;
+      stats.critical_chance += 15+(.75*accessoryUpgrade);
+      stats.life_steal += 10;
+      break;
+    case 'Hailes Power Supply':
+      stats.empower_chance += 18+(.5*accessoryUpgrade);
+      stats.dual_strike += 20+(1*accessoryUpgrade);
+      break;
+    case 'Divine Ward':
+      stats.dual_strike += 17+(.5*accessoryUpgrade);
+      stats.quad_strike += 5+(.25*accessoryUpgrade);
+      stats.richochet_chance += 3;
+      break;
+    case' Fobett':
+      stats.critical_chance += 30+(1.25*accessoryUpgrade);
+      stats.critical_damage += 70;
+      break;
+    case 'Manticore':
+      if (count === 2) {
+        stats.redirect_chance += 2;
+        stats.absorb_chance += 2;
+      }
+      if (count === 4) {
+        stats.damage_reduction += 20;
+        stats.redirect_chance += 15;
+      }
+      break;
+    case "Behemoth": 
+      if (count === 2) {
+        stats.empower_chance += 4;
+      }
+      if (count === 3) {
+        stats.earth_damage += 50;
+      }
+      if (count === 4) {
+        stats.dual_strike += 15;
+        stats.earth_damage += 30;
+      }
+      break;
+    case 'Raiju':
+      if (count === 2) {
+        stats.electric_damage += 10;
+      }
+      if (count === 3) {
+        stats.empower_chance += 10;
+      }
+      if (count === 4) {
+        stats.speed += 10;
+        stats.electric_damage += 30;
+        stats.damage -= 3;
+      }
+      break;
+    case 'Kaijin Fang':
+      stats.damage_reduction += 8;
+      break;
+    case 'Kaijin Ring':
+      stats.healing += 16;
+      break;
+    case 'Kaijin Reminder ':
+      stats.damage += 25;
+      break;
+    case 'Kaijin Furnace':
+      stats.damage += 12;
       break;
     //Add in legendary enchant and accessories, mounts too
     default: 

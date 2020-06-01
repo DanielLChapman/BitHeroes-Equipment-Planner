@@ -4178,6 +4178,18 @@ export const equipment = {
 		location: "t13 Trials",
 		shareID: "lt",
 		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
 	},
 	kaijin_hopeguard: {
 		name: "Kaijin Hopeguard",
@@ -4189,6 +4201,18 @@ export const equipment = {
 		location: "t13 Trials",
 		shareID: "g7",
 		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
 	},
 	kaijin_ring: {
 		name: "Kaijin Ring",
@@ -4200,6 +4224,18 @@ export const equipment = {
 		location: "t13 Raids",
 		shareID: "p6",
 		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "damage",
+			flat: false
+		},
 	},
 	kaijin_reminder: {
 		name: "Kaijin Reminder",
@@ -4211,6 +4247,18 @@ export const equipment = {
 		location: "t13 Raids",
 		shareID: "vj",
 		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "damage",
+			flat: false
+		},
 	},
 	kaijin_tear: {
 		name: "Kaijin Tear",
@@ -4222,6 +4270,18 @@ export const equipment = {
 		location: "t13 Titans",
 		shareID: "03",
 		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
 	},
 	kaijin_furnace: {
 		name: "Kaijin Furnace",
@@ -4233,6 +4293,18 @@ export const equipment = {
 		location: "t13 Titans",
 		shareID: "kq",
 		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
 	},
 	
 	
