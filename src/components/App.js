@@ -258,10 +258,8 @@ class App extends Component {
         console.log(error);
       }
 
-      console.log(enchantValuesSorted);
 
       let r1 = searchObjectArray(enchantTypes, 'id', enchantValuesSorted);
-      console.log(r1);
 
       if (u%2 === 0 ) {
         enchantmentsToState['enchantSlot' + eS]['slot' + s] = r1;
