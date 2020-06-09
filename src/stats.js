@@ -418,6 +418,8 @@ export const enchantTypes = [{
 	selected: false,
 	effect: "damage",
 	value:  2.5,
+	effect2: "health",
+	value: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -436,6 +438,8 @@ export const enchantTypes = [{
 	selected: false,
 	effect: "damage_reduction",
 	value:  2.5,
+	effect2: "health",
+	value: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -474,6 +478,8 @@ export const enchantTypes = [{
 	selected: false,
 	effect: "deflect_chance",
 	value:  1.4,
+	effect2: "health",
+	value: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -995,6 +1001,8 @@ export const enchantTypes = [{
 	selected: false,
 	effect: "evade",
 	value:  2.5,
+	effect2: "health",
+	value: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -1042,6 +1050,8 @@ export const enchantTypes = [{
 	title: "Inspiring (Health)",
 	selected: false,
 	effect: "health",
+	effect2: "health",
+	value: 0,
 	value:  2.5,
 	key: 'enchant',
 	mythic: true
@@ -1081,6 +1091,8 @@ export const enchantTypes = [{
 	selected: false,
 	effect: "life_steal",
 	value:  2.5,
+	effect2: "health",
+	value: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -1109,6 +1121,8 @@ export const enchantTypes = [{
 	selected: false,
 	effect: "speed",
 	value:  2.5,
+	effect2: "health",
+	value: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -1127,6 +1141,8 @@ export const enchantTypes = [{
 	selected: false,
 	effect: "absorb_chance",
 	value:  1.4,
+	effect2: "health",
+	value: 0,
 	key: 'enchant',
 	mythic: true
 },{ 
