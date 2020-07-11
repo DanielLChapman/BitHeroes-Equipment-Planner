@@ -402,39 +402,21 @@ class App extends Component {
   equipEnchants = (enchantObject) => {
     var eTS = enchantObject;
     let c = 0;
+    
+    let enchantArray = [];
+    for (var i = 0; i < enchantTypes.length; i++) {
+      enchantArray.push(enchantTypes[i].title);
+      
+    } 
+
     Object.keys(eTS).forEach((x) => {
       if (!['alreadyUpdated', 'ownUpdate'].includes(x)) {
         if (c <= 5) {
+
     
           let r1 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot1']);
           let r2 = searchObjectArray(enchantTypes, 'title', eTS[x]['slot2']);
-          let enchantArray = [];
-          for (var i = 0; i < enchantTypes.length; i++) {
-            enchantArray.push(enchantTypes[i].title);
-          } 
           
-          
-          if (r1.value > 3 || !enchantArray.includes(r1.title)) {
-            r1 =  {
-              id: 'xx',
-              title: "None",
-              selected: false,
-              effect: "speed",
-              value:  0,
-              key: 'enchant'
-            };
-          }
-          if (r2.value > 3 || !enchantArray.includes(r2.title)) {
-            r2 =  {
-              id: 'xx',
-              title: "None",
-              selected: false,
-              effect: "speed",
-              value:  0,
-              key: 'enchant'
-            };
-          }
-
           eTS[x]['slot2'] = r2;
           eTS[x]['slot1'] = r1;
         }
@@ -445,6 +427,8 @@ class App extends Component {
     let state = this.state;
 
     state.enchants = {...eTS};
+
+    console.log(state.enchants);
 
     let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, eTS, this.state.accessoryLevel, this.state.t12);
     let stats = bonuses.stats;

@@ -419,7 +419,7 @@ export const enchantTypes = [{
 	effect: "damage",
 	value:  2.5,
 	effect2: "health",
-	value: 0,
+	value2: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -439,7 +439,7 @@ export const enchantTypes = [{
 	effect: "damage_reduction",
 	value:  2.5,
 	effect2: "health",
-	value: 0,
+	value2: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -479,7 +479,7 @@ export const enchantTypes = [{
 	effect: "deflect_chance",
 	value:  1.4,
 	effect2: "health",
-	value: 0,
+	value2: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -1002,7 +1002,7 @@ export const enchantTypes = [{
 	effect: "evade",
 	value:  2.5,
 	effect2: "health",
-	value: 0,
+	value2: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -1051,7 +1051,7 @@ export const enchantTypes = [{
 	selected: false,
 	effect: "health",
 	effect2: "health",
-	value: 0,
+	value2: 0,
 	value:  2.5,
 	key: 'enchant',
 	mythic: true
@@ -1092,7 +1092,7 @@ export const enchantTypes = [{
 	effect: "life_steal",
 	value:  2.5,
 	effect2: "health",
-	value: 0,
+	value2: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -1122,7 +1122,7 @@ export const enchantTypes = [{
 	effect: "speed",
 	value:  2.5,
 	effect2: "health",
-	value: 0,
+	value2: 0,
 	key: 'enchant',
 	mythic: true
 },{
@@ -1142,7 +1142,7 @@ export const enchantTypes = [{
 	effect: "absorb_chance",
 	value:  1.4,
 	effect2: "health",
-	value: 0,
+	value2: 0,
 	key: 'enchant',
 	mythic: true
 },{ 

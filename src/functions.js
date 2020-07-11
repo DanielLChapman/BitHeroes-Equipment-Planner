@@ -31,16 +31,6 @@ export const searchObjectArray = (objectArray, searchQuery, compareTo) => {
     }
   }
 
-  if (returnQuery === compareTo) {
-    returnQuery = {
-      id: 'x',
-      title: "None",
-      selected: false,
-      effect: "speed",
-      value:  0,
-      key: 'enchant'
-    };
-  }
 
   return returnQuery;
 }
@@ -387,6 +377,11 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       tempURL+="&"
     }
     tempURL += "enchantments=";
+    let enchantArray = [];
+          for (var f = 0; f < enchantTypes.length; f++) {
+            enchantArray.push(enchantTypes[f].title);
+          } 
+
     Object.keys(enchantments).forEach((x) => {
       if (!['alreadyUpdated', 'ownUpdate'].includes(x)) {
       
@@ -395,31 +390,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
           let r1 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot1'].title);
           let r2 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot2'].title);
 
-          let enchantArray = [];
-          for (var i = 0; i < enchantTypes.length; i++) {
-            enchantArray.push(enchantTypes[i].title);
-          } 
           
-          if (r1.value > 2 || !enchantArray.includes(r1.title)) {
-            r1 =  {
-              id: 'xx',
-              title: "None",
-              selected: false,
-              effect: "speed",
-              value:  0,
-              key: 'enchant'
-            };
-          }
-          if (r2.value > 2 || !enchantArray.includes(r2.title)) {
-            r2 =  {
-              id: 'xx',
-              title: "None",
-              selected: false,
-              effect: "speed",
-              value:  0,
-              key: 'enchant'
-            };
-          }
 
           //stats[r2.effect] += r2.value;
           //stats[r1.effect] += r1.value;
