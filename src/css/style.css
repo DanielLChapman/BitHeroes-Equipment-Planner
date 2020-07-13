@@ -72,10 +72,8 @@ body {
   margin: 0;
   width: 100%;
   height: auto;
-  display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: center;
-          justify-content: center;
+  justify-content: center;
   font-family: 'Work Sans', sans-serif;
 }
 @media screen and (max-width: 900px) {
@@ -118,8 +116,7 @@ body {
 }
 .container .left,
 .container .right {
-  -webkit-flex-grow: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   padding-top: 25px;
 }
 @media screen and (max-width: 900px) {
@@ -889,11 +886,9 @@ select option {
   position: relative;
 }
 .equipment-options-by-tiers-checkboxes {
-  display: -webkit-flex;
   display: flex;
   width: 250px;
-  -webkit-flex-direction: column-reverse;
-          flex-direction: column-reverse;
+  flex-direction: column-reverse;
   margin: 0 auto;
 }
 .equipment-options-by-tiers-checkboxes label {
