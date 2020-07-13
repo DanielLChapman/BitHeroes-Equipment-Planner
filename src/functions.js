@@ -377,11 +377,11 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       tempURL+="&"
     }
     tempURL += "enchantments=";
-    let enchantArray = [];
-          for (var f = 0; f < enchantTypes.length; f++) {
-            enchantArray.push(enchantTypes[f].title);
-          } 
 
+    let enchantArray = [];
+    for (var p = 0; p < enchantTypes.length; p++) {
+      enchantArray.push(enchantTypes[p].title);
+    } 
     Object.keys(enchantments).forEach((x) => {
       if (!['alreadyUpdated', 'ownUpdate'].includes(x)) {
       
@@ -390,7 +390,6 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
           let r1 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot1'].title);
           let r2 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot2'].title);
 
-          
 
           //stats[r2.effect] += r2.value;
           //stats[r1.effect] += r1.value;
