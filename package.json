@@ -1,45 +1,42 @@
 {
-  "name": "bitsets",
-  "version": "1.0.0",
+  "name": "bit-heroes-sets",
+  "version": "1.9.0",
   "private": true,
-  "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^8.0.6",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-react-app": "^3.1.1",
-    "concurrently": "3.5.1",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "react-test-renderer": "^16.12.0",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
-  },
   "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "concurrently": "3.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "react-router-dom": "^4.2.2",
     "autoprefixer-stylus": "0.14.0",
     "prop-types": "^15.6.0",
-    "re-base": "^4.0.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "^3.3.1",
-    "react-transition-group": "^2.9.0",
     "stylus": "0.54.5"
   },
   "scripts": {
     "start": "react-scripts start",
-    "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
     "build": "react-scripts build",
+    "test": "react-scripts test",
+    "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
     "eject": "react-scripts eject",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
-    "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css"
   },
-  "browserslist": [
-    ">0.2%",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
