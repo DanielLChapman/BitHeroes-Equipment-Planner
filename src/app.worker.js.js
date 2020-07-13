@@ -669,6 +669,12 @@ export default () => {
         tempURL+="&"
       }
       tempURL += "enchantments=";
+
+      let enchantArray = [];
+            for (var i = 0; i < enchantTypes.length; i++) {
+              enchantArray.push(enchantTypes[i].title);
+            } 
+
       Object.keys(enchantments).forEach((x) => {
         if (!['alreadyUpdated', 'ownUpdate'].includes(x)) {
         
@@ -677,31 +683,7 @@ export default () => {
             let r1 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot1'].title);
             let r2 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot2'].title);
   
-            let enchantArray = [];
-            for (var i = 0; i < enchantTypes.length; i++) {
-              enchantArray.push(enchantTypes[i].title);
-            } 
-            
-            if (r1.value > 2 || !enchantArray.includes(r1.title)) {
-              r1 =  {
-                id: 'x',
-                title: "None",
-                selected: false,
-                effect: "speed",
-                value:  0,
-                key: 'enchant'
-              };
-            }
-            if (r2.value > 2 || !enchantArray.includes(r2.title)) {
-              r2 =  {
-                id: 'x',
-                title: "None",
-                selected: false,
-                effect: "speed",
-                value:  0,
-                key: 'enchant'
-              };
-            }
+        
   
             //stats[r2.effect] += r2.value;
             //stats[r1.effect] += r1.value;
