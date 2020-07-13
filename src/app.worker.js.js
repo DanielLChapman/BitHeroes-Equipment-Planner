@@ -671,8 +671,8 @@ export default () => {
       tempURL += "enchantments=";
 
       let enchantArray = [];
-            for (var i = 0; i < enchantTypes.length; i++) {
-              enchantArray.push(enchantTypes[i].title);
+            for (var p = 0; p < enchantTypes.length; p++) {
+              enchantArray.push(enchantTypes[p].title);
             } 
 
       Object.keys(enchantments).forEach((x) => {
