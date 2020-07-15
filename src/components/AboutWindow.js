@@ -7,6 +7,7 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>UPDATES:</span>
             <ul className="about-page-ul">
+                
                 <li>5/31/2020  -   Updated With new t13 mythic and set equipment!</li>
                 <li>5/11/2020  -   Updated new mythic equipment and enchants, dont have stat upgrades for Resistor and Mythic Core. If you have either let me know what gets upgraded each time.</li>
                 <li>4/9/2020   -   Added Vapnels and Grasberg sets, and updated equipment with new values from 4/9 update.</li>
@@ -33,6 +34,8 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>TODO:</span>
             <ul className="about-page-ul">
+                <li>Add New Ancient</li>
+                <li>Add apocalypse to equipment fillter</li>
                 <li>Add any tank/dps/healer/etc identifiers to equipment/sets/mythics for future filtering</li>
             </ul>
 
