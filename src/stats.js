@@ -1313,6 +1313,35 @@ export const mountTypes = [
 		selected: false,
 		effect: "block",
 		value:  10,
-		key: 'mount'
-	}
+		key: 'mount',
+		mythic: true
+	},
+	{
+		id: 20,
+		title: "Mythic Speed",
+		selected: false,
+		effect: "block",
+		value:  5,
+		key: 'mount',
+		mythic: true
+	},
+	{
+		id: 21,
+		title: "Mythic Damage",
+		selected: false,
+		effect: "block",
+		value:  5,
+		key: 'mount',
+		mythic: true
+	},
+	{
+		id: 22,
+		title: "Mythic DR",
+		selected: false,
+		effect: "block",
+		value:  5,
+		key: 'mount',
+		mythic: true
+	},
+
 ]

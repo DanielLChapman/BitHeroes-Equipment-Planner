@@ -1151,7 +1151,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     stats.absorb_chance += 5 + (0.5*accessoryUpgrade);
     break;
   case 'Resistor':
-    stats.block += 32;
+    stats.block += 32 + (2*accessoryUpgrade);
     stats.damage_reduction += 10;
     stats.deflect_chance += 5;
     break;

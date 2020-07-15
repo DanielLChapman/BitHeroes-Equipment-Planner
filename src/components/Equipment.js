@@ -10,7 +10,7 @@ export const types = [
 	{l: 'mainhands', c: 'Mainhands', np: 'mainhand'},
 	{l: 'offhands', c: 'Offhands', np: 'offhand'},
 	{l: 'heads', c: 'Heads', np: 'head'},
-	{l: 'bodies', c: 'Bodies', np: 'offhand'},
+	{l: 'bodies', c: 'Bodies', np: 'body'},
 	{l: 'necklaces', c: 'Necklaces', np: 'necklace'},
 	{l: 'rings', c: 'Rings', np: 'ring'},
 	{l: 'accessories', c: 'Accessories', np: 'accessory'},
@@ -223,7 +223,9 @@ export default class Equipment extends Component {
 					
 					{/* mounts have special aspects */}
 					{
-						types.map((y, i) => (
+						types.map((y, i) => {
+							
+							return (
 							
 							<li key={i} className={`by-slot-types by-slots-${y.np}`} id={`slot-${y.np}`}>
 								<span className="item-name" >{y.c}</span>
@@ -240,7 +242,7 @@ export default class Equipment extends Component {
 									}
 								</ul>
 							</li>
-						))
+						)})
 					}
 					<li className="by-slot-types by-slots-mount">
 						<span className="item-name" >Mounts</span>
@@ -248,7 +250,7 @@ export default class Equipment extends Component {
 							{
 								Object.keys(this.props.mounts).map((x) => {
 									return <li
-											className={`by-slots-type-pet-legendary`} 
+											className={` ${this.props.mounts[x].mythic? 'by-slots-type-mythic': 'by-slots-type-pet-legendary'}`} 
 									 		key={x} 
 									 		onClick={() => {this.props.equipItem(x)}}>
 									 		{this.props.mounts[x].title}
