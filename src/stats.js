@@ -514,7 +514,7 @@ export const enchantTypes = [{
 	mythic: true
 },{
 	id: '02',
-	title: "Able (Block Chance",
+	title: "Able (Block Chance)",
 	selected: false,
 	effect: "block",
 	value:  5,
@@ -522,7 +522,7 @@ export const enchantTypes = [{
 	mythic: true
 },{
 	id: '03',
-	title: "Maternal (Block Speed",
+	title: "Maternal (Block Speed)",
 	selected: false,
 	effect: "block",
 	effect2: "speed",

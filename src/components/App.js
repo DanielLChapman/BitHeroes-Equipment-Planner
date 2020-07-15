@@ -638,7 +638,8 @@ class App extends Component {
             stats={this.state.stats} 
             sortedEquipment={this.state.sortedEquipment} 
             openClose={this.handleOpenClose} 
-            optimizeEquip={this.optimizeEquip} />
+            optimizeEquip={this.optimizeEquip}
+            sets={this.state.sets} />
           <AboutWindow 
             styling={aboutWindowStyling} 
             openClose={this.handleOpenClose}/>

@@ -234,6 +234,7 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 
 	});
 
+	
 	//sets
 	if (Object.keys(setsSort).length > 0) {
 		Object.keys(setsSort).forEach( (x) => {

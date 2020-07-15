@@ -489,7 +489,7 @@ export const sets = {
 		description: "",
 		setBonuses: {
 			2: "+3% Team Enrage",
-			3: "+7.5% Deflect"
+			3: "+7.5% Deflect Chance"
 		}
 	},
 	vanpels: {

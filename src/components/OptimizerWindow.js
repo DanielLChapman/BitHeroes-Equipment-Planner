@@ -104,7 +104,7 @@ export default class OptimizerWindow extends React.Component {
         let total = 1;
 
         if (ef.filtering) {
-            state.sortedEquipment = filteringEquipment(equipment, this.state.equipmentFiltering, {}, false)[0];
+            state.sortedEquipment = filteringEquipment(equipment, this.state.equipmentFiltering, this.props.sets, false)[0];
         } else {
             state.sortedEquipment = sortEquipment(equipment, false)[0];
         }
@@ -256,7 +256,7 @@ export default class OptimizerWindow extends React.Component {
 					equipmentFiltering={this.state.equipmentFiltering} 
 					bySlotFiltering={this.bySlotFiltering}
                     bySlotFilteringStyling={bySlotFilteringStyling}
-                    openSlotStyling={{display: 'none'}}
+                    openSlotStyling={{display: 'block'}}
 					/>
 
             <OptimizerFunction 
