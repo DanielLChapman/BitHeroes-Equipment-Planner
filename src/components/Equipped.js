@@ -19,7 +19,6 @@ export default class Equipped extends Component {
 								</div>
 							)
 						} else {
-							console.log(x);
 							return (
 								<div className={`equipped-container equpped-container-${x} equipped-${this.props.equipped[x].type}`} 
 									 key={x} 
