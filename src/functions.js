@@ -1,5 +1,6 @@
 import { sets } from './sets';
-import { base, enchantTypes} from './stats';
+import { base} from './stats';
+import {enchantTypes} from './enchants';
 
 export const enchants = {
   enchantSlot1: {
@@ -1244,6 +1245,15 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     break;
   case 'Kaijin Furnace':
     stats.damage += 12;
+    break;
+  case 'Kaijin Augury':
+    stats.damage_reduction += 10;
+    break;
+  case 'Flamewarden':
+    if (count === 4) {
+      stats.evade += 10;
+      stats.fire_resistance += 10;
+    }
     break;
   //Add in legendary enchant and accessories, mounts too
   default: 

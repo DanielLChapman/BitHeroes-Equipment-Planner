@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
-import {runeTypes} from '../stats';
+import {runeTypes} from '../runes';
 
 export default class RuneWindow extends Component {
 

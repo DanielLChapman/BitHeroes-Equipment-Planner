@@ -550,7 +550,18 @@ export const sets = {
 			4: "+10% speed, +30% Electric Daamge. -3% Damage each normal hit. Resets on empower"
 		}
 	},
-
+	flamewarden:{
+		name: "Flamewarden",
+		location: "t13 Ignite Worldboss",
+		tier: 13,
+		items: ["Book Of The Flamewarden", "Eyes Of The Flamewarden", "Pendant Of The Flamewarden", "Frame Of The Flamewarden"],
+		description: "",
+		setBonuses: {
+			2: "Extort: Deal damage to the closest enemy and shield for same amount when you enter a battle",
+			3: "Barrier: 25% Chance to end the attackers turn when you get hit",
+			4: "+10% Evade Chance, 10% Flame Resistance"
+		}
+	},
 }
 
 /*

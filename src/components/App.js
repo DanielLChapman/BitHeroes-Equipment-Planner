@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 
 import { sets } from '../sets';
 import { equipment, sortEquipment } from '../equipment';
-import { enchantTypes, mountTypes, runeTypes } from '../stats';
+import { mountTypes } from '../mounts';
+import {enchantTypes } from '../enchants';
+import {runeTypes } from '../runes';
+
+
 
 import Equipment from './Equipment';
 import Equipped from './Equipped';

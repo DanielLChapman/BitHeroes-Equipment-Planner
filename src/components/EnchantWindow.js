@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
-import {enchantTypes} from '../stats';
+import {enchantTypes } from '../enchants';
 import {searchObjectArray} from '../functions';
 
 

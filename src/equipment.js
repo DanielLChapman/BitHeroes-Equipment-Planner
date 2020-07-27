@@ -4307,6 +4307,116 @@ export const equipment = {
 			flat: false
 		},
 	},
+	kaijin_augury: {
+		name: "Kaijin Augury",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "Expender 5: Gain 10% DR after you've spent 5 SP",
+		location: "t13 Ignite Worldboss",
+		shareID: "rh",
+		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	kaijin_existence: {
+		name: "Kaijin Existence",
+		type: "mythic",
+		slot: "Sword",
+		image: "",
+		partOfSet: "",
+		effect: "Bolster: Spread shield when you hit an enemy",
+		location: "t13 Ignite Worldboss",
+		shareID: "qr",
+		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	book_of_the_flamewarden: {
+		name: "Book Of The Flamewarden",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "flamewarden",
+		effect: "",
+		shareID: "ey",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		tier: 13,
+	},
+	eyes_of_the_flamewarden: {
+		name: "Eyes Of The Flamewarden",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "flamewarden",
+		effect: "",
+		shareID: "sx",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		tier: 13,
+	},
+	pendant_of_the_flamewarden: {
+		name: "Pendant Of The Flamewarden",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "flamewarden",
+		effect: "",
+		shareID: "79",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		tier: 13,
+	},
+	frame_of_the_flamewarden: {
+		name: "Frame Of The Flamewarden",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "flamewarden",
+		effect: "",
+		shareID: "0l",
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		tier: 13,
+	},
 	
 	
 

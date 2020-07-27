@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import {equipment, sortEquipment} from '../../equipment';
 import {sets} from '../../sets';
-import {base, runeTypes, enchantTypes, mountTypes } from '../../stats';
+import {base } from '../../stats';
+import { mountTypes } from '../../mounts';
+import {enchantTypes } from '../../enchants';
+import {runeTypes } from '../../runes';
+
 import {searchOptions, change} from '../../investigation';
 import {calculateBonuses} from '../../functions';
 
