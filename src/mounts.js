@@ -164,7 +164,7 @@ export const mountTypes = [
 		id: 20,
 		title: "Mythic Speed",
 		selected: false,
-		effect: "block",
+		effect: "speed",
 		value:  5,
 		key: 'mount',
 		mythic: true
@@ -173,7 +173,7 @@ export const mountTypes = [
 		id: 21,
 		title: "Mythic Damage",
 		selected: false,
-		effect: "block",
+		effect: "damage",
 		value:  5,
 		key: 'mount',
 		mythic: true
@@ -182,7 +182,7 @@ export const mountTypes = [
 		id: 22,
 		title: "Mythic DR",
 		selected: false,
-		effect: "block",
+		effect: "damage_reduction",
 		value:  5,
 		key: 'mount',
 		mythic: true
