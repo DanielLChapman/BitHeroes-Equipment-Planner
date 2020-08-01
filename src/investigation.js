@@ -1,5 +1,3 @@
-
-
 export const searchOptions = [{
     id: 0,
     option: 'damage',
@@ -30,6 +28,12 @@ export const searchOptions = [{
     option: 'block',
     selected: false,
     key: 'Block'
+},
+{
+    id: 54,
+    option: 'damage_reduction',
+    selected: false,
+    key: 'Damage Reduction'
 },{
     id: 6,
     option: 'absorb_chance',
