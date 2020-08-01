@@ -84,7 +84,6 @@ export default class Equipment extends Component {
 			case 'tiers':
 				let f = parseInt(e.target.value, 10);
 				//if its in the area remove it,
-				console.log(e.target);
 				if (![0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13].includes(f)) {
 					break;
 				}
