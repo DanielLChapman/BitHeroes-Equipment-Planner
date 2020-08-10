@@ -117,6 +117,13 @@ const filterSearching = (testing, searching) => {
 	return false;
 }
 
+const convertName = (name) => {
+	name = name.split(' ').join('_');
+	name = name.split("'").join("");
+	name = name.toLowerCase();
+	return name;
+  }
+
 export const filteringEquipment = (equipment, filters, sets = {}, objectBool = true) => {
 	/*
 		filters: {
@@ -204,7 +211,8 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 			} else if (equipment[x].type ==="legendary") {
 				legendaries[x] = equipment[x];
 			}
-	
+			
+			
 			switch(equipment[x].slot) {
 				case 'Offhand':
 					!oB ? sortedEquipment.offhands.push(equipment[x]) : sortedEquipment.offhands[x] = equipment[x];
@@ -233,7 +241,6 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 		}
 
 	});
-
 	
 	//sets
 	if (Object.keys(setsSort).length > 0) {
@@ -279,9 +286,68 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 			if(pass) {
 				returnSets[x] = setsSort[x];
 			}
-
 		})
 	}
+
+	console.log(returnSets);
+	console.log(sortedEquipment);
+
+	/*
+
+		1. Loop over return sets
+		2. Grab equipment from sets and match to equipment from 'equipment'
+		3. Loop over this new equipment
+		4. Find its slot and search if it appears in sortedEquipment
+		5. If it doesn't, add it in
+		
+	*/
+
+	Object.keys(returnSets).forEach((x) => {
+		returnSets[x].items.forEach((y)=> {
+			let convertedName = convertName(y.name);
+			switch(y.slot) {
+				case 'Offhand':
+					if (!Object.keys(sortedEquipment.offhands).includes(convertedName)) {
+						!oB ? sortedEquipment.offhands.push(y) : sortedEquipment.offhands[convertedName] = y;
+					} 
+					break;
+				case 'Body':
+					if (!Object.keys(sortedEquipment.bodies).includes(convertedName)) {
+						!oB ? sortedEquipment.bodies.push(y) : sortedEquipment.bodies[convertedName] = y;
+					} 
+					break;
+				case 'Head':
+					if (!Object.keys(sortedEquipment.heads).includes(convertedName)) {
+						!oB ? sortedEquipment.heads.push(y) : sortedEquipment.heads[convertedName] = y;
+					} 
+					break;
+				case 'Ring':
+					if (!Object.keys(sortedEquipment.rings).includes(convertedName)) {
+						!oB ? sortedEquipment.rings.push(y) : sortedEquipment.rings[convertedName] = y;
+					} 
+					break;
+				case 'Necklace':
+					if (!Object.keys(sortedEquipment.necklaces).includes(convertedName)) {
+						!oB ? sortedEquipment.necklaces.push(y) : sortedEquipment.necklaces[convertedName] = y;
+					} 
+					break;
+				case 'Pet':
+					if (!Object.keys(sortedEquipment.pets).includes(convertedName)) {
+						!oB ? sortedEquipment.pets.push(y) : sortedEquipment.pets[convertedName] = y;
+					} 
+					break;
+				case 'Accessory':
+					if (!Object.keys(sortedEquipment.accessories).includes(convertedName)) {
+						!oB ? sortedEquipment.accessories.push(y) : sortedEquipment.accessories[convertedName] = y;
+					} 
+					break;
+				default: 
+					if (!Object.keys(sortedEquipment.mainhands).includes(convertedName)) {
+						!oB ? sortedEquipment.mainhands.push(y) : sortedEquipment.mainhands[convertedName] = y;
+					} 
+			};
+		})
+	})
 
 
 	return [sortedEquipment, mythics, legendaries, returnSets];
@@ -3695,6 +3761,10 @@ export const equipment = {
 		effect: "",
 		shareID: "jc",
 		tier: 1,
+		innate: {
+			type: 'damage_reduction',
+			value: 3
+		}
 	},
 	golden_lyre: {
 		name: "Golden Lyre",
@@ -3705,6 +3775,10 @@ export const equipment = {
 		effect: "",
 		shareID: "j0",
 		tier: 1,
+		innate: {
+			type: 'damage_reduction',
+			value: 3
+		}
 	},
 	wreath_of_sungold: {
 		name: "Wreath Of Sungold",
@@ -3715,6 +3789,10 @@ export const equipment = {
 		effect: "",
 		shareID: "1z",
 		tier: 1,
+		innate: {
+			type: 'damage_reduction',
+			value: 3
+		}
 	},
 	solar_gown: {
 		name: "Solar Gown",
@@ -3725,6 +3803,10 @@ export const equipment = {
 		effect: "",
 		shareID: "s9",
 		tier: 1,
+		innate: {
+			type: 'damage_reduction',
+			value: 3
+		}
 	},
 	phoebus: {
 		name: "Phoebus",
@@ -3735,6 +3817,10 @@ export const equipment = {
 		effect: "",
 		shareID: "bm",
 		tier: 1,
+		innate: {
+			type: 'damage_reduction',
+			value: 3
+		}
 	},
 	amber_necklace: {
 		name: "Amber Necklace",
@@ -3745,6 +3831,10 @@ export const equipment = {
 		effect: "",
 		shareID: "sw",
 		tier: 1,
+		innate: {
+			type: 'damage_reduction',
+			value: 3
+		}
 	},
 	misty_shrowd: {
 		name: "Misty Shrowd",

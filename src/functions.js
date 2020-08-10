@@ -223,6 +223,11 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       
     }
 
+    if(equipmentOn[x]['innate']) {
+      let temp = equipmentOn[x]['innate'];
+      stats[temp.type] += temp.value;
+    }
+
     if (equipmentOn[x].type === "mythic" ) {
       bonuses.mythics.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
