@@ -1,4 +1,4 @@
-function capitalizeFirstLetter(string) {
+/*function capitalizeFirstLetter(string) {
     return string[0].toUpperCase() + string.substring(1)
 }
 
@@ -10,6 +10,8 @@ function splitCapitalizeFirstLetter(string) {
 	}
     return r;
 }
+
+*/
 
 export const sortEquipment = (equipment, objectBool = true) => {
 	let oB = objectBool;
@@ -82,6 +84,15 @@ export const sortEquipment = (equipment, objectBool = true) => {
 
 const filterSearching = (testing, searching) => {
 	try {
+		if (testing.toLowerCase().includes(searching.toLowerCase())) {
+			return true;
+		} 
+	} 
+	catch (err) {
+		console.log(err);
+	}
+	/*
+	try {
 		if (testing.includes(searching) || 
 			// eslint-disable-next-line 
 			testing.includes(searching.toUpperCase()) || 
@@ -113,7 +124,7 @@ const filterSearching = (testing, searching) => {
 	} catch (err) {
 		return false;
 	}
-	
+	*/
 	return false;
 }
 
@@ -164,7 +175,18 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 	var mythics = {}, legendaries = {};
 	let setsSort = sets;
 	let returnSets = {};
+	let filterTextArray = [];
 
+	if (filters.searching.length > 0) {
+		let t = filters.searching.split(' ').filter(r => r !== "");
+		t.forEach((x) => {
+			let p = x.split('_').filter(r => r !== "");
+			p.forEach((q) => {
+				filterTextArray.push(q);
+			})
+		})
+	};
+	console.log(filterTextArray);
 	//Equipment + Mythics
 	Object.keys(equipment).forEach( (x) => {
 
@@ -190,18 +212,20 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 
 		//text searching
 		if (pass) {
-			if (filters.searching.length > 0) {
+			if (filterTextArray.length > 0) {
 				pass = false;
 				// eslint-disable-next-line 
-				if (filterSearching(equipment[x].name, filters.searching)) {
-					pass = true;
-				}
-				if (equipment[x].partOfSet && filterSearching(equipment[x].partOfSet, filters.searching)) {
-					pass = true;
-				}
-				if (equipment[x].effect && filterSearching(equipment[x].effect, filters.searching)) {
-					pass = true;
-				}
+				filterTextArray.forEach((q) => {
+					
+					if (q !== "") {
+						if (filterSearching(equipment[x].name,q ) || 
+							(equipment[x].partOfSet && filterSearching(equipment[x].partOfSet, q)) ||
+							(equipment[x].effect && filterSearching(equipment[x].effect, q))) {
+							pass = true;
+						}
+					} 
+					
+				})
 			}
 		}
 
@@ -243,55 +267,6 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 	});
 	
 	//sets
-	if (Object.keys(setsSort).length > 0) {
-		Object.keys(setsSort).forEach( (x) => {
-			let pass = true;
-
-			if (filters.tiers) {
-				if (!filters.tiers.includes(setsSort[x].tier)) {
-					pass = false;
-				}
-			}
-
-			if (pass) {
-				if (filters.searching.length > 0) {
-					pass = false;
-					// eslint-disable-next-line 
-					if (filterSearching(setsSort[x].name, filters.searching)) {
-						pass = true;
-					}
-					if (filterSearching(setsSort[x].location, filters.searching)) {
-						pass = true;
-					}
-					//set bonuses
-					Object.keys(setsSort[x].setBonuses).forEach((y) => {
-						if (filterSearching(setsSort[x].setBonuses[y], filters.searching)) {
-							pass = true;
-						}
-					})
-
-					//items in set
-					Object.keys(setsSort[x].items).forEach((y) => {
-						if (filterSearching(setsSort[x].items[y].name, filters.searching)) {
-							pass = true;
-						}
-						if (filterSearching(setsSort[x].items[y].slot, filters.searching)) {
-							pass = true;
-						}
-					})
-				}
-			}
-
-
-			if(pass) {
-				returnSets[x] = setsSort[x];
-			}
-		})
-	}
-
-	console.log(returnSets);
-	console.log(sortedEquipment);
-
 	/*
 
 		1. Loop over return sets
@@ -302,53 +277,100 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 		
 	*/
 
-	Object.keys(returnSets).forEach((x) => {
-		returnSets[x].items.forEach((y)=> {
-			let convertedName = convertName(y.name);
-			switch(y.slot) {
-				case 'Offhand':
-					if (!Object.keys(sortedEquipment.offhands).includes(convertedName)) {
-						!oB ? sortedEquipment.offhands.push(y) : sortedEquipment.offhands[convertedName] = y;
-					} 
-					break;
-				case 'Body':
-					if (!Object.keys(sortedEquipment.bodies).includes(convertedName)) {
-						!oB ? sortedEquipment.bodies.push(y) : sortedEquipment.bodies[convertedName] = y;
-					} 
-					break;
-				case 'Head':
-					if (!Object.keys(sortedEquipment.heads).includes(convertedName)) {
-						!oB ? sortedEquipment.heads.push(y) : sortedEquipment.heads[convertedName] = y;
-					} 
-					break;
-				case 'Ring':
-					if (!Object.keys(sortedEquipment.rings).includes(convertedName)) {
-						!oB ? sortedEquipment.rings.push(y) : sortedEquipment.rings[convertedName] = y;
-					} 
-					break;
-				case 'Necklace':
-					if (!Object.keys(sortedEquipment.necklaces).includes(convertedName)) {
-						!oB ? sortedEquipment.necklaces.push(y) : sortedEquipment.necklaces[convertedName] = y;
-					} 
-					break;
-				case 'Pet':
-					if (!Object.keys(sortedEquipment.pets).includes(convertedName)) {
-						!oB ? sortedEquipment.pets.push(y) : sortedEquipment.pets[convertedName] = y;
-					} 
-					break;
-				case 'Accessory':
-					if (!Object.keys(sortedEquipment.accessories).includes(convertedName)) {
-						!oB ? sortedEquipment.accessories.push(y) : sortedEquipment.accessories[convertedName] = y;
-					} 
-					break;
-				default: 
-					if (!Object.keys(sortedEquipment.mainhands).includes(convertedName)) {
-						!oB ? sortedEquipment.mainhands.push(y) : sortedEquipment.mainhands[convertedName] = y;
-					} 
-			};
-		})
-	})
+	if (Object.keys(setsSort).length > 0) {
+		Object.keys(setsSort).forEach( (x) => {
+			let pass = true;
 
+			if (filters.tiers) {
+				if (!filters.tiers.includes(setsSort[x].tier)) {
+					pass = false;
+				}
+			}
+
+			//text searching
+			if (pass) {
+				if (filterTextArray.length > 0) {
+					pass = false;
+					// eslint-disable-next-line 
+					filterTextArray.forEach((q) => {
+						
+						if (q !== "") {
+							if (filterSearching(setsSort[x].name, q) || 
+								(filterSearching(setsSort[x].location, q))) {
+								pass = true;
+							}
+							Object.keys(setsSort[x].setBonuses).forEach((y) => {
+								if (filterSearching(setsSort[x].setBonuses[y], q)) {
+									pass = true;
+								}
+							})
+							Object.keys(setsSort[x].items).forEach((y) => {
+								if (filterSearching(setsSort[x].items[y].name, q)) {
+									pass = true;
+								}
+								if (filterSearching(setsSort[x].items[y].slot, q)) {
+									pass = true;
+								}
+							})
+						} 
+						
+					})
+				}
+			}
+
+
+			if(pass) {
+				returnSets[x] = setsSort[x];
+
+				setsSort[x].items.forEach((y)=> {
+					let convertedName = convertName(y.name);
+					switch(y.slot) {
+						case 'Offhand':
+							if (!Object.keys(sortedEquipment.offhands).includes(convertedName)) {
+								!oB ? sortedEquipment.offhands.push(y) : sortedEquipment.offhands[convertedName] = y;
+							} 
+							break;
+						case 'Body':
+							if (!Object.keys(sortedEquipment.bodies).includes(convertedName)) {
+								!oB ? sortedEquipment.bodies.push(y) : sortedEquipment.bodies[convertedName] = y;
+							} 
+							break;
+						case 'Head':
+							if (!Object.keys(sortedEquipment.heads).includes(convertedName)) {
+								!oB ? sortedEquipment.heads.push(y) : sortedEquipment.heads[convertedName] = y;
+							} 
+							break;
+						case 'Ring':
+							if (!Object.keys(sortedEquipment.rings).includes(convertedName)) {
+								!oB ? sortedEquipment.rings.push(y) : sortedEquipment.rings[convertedName] = y;
+							} 
+							break;
+						case 'Necklace':
+							if (!Object.keys(sortedEquipment.necklaces).includes(convertedName)) {
+								!oB ? sortedEquipment.necklaces.push(y) : sortedEquipment.necklaces[convertedName] = y;
+							} 
+							break;
+						case 'Pet':
+							if (!Object.keys(sortedEquipment.pets).includes(convertedName)) {
+								!oB ? sortedEquipment.pets.push(y) : sortedEquipment.pets[convertedName] = y;
+							} 
+							break;
+						case 'Accessory':
+							if (!Object.keys(sortedEquipment.accessories).includes(convertedName)) {
+								!oB ? sortedEquipment.accessories.push(y) : sortedEquipment.accessories[convertedName] = y;
+							} 
+							break;
+						default: 
+							if (!Object.keys(sortedEquipment.mainhands).includes(convertedName)) {
+								!oB ? sortedEquipment.mainhands.push(y) : sortedEquipment.mainhands[convertedName] = y;
+							} 
+					};
+				})
+			}
+		})
+	}
+
+	
 
 	return [sortedEquipment, mythics, legendaries, returnSets];
 }
