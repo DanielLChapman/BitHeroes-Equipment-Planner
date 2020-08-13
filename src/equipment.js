@@ -138,51 +138,15 @@ let objectTesting = (testing, searching) => {
 
 const filterSearching = (testing, searching) => {
 	try {
-		if (typeof testing === "object") {
-			return objectTesting(testing, searching);
+		let testingObject = testing;
+		if (typeof testing !== "object") {
+			testingObject = Object.assign({}, testing);
 		}
-		else if (testing.toLowerCase().includes(searching.toLowerCase())) {
-			return true;
-		} 
-		
+		return objectTesting(testingObject, searching);
 	} 
 	catch (err) {
 		console.log(err);
 	}
-	/*
-	try {
-		if (testing.includes(searching) || 
-			// eslint-disable-next-line 
-			testing.includes(searching.toUpperCase()) || 
-			// eslint-disable-next-line 
-			testing.includes(searching.toLowerCase()) ||
-			// eslint-disable-next-line 
-			testing.includes(capitalizeFirstLetter(searching)) ||
-
-			testing.includes(splitCapitalizeFirstLetter(searching))
-			) {
-				return true;
-		}
-
-		if (testing.toUpperCase().includes(searching) || 
-			// eslint-disable-next-line 
-			testing.toUpperCase().includes(searching.toUpperCase()) || 
-			// eslint-disable-next-line 
-			testing.toLowerCase().includes(searching.toLowerCase()) ||
-			// eslint-disable-next-line 
-			capitalizeFirstLetter(testing).includes(capitalizeFirstLetter(searching)) ||
-
-			splitCapitalizeFirstLetter(testing).includes(splitCapitalizeFirstLetter(searching))
-			) {
-				return true;
-		}
-
-
-
-	} catch (err) {
-		return false;
-	}
-	*/
 	return false;
 }
 
