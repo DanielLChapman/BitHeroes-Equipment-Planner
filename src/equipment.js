@@ -186,7 +186,6 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 			})
 		})
 	};
-	console.log(filterTextArray);
 	//Equipment + Mythics
 	Object.keys(equipment).forEach( (x) => {
 
