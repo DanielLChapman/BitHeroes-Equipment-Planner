@@ -82,11 +82,69 @@ export const sortEquipment = (equipment, objectBool = true) => {
 	return [sortedEquipment, mythics, legendaries];
 };
 
+
+
+let objectTesting = (testing, searching) => {
+	let returnValue = false;
+
+	Object.keys(testing).forEach((x) => {
+
+		//num
+		if(!isNaN(testing[x]) && !isNaN(searching) && testing[x] === searching) {
+			if (!returnValue) {
+				returnValue = true;
+			}
+		}
+
+		//string
+		if (typeof testing[x] === "string" && testing[x].toLowerCase().includes(searching.toLowerCase())) {
+			if (!returnValue) {
+				returnValue = true;
+			}
+		}
+		//array
+		if (Array.isArray(testing[x])) {
+			testing[x].forEach((y) => {
+				let newy = y;
+				if (typeof y !== "object") {
+					newy = Object.assign({}, y);
+				}
+				let returnBool = objectTesting(newy, searching);
+				if (returnBool) {
+					if (!returnValue) {
+						returnValue = true;
+					}
+				}
+				
+				
+			})
+		}
+		
+		//object
+		else if (typeof testing[x] === "object") {
+			let returnBool = objectTesting(testing[x], searching);
+			if (returnBool) {
+				if (!returnValue) {
+					returnValue = true;
+				}
+			}
+		}
+		
+	})
+
+	return returnValue;
+}
+
+
 const filterSearching = (testing, searching) => {
 	try {
-		if (testing.toLowerCase().includes(searching.toLowerCase())) {
+		if (typeof testing === "object") {
+			return objectTesting(testing, searching);
+		}
+		else if (testing.toLowerCase().includes(searching.toLowerCase())) {
 			return true;
 		} 
+		
 	} 
 	catch (err) {
 		console.log(err);
@@ -217,9 +275,7 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 				filterTextArray.forEach((q) => {
 					
 					if (q !== "") {
-						if (filterSearching(equipment[x].name,q ) || 
-							(equipment[x].partOfSet && filterSearching(equipment[x].partOfSet, q)) ||
-							(equipment[x].effect && filterSearching(equipment[x].effect, q))) {
+						if (filterSearching(equipment[x],q )) {
 							pass = true;
 						}
 					} 
@@ -294,23 +350,9 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 					filterTextArray.forEach((q) => {
 						
 						if (q !== "") {
-							if (filterSearching(setsSort[x].name, q) || 
-								(filterSearching(setsSort[x].location, q))) {
+							if (filterSearching(setsSort[x], q)) {
 								pass = true;
 							}
-							Object.keys(setsSort[x].setBonuses).forEach((y) => {
-								if (filterSearching(setsSort[x].setBonuses[y], q)) {
-									pass = true;
-								}
-							})
-							Object.keys(setsSort[x].items).forEach((y) => {
-								if (filterSearching(setsSort[x].items[y].name, q)) {
-									pass = true;
-								}
-								if (filterSearching(setsSort[x].items[y].slot, q)) {
-									pass = true;
-								}
-							})
 						} 
 						
 					})
@@ -373,7 +415,6 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 
 	return [sortedEquipment, mythics, legendaries, returnSets];
 }
-
 
 
 //71
