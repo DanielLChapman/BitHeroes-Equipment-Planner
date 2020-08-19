@@ -1929,6 +1929,7 @@ export const equipment = {
 		shareID: "hv",
 		tier: 2,
 	},
+	
 	starweave_ring: {
 		name: "Starweave",
 		type: "ancient",
@@ -4532,6 +4533,18 @@ export const equipment = {
 			flat: false
 		},
 		tier: 13,
+	},
+
+	primordial_codex: {
+		name: "Primordial Cordex",
+		type: "ancient",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "Gives a bonus and skill based on mainhand's element",
+		location: "Craft from t13 d4",
+		shareID: "en",
+		tier: 2,
 	},
 	
 	
