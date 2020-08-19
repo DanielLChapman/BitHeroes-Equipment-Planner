@@ -4536,7 +4536,7 @@ export const equipment = {
 	},
 
 	primordial_codex: {
-		name: "Primordial Cordex",
+		name: "Primodial Cordex",
 		type: "ancient",
 		slot: "Offhand",
 		image: "",
