@@ -449,7 +449,7 @@ export default () => {
     };
     let setsToSort = {};
     let urlEnd = "";
-    let stats = Object.assign({}, base.default_stats);
+    let stats = {...base.default_stats};
     let ancientEquipped = false;
     let ancientEquipped2 = false;
     let ancientEquipped3 = false;
@@ -457,7 +457,8 @@ export default () => {
       enchant: false,
       mount: false,
       rune: false
-    }
+    };
+    let sparking_soulcatcher = false;
   
     Object.keys(equipmentOn).forEach((x, i) => {
       if (equipmentOn[x].type === "ancient") {
@@ -501,10 +502,18 @@ export default () => {
         
       }
   
+      if(equipmentOn[x]['innate']) {
+        let temp = equipmentOn[x]['innate'];
+        stats[temp.type] += temp.value;
+      }
+  
       if (equipmentOn[x].type === "mythic" ) {
         bonuses.mythics.push(equipmentOn[x]);
         urlEnd += equipmentOn[x].shareID;
         stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
+        if (equipmentOn[x].name === "Sparking Soulcatcher") {
+          sparking_soulcatcher = true;
+        }
       } else  if (equipmentOn[x].type === "set") {
         setsToSort[equipmentOn[x].partOfSet] = setsToSort[equipmentOn[x].partOfSet] + 1 || 1;
         if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
@@ -563,8 +572,6 @@ export default () => {
         if (ancientEquipped) {
             setsToSort[x] += 1;
           }
-
-
         Object.keys(setWorkingOn.setBonuses).forEach((y) => {
           if (setsToSort[x] >= parseInt(y, 10)) {
             bonuses.sets[x].push(setWorkingOn.setBonuses[y]);
@@ -658,12 +665,11 @@ export default () => {
         tempURL+="&"
       }
       tempURL += "enchantments=";
-
+  
       let enchantArray = [];
-            for (var p = 0; p < enchantTypes.length; p++) {
-              enchantArray.push(enchantTypes[p].title);
-            } 
-
+      for (var p = 0; p < enchantTypes.length; p++) {
+        enchantArray.push(enchantTypes[p].title);
+      } 
       Object.keys(enchantments).forEach((x) => {
         if (!['alreadyUpdated', 'ownUpdate'].includes(x)) {
         
@@ -672,7 +678,6 @@ export default () => {
             let r1 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot1'].title);
             let r2 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot2'].title);
   
-        
   
             //stats[r2.effect] += r2.value;
             //stats[r1.effect] += r1.value;
@@ -711,11 +716,18 @@ export default () => {
         }
       });
   
-      if (tempURL2 !== "xxxxxxxxxxxx") {
+      if (tempURL2 !== "xxxxxxxxxxxxxxxxxxxxxxxx") {
         urlEnd += tempURL + tempURL2;
       }
     }
   
+    if (sparking_soulcatcher) {
+      let maxDamageAdd = stats.healing*.5;
+      if (maxDamageAdd > 15) {
+        maxDamageAdd = 15;
+      }
+      stats.damage += maxDamageAdd; 
+    }
     stats.power = baseStats[0];
     stats.stamina = baseStats[1];
     stats.agility = baseStats[2];
@@ -1398,7 +1410,7 @@ export default () => {
       case 'Gryphen Resistor':
         stats.block += 22+(2*accessoryUpgrade);
         stats.deflect_chance += 10;
-        setStatBonuses.electric_resistance += 5;
+        stats.electric_resistance += 5;
         break;
       case 'Amaglon':
         stats.block += 8;
@@ -1552,6 +1564,22 @@ export default () => {
         if (count === 2) {
           stats.healing += 25;
         }
+        break;
+      case 'Tau Bless':
+        stats.damage += 4.5;
+        break;
+      case 'Huntress Savior':
+        stats.healing += 20;
+        break;
+      case 'Frozen Beads':
+        stats.deflect_chance += 5;
+        break;
+      case 'Demons Garments':
+        stats.damage += 5;
+        stats.damage_reduction += 5;
+        break;
+      case 'Sparking Husk':
+        stats.empower_chance += 5;
         break;
       //Add in legendary enchant and accessories, mounts too
       default: 

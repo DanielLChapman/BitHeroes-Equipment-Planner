@@ -179,7 +179,8 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     enchant: false,
     mount: false,
     rune: false
-  }
+  };
+  let sparking_soulcatcher = false;
 
   Object.keys(equipmentOn).forEach((x, i) => {
     if (equipmentOn[x].type === "ancient") {
@@ -232,6 +233,9 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       bonuses.mythics.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
       stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
+      if (equipmentOn[x].name === "Sparking Soulcatcher") {
+        sparking_soulcatcher = true;
+      }
     } else  if (equipmentOn[x].type === "set") {
       setsToSort[equipmentOn[x].partOfSet] = setsToSort[equipmentOn[x].partOfSet] + 1 || 1;
       if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
@@ -439,6 +443,13 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     }
   }
 
+  if (sparking_soulcatcher) {
+    let maxDamageAdd = stats.healing*.5;
+    if (maxDamageAdd > 15) {
+      maxDamageAdd = 15;
+    }
+    stats.damage += maxDamageAdd; 
+  }
   stats.power = baseStats[0];
   stats.stamina = baseStats[1];
   stats.agility = baseStats[2];
@@ -1128,7 +1139,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     case 'Gryphen Resistor':
       stats.block += 22+(2*accessoryUpgrade);
       stats.deflect_chance += 10;
-      setStatBonuses.electric_resistance += 5;
+      stats.electric_resistance += 5;
       break;
     case 'Amaglon':
       stats.block += 8;
@@ -1282,6 +1293,22 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
       if (count === 2) {
         stats.healing += 25;
       }
+      break;
+    case 'Tau Bless':
+      stats.damage += 4.5;
+      break;
+    case 'Huntress Savior':
+      stats.healing += 20;
+      break;
+    case 'Frozen Beads':
+      stats.deflect_chance += 5;
+      break;
+    case 'Demons Garments':
+      stats.damage += 5;
+      stats.damage_reduction += 5;
+      break;
+    case 'Sparking Husk':
+      stats.empower_chance += 5;
       break;
     //Add in legendary enchant and accessories, mounts too
     default: 

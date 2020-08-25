@@ -3779,6 +3779,28 @@ export const equipment = {
 		shareID: "gv",
 		tier: 10,
 	},
+	tau_bless: {
+		name: "Tau Bless",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "Gain damage the higher your health, up to 4.5%",
+		location: "t10 Nether",
+		shareID: "ru",
+		tier: 10,
+	},
+	souvenir_of_rerana: {
+		name: "Souvenir Of Rerana",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "2% Chance to attack closest enemy on your teammates turn",
+		location: "t10 Nether",
+		shareID: "dv",
+		tier: 10,
+	},
 	empyreal_sunbow: {
 		name: "Empyreal Sunbow",
 		type: "set",
@@ -4772,6 +4794,144 @@ export const equipment = {
 		shareID: "6v",
 		tier: 13,
 		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	huntress_savior: {
+		name: "Huntress Savior",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "Skills that cost SP gain 20% Healing Bonus",
+		location: "t11 Nether",
+		shareID: "89",
+		tier: 11,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	aylar_promess: {
+		name: "Aylar Promess",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "First time a teammate drops below 30% health, it is restored to 100%",
+		location: "t11 Nether",
+		shareID: "yj",
+		tier: 11,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	frozen_beads: {
+		name: "Frozen Beads",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "5% Deflect when shielded",
+		location: "t12 Nether",
+		shareID: "0z",
+		tier: 12,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	demons_garments: {
+		name: "Demons Garments",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "5% Damage and Damage Reduction when you're the only one alive in your team",
+		location: "t12 Nether",
+		shareID: "5s",
+		tier: 12,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	sparking_husk: {
+		name: "Sparking Husk",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "5% Empower when above 75% HP",
+		location: "t13 Nether",
+		shareID: "1u",
+		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	sparking_soulcatcher: {
+		name: "Sparking Soulcatcher",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "Gain 0.5% Damage for each healing bonus, up to 15%",
+		location: "t13 Nether",
+		shareID: "zs",
+		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
 			element_value: 4,
 			element_type: "electric",
 			element_modifier: "damage",
