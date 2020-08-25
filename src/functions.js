@@ -1260,6 +1260,29 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
         stats.fire_resistance += 10;
       }
       break;
+    case 'Cursed':
+      if (count === 2) {
+        stats.damage += 3;
+      }
+      break;
+    case 'Tapior': 
+      if (count === 2) {
+        stats.healing += 8;
+      }
+      if (count === 3 && equipped.mainhand.slot === "Staff") {
+        stats.healing += 16;
+      }
+      break;
+    case 'Water Demon':
+      if (count === 4) {
+        stats.water_damage += 20;
+      }
+      break;
+    case 'Sparks':
+      if (count === 2) {
+        stats.healing += 25;
+      }
+      break;
     //Add in legendary enchant and accessories, mounts too
     default: 
       //console.log(name, equipped, stats);

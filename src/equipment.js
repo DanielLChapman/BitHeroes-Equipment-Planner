@@ -4536,7 +4536,7 @@ export const equipment = {
 	},
 
 	primordial_codex: {
-		name: "Primodial Cordex",
+		name: "Primordial Cordex",
 		type: "ancient",
 		slot: "Offhand",
 		image: "",
@@ -4546,9 +4546,238 @@ export const equipment = {
 		shareID: "en",
 		tier: 2,
 	},
-	
-	
-
+	cursed_cap: {
+		name: "Cursed Cap",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "cursed",
+		effect: "",
+		shareID: "8k",
+		tier: 10,
+	},
+	cursed_feather_vest: {
+		name: "Cursed Feather Vest",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "cursed",
+		effect: "",
+		shareID: "ci",
+		tier: 10,
+	},
+	cursed_calavera: {
+		name: "Cursed Calavera",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "cursed",
+		effect: "",
+		shareID: "w7",
+		tier: 10,
+	},
+	cursed_valander: {
+		name: "Cursed Valander",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "cursed",
+		effect: "",
+		shareID: "t9",
+		tier: 10,
+	},
+	tapior_horns: {
+		name: "Tapior Horns",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "tapior",
+		effect: "",
+		shareID: "vm",
+		tier: 11,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	tapior_loincloth: {
+		name: "Tapior Loincloth",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "tapior",
+		effect: "",
+		shareID: "pf",
+		tier: 11,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	tapior_stake: {
+		name: "Tapior Stake",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "tapior",
+		effect: "",
+		shareID: "jq",
+		tier: 11,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	tapior_creature: {
+		name: "Tapior Creature",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "tapior",
+		effect: "",
+		shareID: "sm",
+		tier: 11,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	water_demons_face: {
+		name: "Water Demons Face",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "water_demon",
+		effect: "",
+		shareID: "92",
+		tier: 12,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	last_stand: {
+		name: "Last Stand",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "water_demon",
+		effect: "",
+		shareID: "y6",
+		tier: 12,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	frostfang: {
+		name: "Frostfang",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "water_demon",
+		effect: "",
+		shareID: "p0",
+		tier: 12,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	water_demons_omen: {
+		name: "Water Demons Omen",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "water_demon",
+		effect: "",
+		shareID: "6c",
+		tier: 12,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	sparks_mask: {
+		name: "Sparks Mask",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "sparks",
+		effect: "",
+		shareID: "ag",
+		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	sparks_collar: {
+		name: "Sparks Collar",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "sparks",
+		effect: "",
+		shareID: "oq",
+		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	soul_shepherd: {
+		name: "Soul Shepherd",
+		type: "set",
+		slot: "Staff",
+		image: "",
+		partOfSet: "sparks",
+		effect: "",
+		shareID: "se",
+		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	sparks_signet_ring: {
+		name: "Sparks Signet Ring",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "sparks",
+		effect: "",
+		shareID: "6v",
+		tier: 13,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
 
 
 

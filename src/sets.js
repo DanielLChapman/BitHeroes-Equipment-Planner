@@ -562,6 +562,54 @@ export const sets = {
 			4: "+10% Evade Chance, 10% Flame Resistance"
 		}
 	},
+	cursed: {
+		name: "Cursed",
+		location: "t10 Nether Worldboss",
+		tier: 10,
+		items: ["Cursed Cap", "Cursed Feather Vest", "Cursed Calavera", "Cursed Valander"],
+		description: "",
+		setBonuses: {
+			2: "Enemies take 3% more damage",
+			3: "Curse: Your enemies gain 5% chance to cast 0sp skills only",
+			4: "Weaken: Reduce the enemy team SP regeneration by 20%"
+		}
+	},
+	tapior: {
+		name: "Tapior",
+		location: "t11 Nether Worldboss",
+		tier: 11,
+		items: ["Tapior Horns", "Tapior Loincloth", "Tapior Stake", "Tapior Creature"],
+		description: "",
+		setBonuses: {
+			2: "+8% Healing",
+			3: "+16% Healing when using a spear",
+			4: "+25% Chance to heal weakest teammate per turn"
+		}
+	},
+	water_demon: {
+		name: "Water Demon",
+		location: "t12 Nether Worldboss",
+		tier: 12,
+		items: ["Water Demons Face", "Last Stand", "Frostfang", "Water Demons Omen"],
+		description: "",
+		setBonuses: {
+			2: "Deflects first time you are hit in battle",
+			3: "Freeze the enemy teamw hen you kill an enemy",
+			4: "Water Adrenaline 10 (Each turn, you gain X amount of Damage up to X*4, then it resets. Avg 20%)"
+		}
+	},
+	sparks: {
+		name: "Sparks",
+		location: "t13 Nether Worldboss",
+		tier: 13,
+		items: ["Sparks Mask", "Sparks Collar", "Soul Shepherd", "Sparks Signet Ring"],
+		description: "",
+		setBonuses: {
+			2: "Expender 5: Gain 25% Healing Bonus (when you've spent 5 SP)",
+			3: "Heal team when you trigger an E.M.P. fro 3606-4407",
+			4: "Bolster 10 (When you hit, you spread shield for X% of your Power)"
+		}
+	},
 }
 
 /*
