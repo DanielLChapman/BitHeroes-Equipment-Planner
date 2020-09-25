@@ -21,9 +21,68 @@ export default () => {
   let count = 0;
   let numberOfOptions = 0;
   let sets = {};
-  let base = {};
+  let base = {
+    default_stats: {
+      power: 6,
+      stamina: 6,
+      agility: 6,
+      total_stats: 18,
+      damage: 0,
+      sp_damage: 0,
+      health: 0,
+      speed: 0,
+      critical_chance: 10,
+      critical_damage: 50,
+      evade: 2.5,
+      block: 0,
+      life_steal: 0,
+      damage_enrage: 0,
+      deflect_chance: 0,
+      absorb_chance: 0,
+      damage_reduction: 0,
+      dual_strike: 0,
+      empower_chance: 0,
+      redirect_chance: 0,
+      healing: 0, 
+      quad_strike: 0,
+      richochet_chance: 0,
+      team_enrage: 0,
+      ignore_defense: 0,
+      links: {
+        healthEfficiency: 0,
+        damageMitigation: 0,
+        damageBonus: 0,
+        damageOutput: 0
+      },
+      fire_damage: 0,
+      fire_resistance: 0,
+      electric_damage: 0,
+      electric_resistance: 0,
+      water_damage: 0,
+      water_resistance: 0,
+      air_damage: 0,
+      air_resistance: 0,
+      earth_damage: 0,
+      earth_resistance: 0,
+      elemental_flat: {
+        fire: 0,
+        electric: 0,
+        water: 0,
+        air: 0,
+        earth: 0
+      }
+    },
+    current_stats: {},
+    runes: [],
+    enchants: [],
+  };
+  
+  
+   
   let enchantTypes = {};
   let mountTypes = {};
+
+  
 
   self.addEventListener('message', e => { // eslint-disable-line no-restricted-globals
       if (typeof e === 'undefined') return;
@@ -41,7 +100,7 @@ export default () => {
       base = users.base;
       enchantTypes = users.enchantTypes;
       mountTypes = users.mountTypes;
-      
+
       //0 or 1;
       //0 is bottom half,
       //1 is top half of first
