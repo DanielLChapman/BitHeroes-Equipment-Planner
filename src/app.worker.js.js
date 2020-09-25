@@ -545,28 +545,25 @@ export default () => {
     });
   
   
-    
-  if (ancientEquipped2) {
-    let numMythics = 0;
-    let x = 0;
-    Object.keys(equipmentOn).forEach((p) => {
-      switch(equipmentOn[p].type) {
-        case 'mythic': 
-          if (equipmentOn[p].slot !== "Accessory" && equipmentOn[p].slot !== "Mount" && equipmentOn[p].slot !== "Pet" ) {
-            numMythics++;
-            x = p;
-          }
-          
-          break;
-        default:
-          break
+    if (ancientEquipped2) {
+      let numMythics = 0;
+      let x = 0;
+      Object.keys(equipmentOn).forEach((p) => {
+        switch(equipmentOn[p].type) {
+          case 'mythic': 
+            if (equipmentOn[p].slot !== "Accessory" && equipmentOn[p].slot !== "Mount" && equipmentOn[p].slot !== "Pet" ) {
+              numMythics++;
+              x = p;
+            }
+            break;
+          default:
+            break
+        }
+      });
+      if (numMythics === 1) {
+        stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
       }
-    });
-    if (numMythics === 1) {
-      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
     }
-  }
-
   
     
   
