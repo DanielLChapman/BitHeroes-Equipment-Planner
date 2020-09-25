@@ -511,7 +511,7 @@ export default () => {
     let stats = Object.assign({}, base.default_stats);
     let ancientEquipped = false;
     let ancientEquipped2 = false;
-    let ancientEquipped3 = falsse;
+    let ancientEquipped3 = false;
     var doubled = {
       enchant: false,
       mount: false,
