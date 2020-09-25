@@ -1,6 +1,8 @@
 import { sets } from './sets';
-import { base} from './stats';
+import { base } from './stats';
 import {enchantTypes} from './enchants';
+
+
 
 export const enchants = {
   enchantSlot1: {
@@ -171,7 +173,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
   };
   let setsToSort = {};
   let urlEnd = "";
-  let stats = {...base.default_stats};
+  let stats = Object.assign({}, base.default_stats);
   let ancientEquipped = false;
   let ancientEquipped2 = false;
   let ancientEquipped3 = false;

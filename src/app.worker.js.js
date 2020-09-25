@@ -508,10 +508,10 @@ export default () => {
     };
     let setsToSort = {};
     let urlEnd = "";
-    let stats = {...base.default_stats};
+    let stats = Object.assign({}, base.default_stats);
     let ancientEquipped = false;
     let ancientEquipped2 = false;
-    let ancientEquipped3 = false;
+    let ancientEquipped3 = falsse;
     var doubled = {
       enchant: false,
       mount: false,
