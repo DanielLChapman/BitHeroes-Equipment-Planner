@@ -42,6 +42,8 @@ export default () => {
       enchantTypes = users.enchantTypes;
       mountTypes = users.mountTypes;
 
+      console.log(sortedEquipment);
+
       //0 or 1;
       //0 is bottom half,
       //1 is top half of first
@@ -543,23 +545,28 @@ export default () => {
     });
   
   
-    if (ancientEquipped2) {
-      let numMythics = 0;
-      let x = 0;
-      Object.keys(equipmentOn).forEach((p) => {
-        switch(equipmentOn[p].type) {
-          case 'mythic': 
+    
+  if (ancientEquipped2) {
+    let numMythics = 0;
+    let x = 0;
+    Object.keys(equipmentOn).forEach((p) => {
+      switch(equipmentOn[p].type) {
+        case 'mythic': 
+          if (equipmentOn[p].slot !== "Accessory" && equipmentOn[p].slot !== "Mount" && equipmentOn[p].slot !== "Pet" ) {
             numMythics++;
             x = p;
-            break;
-          default:
-            break
-        }
-      });
-      if (numMythics === 1) {
-        stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
+          }
+          
+          break;
+        default:
+          break
       }
+    });
+    if (numMythics === 1) {
+      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
     }
+  }
+
   
     
   
