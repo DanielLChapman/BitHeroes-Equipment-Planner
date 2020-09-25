@@ -41,9 +41,7 @@ export default () => {
       base = users.base;
       enchantTypes = users.enchantTypes;
       mountTypes = users.mountTypes;
-
-      console.log(sortedEquipment);
-
+      
       //0 or 1;
       //0 is bottom half,
       //1 is top half of first

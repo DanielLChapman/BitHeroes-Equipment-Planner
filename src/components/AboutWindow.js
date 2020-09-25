@@ -48,7 +48,7 @@ const AboutWindow = (props) => (
                 <li>Created by RustyPeach#6491 on discord, RustyPeach and rustypeach2 in game.</li>
                 <li>If you have any suggestions of what you want added or changed, I'm happy to hear it. </li>
                 <li className={'about-amendum'}>You can either DM directly or ping me in either the official or unofficial discord</li>
-                <li>All the formulas on the stat page are made from combining the elemental formulas with: <a href="https://docs.google.com/spreadsheets/d/1OnSqp7a_hkQ94HijWAt704M3bA8vAibgwfR70JyXg5g/edit#gid=1961024465">Link2012's Mega Calculator Pack (using quick calculation page}</a> </li>
+                <li>All the formulas on the stat page are made from combining the elemental formulas with: <a href="https://docs.google.com/spreadsheets/d/1OnSqp7a_hkQ94HijWAt704M3bA8vAibgwfR70JyXg5g/edit#gid=1961024465">Link2012's Mega Calculator Pack (using quick calculation page)</a> </li>
                 <li className={'about-amendum'}>If there are other calculations you want added, I'm happy to throw them in there. All the numbers on the stats page are numbers you can include in any fashion. </li>
             </ul>
 
