@@ -5052,7 +5052,116 @@ export const equipment = {
 			flat: false
 		},
 	},
-
+	judgement_of_montezuma: {
+		name: "Judgement Of Montezuma",
+		type: "set",
+		slot: "Sword",
+		image: "",
+		partOfSet: "montezuma",
+		effect: "",
+		shareID: "ym",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	urn_of_montezuma: {
+		name: "Urn Of Montezuma",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "montezuma",
+		effect: "",
+		shareID: "qa",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	casque_of_montezuma: {
+		name: "Casque Of Montezuma",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "montezuma",
+		effect: "",
+		shareID: "1g",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	garnet_of_montezuma: {
+		name: "Garnet Of Montezuma",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "montezuma",
+		effect: "",
+		shareID: "if",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	quetzal_greatcloak: {
+		name: "Quetzal Greatcloak",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "5% Crit Chance",
+		location: "t14 T/G",
+		shareID: "cv",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	quetzal_faith: {
+		name: "Quetzal Faith",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "4% Dual Strike",
+		location: "t14 T/G",
+		shareID: "gl",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
 
 }
 

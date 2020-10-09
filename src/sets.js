@@ -622,6 +622,18 @@ export const sets = {
 			4: "20% Block, 25% Barrier if you have the lowest health "
 		}
 	},
+	montezuma: {
+		name: "Montezuma",
+		location: "t14 T/G",
+		tier: 14,
+		items: ["Judgement Of Montezuma", "Urn Of Montezuma", "Casque Of Montezuma", "Garnet Of Montezuma", ],
+		description: "",
+		setBonuses: {
+			2: "5% speed",
+			3: "Air Adrenaline 3",
+			4: "15% chance to damage all when you hit an enemy"
+		}
+	},
 }
 
 /*

@@ -1656,6 +1656,17 @@ export default () => {
       case 'Quetzal Gift':
         stats.evade += 5;
         break;
+      case 'Montezuma':
+        if (count === 2) {
+          stats.speed += 5;
+        }
+        break;
+      case 'Quetzal Greatcloak': 
+        stats.critical_chance += 5;
+        break;
+      case 'Quetzal Faith':
+          stats.dual_strike += 4;
+          break;
       //Add in legendary enchant and accessories, mounts too
       default: 
         //console.log(name, equipped, stats);
