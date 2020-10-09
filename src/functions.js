@@ -1315,6 +1315,20 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     case 'Sparking Husk':
       stats.empower_chance += 5;
       break;
+    case 'Supay':
+      if (count === 3) {
+        stats.earth_resistance += 15;
+      }
+      if (count === 4) {
+        stats.block += 20;
+      }
+      break;
+    case 'Quetzal Sorrow':
+      stats.life_steal += 5;
+      break;
+    case 'Quetzal Gift':
+      stats.evade += 5;
+      break;
     //Add in legendary enchant and accessories, mounts too
     default: 
       //console.log(name, equipped, stats);

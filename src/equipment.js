@@ -4938,7 +4938,120 @@ export const equipment = {
 			flat: false
 		},
 	},
+	supay_drape: {
+		name: "Supay Drape",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "supay",
+		effect: "",
+		shareID: "00",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+		
+	},
+	supay_laceration: {
+		name: "Supay Laceration",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "supay",
+		effect: "",
+		shareID: "63",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
 
+	},
+	supay_spikeshield: {
+		name: "Supay Spikeshield",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "supay",
+		effect: "",
+		shareID: "b8",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+
+	},
+	supay_tribute_pin: {
+		name: "Supay Tribute Pin",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "supay",
+		effect: "",
+		shareID: "nm",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+
+	},
+	quetzal_gift: {
+		name: "Quetzal Gift",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "5% Evade if you have the lowest health on your tea ",
+		location: "t14 Raids",
+		shareID: "8w",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	quetzal_sorrow: {
+		name: "Quetzal Sorrow",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "5% Lifesteal",
+		location: "t14 Raids",
+		shareID: "s6",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
 
 
 }
@@ -4957,7 +5070,7 @@ generateShareIDCollection(equipment);
 
 const generateShareID = () => {
 	let result           = '';
-   	var characters       = 'abcdefghijklmnopqrstuvwxyz0123456789';
+   	var characters       = 'abcdefghijklmnopqrstuvwxyz0123456789-._~:*';
    	var charactersLength = characters.length;
    	for ( var i = 0; i < 2; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));

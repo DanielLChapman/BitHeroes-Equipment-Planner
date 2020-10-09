@@ -610,6 +610,18 @@ export const sets = {
 			4: "Bolster 10 (When you hit, you spread shield for X% of your Power)"
 		}
 	},
+	supay: {
+		name: "Supay",
+		location: "t14 Raid",
+		tier: 14,
+		items: ["Supay Drape","Supay Laceration","Supay Spikeshield","Supay Tribute Pin"],
+		description: "",
+		setBonuses: {
+			2: "Teammates in front of you gain 5% earth resistance",
+			3: "Gain 3% earth resistance when hit, up to 15%",
+			4: "20% Block, 25% Barrier if you have the lowest health "
+		}
+	},
 }
 
 /*
