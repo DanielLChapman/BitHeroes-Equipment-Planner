@@ -634,6 +634,30 @@ export const sets = {
 			4: "15% chance to damage all when you hit an enemy"
 		}
 	},
+	eleuia: {
+		name: "Eleuia",
+		location: "t14 Abyss",
+		tier: 14,
+		items: ["Eleuia Ravager", "Eleuia Bracelet","Eleuia Tiara","Eleuia Memorial"],
+		description: "",
+		setBonuses: {
+			2: "3% Team Damage",
+			3: "10% Healing bonus to all teammates, bolster 5",
+			4: "50% Chance to revitalize, +15% Fire Resistance"
+		}
+	},
+	saywite: {
+		name: "Saywite",
+		location: "t14 Titan",
+		tier: 14,
+		items: ["Saywite Ward","Saywite Headcover","Saywite Brooch","Saywite Bracelet"],
+		description: "",
+		setBonuses: {
+			2: "3% Team Enrage if you are in the front",
+			3: "20% Water Resistance, -10% Damage",
+			4: "25% Water Resistance while below 70% Health, 20% Block"
+		}
+	},
 }
 
 /*

@@ -69,7 +69,7 @@ export default class OptimizerWindow extends React.Component {
 
                 let f = parseInt(e.target.value, 10);
 				//if its in the area remove it,
-				if (![0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13].includes(f)) {
+				if (![0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].includes(f)) {
 					break;
 				}
 				if (!ef.tiers.includes(f) ) {

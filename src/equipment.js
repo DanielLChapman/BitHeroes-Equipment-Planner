@@ -5163,6 +5163,228 @@ export const equipment = {
 		},
 	},
 
+	quetzal_armadura: {
+		name: "Quetzal Armadura",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "15% chance to give enrage to a random teammate per turn",
+		location: "t14 Abyss",
+		shareID: "i7",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	quetzal_choke: {
+		name: "Quetzal Choke",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "10% Chance to gain 1 sp per turn",
+		location: "t14 Abyss",
+		shareID: "tt",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	quetzal_warshield: {
+		name: "Quetzal Warshield",
+		type: "mythic",
+		slot: "Axe",
+		image: "",
+		partOfSet: "",
+		effect: "4% Deflect Chance",
+		location: "t14 Titan",
+		shareID: "ri",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	quetzal_scaled_vest: {
+		name: "Quetzal Scaled Vest",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "Gain Damage Reduction the lower your health percentage is, up to a maximum of 10%",
+		location: "t14 Titan",
+		shareID: "d8",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+
+	saywite_ward: {
+		name: "Saywite Ward",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "saywite",
+		effect: "",
+		shareID: "1n",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	saywite_headcover: {
+		name: "Saywite Headcover",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "saywite",
+		effect: "",
+		shareID: "11",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	saywite_brooch: {
+		name: "Saywite Brooch",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "saywite",
+		effect: "",
+		shareID: ":4",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	saywite_bracelet: {
+		name: "Saywite Bracelet",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "saywite",
+		effect: "",
+		shareID: "9k",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	eleuia_ravager: {
+		name: "Eleuia Ravager",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "eleuia",
+		effect: "",
+		shareID: ".8",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	eleuia_bracelet: {
+		name: "Eleuia Bracelet",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "eleuia",
+		effect: "",
+		shareID: "7v",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	eleuia_tiara: {
+		name: "Eleuia Tiara",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "eleuia",
+		effect: "",
+		shareID: "87",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	eleuia_memorial: {
+		name: "Eleuia Memorial",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "eleuia",
+		effect: "",
+		shareID: "3.",
+		tier: 14,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+
 }
 
 //Not for public to use

@@ -1667,6 +1667,36 @@ export default () => {
       case 'Quetzal Faith':
           stats.dual_strike += 4;
           break;
+      case 'Eleuia':
+        if (count === 2) {
+          stats.damage += 3;
+        }
+        if (count === 3) {
+          stats.healing += 10;
+        }
+        if (count === 4) {
+          stats.fire_resistance += 15;
+        }
+      break;
+      case 'Saywite':
+          if (count === 2 ) {
+            stats.team_enrage += 3;
+          }
+          if (count === 3) {
+            stats.water_resistance += 20;
+            stats.damage -= 10;
+          } 
+          if (count === 4) {
+            stats.water_resistance += 25;
+            stats.block += 20;
+          }
+        break;
+      case 'Quetzal Warshield':
+        stats.deflect_chance += 4;
+        break;
+      case 'Quetzal Scaled Vest':
+        stats.damage_reduction += 10;
+        break;
       //Add in legendary enchant and accessories, mounts too
       default: 
         //console.log(name, equipped, stats);
