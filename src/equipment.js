@@ -169,6 +169,7 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 	
 	*/
 
+	console.log(filters.tiers);
 	let oB = objectBool;
 	let sortedEquipment;
 	if (oB) {
