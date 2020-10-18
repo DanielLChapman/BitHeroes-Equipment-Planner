@@ -256,7 +256,7 @@ export const enchantTypes = [{
 	selected: false,
 	effect: "block",
 	effect2: "damage_reduction",
-	value:  0.7,
+	value:  2.5,
 	value2: 1.25,
 	key: 'enchant',
 	mythic: true
