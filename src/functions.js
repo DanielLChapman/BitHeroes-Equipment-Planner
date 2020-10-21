@@ -1175,7 +1175,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     case 'Resistor':
       stats.block += 32 + (2*accessoryUpgrade);
       stats.damage_reduction += 10;
-      stats.deflect_chance += 5;
+      stats.deflect_chance += 5 + (.5*accessoryUpgrade);
       break;
     case 'Mythic Core':
       stats.damage_reduction += 28;
