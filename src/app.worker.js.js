@@ -498,7 +498,7 @@ export default () => {
     return defaultLinks;
   }
 
-  export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [], enchantments = {}, accessoryLevel = 1, t12 = true, evolviumTable={}) => {
+  const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [], enchantments = {}, accessoryLevel = 1, t12 = true, evolviumTable={}) => {
     let bonuses = {
       mythics: [],
       sets: {},
