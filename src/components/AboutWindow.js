@@ -7,6 +7,7 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>UPDATES:</span>
             <ul className="about-page-ul">
+                <li>1/14/2021  - Added Evolvium</li>
                 <li>10/14/2020 - All new T14 equipment has been added.</li>
                 <li>8/25/2020  -  Added new sets and mythics from nether 10-13</li>
                 

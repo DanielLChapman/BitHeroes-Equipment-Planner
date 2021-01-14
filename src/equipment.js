@@ -169,7 +169,6 @@ export const filteringEquipment = (equipment, filters, sets = {}, objectBool = t
 	
 	*/
 
-	console.log(filters.tiers);
 	let oB = objectBool;
 	let sortedEquipment;
 	if (oB) {
@@ -1973,6 +1972,28 @@ export const equipment = {
 		effect: "Major Rune Bonuses Doubled. Only 1 bonus of this type may be active. +5% Damage, +5% Damage Reduction at t12",
 		location: "Craft from z10d3",
 		shareID: "ez",
+		tier: 2,
+	},
+	evolvium_offense: {
+		name: "Evolvium Offense",
+		type: "ancient",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "Offensive Stat Bonuses",
+		location: "Craft from z13d3",
+		shareID: "4h",
+		tier: 2,
+	},
+	evolvium_defense: {
+		name: "Evolvium Defense",
+		type: "ancient",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "Defensive Stat Bonuses",
+		location: "Craft from z13d3",
+		shareID: "k1",
 		tier: 2,
 	},
 	melvin_cloak: {

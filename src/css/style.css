@@ -893,3 +893,21 @@ select option {
 .equipment-options-by-tiers-checkboxes label {
   display: block;
 }
+.evolvium-table {
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #000;
+  margin-top: 5px;
+}
+.evolvium-table tr {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 35px;
+}
+.evolvium-table td {
+  border: 1px solid #008000;
+}
+.evolvium-table .selected {
+  background: #ffa500;
+}

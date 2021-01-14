@@ -87,6 +87,12 @@ class App extends Component {
       setsOpen: false,
       slotsOpen: false,
       t12: true,
+      evolviumTable: {
+        aorb: '',
+        cord: '',
+        eorf: '',
+        gorh: ''
+      }
     }
   }
 
@@ -94,6 +100,12 @@ class App extends Component {
     
     var sortedEquipment = this.state.sortedEquipment, mythics = {}, legendaries = {};
     [sortedEquipment, mythics, legendaries] = sortEquipment(equipment);
+    let evolviumTable = {
+      aorb: '',
+      cord: '',
+      eorf: '',
+      gorh: ''
+    }
 
     Object.keys(sets).forEach( (x) => {
       Object.keys(sets[x].items).forEach( (y) => {
@@ -121,6 +133,8 @@ class App extends Component {
 
     //finding equipped items
     if (this.props.match && this.props.match.params.parameters) {
+
+
       let equipArray = this.props.match.params.parameters.match(/.{1,2}/g);
 
       equipArray.forEach((x) => {
@@ -160,6 +174,7 @@ class App extends Component {
 
     //finding mount, runes, and enchants
     let runeValues = [], enchantValues = "", accessoryLevel = 1, baseStats = [6, 6, 6],tempVS;
+    
     if (this.props.location.search && this.props.location.search !== "") {
       let x = this.props.location.search.split("?")[1];
       let temp = x.split("&");
@@ -202,6 +217,23 @@ class App extends Component {
               baseStats[2] = tempVS;
             }
           break;
+          case 'evolvium':
+            let toSort = ts[1].split('');
+            toSort.forEach((x) => {
+              if ('aorb'.includes(x)) {
+                evolviumTable.aorb = x;
+              }
+              if ('cord'.includes(x)) {
+                evolviumTable.cord = x;
+              }
+              if ('eorf'.includes(x)) {
+                evolviumTable.eorf = x;
+              }
+              if ('gorh'.includes(x)) {
+                evolviumTable.gorh = x;
+              }
+            })
+            break;
           default:
           break;
         }
@@ -286,7 +318,8 @@ class App extends Component {
       x++;
     }
 
-    let tempBonus = calculateBonuses(baseStats, equipped, runeValues, enchantmentsToState, accessoryLevel);
+    let tempBonus = calculateBonuses(baseStats, equipped, runeValues, enchantmentsToState, accessoryLevel, true, evolviumTable);
+      
     bonuses = {...tempBonus.bonuses};
     let stats = tempBonus.stats;
     urlEnd = tempBonus.urlEnd;
@@ -302,7 +335,8 @@ class App extends Component {
       runes: runeValues,
       sortedEquipment,
       stats,
-      accessoryLevel
+      accessoryLevel,
+      evolviumTable,
     });
   }
 
@@ -351,7 +385,7 @@ class App extends Component {
       state.equipped.mount = item;
     }
 
-      let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel, this.state.t12);
+      let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
       let stats = bonuses.stats;
       state.stats = stats;
       state.bonuses = {...bonuses.bonuses};
@@ -388,7 +422,7 @@ class App extends Component {
     }
 
     state.runes = runes;
-    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, state.enchants, this.state.accessoryLevel, this.state.t12);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, state.enchants, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
     let stats = bonuses.stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
@@ -429,7 +463,7 @@ class App extends Component {
 
     state.enchants = {...eTS};
 
-    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, eTS, this.state.accessoryLevel, this.state.t12);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, eTS, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
     let stats = bonuses.stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
@@ -450,7 +484,7 @@ class App extends Component {
     let state = this.state;
     state.equipped[slot] = {};
 
-    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel, this.state.t12);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
     let stats = bonuses.stats;
@@ -517,7 +551,7 @@ class App extends Component {
         state.accessoryLevel = Math.floor(value);
       }
     }
-    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel,this.state.t12);
+    let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel,this.state.t12, this.state.evolviumTable);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
     let stats = bonuses.stats;
@@ -541,7 +575,7 @@ class App extends Component {
       state.stats[stat] = 0;
     }
 
-    let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12);
+    let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12, this.state.evolviumTable);
     let stats = bonuses.stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
@@ -570,7 +604,7 @@ class App extends Component {
     state.equipped = inputObject.equipment;
 
 
-    let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12);
+    let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12, this.state.evolviumTable);
     let stats = bonuses.stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
@@ -587,6 +621,36 @@ class App extends Component {
     this.setState({...state});
 
   }
+
+  evolviumSelectOption = (option) => {
+    let state = this.state;
+    if (['a', 'b'].includes(option)) {
+        state.evolviumTable.aorb === option ? state.evolviumTable.aorb = '' : state.evolviumTable.aorb = option;
+    }
+    if (['c', 'd'].includes(option)) {
+        state.evolviumTable.cord === option ? state.evolviumTable.cord = '' : state.evolviumTable.cord = option;
+    }
+    if (['e', 'f'].includes(option)) {
+        state.evolviumTable.eorf === option ? state.evolviumTable.eorf = '' : state.evolviumTable.eorf = option;
+    }
+    if (['g', 'h'].includes(option)) {
+        state.evolviumTable.gorh === option ? state.evolviumTable.gorh  = '' : state.evolviumTable.gorh  = option;
+    }
+
+    let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12, this.state.evolviumTable);
+    let stats = bonuses.stats;
+    state.stats = stats;
+    state.bonuses = {...bonuses.bonuses};
+    state.urlEnd = bonuses.urlEnd;
+
+    try {
+      this.props.history.push(`/${state.urlEnd}`);
+    }
+    catch (err) {
+    }
+
+    this.setState({...state});
+}
 
   render() {
     let runeWindowStyling, enchantWindowStyling, statWindowStyling, optimizerWindowStyling, aboutWindowStyling;
@@ -665,7 +729,7 @@ class App extends Component {
           </div>
           <div className="right">
             <div className="bonuses">
-              <BonusView bonuses={this.state.bonuses} />  
+              <BonusView bonuses={this.state.bonuses} evolviumTable={this.state.evolviumTable} evolviumSelect={this.evolviumSelectOption}/>  
             </div>
             <div className="equipment">
               <Equipment mythicReveal={this.state.mythicsOpen} setReveal={this.state.setsOpen} slotReveal={this.state.slotsOpen} legendaries={this.state.legendaries} equipItem={this.equipItem} mythics={this.state.mythics} sets={this.state.sets} equipment={this.state.equipment} sortedEquipment={this.state.sortedEquipment} mounts={mountTypes} handleOpenClose={this.handleOpenClose} isOpen={this.state.slotsOpen}/>

@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
+import EvolviumTable from './Equipment/EvolviumTable';
 import { sets } from '../sets';
 
 const BonusView = (props) => {
-    var hasMythics, hasSets, hasPets, hasAncients, hasMount;
+    var hasMythics, hasSets, hasPets, hasAncients, hasMount, evolvium = false, evolType;
     if (props.bonuses.ancients && Object.keys(props.bonuses.ancients).length > 0) {
       hasAncients = <div className="bonus-ancients">
                     <span>Ancient Bonuses: </span>
                     <ul>
                     {
                       Object.keys(props.bonuses.ancients).map((x) => {
+                        if (props.bonuses.ancients[x].name === 'Evolvium Offense' || props.bonuses.ancients[x].name === 'Evolvium Defense') {
+                          evolvium = true;
+                          evolType = props.bonuses.ancients[x].name ;
+                        }
                         return <li key={x}><span className="bonus-ancients-name">{props.bonuses.ancients[x].name}</span> : {props.bonuses.ancients[x].effect}</li>
                       })
                     }
@@ -83,6 +88,10 @@ const BonusView = (props) => {
       {hasSets}
       {hasPets}
       {hasMount}
+
+      {evolvium && (
+        <EvolviumTable name={evolType} setFunction={props.evolviumSelect} evolviumTable={props.evolviumTable} />
+      )}
     </div>)
 };
 
