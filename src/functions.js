@@ -1393,6 +1393,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
       if (count === 2) {
         stats.speed += 5;
       }
+      if (count === 3) {
+        stats.damage += 7.5;
+      }
       break;
     case 'Quetzal Greatcloak': 
       stats.critical_chance += 5;
@@ -1441,10 +1444,27 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
     case 'Boreas Fire Scrolls':
       stats.damage += 3;
       break;
+    case 'Boreas Battleaxe':
+      stats.air_damage += 10;
+      break;
+    case 'Boreas Spacecap':
+      stats.air_damage += 20;
+      break;
     case 'Evenor':
       if (count === 4) {
-        stats.empower += 4;
+        stats.empower_chance += 4;
         stats.damage += 12;
+      }
+      break;
+    case 'Wrightbros':
+      if (count === 2) {
+        stats.damage += 7.5;
+      }
+      if (count === 3) {
+        stats.empower_chance += 15;
+      }
+      if (count === 4) {
+        stats.air_damage += 15;
       }
       break;
     //Add in legendary enchant and accessories, mounts too

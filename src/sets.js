@@ -630,7 +630,7 @@ export const sets = {
 		description: "",
 		setBonuses: {
 			2: "5% speed",
-			3: "Air Adrenaline 3",
+			3: "Air Adrenaline 3 (avg 7.5)",
 			4: "15% chance to damage all when you hit an enemy"
 		}
 	},
@@ -680,6 +680,18 @@ export const sets = {
 			2: "+4% Empower when healing, gain +3% damage bonus up to 12%",
 			3: "Your healing skills have 50% cleanse the target",
 			4: "20% Team SP regeneration and 50% chance to bolster (spread heal) when you heal"
+		}
+	},
+	wrightbros: {
+		name: "Wrightbros",
+		location: "t15 Abyss World Boss",
+		tier: 15,
+		items: ["Wrightbros Engine", "Wrightbros Ring", "Wrightbros Propellant", "Wrightbros Jacket", ],
+		description: "",
+		setBonuses: {
+			2: "3 Air Adrenaline (avg +7.5 damage)",
+			3: "15% Empower against shielded targets",
+			4: "15% Air Damage. Braveheart: 50% Chance to ignore the enemy defenses"
 		}
 	},
 }

@@ -5626,6 +5626,116 @@ export const equipment = {
 			flat: false
 		},
 	},
+	wrightbros_propellant: {
+		name: "Wrightbros Propellant",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "wrightbros",
+		effect: "",
+		shareID: "kz",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	wrightbros_jacket: {
+		name: "Wrightbros Jacket",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "wrightbros",
+		effect: "",
+		shareID: "ob",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	wrightbros_engine: {
+		name: "Wrightbros Engine",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "wrightbros",
+		effect: "",
+		shareID: ".y",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	wrightbros_ring: {
+		name: "Wrightbros Ring",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "wrightbros",
+		effect: "",
+		shareID: "nt",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	boreas_battleaxe: {
+		name: "Boreas Battleaxe",
+		type: "mythic",
+		slot: "Axe",
+		image: "",
+		partOfSet: "",
+		effect: "Gain +10% Air Damage on Shielded Target",
+		location: "t15 T/g",
+		shareID: "xf",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	boreas_spacecap: {
+		name: "Boreas Spacecap",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "Expender 5: Gain 20% Air Damage (spend 5 SP to activate)",
+		location: "t15 T/g",
+		shareID: "d*",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
 
 }
 
