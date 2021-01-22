@@ -5470,6 +5470,162 @@ export const equipment = {
 			flat: false
 		},
 	},
+	boreas_fire_eye: {
+		name: "Boreas Fire Eye",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "25% Chance to attack enemy team when you evade",
+		location: "t15 Raids",
+		shareID: "z-",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	boreas_fire_scrolls: {
+		name: "Boreas Fire Scrolls",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "Enemy team takes 3% extra damage",
+		location: "t15 Raids",
+		shareID: "1f",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	evenor_light: {
+		name: "Evenor Light",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "evenor",
+		effect: "",
+		shareID: "*~",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	evenor_battlechest: {
+		name: "Evenor Battlechest",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "evenor",
+		effect: "",
+		shareID: "7y",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	evenor_pray: {
+		name: "Evenor Pray",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "evenor",
+		effect: "",
+		shareID: "or",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	evenor_protector: {
+		name: "Evenor Protector",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "evenor",
+		effect: "",
+		shareID: "r4",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	boreas_emissary: {
+		name: "Boreas Emissary",
+		type: "mythic",
+		slot: "Staff",
+		image: "",
+		partOfSet: "",
+		effect: "25% Chance to give 1SP to your teammates when you heal",
+		location: "t15 T/g",
+		shareID: "42",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	boreas_interceptor: {
+		name: "Boreas Interceptor",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "Weaken: Reduce enemy team's SP regeneration by 10%",
+		location: "t15 T/g",
+		shareID: "o7",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
 
 }
 

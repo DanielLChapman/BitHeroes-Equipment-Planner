@@ -670,6 +670,18 @@ export const sets = {
 			4: "Gain 2.5% evade for each 5% redirect"
 		}
 	},
+	evenor: {
+		name: "Evenor",
+		location: "t15 T/G",
+		tier: 15,
+		items: ["Evenor Light", "Evenor Pray", "Evenor Battlechest", "Evenor Protector", ],
+		description: "",
+		setBonuses: {
+			2: "+4% Empower when healing, gain +3% damage bonus up to 12%",
+			3: "Your healing skills have 50% cleanse the target",
+			4: "20% Team SP regeneration and 50% chance to bolster (spread heal) when you heal"
+		}
+	},
 }
 
 /*

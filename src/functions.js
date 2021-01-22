@@ -1438,6 +1438,15 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
         stats.evade += 15;
       }
       break;
+    case 'Boreas Fire Scrolls':
+      stats.damage += 3;
+      break;
+    case 'Evenor':
+      if (count === 4) {
+        stats.empower += 4;
+        stats.damage += 12;
+      }
+      break;
     //Add in legendary enchant and accessories, mounts too
     default: 
       //console.log(name, equipped, stats);
