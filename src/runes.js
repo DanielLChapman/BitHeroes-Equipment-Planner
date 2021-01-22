@@ -231,3 +231,27 @@ export const runeTypes = [{
 	value: 0,
 	key: "rune"
 }];
+
+export const metaRunes = [
+	{
+		id: 'a',
+		title: "Sol",
+		effect: "redirect_chance",
+		value: 30,
+		key: "rune"
+	},
+	{
+		id: 'b',
+		title: "Mythic Sol",
+		effect: "redirect_chance",
+		value: 35,
+		key: "rune"
+	},
+	{
+		id: 'x',
+		title: "None",
+		effect: "dual_strike",
+		value: 0,
+		key: "rune"
+	}
+];

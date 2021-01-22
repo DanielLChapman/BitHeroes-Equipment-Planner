@@ -729,37 +729,37 @@ export default () => {
     }
   
     //Add Runes
-    if (runes.length !== 0) {
-      if (runes.length > 4) {
-        runes.splice(4);
-      }
-      let runesForURL = "";
-      for (var i = 0; i < runes.length; i++) {
-  
-        if (runes[i].id !== 'x') {
-          let tempRune = runes[i];
-          stats[tempRune.effect] += tempRune.value;
-          if (doubled.rune || ancientEquipped3) {
-            stats[tempRune.effect] += tempRune.value;
-          }
-          runesForURL += tempRune.id;
-        }
-  
-      }
-  
-      if (runesForURL !== "") {
-        if (!hasAddedQ) {
-          urlEnd+="?";
-          hasAddedQ = true;
-        } else {
-          urlEnd+="&"
-        }
-        urlEnd += "runes=" + runesForURL;
-      }
-  
-  
-  
+  if (runes.length !== 0) {
+    if (runes.length > 5) {
+      runes.splice(5);
     }
+    let runesForURL = "";
+    for (var i = 0; i < runes.length; i++) {
+
+      if (runes[i].id !== 'x') {
+        let tempRune = runes[i];
+        stats[tempRune.effect] += tempRune.value;
+        if (doubled.rune || ancientEquipped3) {
+          stats[tempRune.effect] += tempRune.value;
+        }
+        
+      } 
+      runesForURL += runes[i].id ;
+    }
+
+    if (runesForURL !== "") {
+      if (!hasAddedQ) {
+        urlEnd+="?";
+        hasAddedQ = true;
+      } else {
+        urlEnd+="&"
+      }
+      urlEnd += "runes=" + runesForURL;
+    }
+
+
+
+  }
   
   
     //Add Enchants

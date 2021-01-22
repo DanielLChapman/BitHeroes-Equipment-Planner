@@ -658,6 +658,18 @@ export const sets = {
 			4: "25% Water Resistance while below 70% Health, 20% Block"
 		}
 	},
+	akiho: {
+		name: "Akiho",
+		location: "t15 Raids",
+		tier: 15,
+		items: ["Akiho Torch", "Akiho Flame", "Akiho Kimono", "Akiho Round",],
+		description: "",
+		setBonuses: {
+			2: "10% Max Shields, +5% Evade if you have the lowest health in your team",
+			3: "+15% Evade if you are shielded",
+			4: "Gain 2.5% evade for each 5% redirect"
+		}
+	},
 }
 
 /*

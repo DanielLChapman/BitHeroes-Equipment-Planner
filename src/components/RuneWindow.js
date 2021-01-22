@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
-import {runeTypes} from '../runes';
+import {runeTypes, metaRunes} from '../runes';
 
 export default class RuneWindow extends Component {
 
@@ -11,7 +11,8 @@ export default class RuneWindow extends Component {
             runeSlot1: 'None',
             runeSlot2: 'None',
             runeSlot3: 'None',
-            runeSlot4: 'None'
+            runeSlot4: 'None',
+            runeSlot5: 'None'
 		};
     }
     handleChange = (event) => {
@@ -30,6 +31,9 @@ export default class RuneWindow extends Component {
             case "4":
                 state.runeSlot4 = event.target.value;
                 break;
+            case "5":
+                state.runeSlot5 = event.target.value;
+                break;
             default:
             break;
         }
@@ -37,14 +41,18 @@ export default class RuneWindow extends Component {
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        if (typeof nextProps.runes !== undefined && nextProps.runes.length === 4) {
+
+        if (typeof nextProps.runes !== undefined && nextProps.runes.length === 5) {
             let runes = nextProps.runes;
             let state = this.state;
+
 
             state.runeSlot1 = runes[0].title;
             state.runeSlot2 = runes[1].title;
             state.runeSlot3 = runes[2].title;
             state.runeSlot4 = runes[3].title;
+
+            state.runeSlot5 = runes[4].title;
             
             this.setState({...state});
         }
@@ -113,7 +121,22 @@ export default class RuneWindow extends Component {
 					}
                 </select>
                 </label>
-				<button onClick={() => {this.props.equipRunes([this.state.runeSlot1, this.state.runeSlot2, this.state.runeSlot3, this.state.runeSlot4])}}>
+                <h3>Meta Rune: </h3>
+                <label htmlFor="runeSlot4" className="custom-select">
+                <select value={this.state.runeSlot5} selector="5" onChange={this.handleChange}>
+                    {
+                        Object.keys(metaRunes).map((x) => {
+                            return <option
+                                    value={metaRunes[x].title}
+                                    key={x}
+                                    >
+                                    {metaRunes[x].title}
+                                    </option>
+                        })
+					}
+                </select>
+                </label>
+				<button onClick={() => {this.props.equipRunes([this.state.runeSlot1, this.state.runeSlot2, this.state.runeSlot3, this.state.runeSlot4, this.state.runeSlot5])}}>
                     Equip Runes
                 </button>
 			</div>

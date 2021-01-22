@@ -5406,6 +5406,70 @@ export const equipment = {
 			flat: false
 		},
 	},
+	akiho_torch: {
+		name: "Akiho Torch",
+		type: "set",
+		slot: "Sword",
+		image: "",
+		partOfSet: "akiho",
+		effect: "",
+		shareID: "g4",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	akiho_flame: {
+		name: "Akiho Flame",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "akiho",
+		effect: "",
+		shareID: "q0",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	akiho_kimono: {
+		name: "Akiho Kimono",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "akiho",
+		effect: "",
+		shareID: "30",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	akiho_round: {
+		name: "Akiho Round",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "akiho",
+		effect: "",
+		shareID: "7c",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
 
 }
 

@@ -4,7 +4,7 @@ import { sets } from '../sets';
 import { equipment, sortEquipment } from '../equipment';
 import { mountTypes } from '../mounts';
 import {enchantTypes } from '../enchants';
-import {runeTypes } from '../runes';
+import {runeTypes, metaRunes } from '../runes';
 
 
 
@@ -18,6 +18,7 @@ import OptimizerWindow from './OptimizerWindow';
 import AboutWindow from './AboutWindow';
 
 import {calculateBonuses, convertName, searchObjectArray } from '../functions';
+
 
 const enchants = {
   enchantSlot1: {
@@ -97,7 +98,6 @@ class App extends Component {
   }
 
   componentDidMount () {
-    
     var sortedEquipment = this.state.sortedEquipment, mythics = {}, legendaries = {};
     [sortedEquipment, mythics, legendaries] = sortEquipment(equipment);
     let evolviumTable = {
@@ -243,21 +243,23 @@ class App extends Component {
 
     //runeValues
     if (runeValues) {
-      if (runeValues.length > 4) {
-        runeValues.splice(4);
-      } else if (runeValues.length < 4) {
-        runeValues = runeValues.concat(['x', 'x', 'x', 'x']);
-        runeValues.splice(4);
+      if (runeValues.length > 5) {
+        runeValues.splice(5);
+      } else if (runeValues.length <= 5) {
+        runeValues = runeValues.concat(['x', 'x', 'x', 'x', 'x']);
+        runeValues.splice(5);
       }
     } else {
-      runeValues = ['x', 'x', 'x', 'x'];
+      runeValues = ['x', 'x', 'x', 'x', 'x'];
     }
 
     runeValues = runeValues.join('').toLowerCase().split('');
+    let meta = runeValues.splice(4);
 
     for (let i = 0; i < runeValues.length; i++) {
       let foundVal = false;
       let y = 0;
+
       while(!foundVal) {
         if (runeTypes[y].id === runeValues[i]) {
           foundVal = true;
@@ -270,6 +272,14 @@ class App extends Component {
         }
       }
     }
+
+    //meta
+    Object.keys(metaRunes).forEach((x) => {
+
+      if (meta[0] === metaRunes[x].id) {
+        runeValues.push(metaRunes[x]);
+      }
+    })
 
     //enchants
     let enchantmentsToState = Object.assign({}, enchants);
@@ -340,7 +350,8 @@ class App extends Component {
     });
   }
 
-  equipItem = (name) => {
+  equipItem = async (name) => {
+    
     let state = this.state;
     let item = equipment[name];
 
@@ -403,6 +414,7 @@ class App extends Component {
   equipRunes = (runeArray) => {
     let state = this.state;
     let runes = runeArray;
+    let meta = runes.splice(4);
 
     //convert titles to objects
     for (let i = 0; i < runes.length; i++) {
@@ -420,6 +432,13 @@ class App extends Component {
         }
       }
     }
+
+    //meta rune
+    Object.keys(metaRunes).forEach((x) => {
+      if (meta[0] === metaRunes[x].title) {
+        runes.push(metaRunes[x]);
+      }
+    })
 
     state.runes = runes;
     let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, state.enchants, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);

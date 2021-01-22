@@ -185,6 +185,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
   let sparking_soulcatcher = false;
   let evolviumIsEquipped = false;
   let evolviumName = "";
+  let akiho = false;
 
   Object.keys(equipmentOn).forEach((x, i) => {
     if (equipmentOn[x].type === "ancient") {
@@ -324,6 +325,12 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
               }
               
           }
+
+          if (setWorkingOn.name === 'Akiho') {
+            if (y === '4' ) {
+              akiho = true;
+            }
+          }
           
           
         }
@@ -395,8 +402,8 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
 
   //Add Runes
   if (runes.length !== 0) {
-    if (runes.length > 4) {
-      runes.splice(4);
+    if (runes.length > 5) {
+      runes.splice(5);
     }
     let runesForURL = "";
     for (var i = 0; i < runes.length; i++) {
@@ -404,12 +411,12 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       if (runes[i].id !== 'x') {
         let tempRune = runes[i];
         stats[tempRune.effect] += tempRune.value;
-        if (doubled.rune || ancientEquipped3) {
+        if ((doubled.rune || ancientEquipped3 ) && i <= 3) {
           stats[tempRune.effect] += tempRune.value;
         }
-        runesForURL += tempRune.id;
-      }
-
+        
+      } 
+      runesForURL += runes[i].id ;
     }
 
     if (runesForURL !== "") {
@@ -501,6 +508,11 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       maxDamageAdd = 15;
     }
     stats.damage += maxDamageAdd; 
+  }
+
+  if (akiho) {
+    let evadeNum = Math.floor(stats.redirect_chance / 5);
+    stats.evade += evadeNum * 2.5;
   }
   stats.power = baseStats[0];
   stats.stamina = baseStats[1];
@@ -1417,6 +1429,14 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
       break;
     case 'Quetzal Scaled Vest':
       stats.damage_reduction += 10;
+      break;
+    case 'Akiho':
+      if (count === 2) {
+        stats.evade += 5;
+      }
+      if (count === 3) {
+        stats.evade += 15;
+      }
       break;
     //Add in legendary enchant and accessories, mounts too
     default: 
