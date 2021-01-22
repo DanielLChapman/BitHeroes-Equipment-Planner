@@ -694,6 +694,19 @@ export const sets = {
 			4: "15% Air Damage. Braveheart: 50% Chance to ignore the enemy defenses"
 		}
 	},
+	perkunas: {
+		name: "Perkunas",
+		location: "t15 Titan World Boss",
+		tier: 15,
+		items: ["Perkunas Spear","Perkunas Shield","Perkunas Helmet","Perkunas Connection", ],
+		description: "",
+		setBonuses: {
+			2: "+5 Redirect",
+			3: "+20% Block if you have the highest health on your team",
+			4: "+30% Barrier. Heal and Cleanse self when you proc barrier"
+		}
+	},
+	
 }
 
 /*

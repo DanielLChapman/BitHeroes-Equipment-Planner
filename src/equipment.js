@@ -5697,7 +5697,7 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Gain +10% Air Damage on Shielded Target",
-		location: "t15 T/g",
+		location: "t15 Abyss",
 		shareID: "xf",
 		tier: 15,
 		elemental: {
@@ -5720,7 +5720,7 @@ export const equipment = {
 		image: "",
 		partOfSet: "",
 		effect: "Expender 5: Gain 20% Air Damage (spend 5 SP to activate)",
-		location: "t15 T/g",
+		location: "t15 Abyss",
 		shareID: "d*",
 		tier: 15,
 		elemental: {
@@ -5735,6 +5735,127 @@ export const equipment = {
 			element_modifier: "damage",
 			flat: false
 		},
+	},
+	perkunas_spear: {
+		name: "Perkunas Spear",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "perkunas",
+		effect: "",
+		shareID: "r6",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	perkunas_shield: {
+		name: "Perkunas Shield",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "perkunas",
+		effect: "",
+		shareID: "sq",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	perkunas_helmet: {
+		name: "Perkunas Helmet",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "perkunas",
+		effect: "",
+		shareID: "o2",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	perkunas_connection: {
+		name: "Perkunas Connection",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "perkunas",
+		effect: "",
+		shareID: "~c",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	boreas_meteor: {
+		name: "Boreas Meteor",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "10% Barrier if you have hte highest health on your team",
+		location: "t15 Titan",
+		shareID: "nu",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	boreas_suit: {
+		name: "Boreas Suit",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "Silence: 5% Chance to silence enemy form using SP skill",
+		location: "t15 Titan",
+		shareID: "un",
+		tier: 15,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	powerful_totem: {
+		name: "Powerful Totem",
+		type: "legendary",
+		slot: "Accessory",
+		image: "",
+		partOfSet: "",
+		effect: "30% Block Chance, 15% Damage Reduction",
+		location: "Shop",
+		shareID: "y1",
+		tier: 0,
 	},
 
 }

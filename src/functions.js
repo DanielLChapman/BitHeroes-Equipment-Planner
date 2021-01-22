@@ -1467,6 +1467,19 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
         stats.air_damage += 15;
       }
       break;
+    case 'Perkunas':
+      if (count === 2) {
+        stats.redirect_chance += 5;
+      }
+      if (count === 3) {
+        stats.block += 20;
+      }
+      break;
+    case 'Powerful Totem':
+      stats.block += 30+(2*accessoryUpgrade);
+      stats.damage_reduction += 15;
+      break;
+
     //Add in legendary enchant and accessories, mounts too
     default: 
       //console.log(name, equipped, stats);
