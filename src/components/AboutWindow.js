@@ -7,6 +7,7 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>UPDATES:</span>
             <ul className="about-page-ul">
+                <li>1/26/2021  - Added TinyURL for shorter sharing links. Currently hidden as some groups may not want shorten urls. Can enable if users want.</li>
                 <li>1/22/2021  - Added all new t15 equipment. Added powerful totem.</li>
                 <li>1/22/2021  - Added 2 Meta runes for Akiho Set. Added Akiho set.</li>
                 <li>1/14/2021  - Added Evolvium</li>

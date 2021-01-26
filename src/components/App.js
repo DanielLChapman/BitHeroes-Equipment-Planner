@@ -19,6 +19,8 @@ import AboutWindow from './AboutWindow';
 
 import {calculateBonuses, convertName, searchObjectArray } from '../functions';
 
+//import TinyURL from 'tinyurl';
+
 
 const enchants = {
   enchantSlot1: {
@@ -88,6 +90,7 @@ class App extends Component {
       setsOpen: false,
       slotsOpen: false,
       t12: true,
+      //tinyURL: "",
       evolviumTable: {
         aorb: '',
         cord: '',
@@ -96,6 +99,23 @@ class App extends Component {
       }
     }
   }
+
+  /*
+ async componentDidUpdate(prevProps) {
+    let newURL = 'https://bit-heroes-equipment.herokuapp.com/' + this.state.urlEnd
+    let returnURL = "";
+
+    await TinyURL.shorten(newURL, (res, err) => {
+      returnURL = res;
+      if (this.state.tinyURL !== returnURL) {
+        this.setState({
+          tinyURL: returnURL
+        })
+      }
+    });
+
+  }*/ 
+
 
   componentDidMount () {
     var sortedEquipment = this.state.sortedEquipment, mythics = {}, legendaries = {};
@@ -669,8 +689,7 @@ class App extends Component {
     }
 
     this.setState({...state});
-}
-
+ }
   render() {
     let runeWindowStyling, enchantWindowStyling, statWindowStyling, optimizerWindowStyling, aboutWindowStyling;
     const showStyling = {
@@ -684,15 +703,19 @@ class App extends Component {
     statWindowStyling = ((this.state.showStats) ? showStyling : hideStyling);
     optimizerWindowStyling = ((this.state.showOptimizer) ? showStyling : hideStyling);
     aboutWindowStyling = ((this.state.showAbout) ? showStyling : hideStyling);
-
     return (
       <div className="App">
         <header className="App-header header">
           <h1 className="title">Bit Heroes Equipment Planner</h1>
           <p className="sharable-link">
+
             Share: <input
                     readOnly
                     value={`https://bit-heroes-equipment.herokuapp.com/${this.state.urlEnd}`}></input>
+            {//Tiny <input
+               //     readOnly
+                 //   value={this.state.tinyURL}></input>
+                }
           </p>
           
         </header>
