@@ -339,43 +339,6 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
   });
   let hasAddedQ = false;
 
-  if (evolviumIsEquipped) {
-
-    if (JSON.stringify(evolviumTable) === JSON.stringify({})) {
-      console.log('empty table, try doing something else');
-    }
-    else {
-      if (evolviumName === 'Evolvium Offense') {
-        if (evolviumTable.aorb !== '') {
-          evolviumTable.aorb === 'a' ? stats.damage += 5: stats.speed += 5;
-        }
-        if (evolviumTable.eorf !== '') {
-          evolviumTable.eorf === 'e' ? stats.dual_strike += 5: stats.empower_chance += 5;
-        }
-        if (evolviumTable.gorh !== '') {
-          evolviumTable.gorh === 'g' ? stats.damage += 3 : stats.empower_chance += 0;
-        }
-      }
-      else if (evolviumName === 'Evolvium Defense') {
-        if (evolviumTable.aorb !== '') {
-          evolviumTable.aorb === 'a' ? stats.damage_reduction += 5: stats.block += 10;
-        }
-        if (evolviumTable.cord !== '') {
-          evolviumTable.cord === 'c' ? stats.evade += 5: stats.absorb_chance += 2.5;
-        }
-      }
-
-
-      if (!hasAddedQ) {
-        urlEnd+="?";
-        hasAddedQ = true;
-      } else {
-        urlEnd+="&"
-      }
-      urlEnd += "evolvium=" + evolviumTable.aorb + evolviumTable.cord + evolviumTable.eorf + evolviumTable.gorh;
-    }
-    
-  }
   
   //Add Mount
   if (Object.keys(equipmentOn.mount).length > 0) {
@@ -528,6 +491,45 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     urlEnd += "p=" + baseStats[0] + "&s=" + baseStats[1] + "&a=" + baseStats[2];
   }
 
+
+  if (evolviumIsEquipped) {
+
+    if (JSON.stringify(evolviumTable) === JSON.stringify({})) {
+      console.log('empty table, try doing something else');
+    }
+    else {
+      if (evolviumName === 'Evolvium Offense') {
+        if (evolviumTable.aorb !== '') {
+          evolviumTable.aorb === 'a' ? stats.damage += 5: stats.speed += 5;
+        }
+        if (evolviumTable.eorf !== '') {
+          evolviumTable.eorf === 'e' ? stats.dual_strike += 5: stats.empower_chance += 5;
+        }
+        if (evolviumTable.gorh !== '') {
+          evolviumTable.gorh === 'g' ? stats.damage += 3 : stats.empower_chance += 0;
+        }
+      }
+      else if (evolviumName === 'Evolvium Defense') {
+        if (evolviumTable.aorb !== '') {
+          evolviumTable.aorb === 'a' ? stats.damage_reduction += 5: stats.block += 10;
+        }
+        if (evolviumTable.cord !== '') {
+          evolviumTable.cord === 'c' ? stats.evade += 5: stats.absorb_chance += 2.5;
+        }
+      }
+
+
+      if (!hasAddedQ) {
+        urlEnd+="?";
+        hasAddedQ = true;
+      } else {
+        urlEnd+="&"
+      }
+      urlEnd += "evolvium=" + evolviumTable.aorb + evolviumTable.cord + evolviumTable.eorf + evolviumTable.gorh;
+    }
+    
+  }
+  
   
 
   stats.links = linkCalculation(stats);
