@@ -651,6 +651,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
         stats.healing += 15;
       }
       break;
+    case 'Lava Defender':
+      stats.redirect_chance += 5;
+      break;
     case 'Polaris':
       if (count === 2) {
         stats.damage_enrage += 5;
@@ -1425,7 +1428,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
           stats.damage -= 10;
         } 
         if (count === 4) {
-          stats.water_resistance += 25;
+          //stats.water_resistance += 25;
           stats.block += 20;
         }
       break;

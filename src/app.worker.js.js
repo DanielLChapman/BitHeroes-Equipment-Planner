@@ -1028,6 +1028,9 @@ export default () => {
           stats.quad_strike += 0.5;
         }
         break;
+      case 'Lava Defender':
+        stats.redirect_chance += 5;
+        break;
       case 'Featherfall':
         if (count === 2) {
           stats.damage += 4;
@@ -1736,7 +1739,7 @@ export default () => {
             stats.damage -= 10;
           } 
           if (count === 4) {
-            stats.water_resistance += 25;
+            //stats.water_resistance += 25;
             stats.block += 20;
           }
         break;
