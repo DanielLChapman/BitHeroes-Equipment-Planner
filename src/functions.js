@@ -174,6 +174,8 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
   let setsToSort = {};
   let urlEnd = "";
   let stats = Object.assign({}, base.default_stats);
+  let min_stats = Object.assign({}, base.default_stats);
+  let max_stats = Object.assign({}, base.default_stats);
   let ancientEquipped = false;
   let ancientEquipped2 = false;
   let ancientEquipped3 = false;
@@ -191,7 +193,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     if (equipmentOn[x].type === "ancient") {
       bonuses.ancients.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
-      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
+      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
       if (equipmentOn[x].name === "Starweave") {
         ancientEquipped = true;
       }
@@ -241,7 +243,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     if (equipmentOn[x].type === "mythic" ) {
       bonuses.mythics.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
-      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
+      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
       if (equipmentOn[x].name === "Sparking Soulcatcher") {
         sparking_soulcatcher = true;
       }
@@ -249,7 +251,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       setsToSort[equipmentOn[x].partOfSet] = setsToSort[equipmentOn[x].partOfSet] + 1 || 1;
       if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
         bonuses.pets.push(equipmentOn[x]);
-        stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
+        stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
       }
       /*elemental: {
         element_value: 3,
@@ -262,7 +264,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     } else if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
       bonuses.pets.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
-      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
+      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
     }/*
     if (i === 8 ) {
       stats.fire_damage += "%"// + " + stats.elemental_flat.fire + " Flat";
@@ -291,7 +293,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       }
     });
     if (numMythics === 1) {
-      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel);
+      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
     }
   }
 
@@ -312,7 +314,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
         if (setsToSort[x] >= parseInt(y, 10)) {
           bonuses.sets[x].push(setWorkingOn.setBonuses[y]);
           if (setWorkingOn.name !== 'Apocalypse') {
-            stats = setStatBonuses(setWorkingOn.name, equipmentOn, stats, y, accessoryLevel);
+            stats = setStatBonuses(setWorkingOn.name, equipmentOn, stats, y, accessoryLevel, min_stats, max_stats);
           } else if (setWorkingOn.name === 'Apocalypse') {
               if (y === '3') {
                 doubled.enchant = true;
@@ -344,10 +346,20 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
   if (Object.keys(equipmentOn.mount).length > 0) {
     urlEnd+="?";
     hasAddedQ = true;
-    stats[equipmentOn.mount.effect] += equipmentOn.mount.value;
-    if (doubled.mount) {
-      stats[equipmentOn.mount.effect] += equipmentOn.mount.value;
+
+    let multiplier;
+    doubled.mount ? multiplier = 2 : multiplier = 1;
+
+    if (equipmentOn.mount.hasOwnProperty('min') && equipmentOn.mount.hasOwnProperty('max')) {
+      stats[equipmentOn.mount.effect] += equipmentOn.mount.value * multiplier;
+      min_stats[equipmentOn.mount.effect] += equipmentOn.mount.min * multiplier;
+      max_stats[equipmentOn.mount.effect] += equipmentOn.mount.max * multiplier;
+    } else {
+      stats[equipmentOn.mount.effect] += equipmentOn.mount.value * multiplier;
+      min_stats[equipmentOn.mount.effect] += equipmentOn.mount.value * multiplier;
+      max_stats[equipmentOn.mount.effect] += equipmentOn.mount.value * multiplier;
     }
+    
     urlEnd+= "mount=" + equipmentOn.mount.id;
     bonuses.mounts = equipmentOn.mount;
 
@@ -365,18 +377,45 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
 
   //Add Runes
   if (runes.length !== 0) {
-    if (runes.length > 5) {
-      runes.splice(5);
+    if (runes.length > 6) {
+      runes.splice(6);
+    }
+    if (runes.length < 4) {
+      runes.push(['x', 'x', 'x', 'x','x', 'x']);
+      runes.splice(6);
     }
     let runesForURL = "";
     for (var i = 0; i < runes.length; i++) {
 
       if (runes[i].id !== 'x') {
+        console.log(runes[i]);
         let tempRune = runes[i];
         stats[tempRune.effect] += tempRune.value;
         if ((doubled.rune || ancientEquipped3 ) && i <= 3) {
           stats[tempRune.effect] += tempRune.value;
+        } 
+
+        //min max
+        
+
+        if (tempRune.hasOwnProperty('min') && tempRune.hasOwnProperty('max')) {
+          
+          min_stats[tempRune.effect] += tempRune.min;
+          max_stats[tempRune.effect] += tempRune.max;
+          if ((doubled.rune || ancientEquipped3 ) && i <= 3) {
+            min_stats[tempRune.effect] += tempRune.min;
+            max_stats[tempRune.effect] += tempRune.max;
+          }
+        } else {
+          min_stats[tempRune.effect] += tempRune.value;
+          max_stats[tempRune.effect] += tempRune.value;
+          if ((doubled.rune || ancientEquipped3 ) && i <= 3) {
+            min_stats[tempRune.effect] += tempRune.value;
+            max_stats[tempRune.effect] += tempRune.value;
+          }
         }
+        
+        
         
       } 
       runesForURL += runes[i].id ;
@@ -537,7 +576,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
   bonuses.equipmentOn = equipmentOn;
   base.current_stats = stats;
 
-  return {bonuses, urlEnd, stats};
+  return {bonuses, urlEnd, stats, min_stats, max_stats};
 }
 
 export const convertName = (name) => {
@@ -547,8 +586,12 @@ export const convertName = (name) => {
   return name;
 }
 
-export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
+export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_stats, max_stats) => {
   let numLegendary = 0, numSets = 0, numMythics = 0, accessoryUpgrade = aU ;
+  let usedMinMax = false;
+  let statsToChange = {};
+
+
   Object.keys(equipped).forEach((x) => {
     switch(equipped[x].type) {
       case 'set':
@@ -569,920 +612,917 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
   switch(name) {
     case 'Divinity':
       if (equipped.mainhand.slot === 'Sword' && count === 2) {
-        stats.damage += 5;
+        statsToChange.damage = 5;
       }
       if (count === 3) {
-        stats.damage += 30;
+        statsToChange.damage = 30;
       }
       break;
     case 'Night Walker':
       if (count === 2) {
-        stats.absorb_chance += 2;
+        statsToChange.absorb_chance = 2;
       }
       if (count === 4) {
-        stats.damage_reduction += 15;
+        statsToChange.damage_reduction = 15;
       }
       break;
     case "Trugdor's Call":
       if (count === 2) {
-        stats.dual_strike += 4;
+        statsToChange.dual_strike = 4;
       }
       if (count === 3) {
-        stats.richochet_chance += 7;
+        statsToChange.richochet_chance = 7;
       }
       break;
     case "Arsenal":
       if (count === 2) {
-        stats.richochet_chance += 2;
+        statsToChange.richochet_chance = 2;
       }
       if (count === 3) {
-        stats.damage += 10;
+        statsToChange.damage = 10;
       }
       if (count === 4) {
-        stats.damage += 30;
+        statsToChange.damage = 30;
       }
       break;
     case "Taldrilth's Artifacts":
       if (count === 2) {
-        stats.deflect_chance += 3;
+        statsToChange.deflect_chance = 3;
       }
       if (count === 3) {
-        stats.absorb_chance += 6;
+        statsToChange.absorb_chance = 6;
       }
       break;
     case 'Bushido':
-      stats.damage += 10;
-      stats.damage_reduction -= 10;
+      statsToChange.damage = 10;
+      statsToChange.damage_reduction -= 10;
       break;
     case 'Conduction':
       if (count === 2) {
         if (equipped.mainhand.slot === "Bow" || equipped.mainhand.slot === "Spear" ||equipped.mainhand.slot === "Laser Gun" || equipped.mainhand.slot === "Crossbow" || equipped.mainhand.slot === "Staff") {
-          stats.damage += 5;
+          statsToChange.damage = 5;
         }
       }
       if (count === 3) {
-        stats.empower_chance += 5;
+        statsToChange.empower_chance = 5;
       }
       if (count === 4) {
-        stats.empower_chance += 25;
+        statsToChange.empower_chance = 25;
       }
       break;
     case 'Grasberg':
       if (count ===2 ) {
-        stats.team_enrage += 3;
+        statsToChange.team_enrage = 3;
       }
       if (count ===3 ) {
-        stats.deflect_chance += 7.5;
+        statsToChange.deflect_chance = 7.5;
       }
       break;
     case 'Vanpels':
       if (count === 2 && equipped.mainhand.slot === 'Spear') {
-        stats.empower_chance += 5;
+        statsToChange.empower_chance = 5;
       }
       if (count === 3 ) {
-        stats.damage += 8;
+        statsToChange.damage = 8;
       }
       break;
     case 'Luminary':
       if (count === 2) {
-        stats.damage_enrage += 5;
+        statsToChange.damage_enrage = 5;
       }
       if (count === 3) {
-        stats.healing += 15;
+        statsToChange.healing = 15;
       }
-      break;
-    case 'Lava Defender':
-      stats.redirect_chance += 5;
       break;
     case 'Polaris':
       if (count === 2) {
-        stats.damage_enrage += 5;
+        statsToChange.damage_enrage = 5;
       }
       if (count === 4) {
-        stats.damage_reduction += 20;
+        statsToChange.damage_reduction = 20;
       }
       break;
     case 'Lunar Guardian':
       if (count === 2) {
-        stats.healing += 15;
+        statsToChange.healing = 15;
       }
       break;
     case 'Obliteration':
       if (count === 4) {
-        stats.damage_reduction += 15;
+        statsToChange.damage_reduction = 15;
       }
       break;
     case 'Agony':
       if (count === 2) {
-        stats.damage += 3;
+        statsToChange.damage = 3;
       }
       if (count === 4) {
-        stats.richochet_chance += 10;
+        statsToChange.richochet_chance = 10;
       }
       break;
     case 'Eruption':
       if (count === 3) {
-        stats.evade += 12;
+        statsToChange.evade = 12;
       }
       break;
     case 'Illustrious Artifacts':
       if (count === 2) {
-        stats.damage += 4;
-        stats.healing += 4;
+        statsToChange.damage = 4;
+        statsToChange.healing = 4;
       }
       break;
     case 'Taters':
       if (count === 2) {
-        stats.speed += 4;
+        statsToChange.speed = 4;
       }
       break;
     case 'Inferno':
       if (count === 2) {
-        stats.empower_chance += 4;
+        statsToChange.empower_chance = 4;
       }
       if (count === 4) {
-        stats.sp_damage += 20;
+        statsToChange.sp_damage = 20;
       }
       break;
     case 'Requiem':
       if (count === 2) {
-        stats.damage += 25;
+        statsToChange.damage = 25;
       }
       if (count === 3) {
-        stats.damage += 24;
+        statsToChange.damage = 24;
       }
       break;
     case 'Gatekeeper':
       if (count === 2) {
-        stats.quad_strike += 0.5;
+        statsToChange.quad_strike = 0.5;
       }
       break;
     case 'Featherfall':
       if (count === 2) {
-        stats.damage += 4;
+        statsToChange.damage = 4;
       }
       if (count === 3) {
-        stats.speed += 4;
+        statsToChange.speed = 4;
       }
       if (count === 4) {
-        stats.dual_strike += 4;
+        statsToChange.dual_strike = 4;
       }
       if (count === 5) {
-        stats.empower_chance += 4;
+        statsToChange.empower_chance = 4;
       }
       if (count === 6) {
-        stats.quad_strike += 2;
+        statsToChange.quad_strike = 2;
       }
       break;
     case 'Hellfire':
       if (count === 2) {
-        stats.damage_reduction += 4;
+        statsToChange.damage_reduction = 4;
       }
       if (count === 3) {
-        stats.block += 8;
+        statsToChange.block = 8;
       }
       if (count === 4) {
-        stats.evade += 4;
+        statsToChange.evade = 4;
       }
       if (count === 5) {
-        stats.deflect_chance += 3;
+        statsToChange.deflect_chance = 3;
       }
       if (count === 6) {
-        stats.absorb_chance += 4;
+        statsToChange.absorb_chance = 4;
       }
       break;
     case 'Pew Pew':
-      stats.richochet_chance += 3;
+      statsToChange.richochet_chance = 3;
       break;
     case 'Hysteria':
-      stats.damage += 10;
+      statsToChange.damage = 10;
       break;
     case 'Bub':
-      stats.absorb_chance += 2;
+      statsToChange.absorb_chance = 2;
       break;
     case 'Superstition':
-      stats.team_enrage += 3;
+      statsToChange.team_enrage = 3;
       break;
     case 'Night Visage':
-      stats.damage += 5;
+      statsToChange.damage = 5;
       break;
     case 'Cometfell':
-      stats.quad_strike += 1;
+      statsToChange.quad_strike = 1;
       break;
     case 'Nebuleye':
-      stats.damage += parseInt(numLegendary, 10);
+      statsToChange.damage = parseInt(numLegendary, 10);
       break;
     case 'Hood Of Menace': 
-      stats.evade += 5;
+      statsToChange.evade = 5;
       break;
     case 'Crypt Tunic':
-      stats.deflect_chance += 2;
+      statsToChange.deflect_chance = 2;
       break;
     case "Fish N' Barrel":
-      stats.damage_reduction += 5;
-      stats.damage -= 5;
+      statsToChange.damage_reduction = 5;
+      statsToChange.damage -= 5;
       break;
     case 'Magmasher':
-      stats.healing += 10;
+      statsToChange.healing = 10;
       break;
     case 'Nemesis':
-      stats.dual_strike += 4;
+      statsToChange.dual_strike = 4;
       break;
     case 'Bedlam':
-      stats.healing += 8;
+      statsToChange.healing = 8;
       break;
     case 'Veilage':
-      stats.empower_chance += 4;
+      statsToChange.empower_chance = 4;
       break;
     case 'Flickerate':
-      stats.absorb_chance += 2;
+      statsToChange.absorb_chance = 2;
       break;
     case 'Dewey Decal':
-      stats.damage += 5;
+      statsToChange.damage = 5;
       break;
     case 'Shifting Breeze':
-      stats.speed += 4;
+      statsToChange.speed = 4;
       break;
     case 'Brightstar':
-      stats.deflect_chance+= 3;
+      statsToChange.deflect_chance= 3;
       break;
     case 'Lava Defender':
-      stats.redirect_chance += 5;
+      statsToChange.redirect_chance = 5;
       break;
     case 'Moon Collage':
-      stats.damage += 5.5;
+      statsToChange.damage = 5.5;
       break;
     case 'Mewmeck':
-      stats.damage += 1;
-      stats.dual_strike += 1;
-      stats.empower_chance+= 1;
+      statsToChange.damage = 1;
+      statsToChange.dual_strike = 1;
+      statsToChange.empower_chance= 1;
       break;
     case 'Peppermint Ring':
-      stats.team_enrage += 2;
-      stats.damage += 1;
+      statsToChange.team_enrage = 2;
+      statsToChange.damage = 1;
       break;
     case 'Peeper':
-      stats.damage += 8;
+      statsToChange.damage = 8;
       break;
     case 'Ataraxia':
-      stats.damage += parseInt(numSets, 10);
+      statsToChange.damage = parseInt(numSets, 10);
       break;
     case 'Oblivion':
-      stats.absorb_chance += 1;
-      stats.deflect_chance += 1;
-      stats.evade += 1;
+      statsToChange.absorb_chance = 1;
+      statsToChange.deflect_chance = 1;
+      statsToChange.evade = 1;
       break;
     case 'Twitch':
-      stats.damage_reduction += 4.5;
+      statsToChange.damage_reduction = 4.5;
       break;
     case 'Radiance':
-      stats.damage += .75 * parseInt(numMythics, 10);
-      stats.damage_reduction += .75 * parseInt(numMythics, 10);
+      statsToChange.damage = .75 * parseInt(numMythics, 10);
+      statsToChange.damage_reduction = .75 * parseInt(numMythics, 10);
       break;
     case 'Vile Focus':
-      stats.absorb_chance += 3;
+      statsToChange.absorb_chance = 3;
       break;
     case 'Abhorence':
-      stats.richochet_chance += 1.5;
-      stats.empower_chance += 1;
-      stats.dual_strike += 1;
+      statsToChange.richochet_chance = 1.5;
+      statsToChange.empower_chance = 1;
+      statsToChange.dual_strike = 1;
       break;
     case 'Cloak of Dark Tides':
-      stats.damage_reduction -= 5;
-      stats.damage += 5;
+      statsToChange.damage_reduction -= 5;
+      statsToChange.damage = 5;
       break;
     case 'Widowmaker':
-      stats.critical_chance += 16+(1*accessoryUpgrade);
-      stats.critical_damage += 50;
-      stats.empower_chance += 8;
+      statsToChange.critical_chance = 16+(1*accessoryUpgrade);
+      statsToChange.critical_damage = 50;
+      statsToChange.empower_chance = 8;
       break;
     case 'Seaphims Grace':
-      stats.block += 20+(1*accessoryUpgrade);
-      stats.evade += 10+(.5*accessoryUpgrade);
-      stats.evade += 4;
+      statsToChange.block = 20+(1*accessoryUpgrade);
+      statsToChange.evade = 10+(.5*accessoryUpgrade);
+      statsToChange.evade = 4;
       break;
     case 'Melvin Champ':
-      stats.dual_strike += 20+(.5*accessoryUpgrade);
-      stats.critical_chance += 16+(1*accessoryUpgrade);
+      statsToChange.dual_strike = 20+(.5*accessoryUpgrade);
+      statsToChange.critical_chance = 16+(1*accessoryUpgrade);
       break;
     case 'Abominable Trophy':
-      stats.damage_reduction += 20+(1*accessoryUpgrade);
-      stats.absorb_chance += 5;
+      statsToChange.damage_reduction = 20+(1*accessoryUpgrade);
+      statsToChange.absorb_chance = 5;
       break;
     case 'Wrath':
-      stats.deflect_chance += 10+(.75*accessoryUpgrade);
-      stats.absorb_chance += 7.5;
+      statsToChange.deflect_chance = 10+(.75*accessoryUpgrade);
+      statsToChange.absorb_chance = 7.5;
       break
     case 'Baronets':
-      stats.empower_chance += 20+(1*accessoryUpgrade);
-      stats.dual_strike += 9;
+      statsToChange.empower_chance = 20+(1*accessoryUpgrade);
+      statsToChange.dual_strike = 9;
       break;
     case 'Astaroths Diadem':
-      stats.empower_chance += 3.5+(.5*accessoryUpgrade);
-      stats.dual_strike += 3.5+(.5*accessoryUpgrade);
-      stats.damage += 6;
-      stats.speed += 6;
-      stats.critical_chance += 5;
-      stats.critical_damage += 50;
+      statsToChange.empower_chance = 3.5+(.5*accessoryUpgrade);
+      statsToChange.dual_strike = 3.5+(.5*accessoryUpgrade);
+      statsToChange.damage = 6;
+      statsToChange.speed = 6;
+      statsToChange.critical_chance = 5;
+      statsToChange.critical_damage = 50;
       break;
     case 'Melvin Stew':
-      stats.absorb_chance += 15+(.5*accessoryUpgrade);
+      statsToChange.absorb_chance = 15+(.5*accessoryUpgrade);
       break;
     case 'The Atomising Neutrino Accelerator':
-      stats.block += 60+(2*accessoryUpgrade);
+      statsToChange.block = 60+(2*accessoryUpgrade);
       break;
     case 'Travelling Forge':
-      stats.dual_strike += 12+(.5*accessoryUpgrade);
-      stats.empower_chance += 12+(.5*accessoryUpgrade)
-      stats.critical_chance += 10;
+      statsToChange.dual_strike = 12+(.5*accessoryUpgrade);
+      statsToChange.empower_chance = 12+(.5*accessoryUpgrade)
+      statsToChange.critical_chance = 10;
       break;
     case 'Transcendence':
-      stats.critical_chance += 40+(1*accessoryUpgrade);
-      stats.dual_strike += 4.5+(.25*accessoryUpgrade);
-      stats.empower_chance += 4.5+(.25*accessoryUpgrade)
+      statsToChange.critical_chance = 40+(1*accessoryUpgrade);
+      statsToChange.dual_strike = 4.5+(.25*accessoryUpgrade);
+      statsToChange.empower_chance = 4.5+(.25*accessoryUpgrade)
       break;
     case 'Sakura':
-      stats.damage_reduction += 25;
-      stats.block += 10+(2*accessoryUpgrade)
+      statsToChange.damage_reduction = 25;
+      statsToChange.block = 10+(2*accessoryUpgrade)
       break;
     case 'Zaserite Wings':
-      stats.critical_chance+=10+(.4*accessoryUpgrade);
-      stats.empower_chance+=6+(.2*accessoryUpgrade);
-      stats.dual_strike+=6+(.2*accessoryUpgrade);
-      stats.damage+=6+(.2*accessoryUpgrade);
-      stats.speed+=6+(.2*accessoryUpgrade);
-      stats.life_steal += 6;
+      statsToChange.critical_chance=10+(.4*accessoryUpgrade);
+      statsToChange.empower_chance=6+(.2*accessoryUpgrade);
+      statsToChange.dual_strike=6+(.2*accessoryUpgrade);
+      statsToChange.damage=6+(.2*accessoryUpgrade);
+      statsToChange.speed=6+(.2*accessoryUpgrade);
+      statsToChange.life_steal = 6;
       break;
     case 'Drozgul':
-      stats.damage_reduction+=8+(1*accessoryUpgrade);
-      stats.evade += 5;
-      stats.absorb_chance += 5;
-      stats.deflect_chance += 5;
+      statsToChange.damage_reduction=8+(1*accessoryUpgrade);
+      statsToChange.evade = 5;
+      statsToChange.absorb_chance = 5;
+      statsToChange.deflect_chance = 5;
       break;
     case 'Seraphims Grace':
-      stats.block += 20+(1*accessoryUpgrade);
-      stats.evade += 10+(.5*accessoryUpgrade);
-      stats.deflect_chance += 5;
+      statsToChange.block = 20+(1*accessoryUpgrade);
+      statsToChange.evade = 10+(.5*accessoryUpgrade);
+      statsToChange.deflect_chance = 5;
       break;
     case 'Acropodium':
-      stats.damage+=30.5+(1*accessoryUpgrade);
+      statsToChange.damage=30.5+(1*accessoryUpgrade);
       break;
     case 'Melvin Cloak':
-      stats.damage += 2;
+      statsToChange.damage = 2;
       break;
     case 'Degenera':
-      stats.absorb_chance += 1;
-      stats.deflect_chance += 1;
-      stats.damage_reduction += 1;
+      statsToChange.absorb_chance = 1;
+      statsToChange.deflect_chance = 1;
+      statsToChange.damage_reduction = 1;
       break;
     case 'Bassault':
-      stats.damage_reduction += 5;
+      statsToChange.damage_reduction = 5;
       break;
     case 'Frostybite':
-      stats.sp_damage += 5;
+      statsToChange.sp_damage = 5;
       break;
     case 'Meteor Chain':
-      stats.dual_strike += 1;
-      stats.empower_chance += 1;
+      statsToChange.dual_strike = 1;
+      statsToChange.empower_chance = 1;
       break;
     case 'Vortex Zapper':
-      stats.richochet_chance += 3;
+      statsToChange.richochet_chance = 3;
       break;
     case 'Meteor Blaster':
-      stats.healing += 10;
+      statsToChange.healing = 10;
       break;
     case 'Power Core':
-      stats.damage_reduction += 25+(1*accessoryUpgrade);
-      stats.evade += 5;
+      statsToChange.damage_reduction = 25+(1*accessoryUpgrade);
+      statsToChange.evade = 5;
       break;
     case 'Goldwings Chivalry':
-        stats.damage_reduction += 16+(1*accessoryUpgrade);
-        stats.absorb_chance += 8;
-        stats.damage += -4;
+        statsToChange.damage_reduction = 16+(1*accessoryUpgrade);
+        statsToChange.absorb_chance = 8;
+        statsToChange.damage = -4;
         break;
     case 'Jupingz':
-      stats.empower_chance += 14.5+(0.5*accessoryUpgrade);
-      stats.dual_strike += 14.5+(0.5*accessoryUpgrade);
+      statsToChange.empower_chance = 14.5+(0.5*accessoryUpgrade);
+      statsToChange.dual_strike = 14.5+(0.5*accessoryUpgrade);
       break;
     case 'Vortex Band':
-      stats.damage_reduction += 4.5;
+      statsToChange.damage_reduction = 4.5;
       break;
     case 'Nice To Meat Ya':
-      stats.damage_reduction += 2;
-      stats.absorb_chance += 1;
+      statsToChange.damage_reduction = 2;
+      statsToChange.absorb_chance = 1;
       break;
     case 'Gold Pendant':
-      stats.damage += 10+(.5*accessoryUpgrade);
-      stats.speed += 10+(.5*accessoryUpgrade);
-      stats.dual_strike += 9;
+      statsToChange.damage = 10+(.5*accessoryUpgrade);
+      statsToChange.speed = 10+(.5*accessoryUpgrade);
+      statsToChange.dual_strike = 9;
       break;
     case 'Honor Cloud':
-      stats.critical_chance += 30;
-      stats.evade += 10;
+      statsToChange.critical_chance = 30;
+      statsToChange.evade = 10;
       break;
     case 'Merciless':
       if (count === 2 && equipped.mainhand.slot === "Spear") {
 
-        stats.damage += 5;
+        statsToChange.damage = 5;
       }
       if (count === 4) {
-        stats.damage += 35;
+        statsToChange.damage = 35;
       }
       break;
     case 'Earthen Might':
       if (count === 2) {
-        stats.deflect_chance += 2;
+        statsToChange.deflect_chance = 2;
       }
       if (count === 4) {
-        stats.damage_reduction += 25;
+        statsToChange.damage_reduction = 25;
       }
       break;
     case 'Ultimatum':
-        stats.dual_strike += 2;
-        stats.quad_strike += 0.5;
+        statsToChange.dual_strike = 2;
+        statsToChange.quad_strike = 0.5;
         break;
     case 'Slibinas':
-      stats.block += 1;
-      stats.evade += 1;
-      stats.damage_reduction += 1;
-      stats.absorb_chance += 0.5;
-      stats.deflect_chance += 0.5;
+      statsToChange.block = 1;
+      statsToChange.evade = 1;
+      statsToChange.damage_reduction = 1;
+      statsToChange.absorb_chance = 0.5;
+      statsToChange.deflect_chance = 0.5;
       break;
     case 'Sleipnir':
-      stats.damage += 5;
+      statsToChange.damage = 5;
       break;
     case 'Pep Pep':
-      stats.quad_strike += 1;
+      statsToChange.quad_strike = 1;
       break;
     case 'Blorg Implant':
-      stats.damage += 10;
+      statsToChange.damage = 10;
       break;
     case 'Timeweaver Garments':
-      stats.damage_reduction += 5;
+      statsToChange.damage_reduction = 5;
       break;
     case 'Trident':
         if (count === 2) {
-          stats.sp_damage += 15;
+          statsToChange.sp_damage = 15;
         }
         break;
     case 'Venom':
       if (count === 2) {
-        stats.team_enrage += 2;
+        statsToChange.team_enrage = 2;
       }
       if (count === 3) {
-        stats.damage_reduction += 2.5;
+        statsToChange.damage_reduction = 2.5;
       }
       if (count === 4) {
-        stats.damage_reduction += 17.5;
+        statsToChange.damage_reduction = 17.5;
       }
       break;
     case 'Camouflage':
       if (count === 2) {
-        stats.quad_strike += 1;
+        statsToChange.quad_strike = 1;
       }
       if (count === 3) {
-        stats.ignore_defense += 5;
+        statsToChange.ignore_defense = 5;
       }
       if (count === 4) {
-        stats.damage += 40;
+        statsToChange.damage = 40;
       }
       break;
     case 'Mistery':
         if (count === 2) {
-          stats.dual_strike += 4;
+          statsToChange.dual_strike = 4;
         }
         break;
     case 'Courage':
       if (count === 2) {
-        stats.sp_damage += 10;
+        statsToChange.sp_damage = 10;
       }
       break;
     case 'Blind Souls':
-      stats.absorb_chance += 5;
+      statsToChange.absorb_chance = 5;
       break;
     case "Conquerors Fury":
-      stats.empower_chance += 4;
+      statsToChange.empower_chance = 4;
       break;
     case "Battleplate":
-      stats.sp_damage += 5;
+      statsToChange.sp_damage = 5;
       break;
     case 'Windstalker': 
-      stats.damage += 8;
+      statsToChange.damage = 8;
       break;
     case 'Proton Beem Zapper':
-      stats.richochet_chance += 1.5;
-      stats.quad_strike += 0.5;
+      statsToChange.richochet_chance = 1.5;
+      statsToChange.quad_strike = 0.5;
       break;
     case 'Empyrean Vindicator':
-      stats.damage_reduction += 5;
+      statsToChange.damage_reduction = 5;
       break;
     case 'Phoenix Ravager':
-      stats.damage_reduction += 5;
+      statsToChange.damage_reduction = 5;
       break;
     case 'Ironbark Longbow':
-      stats.damage += 8;
+      statsToChange.damage = 8;
       break;
     case 'Hydronus Helmet':
-      stats.speed += 3;
-      stats.critical_chance += 8;
+      statsToChange.speed = 3;
+      statsToChange.critical_chance = 8;
       break;
     case 'Hydragar Stone':
-      stats.absorb_chance += 5;
+      statsToChange.absorb_chance = 5;
       break;
 
     case 'Glamounir':
-      stats.absorb_chance += 1;
-      stats.deflect_chance += 1;
-      stats.evade += 1;
+      statsToChange.absorb_chance = 1;
+      statsToChange.deflect_chance = 1;
+      statsToChange.evade = 1;
       break;
     case 'Bassoul':
-      stats.absorb_chance += 2;
-      stats.damage += 1;
+      statsToChange.absorb_chance = 2;
+      statsToChange.damage = 1;
       break;
     case 'Demonmullet':
-      stats.damage_reduction += 2;
+      statsToChange.damage_reduction = 2;
       break;
     case 'Scrawny':
-      stats.empower_chance += 2;
-      stats.speed += 2;
+      statsToChange.empower_chance = 2;
+      statsToChange.speed = 2;
       break;
     case 'Chippity':
-      stats.damage += 1;
-      stats.dual_strike += 1;
-      stats.empower_chance += 1;
-      stats.speed += 1;
+      statsToChange.damage = 1;
+      statsToChange.dual_strike = 1;
+      statsToChange.empower_chance = 1;
+      statsToChange.speed = 1;
       break;
 
     case 'Dragonskull':
       if (count === 2) {
-        stats.damage += 2;
+        statsToChange.damage = 2;
       }
       break;
     case 'Blackarrow':
       if (count === 2) {
-        stats.absorb_chance += 2;
+        statsToChange.absorb_chance = 2;
       }
       break;
     case 'Voltio':
       if (count === 4) {
-        stats['electric_damage'] += 60;
+        stats['electric_damage'] = 60;
       }
       if (count === 6) {
-        stats['electric_damage'] += 100;
+        stats['electric_damage'] = 100;
       }
       break;
     case 'Nephilim Shield':
-      stats.dual_strike += 4;
+      statsToChange.dual_strike = 4;
       break;
     case 'Nephilim Legacy':
-      stats.damage += 4;
-      stats.damage_reduction += 4;
+      statsToChange.damage = 4;
+      statsToChange.damage_reduction = 4;
       break;
     case 'Nephilim Casque':
-      stats.speed += 5;
+      statsToChange.speed = 5;
       break;
     case 'Nephilim Girdle':
-      stats.empower_chance += 5;
+      statsToChange.empower_chance = 5;
       break;
     case 'Pyroc':
       if (count === 2) {
-        stats.empower_chance += 2;
+        statsToChange.empower_chance = 2;
       }
       if (count === 3) {
-        stats['fire_damage'] += 15;
+        stats['fire_damage'] = 15;
       }
       if (count === 4) {
-        stats['fire_damage'] += 30;
+        stats['fire_damage'] = 30;
       }
       break;
     case 'Nepulus':
       if (count === 3) {
-        stats.deflect_chance += 8;
+        statsToChange.deflect_chance = 8;
       }
       if (count === 4) {
-        stats['water_resistance'] += 18;
+        stats['water_resistance'] = 18;
       }
       break;
     case 'Pangea':
       if (count === 4) {
-        stats.block += 40;
+        statsToChange.block = 40;
       }
       break;
     case 'Lucernas':
       if (count === 2) {
-        stats.team_enrage += 2;
+        statsToChange.team_enrage = 2;
       }
       if (count === 3) {
-        stats['air_damage'] += 15;
+        stats['air_damage'] = 15;
       }
       if (count === 4) {
-        stats.healing += 15;
+        statsToChange.healing = 15;
       }
       break;
     case 'Astaroth Flag':
-        stats.critical_chance += 20+(1*accessoryUpgrade);
-        stats.damage += 18+(.5*accessoryUpgrade);
+        statsToChange.critical_chance = 20+(1*accessoryUpgrade);
+        statsToChange.damage = 18+(.5*accessoryUpgrade);
         break;
     case 'Bit Chain':
-      stats.critical_chance += 14
-      stats.damage += 11+(.5*accessoryUpgrade);
-      stats.dual_strike += 11+(.5*accessoryUpgrade);
+      statsToChange.critical_chance = 14
+      statsToChange.damage = 11+(.5*accessoryUpgrade);
+      statsToChange.dual_strike = 11+(.5*accessoryUpgrade);
       break;
     case 'Mirror Wings':
-      stats.block += 22 + (2*accessoryUpgrade);
-      stats.deflect_chance += 10;
+      statsToChange.block = 22 + (2*accessoryUpgrade);
+      statsToChange.deflect_chance = 10;
       break; 
     case 'Ancient Pendant':
-      stats.speed += 10+(.5*accessoryUpgrade);
-      stats.damage += 10+(.5*accessoryUpgrade);
-      stats.dual_strike += 4;
+      statsToChange.speed = 10+(.5*accessoryUpgrade);
+      statsToChange.damage = 10+(.5*accessoryUpgrade);
+      statsToChange.dual_strike = 4;
       break; 
     case 'Grim Ward':
-      stats.damage_enrage += 10+(.5*accessoryUpgrade);
-      stats.health += 10+(.5*accessoryUpgrade);
-      stats.deflect_chance += 5;
+      statsToChange.damage_enrage = 10+(.5*accessoryUpgrade);
+      statsToChange.health = 10+(.5*accessoryUpgrade);
+      statsToChange.deflect_chance = 5;
       break;  
     case 'Carbi':
-      stats.water_resistance += 10;
-      stats.damage_reduction += 20+(1*accessoryUpgrade);
+      statsToChange.water_resistance = 10;
+      statsToChange.damage_reduction = 20+(1*accessoryUpgrade);
       break;
     case 'Gryphen Resistor':
-      stats.block += 22+(2*accessoryUpgrade);
-      stats.deflect_chance += 10;
-      stats.electric_resistance += 5;
+      statsToChange.block = 22+(2*accessoryUpgrade);
+      statsToChange.deflect_chance = 10;
+      statsToChange.electric_resistance = 5;
       break;
     case 'Amaglon':
-      stats.block += 8;
+      statsToChange.block = 8;
       break;
     case 'Ceraunos':
       if (count === 2) {
-        stats.evade += 10;
+        statsToChange.evade = 10;
       }
       if (count === 3) {
-        stats.air_resistance += 12;
+        statsToChange.air_resistance = 12;
       }
       break;
     case 'Nugget Of Grasberg':
-      stats.evade += 1.5;
-      stats.block += 5;
+      statsToChange.evade = 1.5;
+      statsToChange.block = 5;
       break;
     case 'Tatooi':
-      stats.block += 70 + (2.5*accessoryUpgrade);
+      statsToChange.block = 70 + (2.5*accessoryUpgrade);
       break;
     case 'Misty Shrowd':
-      stats.damage_reduction += 26+(1*accessoryUpgrade);
-      stats.block += 18+(.5*accessoryUpgrade);
+      statsToChange.damage_reduction = 26+(1*accessoryUpgrade);
+      statsToChange.block = 18+(.5*accessoryUpgrade);
       break;
     case 'Hunter Trophy':
-      stats.damage_reduction += 26;
-      stats.absorb_chance += 5 + (0.5*accessoryUpgrade);
+      statsToChange.damage_reduction = 26;
+      statsToChange.absorb_chance = 5 + (0.5*accessoryUpgrade);
       break;
     case 'Resistor':
-      stats.block += 32 + (2*accessoryUpgrade);
-      stats.damage_reduction += 10;
-      stats.deflect_chance += 5 + (.5*accessoryUpgrade);
+      statsToChange.block = 32 + (2*accessoryUpgrade);
+      statsToChange.damage_reduction = 10;
+      statsToChange.deflect_chance = 5 + (.5*accessoryUpgrade);
       break;
     case 'Mythic Core':
-      stats.damage_reduction += 28;
-      stats.evade += 8;
+      statsToChange.damage_reduction = 28;
+      statsToChange.evade = 8;
       break;
     case 'Seraphim Ascendence':
-      stats.evade += 22;
-      stats.block += 26+(2.5*accessoryUpgrade);
+      statsToChange.evade = 22;
+      statsToChange.block = 26+(2.5*accessoryUpgrade);
       break;
     case 'Ascendancy':
-      stats.dual_strike += 7;
-      stats.empower_chance += 7;
-      stats.critical_chance += 50 + (3*accessoryUpgrade);
-      stats.critical_damage += 10;
+      statsToChange.dual_strike = 7;
+      statsToChange.empower_chance = 7;
+      statsToChange.critical_chance = 50 + (3*accessoryUpgrade);
+      statsToChange.critical_damage = 10;
       break;
     case 'Astaroths Crown':
-      stats.empower_chance += 6+(.25*accessoryUpgrade);
-      stats.dual_strike += 6+(.25*accessoryUpgrade);
-      stats.damage += 6+(.25*accessoryUpgrade);
-      stats.speed += 6+(.25*accessoryUpgrade);
-      stats.critical_chance += 6+(.25*accessoryUpgrade);
-      stats.critical_damage += 88;
+      statsToChange.empower_chance = 6+(.25*accessoryUpgrade);
+      statsToChange.dual_strike = 6+(.25*accessoryUpgrade);
+      statsToChange.damage = 6+(.25*accessoryUpgrade);
+      statsToChange.speed = 6+(.25*accessoryUpgrade);
+      statsToChange.critical_chance = 6+(.25*accessoryUpgrade);
+      statsToChange.critical_damage = 88;
       break;
     case 'Shokan Attachment':
-      stats.damage += 7+(.75*accessoryUpgrade);
-      stats.speed += 8;
-      stats.empower_chance += 8;
-      stats.dual_strike += 8;
-      stats.critical_chance += 15+(.75*accessoryUpgrade);
-      stats.life_steal += 10;
+      statsToChange.damage = 7+(.75*accessoryUpgrade);
+      statsToChange.speed = 8;
+      statsToChange.empower_chance = 8;
+      statsToChange.dual_strike = 8;
+      statsToChange.critical_chance = 15+(.75*accessoryUpgrade);
+      statsToChange.life_steal = 10;
       break;
     case 'Hailes Power Supply':
-      stats.empower_chance += 18+(.5*accessoryUpgrade);
-      stats.dual_strike += 20+(1*accessoryUpgrade);
+      statsToChange.empower_chance = 18+(.5*accessoryUpgrade);
+      statsToChange.dual_strike = 20+(1*accessoryUpgrade);
       break;
     case 'Divine Ward':
-      stats.dual_strike += 17+(.5*accessoryUpgrade);
-      stats.quad_strike += 5+(.25*accessoryUpgrade);
-      stats.richochet_chance += 3;
+      statsToChange.dual_strike = 17+(.5*accessoryUpgrade);
+      statsToChange.quad_strike = 5+(.25*accessoryUpgrade);
+      statsToChange.richochet_chance = 3;
       break;
     case' Fobett':
-      stats.critical_chance += 30+(1.25*accessoryUpgrade);
-      stats.critical_damage += 70;
+      statsToChange.critical_chance = 30+(1.25*accessoryUpgrade);
+      statsToChange.critical_damage = 70;
       break;
     case 'Manticore':
       if (count === 2) {
-        stats.redirect_chance += 2;
-        stats.absorb_chance += 2;
+        statsToChange.redirect_chance = 2;
+        statsToChange.absorb_chance = 2;
       }
       if (count === 4) {
-        stats.damage_reduction += 20;
-        stats.redirect_chance += 15;
+        statsToChange.damage_reduction = 20;
+        statsToChange.redirect_chance = 15;
       }
       break;
     case "Behemoth": 
       if (count === 2) {
-        stats.empower_chance += 4;
+        statsToChange.empower_chance = 4;
       }
       if (count === 3) {
-        stats.earth_damage += 50;
+        statsToChange.earth_damage = 50;
       }
       if (count === 4) {
-        stats.dual_strike += 15;
-        stats.earth_damage += 30;
+        statsToChange.dual_strike = 15;
+        statsToChange.earth_damage = 30;
       }
       break;
     case 'Raiju':
       if (count === 2) {
-        stats.electric_damage += 10;
+        statsToChange.electric_damage = 10;
       }
       if (count === 3) {
-        stats.empower_chance += 10;
+        statsToChange.empower_chance = 10;
       }
       if (count === 4) {
-        stats.speed += 10;
-        stats.electric_damage += 30;
-        stats.damage -= 3;
+        statsToChange.speed = 10;
+        statsToChange.electric_damage = 30;
+        statsToChange.damage -= 3;
       }
       break;
     case 'Kaijin Fang':
-      stats.damage_reduction += 8;
+      statsToChange.damage_reduction = 8;
       break;
     case 'Kaijin Ring':
-      stats.healing += 16;
+      statsToChange.healing = 16;
       break;
     case 'Kaijin Reminder ':
-      stats.damage += 25;
+      statsToChange.damage = 25;
       break;
     case 'Kaijin Furnace':
-      stats.damage += 12;
+      statsToChange.damage = 12;
       break;
     case 'Kaijin Augury':
-      stats.damage_reduction += 10;
+      statsToChange.damage_reduction = 10;
       break;
     case 'Flamewarden':
       if (count === 4) {
-        stats.evade += 10;
-        stats.fire_resistance += 10;
+        statsToChange.evade = 10;
+        statsToChange.fire_resistance = 10;
       }
       break;
     case 'Cursed':
       if (count === 2) {
-        stats.damage += 3;
+        statsToChange.damage = 3;
       }
       break;
     case 'Tapior': 
       if (count === 2) {
-        stats.healing += 8;
+        statsToChange.healing = 8;
       }
       if (count === 3 && equipped.mainhand.slot === "Staff") {
-        stats.healing += 16;
+        statsToChange.healing = 16;
       }
       break;
     case 'Water Demon':
       if (count === 4) {
-        stats.water_damage += 20;
+        statsToChange.water_damage = 20;
       }
       break;
     case 'Sparks':
       if (count === 2) {
-        stats.healing += 25;
+        statsToChange.healing = 25;
       }
       break;
     case 'Tau Bless':
-      stats.damage += 4.5;
+      statsToChange.damage = 4.5;
       break;
     case 'Huntress Savior':
-      stats.healing += 20;
+      statsToChange.healing = 20;
       break;
     case 'Frozen Beads':
-      stats.deflect_chance += 5;
+      statsToChange.deflect_chance = 5;
       break;
     case 'Demons Garments':
-      stats.damage += 5;
-      stats.damage_reduction += 5;
+      statsToChange.damage = 5;
+      statsToChange.damage_reduction = 5;
       break;
     case 'Sparking Husk':
-      stats.empower_chance += 5;
+      statsToChange.empower_chance = 5;
       break;
     case 'Supay':
       if (count === 3) {
-        stats.earth_resistance += 15;
+        statsToChange.earth_resistance = 15;
       }
       if (count === 4) {
-        stats.block += 20;
+        statsToChange.block = 20;
       }
       break;
     case 'Quetzal Sorrow':
-      stats.life_steal += 5;
+      statsToChange.life_steal = 5;
       break;
     case 'Quetzal Gift':
-      stats.evade += 5;
+      statsToChange.evade = 5;
       break;
     case 'Montezuma':
       if (count === 2) {
-        stats.speed += 5;
+        statsToChange.speed = 5;
       }
       if (count === 3) {
-        stats.damage += 7.5;
+        statsToChange.damage = 7.5;
       }
       break;
     case 'Quetzal Greatcloak': 
-      stats.critical_chance += 5;
+      statsToChange.critical_chance = 5;
       break;
     case 'Quetzal Faith':
-        stats.dual_strike += 4;
+        statsToChange.dual_strike = 4;
         break;
     case 'Eleuia':
         if (count === 2) {
-          stats.damage += 3;
+          statsToChange.damage = 3;
         }
         if (count === 3) {
-          stats.healing += 10;
+          statsToChange.healing = 10;
         }
         if (count === 4) {
-          stats.fire_resistance += 15;
+          statsToChange.fire_resistance = 15;
         }
       break;
     case 'Saywite':
         if (count === 2 ) {
-          stats.team_enrage += 3;
+          statsToChange.team_enrage = 3;
         }
         if (count === 3) {
-          stats.water_resistance += 20;
-          stats.damage -= 10;
+          statsToChange.water_resistance = 20;
+          statsToChange.damage -= 10;
         } 
         if (count === 4) {
-          //stats.water_resistance += 25;
-          stats.block += 20;
+          //statsToChange.water_resistance = 25;
+          statsToChange.block = 20;
         }
       break;
     case 'Quetzal Warshield':
-      stats.deflect_chance += 4;
+      statsToChange.deflect_chance = 4;
       break;
     case 'Quetzal Scaled Vest':
-      stats.damage_reduction += 10;
+      statsToChange.damage_reduction = 10;
       break;
     case 'Akiho':
       if (count === 2) {
-        stats.evade += 5;
+        statsToChange.evade = 5;
       }
       if (count === 3) {
-        stats.evade += 15;
+        statsToChange.evade = 15;
       }
       break;
     case 'Boreas Fire Scrolls':
-      stats.damage += 3;
+      statsToChange.damage = 3;
       break;
     case 'Boreas Battleaxe':
-      stats.air_damage += 10;
+      statsToChange.air_damage = 10;
       break;
     case 'Boreas Spacecap':
-      stats.air_damage += 20;
+      statsToChange.air_damage = 20;
       break;
     case 'Evenor':
       if (count === 4) {
-        stats.empower_chance += 4;
-        stats.damage += 12;
+        statsToChange.empower_chance = 4;
+        statsToChange.damage = 12;
       }
       break;
     case 'Wrightbros':
       if (count === 2) {
-        stats.damage += 7.5;
+        statsToChange.damage = 7.5;
       }
       if (count === 3) {
-        stats.empower_chance += 15;
+        statsToChange.empower_chance = 15;
       }
       if (count === 4) {
-        stats.air_damage += 15;
+        statsToChange.air_damage = 15;
       }
       break;
     case 'Perkunas':
       if (count === 2) {
-        stats.redirect_chance += 5;
+        statsToChange.redirect_chance = 5;
       }
       if (count === 3) {
-        stats.block += 20;
+        statsToChange.block = 20;
       }
       break;
     case 'Powerful Totem':
-      stats.block += 30+(2*accessoryUpgrade);
-      stats.damage_reduction += 15;
+      statsToChange.block = 30+(2*accessoryUpgrade);
+      statsToChange.damage_reduction = 15;
       break;
 
     //Add in legendary enchant and accessories, mounts too
@@ -1490,6 +1530,15 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0) => {
       //console.log(name, equipped, stats);
       break;
   };
+
+  if (!usedMinMax) {
+    Object.keys(statsToChange).forEach((x) => {
+      stats[x] += statsToChange[x];
+      min_stats[x] += statsToChange[x];
+      max_stats[x] += statsToChange[x];
+    });
+  }
+  
 
   return stats;
 }

@@ -50,6 +50,8 @@ export var base ={
 		}
 	},
 	current_stats: {},
+	min_stats: {},
+	max_stats: {},
 	runes: [],
 	enchants: [],
 };

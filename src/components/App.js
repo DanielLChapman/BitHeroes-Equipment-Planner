@@ -4,7 +4,7 @@ import { sets } from '../sets';
 import { equipment, sortEquipment } from '../equipment';
 import { mountTypes } from '../mounts';
 import {enchantTypes } from '../enchants';
-import {runeTypes, metaRunes } from '../runes';
+import {runeTypes, metaRunes, artifactRunes } from '../runes';
 
 
 
@@ -86,6 +86,8 @@ class App extends Component {
       showAbout: false,
       accessoryLevel: 1,
       stats: {},
+      min_stats: {},
+      max_stats: {},
       mythicsOpen: false,
       setsOpen: false,
       slotsOpen: false,
@@ -263,18 +265,21 @@ class App extends Component {
 
     //runeValues
     if (runeValues) {
-      if (runeValues.length > 5) {
-        runeValues.splice(5);
-      } else if (runeValues.length <= 5) {
-        runeValues = runeValues.concat(['x', 'x', 'x', 'x', 'x']);
-        runeValues.splice(5);
+      if (runeValues.length > 6) {
+        runeValues.splice(6);
+      } else if (runeValues.length <= 6) {
+        runeValues = runeValues.concat(['x', 'x', 'x', 'x', 'x', 'x']);
+        runeValues.splice(6);
       }
     } else {
-      runeValues = ['x', 'x', 'x', 'x', 'x'];
+      runeValues = ['x', 'x', 'x', 'x', 'x', 'x'];
     }
 
     runeValues = runeValues.join('').toLowerCase().split('');
     let meta = runeValues.splice(4);
+    let artifact = meta.splice(1);
+
+
 
     for (let i = 0; i < runeValues.length; i++) {
       let foundVal = false;
@@ -293,13 +298,34 @@ class App extends Component {
       }
     }
 
+    let found = false;
     //meta
     Object.keys(metaRunes).forEach((x) => {
 
       if (meta[0] === metaRunes[x].id) {
+        found = true;
         runeValues.push(metaRunes[x]);
       }
     })
+
+    //error handling of invalid id runes
+    if (!found) {
+      runeValues.push(metaRunes[metaRunes.length - 1])
+    }
+
+    found = false;
+    //artifacts
+    Object.keys(artifactRunes).forEach((x) => {
+
+      if (artifact[0] === artifactRunes[x].id) {
+        found = true;
+        runeValues.push(artifactRunes[x]);
+      }
+    })
+    
+    if (!found) {
+      runeValues.push(artifactRunes[artifactRunes.length - 1]);
+    }
 
     //enchants
     let enchantmentsToState = Object.assign({}, enchants);
@@ -352,11 +378,15 @@ class App extends Component {
       
     bonuses = {...tempBonus.bonuses};
     let stats = tempBonus.stats;
+    let min_stats = tempBonus.min_stats;
+    let max_stats = tempBonus.max_stats;
     urlEnd = tempBonus.urlEnd;
 
     this.setState({
       sets,
       mythics,
+      min_stats,
+      max_stats,
       equipped,
       bonuses,
       urlEnd,
@@ -418,6 +448,10 @@ class App extends Component {
 
       let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
       let stats = bonuses.stats;
+      let min_stats = bonuses.min_stats;
+      let max_stats = bonuses.max_stats;
+      state.min_stats = min_stats;
+      state.max_stats = max_stats;
       state.stats = stats;
       state.bonuses = {...bonuses.bonuses};
       state.urlEnd = bonuses.urlEnd;
@@ -435,6 +469,7 @@ class App extends Component {
     let state = this.state;
     let runes = runeArray;
     let meta = runes.splice(4);
+    let artifact = meta.splice(1);
 
     //convert titles to objects
     for (let i = 0; i < runes.length; i++) {
@@ -453,16 +488,41 @@ class App extends Component {
       }
     }
 
+
+
+
+    let found = false;
     //meta rune
     Object.keys(metaRunes).forEach((x) => {
+
       if (meta[0] === metaRunes[x].title) {
+        found = true;
         runes.push(metaRunes[x]);
       }
     })
+    if (!found) {
+      runes.push(metaRunes[metaRunes.length - 1]);
+    }
+    
+    found = false;
+    //meta rune
+    Object.keys(artifactRunes).forEach((x) => {
+      if (artifact[0] === artifactRunes[x].title) {
+        found = true;
+        runes.push(artifactRunes[x]);
+      }
+    })
+    if (!found) {
+      runes.push(artifactRunes[artifactRunes.length - 1]);
+    }
 
     state.runes = runes;
     let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, state.enchants, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
     let stats = bonuses.stats;
+    let min_stats = bonuses.min_stats;
+    let max_stats = bonuses.max_stats;
+    state.min_stats = min_stats;
+    state.max_stats = max_stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
@@ -504,6 +564,10 @@ class App extends Component {
 
     let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, eTS, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
     let stats = bonuses.stats;
+    let min_stats = bonuses.min_stats;
+      let max_stats = bonuses.max_stats;
+    state.min_stats = min_stats;
+    state.max_stats = max_stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
@@ -525,6 +589,10 @@ class App extends Component {
 
     let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
     state.bonuses = {...bonuses.bonuses};
+    let min_stats = bonuses.min_stats;
+      let max_stats = bonuses.max_stats;
+    state.min_stats = min_stats;
+    state.max_stats = max_stats;
     state.urlEnd = bonuses.urlEnd;
     let stats = bonuses.stats;
     state.stats = stats;
@@ -569,6 +637,10 @@ class App extends Component {
         let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel, state.t12);
         state.bonuses = {...bonuses.bonuses};
         let stats = bonuses.stats;
+        let min_stats = bonuses.min_stats;
+      let max_stats = bonuses.max_stats;
+        state.min_stats = min_stats;
+        state.max_stats = max_stats;
         state.stats = stats;
         break;
       default: 
@@ -594,6 +666,10 @@ class App extends Component {
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
     let stats = bonuses.stats;
+    let min_stats = bonuses.min_stats;
+      let max_stats = bonuses.max_stats;
+    state.min_stats = min_stats;
+    state.max_stats = max_stats;
     state.stats = stats;
     try {
       this.props.history.push(`/${state.urlEnd}`);
@@ -616,6 +692,10 @@ class App extends Component {
 
     let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12, this.state.evolviumTable);
     let stats = bonuses.stats;
+    let min_stats = bonuses.min_stats;
+      let max_stats = bonuses.max_stats;
+    state.min_stats = min_stats;
+    state.max_stats = max_stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
@@ -645,6 +725,10 @@ class App extends Component {
 
     let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12, this.state.evolviumTable);
     let stats = bonuses.stats;
+    let min_stats = bonuses.min_stats;
+      let max_stats = bonuses.max_stats;
+    state.min_stats = min_stats;
+    state.max_stats = max_stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
@@ -678,6 +762,10 @@ class App extends Component {
 
     let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12, this.state.evolviumTable);
     let stats = bonuses.stats;
+    let min_stats = bonuses.min_stats;
+      let max_stats = bonuses.max_stats;
+    state.min_stats = min_stats;
+    state.max_stats = max_stats;
     state.stats = stats;
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
@@ -725,6 +813,8 @@ class App extends Component {
             updateStats={this.updateStats} 
             styling={statWindowStyling} 
             stats={this.state.stats} 
+            min_stats={this.state.min_stats}
+            max_stats={this.state.max_stats}
             modifyAccessoryLevel={this.modifyAccessory} 
             currentLevel={this.state.accessoryLevel} 
             openClose={this.handleOpenClose} 

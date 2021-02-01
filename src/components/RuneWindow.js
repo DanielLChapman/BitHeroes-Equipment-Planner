@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
-import {runeTypes, metaRunes} from '../runes';
+import {runeTypes, metaRunes, artifactRunes} from '../runes';
 
 export default class RuneWindow extends Component {
 
@@ -12,7 +12,8 @@ export default class RuneWindow extends Component {
             runeSlot2: 'None',
             runeSlot3: 'None',
             runeSlot4: 'None',
-            runeSlot5: 'None'
+            runeSlot5: 'None',
+            runeSlot6: 'None',
 		};
     }
     handleChange = (event) => {
@@ -34,15 +35,17 @@ export default class RuneWindow extends Component {
             case "5":
                 state.runeSlot5 = event.target.value;
                 break;
+            case "6":
+                state.runeSlot6 = event.target.value;
+                break;
             default:
-            break;
+                break;
         }
         this.setState({...state});
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-
-        if (typeof nextProps.runes !== undefined && nextProps.runes.length === 5) {
+        if (typeof nextProps.runes !== undefined && nextProps.runes.length === 6) {
             let runes = nextProps.runes;
             let state = this.state;
 
@@ -53,6 +56,8 @@ export default class RuneWindow extends Component {
             state.runeSlot4 = runes[3].title;
 
             state.runeSlot5 = runes[4].title;
+
+            state.runeSlot6 = runes[5].title;
             
             this.setState({...state});
         }
@@ -122,7 +127,7 @@ export default class RuneWindow extends Component {
                 </select>
                 </label>
                 <h3>Meta Rune: </h3>
-                <label htmlFor="runeSlot4" className="custom-select">
+                <label htmlFor="runeSlot5" className="custom-select">
                 <select value={this.state.runeSlot5} selector="5" onChange={this.handleChange}>
                     {
                         Object.keys(metaRunes).map((x) => {
@@ -136,7 +141,24 @@ export default class RuneWindow extends Component {
 					}
                 </select>
                 </label>
-				<button onClick={() => {this.props.equipRunes([this.state.runeSlot1, this.state.runeSlot2, this.state.runeSlot3, this.state.runeSlot4, this.state.runeSlot5])}}>
+
+                <h3>Artifact Rune: </h3>
+                <label htmlFor="runeSlot6" className="custom-select">
+                <select value={this.state.runeSlot6} selector="6" onChange={this.handleChange}>
+                    {
+                        Object.keys(artifactRunes).map((x) => {
+                            return <option
+                                    value={artifactRunes[x].title}
+                                    key={x}
+                                    >
+                                    {artifactRunes[x].title}
+                                    </option>
+                        })
+					}
+                </select>
+                </label>
+
+				<button onClick={() => {this.props.equipRunes([this.state.runeSlot1, this.state.runeSlot2, this.state.runeSlot3, this.state.runeSlot4, this.state.runeSlot5, this.state.runeSlot6])}}>
                     Equip Runes
                 </button>
 			</div>

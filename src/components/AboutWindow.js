@@ -7,6 +7,7 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>UPDATES:</span>
             <ul className="about-page-ul">
+                <li>2/1/2021   - Added Artifact Runes</li>
                 <li>1/31/2021  - Temporarily removing Saywite's 25% on under 70% hp.</li>
                 <li>1/26/2021  - Added TinyURL for shorter sharing links. Currently hidden as some groups may not want shorten urls. Can enable if users want.</li>
                 <li>1/22/2021  - Added all new t15 equipment. Added powerful totem.</li>

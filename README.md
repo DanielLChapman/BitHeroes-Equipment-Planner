@@ -2,8 +2,12 @@ View in action here : https://bit-heroes-equipment.herokuapp.com/
 
 TODO:
 
-1. Exclude from equipment in filtering
+* Min - Avg - Max stats for conditional and 1-8% item effects
 
-2. Write tests for each set/mythic
+* Artifact Runes
 
-3. Way to get back to the top. Maybe re-do bonuses so it is always visible 
+* Exclude from equipment in filtering
+
+* Write tests for each set/mythic
+
+* Way to get back to the top. Maybe re-do bonuses so it is always visible, remove nested views?

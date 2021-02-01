@@ -255,3 +255,49 @@ export const metaRunes = [
 		key: "rune"
 	}
 ];
+
+export const artifactRunes = [
+	{
+		id: 'a',
+		title: "Nonik (DR)",
+		effect: "damage_reduction",
+		value: 0,
+		min: 0,
+		max: 8,
+		key: "rune"
+	},
+	{
+		id: 'b',
+		title: "Mayu (D)",
+		effect: "damage",
+		value: 0,
+		min: 0,
+		max: 8,
+		key: "rune"
+	},
+	{
+		id: 'c',
+		title: "Mythic Nonik (DR)",
+		effect: "damage_reduction",
+		value: 0,
+		min: 0,
+		max: 10,
+		key: "rune"
+	},
+	{
+		id: 'd',
+		title: "Mythic Mayu (D)",
+		effect: "damage",
+		value: 0,
+		min: 0,
+		max: 10,
+		key: "rune"
+	},
+	{
+		id: 'x',
+		title: "None",
+		effect: "dual_strike",
+		value: 0,
+		key: "rune"
+	}
+]

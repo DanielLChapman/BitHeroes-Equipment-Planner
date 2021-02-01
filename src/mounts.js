@@ -187,5 +187,47 @@ export const mountTypes = [
 		key: 'mount',
 		mythic: true
 	},
+	{
+		id: 23,
+		title: "Hoopie (damage)",
+		selected: false,
+		effect: "damage",
+		value:  4,
+		min: 1,
+		max: 50,
+		key: 'mount',
+		mythic: false,
+	},
+	{
+		id: 24,
+		title: "Mega Voltpico",
+		selected: false,
+		effect: "water_resistance",
+		value:  4,
+		key: 'mount',
+		mythic: true
+	},
+	{
+		id: 25,
+		title: "1-8% Damage",
+		selected: false,
+		effect: "damage",
+		value:  4,
+		min: 1,
+		max: 8,
+		key: 'mount',
+		mythic: false,
+	},
+	{
+		id: 26,
+		title: "1-8% DR",
+		selected: false,
+		effect: "damage_reduction",
+		value:  4,
+		min: 1,
+		max: 8,
+		key: 'mount',
+		mythic: false,
+	},
 
 ]

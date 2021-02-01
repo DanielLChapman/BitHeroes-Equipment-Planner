@@ -95,7 +95,8 @@ export default class StatWindow extends React.Component {
             </div>
 
             <ul>
-                <li>Damage Bonus: <span className="stat-view">{this.props.stats.damage}</span></li>
+                <li>Values:<span className="stat-view">Min - Avg - Max</span></li>
+                <li>Damage Bonus: <span className="stat-view">{this.props.min_stats.damage} - {this.props.stats.damage} - {this.props.max_stats.damage}</span></li>
                 <li>SP Damage Bonus: <span className="stat-view">{this.props.stats.sp_damage}</span></li>
                 <li>Health Bonus: <span className="stat-view">{this.props.stats.health}</span></li>
                 <li>Speed Bonus:<span className="stat-view">{this.props.stats.speed}</span> </li>
@@ -140,6 +141,8 @@ export default class StatWindow extends React.Component {
 
 StatWindow.propTypes = {
   stats: PropTypes.object.isRequired,
+  min_stats: PropTypes.object.isRequired,
+  max_stats: PropTypes.object.isRequired,
   modifyAccessoryLevel: PropTypes.func.isRequired,
   currentLevel: PropTypes.number.isRequired,
   openClose: PropTypes.func.isRequired
