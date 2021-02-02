@@ -595,7 +595,7 @@ export const sets = {
 		setBonuses: {
 			2: "Deflects first time you are hit in battle",
 			3: "Freeze the enemy teamw hen you kill an enemy",
-			4: "Water Adrenaline 10 (Each turn, you gain X amount of Damage up to X*4, then it resets. Avg 20%)"
+			4: "Water Adrenaline 10 (Each turn, you gain X amount of Damage up to X*4, then it resets. Avg 25%)"
 		}
 	},
 	sparks: {
@@ -606,7 +606,7 @@ export const sets = {
 		description: "",
 		setBonuses: {
 			2: "Expender 5: Gain 25% Healing Bonus (when you've spent 5 SP)",
-			3: "Heal team when you trigger an E.M.P. fro 3606-4407",
+			3: "Heal team when you trigger an E.M.P. for 3606-4407",
 			4: "Bolster 10 (When you hit, you spread shield for X% of your Power)"
 		}
 	},

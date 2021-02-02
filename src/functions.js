@@ -163,6 +163,12 @@ export const linkCalculation = (stats) => {
   return defaultLinks;
 }
 
+export const setAllTheSame = (stat, min, max, modifier, value) => {
+  stat[modifier] += value;
+  min[modifier] += value;
+  max[modifier] += value;
+  return [stat, min, max];
+}
 export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [], enchantments = {}, accessoryLevel = 1, t12 = true, evolviumTable={}) => {
   let bonuses = {
     mythics: [],
@@ -193,7 +199,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     if (equipmentOn[x].type === "ancient") {
       bonuses.ancients.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
-      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
+      [stats, min_stats, max_stats] = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
       if (equipmentOn[x].name === "Starweave") {
         ancientEquipped = true;
       }
@@ -204,8 +210,8 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
         ancientEquipped3 = true;
       }
       if (t12) {
-        stats.damage += 5;
-        stats.damage_reduction += 5;
+        [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, 'damage_reduction', 5);
+        [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, 'damage', 5);
       }
       if (equipmentOn[x].name === "Evolvium Offense" || equipmentOn[x].name === "Evolvium Defense") {
         evolviumIsEquipped = true;
@@ -217,9 +223,13 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       if (! equipmentOn[x]['elemental'].flat) {
         let temp = equipmentOn[x]['elemental'];
         stats[temp.element_type + "_" + temp.element_modifier] += parseInt(temp.element_value, 10);
+        min_stats[temp.element_type + "_" + temp.element_modifier] += parseInt(temp.element_value, 10);
+        max_stats[temp.element_type + "_" + temp.element_modifier] += parseInt(temp.element_value, 10);
       } else {
         let temp = equipmentOn[x]['elemental'];
         stats.elemental_flat['temp.element_type '] += temp.element_value;
+        min_stats.elemental_flat['temp.element_type '] += temp.element_value;
+        max_stats.elemental_flat['temp.element_type '] += temp.element_value;
       }
       
     }
@@ -228,22 +238,26 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       if (! equipmentOn[x]['elemental2'].flat) {
         let temp = equipmentOn[x]['elemental2'];
         stats[temp.element_type + "_" + temp.element_modifier] += parseInt(temp.element_value, 10);
+        min_stats[temp.element_type + "_" + temp.element_modifier] += parseInt(temp.element_value, 10);
+        max_stats[temp.element_type + "_" + temp.element_modifier] += parseInt(temp.element_value, 10);
       } else {
         let temp = equipmentOn[x]['elemental2'];
         stats.elemental_flat['temp.element_type '] += temp.element_value;
+        min_stats.elemental_flat['temp.element_type '] += temp.element_value;
+        max_stats.elemental_flat['temp.element_type '] += temp.element_value;
       }
       
     }
 
     if(equipmentOn[x]['innate']) {
       let temp = equipmentOn[x]['innate'];
-      stats[temp.type] += temp.value;
+      [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, temp.type, temp.value);
     }
 
     if (equipmentOn[x].type === "mythic" ) {
       bonuses.mythics.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
-      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
+      [stats, min_stats, max_stats] = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
       if (equipmentOn[x].name === "Sparking Soulcatcher") {
         sparking_soulcatcher = true;
       }
@@ -251,7 +265,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       setsToSort[equipmentOn[x].partOfSet] = setsToSort[equipmentOn[x].partOfSet] + 1 || 1;
       if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
         bonuses.pets.push(equipmentOn[x]);
-        stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
+        [stats, min_stats, max_stats] = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
       }
       /*elemental: {
         element_value: 3,
@@ -264,7 +278,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     } else if (equipmentOn[x].slot === "Pet" || equipmentOn[x].slot === "Accessory") {
       bonuses.pets.push(equipmentOn[x]);
       urlEnd += equipmentOn[x].shareID;
-      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
+      [stats, min_stats, max_stats] = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
     }/*
     if (i === 8 ) {
       stats.fire_damage += "%"// + " + stats.elemental_flat.fire + " Flat";
@@ -293,7 +307,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       }
     });
     if (numMythics === 1) {
-      stats = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
+      [stats, min_stats, max_stats] = setStatBonuses(equipmentOn[x].name, equipmentOn, stats, 2, accessoryLevel, min_stats, max_stats);
     }
   }
 
@@ -314,7 +328,7 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
         if (setsToSort[x] >= parseInt(y, 10)) {
           bonuses.sets[x].push(setWorkingOn.setBonuses[y]);
           if (setWorkingOn.name !== 'Apocalypse') {
-            stats = setStatBonuses(setWorkingOn.name, equipmentOn, stats, y, accessoryLevel, min_stats, max_stats);
+            [stats, min_stats, max_stats] = setStatBonuses(setWorkingOn.name, equipmentOn, stats, y, accessoryLevel, min_stats, max_stats);
           } else if (setWorkingOn.name === 'Apocalypse') {
               if (y === '3') {
                 doubled.enchant = true;
@@ -351,13 +365,12 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     doubled.mount ? multiplier = 2 : multiplier = 1;
 
     if (equipmentOn.mount.hasOwnProperty('min') && equipmentOn.mount.hasOwnProperty('max')) {
+      
       stats[equipmentOn.mount.effect] += equipmentOn.mount.value * multiplier;
       min_stats[equipmentOn.mount.effect] += equipmentOn.mount.min * multiplier;
       max_stats[equipmentOn.mount.effect] += equipmentOn.mount.max * multiplier;
     } else {
-      stats[equipmentOn.mount.effect] += equipmentOn.mount.value * multiplier;
-      min_stats[equipmentOn.mount.effect] += equipmentOn.mount.value * multiplier;
-      max_stats[equipmentOn.mount.effect] += equipmentOn.mount.value * multiplier;
+      [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, equipmentOn.mount.effect, equipmentOn.mount.value * multiplier);
     }
     
     urlEnd+= "mount=" + equipmentOn.mount.id;
@@ -390,31 +403,26 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
       if (runes[i].id !== 'x') {
         console.log(runes[i]);
         let tempRune = runes[i];
-        stats[tempRune.effect] += tempRune.value;
+        let multiplier = 1;
+
+        
+      
         if ((doubled.rune || ancientEquipped3 ) && i <= 3) {
-          stats[tempRune.effect] += tempRune.value;
+          multiplier = 2;
         } 
 
+        
+        
         //min max
         
 
         if (tempRune.hasOwnProperty('min') && tempRune.hasOwnProperty('max')) {
-          
-          min_stats[tempRune.effect] += tempRune.min;
-          max_stats[tempRune.effect] += tempRune.max;
-          if ((doubled.rune || ancientEquipped3 ) && i <= 3) {
-            min_stats[tempRune.effect] += tempRune.min;
-            max_stats[tempRune.effect] += tempRune.max;
-          }
+          stats[tempRune.effect] += tempRune.value * multiplier;
+          min_stats[tempRune.effect] += tempRune.min * multiplier;
+          max_stats[tempRune.effect] += tempRune.max * multiplier;
         } else {
-          min_stats[tempRune.effect] += tempRune.value;
-          max_stats[tempRune.effect] += tempRune.value;
-          if ((doubled.rune || ancientEquipped3 ) && i <= 3) {
-            min_stats[tempRune.effect] += tempRune.value;
-            max_stats[tempRune.effect] += tempRune.value;
-          }
+          [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, tempRune.effect, tempRune.value * multiplier);
         }
-        
         
         
       } 
@@ -453,6 +461,9 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     for (var p = 0; p < enchantTypes.length; p++) {
       enchantArray.push(enchantTypes[p].title);
     } 
+
+    let multiple;
+    doubled.enchant ? multiple = 2 : multiple = 1;
     Object.keys(enchantments).forEach((x) => {
       if (!['alreadyUpdated', 'ownUpdate'].includes(x)) {
       
@@ -460,35 +471,33 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
 
           let r1 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot1'].title);
           let r2 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot2'].title);
+          
 
+          //DRY this later
 
           //stats[r2.effect] += r2.value;
           //stats[r1.effect] += r1.value;
           //adding decimals seems to become a repeating decimal, this is a team fix. 
-          stats[r1.effect] = Math.round((stats[r1.effect]+r1.value)*1000)/1000;
-          stats[r2.effect] = Math.round((stats[r2.effect]+r2.value)*1000)/1000;
-
-          if (doubled.enchant) {
-            stats[r1.effect] = Math.round((stats[r1.effect]+r1.value)*1000)/1000;
-            stats[r2.effect] = Math.round((stats[r2.effect]+r2.value)*1000)/1000;
-
-          }
+          stats[r1.effect] = Math.round((stats[r1.effect]+r1.value)*1000)/1000 * multiple;
+          min_stats[r1.effect] = Math.round((min_stats[r1.effect]+r1.value)*1000)/1000 * multiple;
+          max_stats[r1.effect] = Math.round((max_stats[r1.effect]+r1.value)*1000)/1000 * multiple;
+          
+          stats[r2.effect] = Math.round((stats[r2.effect]+r2.value)*1000)/1000 * multiple;
+          min_stats[r2.effect] = Math.round((min_stats[r2.effect]+r2.value)*1000)/1000 * multiple;
+          max_stats[r2.effect] = Math.round((max_stats[r2.effect]+r2.value)*1000)/1000 * multiple;
 
           if (r1.effect2) {
             //stats[r1.effect2] += r1.value2;
-            stats[r1.effect2] = Math.round((stats[r1.effect2]+r1.value2)*1000)/1000;
-            if (doubled.enchant) {
-              //stats[r1.effect2] += r1.value2;
-              stats[r1.effect2] = Math.round((stats[r1.effect2]+r1.value2)*1000)/1000;
-            }
+            stats[r1.effect2] = Math.round((stats[r1.effect2]+r1.value2)*1000)/1000 * multiple;
+            min_stats[r1.effect2] = Math.round((min_stats[r1.effect2]+r1.value2)*1000)/1000 * multiple;
+            max_stats[r1.effect2] = Math.round((max_stats[r1.effect2]+r1.value2)*1000)/1000 * multiple;
           }
           if (r2.effect2) {
             //stats[r2.effect2] += r2.value2;
-            stats[r2.effect2] = Math.round((stats[r2.effect2]+r2.value2)*1000)/1000;
-            if (doubled.enchant) {
-              //stats[r2.effect2] += r2.value2;
-              stats[r2.effect2] = Math.round((stats[r2.effect2]+r2.value2)*1000)/1000;
-            }
+            stats[r2.effect2] = Math.round((stats[r2.effect2]+r2.value2)*1000)/1000 * multiple;
+            min_stats[r2.effect2] = Math.round((min_stats[r2.effect2]+r2.value2)*1000)/1000 * multiple;
+            max_stats[r2.effect2] = Math.round((max_stats[r2.effect2]+r2.value2)*1000)/1000 * multiple;
+            
           }
 
 
@@ -505,17 +514,38 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
   }
 
   if (sparking_soulcatcher) {
-    let maxDamageAdd = stats.healing*.5;
-    if (maxDamageAdd > 15) {
-      maxDamageAdd = 15;
+
+    //values may be different, not as easy to DRY.
+    let maxDamageAddAvg = stats.healing*.5;
+    let maxDamageAddMin = min_stats.healing*.5;
+    let maxDamageAddMax = max_stats.healing*.5;
+    if (maxDamageAddAvg > 15) {
+      maxDamageAddAvg = 15;
     }
-    stats.damage += maxDamageAdd; 
+    if (maxDamageAddMin > 15) {
+      maxDamageAddMin = 15;
+    }
+    if (maxDamageAddMax > 15) {
+      maxDamageAddMax = 15;
+    }
+    
+    stats.damage += maxDamageAddAvg; 
+    min_stats.damage += maxDamageAddMin;
+    max_stats.damage += maxDamageAddMax;
   }
 
   if (akiho) {
+    //values can be different, not as cut and DRY
     let evadeNum = Math.floor(stats.redirect_chance / 5);
     stats.evade += evadeNum * 2.5;
+
+     evadeNum = Math.floor(min_stats.redirect_chance / 5);
+    min_stats.evade += evadeNum * 2.5;
+
+     evadeNum = Math.floor(max_stats.redirect_chance / 5);
+    max_stats.evade += evadeNum * 2.5;
   }
+
   stats.power = baseStats[0];
   stats.stamina = baseStats[1];
   stats.agility = baseStats[2];
@@ -539,21 +569,44 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     else {
       if (evolviumName === 'Evolvium Offense') {
         if (evolviumTable.aorb !== '') {
-          evolviumTable.aorb === 'a' ? stats.damage += 5: stats.speed += 5;
+          if (evolviumTable.aorb === 'a') {
+            [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, 'damage', 5);
+            
+          } else {
+            [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, 'speed', 5);
+          }
+         
         }
         if (evolviumTable.eorf !== '') {
-          evolviumTable.eorf === 'e' ? stats.dual_strike += 5: stats.empower_chance += 5;
+          if (evolviumTable.eorf === 'e') {
+            [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, 'dual_strike', 5);
+          } else {
+            [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, 'empower_chance', 5);
+          }
+         
         }
         if (evolviumTable.gorh !== '') {
-          evolviumTable.gorh === 'g' ? stats.damage += 3 : stats.empower_chance += 0;
+          if (evolviumTable.gorh === 'g') {
+            stats.damage += 7.5
+            min_stats.damage += 3;
+            max_stats.damage += 12;
+          }
         }
       }
       else if (evolviumName === 'Evolvium Defense') {
         if (evolviumTable.aorb !== '') {
-          evolviumTable.aorb === 'a' ? stats.damage_reduction += 5: stats.block += 10;
+          if (evolviumTable.aorb === 'a') {
+              [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, 'damage_reduction', 5);
+          } else {
+              [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, 'block', 10);
+          }
         }
         if (evolviumTable.cord !== '') {
-          evolviumTable.cord === 'c' ? stats.evade += 5: stats.absorb_chance += 2.5;
+          if (evolviumTable.aorb === 'c') {
+              [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, 'evade', 5);
+          } else {
+              [stats, min_stats, max_stats] = setAllTheSame(stats, min_stats, max_stats, 'absorb', 2.5);
+          }
         }
       }
 
@@ -615,7 +668,8 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.damage = 5;
       }
       if (count === 3) {
-        statsToChange.damage = 30;
+         
+        max_stats.damage += 30;
       }
       break;
     case 'Night Walker':
@@ -623,7 +677,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.absorb_chance = 2;
       }
       if (count === 4) {
-        statsToChange.damage_reduction = 15;
+         
+        stats.damage_reduction += 15;
+        max_stats.damage_reduction += 15;
       }
       break;
     case "Trugdor's Call":
@@ -631,7 +687,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.dual_strike = 4;
       }
       if (count === 3) {
-        statsToChange.richochet_chance = 7;
+         
+        
+        max_stats.richochet_chance += 7;
       }
       break;
     case "Arsenal":
@@ -639,10 +697,15 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.richochet_chance = 2;
       }
       if (count === 3) {
-        statsToChange.damage = 10;
+         
+        stats.damage += 10;
+        max_stats.damage += 10;
       }
       if (count === 4) {
-        statsToChange.damage = 30;
+         
+        stats.damage += 15;
+        min_stats.damage += 1;
+        max_stats.damage += 30;
       }
       break;
     case "Taldrilth's Artifacts":
@@ -667,7 +730,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.empower_chance = 5;
       }
       if (count === 4) {
-        statsToChange.empower_chance = 25;
+         
+      
+        max_stats.damage += 25;
       }
       break;
     case 'Grasberg':
@@ -699,7 +764,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.damage_enrage = 5;
       }
       if (count === 4) {
-        statsToChange.damage_reduction = 20;
+         
+        stats.damage_reduction += 13;
+        min_stats.damage_reduction += 1;
+        max_stats.damage_reduction += 25;
       }
       break;
     case 'Lunar Guardian':
@@ -709,7 +777,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       break;
     case 'Obliteration':
       if (count === 4) {
-        statsToChange.damage_reduction = 15;
+         
+        stats.damage_reduction += 15;
+        max_stats.damage_reduction += 15;
       }
       break;
     case 'Agony':
@@ -749,7 +819,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.damage = 25;
       }
       if (count === 3) {
-        statsToChange.damage = 24;
+         
+        stats.damage += 13;
+        min_stats.damage += 1;
+        max_stats.damage += 24;
       }
       break;
     case 'Gatekeeper':
@@ -795,7 +868,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.richochet_chance = 3;
       break;
     case 'Hysteria':
-      statsToChange.damage = 10;
+       
+      stats.damage += 5;
+      min_stats.damage += 1;
+      max_stats.damage += 10;
       break;
     case 'Bub':
       statsToChange.absorb_chance = 2;
@@ -804,7 +880,16 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.team_enrage = 3;
       break;
     case 'Night Visage':
-      statsToChange.damage = 5;
+       
+      stats.damage += 0;
+      min_stats.damage += 0;
+      max_stats.damage += 5;
+      break;
+    case 'Virulence':
+      if (count === 2) {
+         
+        max_stats.damage_reduction += 20;
+      }
       break;
     case 'Cometfell':
       statsToChange.quad_strike = 1;
@@ -813,7 +898,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.damage = parseInt(numLegendary, 10);
       break;
     case 'Hood Of Menace': 
-      statsToChange.evade = 5;
+       
+      stats.evade += 0;
+      min_stats.evade += 0;
+      max_stats.evade += 5;
       break;
     case 'Crypt Tunic':
       statsToChange.deflect_chance = 2;
@@ -838,7 +926,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.absorb_chance = 2;
       break;
     case 'Dewey Decal':
-      statsToChange.damage = 5;
+       
+      stats.damage += 5;
+      min_stats.damage += 0;
+      max_stats.damage += 5;
       break;
     case 'Shifting Breeze':
       statsToChange.speed = 4;
@@ -850,7 +941,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.redirect_chance = 5;
       break;
     case 'Moon Collage':
-      statsToChange.damage = 5.5;
+      stats.damage += 4;
+      min_stats.damage += 1;
+      max_stats.damage += 50;
+       
       break;
     case 'Mewmeck':
       statsToChange.damage = 1;
@@ -862,7 +956,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.damage = 1;
       break;
     case 'Peeper':
-      statsToChange.damage = 8;
+       
+      stats.damage += 4;
+      min_stats.damage += 1;
+      max_stats.damage += 8;
       break;
     case 'Ataraxia':
       statsToChange.damage = parseInt(numSets, 10);
@@ -873,14 +970,20 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.evade = 1;
       break;
     case 'Twitch':
-      statsToChange.damage_reduction = 4.5;
+       
+      stats.damage_reduction += 4;
+      min_stats.damage_reduction += 1;
+      max_stats.damage_reduction += 8;
       break;
     case 'Radiance':
       statsToChange.damage = .75 * parseInt(numMythics, 10);
       statsToChange.damage_reduction = .75 * parseInt(numMythics, 10);
       break;
     case 'Vile Focus':
-      statsToChange.absorb_chance = 3;
+       
+      stats.absorb_chance += 3;
+      min_stats.absorb_chance += 0;
+      max_stats.absorb_chance += 3;
       break;
     case 'Abhorence':
       statsToChange.richochet_chance = 1.5;
@@ -976,7 +1079,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.damage_reduction = 1;
       break;
     case 'Bassault':
-      statsToChange.damage_reduction = 5;
+       
+      stats.damage_reduction += 0;
+      min_stats.damage_reduction += 0;
+      max_stats.damage_reduction += 5;
       break;
     case 'Frostybite':
       statsToChange.sp_damage = 5;
@@ -989,7 +1095,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.richochet_chance = 3;
       break;
     case 'Meteor Blaster':
-      statsToChange.healing = 10;
+       
+      stats.healing += 7.5;
+      min_stats.healing += 5;
+      max_stats.healing += 10;
       break;
     case 'Power Core':
       statsToChange.damage_reduction = 25+(1*accessoryUpgrade);
@@ -1005,7 +1114,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.dual_strike = 14.5+(0.5*accessoryUpgrade);
       break;
     case 'Vortex Band':
-      statsToChange.damage_reduction = 4.5;
+       
+      stats.damage_reduction += 2.5;
+      min_stats.damage_reduction += 1;
+      max_stats.damage_reduction += 4.5;
       break;
     case 'Nice To Meat Ya':
       statsToChange.damage_reduction = 2;
@@ -1026,7 +1138,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.damage = 5;
       }
       if (count === 4) {
-        statsToChange.damage = 35;
+         
+        stats.damage += 25;
+        min_stats.damage += 15;
+        max_stats.damage += 35;
       }
       break;
     case 'Earthen Might':
@@ -1034,7 +1149,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.deflect_chance = 2;
       }
       if (count === 4) {
-        statsToChange.damage_reduction = 25;
+         
+        stats.damage += 17.5;
+        min_stats.damage_reduction += 10;
+        max_stats.damage_reduction += 25;
       }
       break;
     case 'Ultimatum':
@@ -1049,16 +1167,25 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.deflect_chance = 0.5;
       break;
     case 'Sleipnir':
-      statsToChange.damage = 5;
+       
+      stats.damage += 5;
+      min_stats.damage += 0;
+      max_stats.damage += 5;
       break;
     case 'Pep Pep':
       statsToChange.quad_strike = 1;
       break;
     case 'Blorg Implant':
-      statsToChange.damage = 10;
+       
+      stats.damage += 0;
+      min_stats.damage += 0;
+      max_stats.damage += 10;
       break;
     case 'Timeweaver Garments':
-      statsToChange.damage_reduction = 5;
+       
+      stats.damage_reduction += 5;
+      min_stats.damage_reduction += 0;
+      max_stats.damage_reduction += 5;
       break;
     case 'Trident':
         if (count === 2) {
@@ -1073,7 +1200,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.damage_reduction = 2.5;
       }
       if (count === 4) {
-        statsToChange.damage_reduction = 17.5;
+         
+        stats.damage_reduction += 17.5;
+        max_stats.damage_reduction += 17.5;
       }
       break;
     case 'Camouflage':
@@ -1098,7 +1227,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       }
       break;
     case 'Blind Souls':
-      statsToChange.absorb_chance = 5;
+       
+      stats.absorb_chance += 2.5;
+      min_stats.absorb_chance += 0.5;
+      max_stats.absorb_chance += 25;
       break;
     case "Conquerors Fury":
       statsToChange.empower_chance = 4;
@@ -1107,27 +1239,42 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.sp_damage = 5;
       break;
     case 'Windstalker': 
-      statsToChange.damage = 8;
+       
+      stats.damage += 4;
+      min_stats.damage += 1;
+      max_stats.damage += 8;
       break;
     case 'Proton Beem Zapper':
       statsToChange.richochet_chance = 1.5;
       statsToChange.quad_strike = 0.5;
       break;
     case 'Empyrean Vindicator':
-      statsToChange.damage_reduction = 5;
+       
+      stats.damage_reduction += 0;
+      min_stats.damage_reduction += 0;
+      max_stats.damage_reduction += 5;
       break;
     case 'Phoenix Ravager':
-      statsToChange.damage_reduction = 5;
+       
+      stats.damage_reduction += 0;
+      min_stats.damage_reduction += 0;
+      max_stats.damage_reduction += 5;
       break;
     case 'Ironbark Longbow':
-      statsToChange.damage = 8;
+       
+      stats.damage += 4;
+      min_stats.damage += 2;
+      max_stats.damage += 8;
       break;
     case 'Hydronus Helmet':
       statsToChange.speed = 3;
       statsToChange.critical_chance = 8;
       break;
     case 'Hydragar Stone':
-      statsToChange.absorb_chance = 5;
+       
+      stats.absorb_chance += 5;
+      min_stats.absorb_chance +=0;
+      max_stats.absorb_chance += 5;
       break;
 
     case 'Glamounir':
@@ -1155,20 +1302,30 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
 
     case 'Dragonskull':
       if (count === 2) {
-        statsToChange.damage = 2;
+         
+        max_stats.damage += 12;
+        stats.damage += 7;
+        min_stats.damage += 2;
       }
       break;
     case 'Blackarrow':
       if (count === 2) {
-        statsToChange.absorb_chance = 2;
+         
+        max_stats.absorb_chance += 7;
+        stats.absorb_chance += 4.5;
+        min_stats.absorb_chance += 2;
       }
       break;
     case 'Voltio':
       if (count === 4) {
-        stats['electric_damage'] = 60;
+         
+        stats['electric_damage'] += 30;
+        min_stats['electric_damage'] += 0;
+        max_stats['electric_damage'] += 60;
       }
       if (count === 6) {
-        stats['electric_damage'] = 100;
+         
+        max_stats['electric_damage'] += 50;
       }
       break;
     case 'Nephilim Shield':
@@ -1179,20 +1336,29 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.damage_reduction = 4;
       break;
     case 'Nephilim Casque':
-      statsToChange.speed = 5;
+       
+      stats.speed += 5;
+      min_stats.speed += 0;
+      max_stats.speed += 5;
       break;
     case 'Nephilim Girdle':
-      statsToChange.empower_chance = 5;
+       
+      stats.empower_chance += 3.75;
+      min_stats.empower_chance += 1.25;
+      max_stats.empower_chance += 6.25
       break;
     case 'Pyroc':
       if (count === 2) {
         statsToChange.empower_chance = 2;
       }
       if (count === 3) {
-        stats['fire_damage'] = 15;
+         
+        max_stats['fire_damage'] += 15;
       }
       if (count === 4) {
-        stats['fire_damage'] = 30;
+        stats['fire_damage'] += 30;
+         
+        max_stats['fire_damage'] += 30;
       }
       break;
     case 'Nepulus':
@@ -1200,7 +1366,10 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.deflect_chance = 8;
       }
       if (count === 4) {
-        stats['water_resistance'] = 18;
+        stats['water_resistance'] += 14;
+        min_stats['water_resistance'] += 8;
+        max_stats['water_resistance'] += 18;
+         
       }
       break;
     case 'Pangea':
@@ -1213,10 +1382,15 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.team_enrage = 2;
       }
       if (count === 3) {
-        stats['air_damage'] = 15;
+         
+        max_stats['air_damage'] += 15;
+        stats['air_damage'] += 15;
       }
       if (count === 4) {
-        statsToChange.healing = 15;
+         
+        max_stats.healing += 15;
+        stats.healing += 7.5;
+        min_stats.healing += 1.5;
       }
       break;
     case 'Astaroth Flag':
@@ -1256,10 +1430,16 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       break;
     case 'Ceraunos':
       if (count === 2) {
-        statsToChange.evade = 10;
+         
+        max_stats.evade += 10;
+        stats.evade += 5;
+        min_stats.evade += 0;
       }
       if (count === 3) {
-        statsToChange.air_resistance = 12;
+         
+        max_stats.air_resistance += 12;
+        stats.air_resistance += 6;
+        min_stats.air_resistance += 0;
       }
       break;
     case 'Nugget Of Grasberg':
@@ -1294,7 +1474,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.dual_strike = 7;
       statsToChange.empower_chance = 7;
       statsToChange.critical_chance = 50 + (3*accessoryUpgrade);
-      statsToChange.critical_damage = 10;
+      stats.critical_damage += 6;
+      min_stats.critical_damage += 2;
+      max_stats.critical_damage += 10;
       break;
     case 'Astaroths Crown':
       statsToChange.empower_chance = 6+(.25*accessoryUpgrade);
@@ -1331,8 +1513,11 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.absorb_chance = 2;
       }
       if (count === 4) {
-        statsToChange.damage_reduction = 20;
-        statsToChange.redirect_chance = 15;
+         
+        max_stats.damage_reduction += 20;
+        max_stats.redirect_chance += 15;
+        stats.damage_reduction += 20;
+        stats.redirect_chance += 15;
       }
       break;
     case "Behemoth": 
@@ -1340,40 +1525,62 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.empower_chance = 4;
       }
       if (count === 3) {
-        statsToChange.earth_damage = 50;
+         
+        max_stats.earth_damage = 50;
       }
       if (count === 4) {
         statsToChange.dual_strike = 15;
-        statsToChange.earth_damage = 30;
+        max_stats.earth_damage += 30;
+        stats.earth_damage += 30;
       }
       break;
     case 'Raiju':
       if (count === 2) {
-        statsToChange.electric_damage = 10;
+         
+        max_stats.electric_damage += 10;
+        stats.electric_damage += 10;
       }
       if (count === 3) {
-        statsToChange.empower_chance = 10;
+         
+        max_stats.empower_chance += 100;
+        stats.empower_chance += 50;
+        min_stats.empower_chance += 10;
       }
       if (count === 4) {
         statsToChange.speed = 10;
         statsToChange.electric_damage = 30;
-        statsToChange.damage -= 3;
+        max_stats.daamge -= 3;
+        stats.damage -= 15;
+        min_stats.damage -= 30;
+        //probably better to calculate this after everything is counted for a total empower. 
       }
       break;
     case 'Kaijin Fang':
-      statsToChange.damage_reduction = 8;
+       
+      stats.damage_reduction += 4;
+      min_stats.damage_reduction += 0;
+      max_stats.damage_reduction += 10;
       break;
     case 'Kaijin Ring':
       statsToChange.healing = 16;
       break;
     case 'Kaijin Reminder ':
-      statsToChange.damage = 25;
+       
+      stats.damage += 0;
+      min_stats.damage += 0;
+      max_stats.damage += 25;
       break;
     case 'Kaijin Furnace':
-      statsToChange.damage = 12;
+       
+      stats.damage += 7.5;
+      min_stats.damage += 3;
+      max_stats.damage += 12;
       break;
     case 'Kaijin Augury':
-      statsToChange.damage_reduction = 10;
+       
+      stats.damage_reduction += 0;
+      min_stats.damage_reduction += 0;
+      max_stats.damage_reduction += 10;
       break;
     case 'Flamewarden':
       if (count === 4) {
@@ -1396,33 +1603,52 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       break;
     case 'Water Demon':
       if (count === 4) {
-        statsToChange.water_damage = 20;
+         
+        max_stats.water_damage += 40;
+        stats.water_damage += 25;
+        min_stats.water_damage += 10;
       }
       break;
     case 'Sparks':
       if (count === 2) {
-        statsToChange.healing = 25;
+        max_stats.healing += 25;
       }
       break;
     case 'Tau Bless':
-      statsToChange.damage = 4.5;
+       
+      stats.damage += 2.5;
+      min_stats.damage += 1;
+      max_stats.damage += 4.5;
       break;
     case 'Huntress Savior':
-      statsToChange.healing = 20;
+       
+      stats.healing += 20;
+      min_stats.healing += 0;
+      max_stats.healing += 20;
       break;
     case 'Frozen Beads':
-      statsToChange.deflect_chance = 5;
+       
+      stats.deflect_chance += 5;
+      min_stats.deflect_chance += 0;
+      max_stats.deflect_chance += 5;
       break;
     case 'Demons Garments':
-      statsToChange.damage = 5;
-      statsToChange.damage_reduction = 5;
+       
+      min_stats.damage += 5;
+      min_stats.damage_reduction += 5;
       break;
     case 'Sparking Husk':
-      statsToChange.empower_chance = 5;
+       
+      stats.empower_chance += 5;
+      min_stats.empower_chance += 0;
+      max_stats.empower_chance += 5;
       break;
     case 'Supay':
       if (count === 3) {
-        statsToChange.earth_resistance = 15;
+         
+        max_stats.earth_resistance += 15;
+        stats.earth_resistance += 9;
+        min_stats.earth_resistance += 3;
       }
       if (count === 4) {
         statsToChange.block = 20;
@@ -1432,14 +1658,20 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.life_steal = 5;
       break;
     case 'Quetzal Gift':
-      statsToChange.evade = 5;
+       
+      stats.evade += 5;
+      min_stats.evade += 0;
+      max_stats.evade += 5;
       break;
     case 'Montezuma':
       if (count === 2) {
         statsToChange.speed = 5;
       }
       if (count === 3) {
-        statsToChange.damage = 7.5;
+         
+        max_stats.air_damage += 12;
+        stats.air_damage += 7.5
+        min_stats.air_damage += 3;
       }
       break;
     case 'Quetzal Greatcloak': 
@@ -1468,7 +1700,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
           statsToChange.damage -= 10;
         } 
         if (count === 4) {
-          //statsToChange.water_resistance = 25;
+          max_stats.water_resistance += 25;
           statsToChange.block = 20;
         }
       break;
@@ -1476,37 +1708,49 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.deflect_chance = 4;
       break;
     case 'Quetzal Scaled Vest':
-      statsToChange.damage_reduction = 10;
+       
+      stats.damage_reduction += 5;
+      min_stats.damage_reduction += 1;
+      max_stats.damage_reduction += 10;
       break;
     case 'Akiho':
       if (count === 2) {
-        statsToChange.evade = 5;
+        max_stats.evade += 5;
+        stats.evade += 5;
       }
       if (count === 3) {
-        statsToChange.evade = 15;
+        stats.evade += 15;
+        max_stats.evade += 15;
       }
       break;
     case 'Boreas Fire Scrolls':
       statsToChange.damage = 3;
       break;
     case 'Boreas Battleaxe':
-      statsToChange.air_damage = 10;
+       
+      max_stats.air_damage = 10;
       break;
     case 'Boreas Spacecap':
-      statsToChange.air_damage = 20;
+       
+      max_stats.air_damage = 20;
       break;
     case 'Evenor':
-      if (count === 4) {
-        statsToChange.empower_chance = 4;
-        statsToChange.damage = 12;
+      if (count === 2) {
+        max_stats.empower_chance += 4;
+        min_stats.damage += 3;
+        stats.damage += 7.5
+        max_stats.damage += 12;
       }
       break;
     case 'Wrightbros':
       if (count === 2) {
-        statsToChange.damage = 7.5;
+        max_stats.air_damage += 12;
+        stats.air_damage += 7.5
+        min_stats.air_damage += 3;
       }
       if (count === 3) {
-        statsToChange.empower_chance = 15;
+        max_stats.empower_chance += 15; 
+        stats.empower_chance += 15;
       }
       if (count === 4) {
         statsToChange.air_damage = 15;
@@ -1517,7 +1761,8 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
         statsToChange.redirect_chance = 5;
       }
       if (count === 3) {
-        statsToChange.block = 20;
+        max_stats.block += 20;
+        stats.block += 20;
       }
       break;
     case 'Powerful Totem':
@@ -1540,5 +1785,5 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
   }
   
 
-  return stats;
+  return [stats, min_stats, max_stats];
 }

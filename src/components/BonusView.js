@@ -70,15 +70,28 @@ const BonusView = (props) => {
                 </div>
     }
     if (props.bonuses.mounts && Object.keys(props.bonuses.mounts).length > 0) {
-      hasMount = <div className="bonus-mounts">
-                  <span>Mount Bonus:</span>
-                  <ul>
-                    <li>
-                      <span className="bonus-pet-name bonus-pet-name-legendary">{props.bonuses.mounts.title}</span>: <br />
-                      {props.bonuses.mounts.title} + {props.bonuses.mounts.value}
-                    </li>
-                  </ul>
-                </div>
+      if (props.bonuses.mounts.hasOwnProperty('min')) {
+        hasMount = <div className="bonus-mounts">
+          <span>Mount Bonus:</span>
+          <ul>
+            <li>
+              <span className="bonus-pet-name bonus-pet-name-legendary">{props.bonuses.mounts.title}</span>: <br />
+              {props.bonuses.mounts.title}
+            </li>
+          </ul>
+        </div>
+      } else {
+        hasMount = <div className="bonus-mounts">
+          <span>Mount Bonus:</span>
+          <ul>
+            <li>
+              <span className="bonus-pet-name bonus-pet-name-legendary">{props.bonuses.mounts.title}</span>: <br />
+              {props.bonuses.mounts.title} + {props.bonuses.mounts.value}
+            </li>
+          </ul>
+        </div>
+      }
+      
     }
 
     return (<div className="current-bonuses">

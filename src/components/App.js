@@ -447,12 +447,9 @@ class App extends Component {
     }
 
       let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
-      let stats = bonuses.stats;
-      let min_stats = bonuses.min_stats;
-      let max_stats = bonuses.max_stats;
-      state.min_stats = min_stats;
-      state.max_stats = max_stats;
-      state.stats = stats;
+      state.min_stats = bonuses.min_stats;
+    state.max_stats = bonuses.max_stats;
+    state.stats = bonuses.stats
       state.bonuses = {...bonuses.bonuses};
       state.urlEnd = bonuses.urlEnd;
 
@@ -518,12 +515,9 @@ class App extends Component {
 
     state.runes = runes;
     let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, state.enchants, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
-    let stats = bonuses.stats;
-    let min_stats = bonuses.min_stats;
-    let max_stats = bonuses.max_stats;
-    state.min_stats = min_stats;
-    state.max_stats = max_stats;
-    state.stats = stats;
+    state.min_stats = bonuses.min_stats;
+    state.max_stats = bonuses.max_stats;
+    state.stats = bonuses.stats
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
 
@@ -563,12 +557,9 @@ class App extends Component {
     state.enchants = {...eTS};
 
     let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],this.state.equipped, state.runes, eTS, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
-    let stats = bonuses.stats;
-    let min_stats = bonuses.min_stats;
-      let max_stats = bonuses.max_stats;
-    state.min_stats = min_stats;
-    state.max_stats = max_stats;
-    state.stats = stats;
+    state.min_stats = bonuses.min_stats;
+    state.max_stats = bonuses.max_stats;
+    state.stats = bonuses.stats
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
 
@@ -589,13 +580,11 @@ class App extends Component {
 
     let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel, this.state.t12, this.state.evolviumTable);
     state.bonuses = {...bonuses.bonuses};
-    let min_stats = bonuses.min_stats;
-      let max_stats = bonuses.max_stats;
-    state.min_stats = min_stats;
-    state.max_stats = max_stats;
+    state.min_stats = bonuses.min_stats;
+    state.max_stats = bonuses.max_stats;
+    state.stats = bonuses.stats
+
     state.urlEnd = bonuses.urlEnd;
-    let stats = bonuses.stats;
-    state.stats = stats;
     try {
       this.props.history.push(`/${state.urlEnd}`);
     }
@@ -636,12 +625,9 @@ class App extends Component {
         state.t12 = !state.t12;
         let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel, state.t12);
         state.bonuses = {...bonuses.bonuses};
-        let stats = bonuses.stats;
-        let min_stats = bonuses.min_stats;
-      let max_stats = bonuses.max_stats;
-        state.min_stats = min_stats;
-        state.max_stats = max_stats;
-        state.stats = stats;
+        state.min_stats = bonuses.min_stats;
+        state.max_stats = bonuses.max_stats;
+        state.stats = bonuses.stats
         break;
       default: 
       break;
@@ -665,12 +651,9 @@ class App extends Component {
     let bonuses = calculateBonuses([this.state.stats.power, this.state.stats.stamina, this.state.stats.agility],state.equipped, state.runes, state.enchants, this.state.accessoryLevel,this.state.t12, this.state.evolviumTable);
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
-    let stats = bonuses.stats;
-    let min_stats = bonuses.min_stats;
-      let max_stats = bonuses.max_stats;
-    state.min_stats = min_stats;
-    state.max_stats = max_stats;
-    state.stats = stats;
+    state.min_stats = bonuses.min_stats;
+    state.max_stats = bonuses.max_stats;
+    state.stats = bonuses.stats
     try {
       this.props.history.push(`/${state.urlEnd}`);
     }
@@ -691,12 +674,9 @@ class App extends Component {
     }
 
     let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12, this.state.evolviumTable);
-    let stats = bonuses.stats;
-    let min_stats = bonuses.min_stats;
-      let max_stats = bonuses.max_stats;
-    state.min_stats = min_stats;
-    state.max_stats = max_stats;
-    state.stats = stats;
+    state.min_stats = bonuses.min_stats;
+    state.max_stats = bonuses.max_stats;
+    state.stats = bonuses.stats
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
 
@@ -724,12 +704,9 @@ class App extends Component {
 
 
     let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12, this.state.evolviumTable);
-    let stats = bonuses.stats;
-    let min_stats = bonuses.min_stats;
-      let max_stats = bonuses.max_stats;
-    state.min_stats = min_stats;
-    state.max_stats = max_stats;
-    state.stats = stats;
+    state.min_stats = bonuses.min_stats;
+    state.max_stats = bonuses.max_stats;
+    state.stats = bonuses.stats
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
 
@@ -761,12 +738,9 @@ class App extends Component {
     }
 
     let bonuses = calculateBonuses([state.stats.power, state.stats.stamina, state.stats.agility], this.state.equipped, this.state.runes, this.state.enchants, this.state.accessoryLevel,this.state.t12, this.state.evolviumTable);
-    let stats = bonuses.stats;
-    let min_stats = bonuses.min_stats;
-      let max_stats = bonuses.max_stats;
-    state.min_stats = min_stats;
-    state.max_stats = max_stats;
-    state.stats = stats;
+    state.min_stats = bonuses.min_stats;
+    state.max_stats = bonuses.max_stats;
+    state.stats = bonuses.stats
     state.bonuses = {...bonuses.bonuses};
     state.urlEnd = bonuses.urlEnd;
 
