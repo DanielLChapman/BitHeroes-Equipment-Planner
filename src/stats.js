@@ -56,5 +56,157 @@ export var base ={
 	enchants: [],
 };
 
+export const statTable = [
+	{
+		name: 'Damage: ',
+		id: 'damage'
+	},
+	{
+		name: 'SP Dmg: ',
+		id: 'sp_damage'
+	},
+	{
+		name: 'Deflect: ',
+		id: 'deflect_chance'
+	},
+	{
+		name: 'Absorb: ',
+		id: 'absorb_chance'
+	},
+	{
+		name: 'Dmg Reduction: ',
+		id: 'damage_reduction'
+	},
+	{
+		name: 'Dual Strike: ',
+		id: 'dual_strike'
+	},
+	{
+		name: 'Empower: ',
+		id: 'empower_chance'
+	},
+	{
+		name: 'Quad Strike: ',
+		id: 'quad_strike'
+	},
+	{
+		name: 'Ricochet: ',
+		id: 'richochet_chance',
+	},
+	{
+		name: 'Healing: ',
+		id: 'healing'
+	},
+	
+	{
+		name: 'Crit Chance: ',
+		id: 'critical_chance'
+	},
+	{
+		name: 'Crit Dmg: ',
+		id: 'critical_damage'
+	},
+	{
+		name: 'Evade: ',
+		id: 'evade'
+	},
+	{
+		name: 'Block: ',
+		id: 'block'
+	},
+	{
+		name: 'Life Steal: ',
+		id: 'life_steal'
+	},
+	{
+		name: 'Dmg Enrage: ',
+		id: 'damage_enrage'
+	},
+	{
+		name: 'Team Enrage: ',
+		id: 'team_enrage'
+	},
+	{
+		name: 'Health: ',
+		id: 'health'
+	},
+	{
+		name: 'Speed: ',
+		id: 'speed'
+	},
+	{
+		name: 'Fire Dmg: ',
+		id: 'fire_damage'
+	},
+	{
+		name: 'Fire Resist: ',
+		id: 'fire_resistance'
+	},
+	{
+		name: 'Electric Dmg: ',
+		id: 'electric_damage'
+	},
+	{
+		name: 'Electric Resist: ',
+		id: 'electric_resistance'
+	},
+	{
+		name: 'Water Dmg: ',
+		id: 'water_damage'
+	},
+	{
+		name: 'Water Resist: ',
+		id: 'water_resistance'
+	},
+	{
+		name: 'Air Dmg: ',
+		id: 'air_damage'
+	},
+	{
+		name: 'Air Resist: ',
+		id: 'air_resistance'
+	},
+	{
+		name: 'Earth Dmg: ',
+		id: 'air_damage'
+	},
+	{
+		name: 'Earth Resist: ',
+		id: 'air_resistance'
+	},
+	
+	
+]
 
- 
+export const elementsIndentifier = [
+	{
+		name: 'Physical',
+		lowercase: 'physical',
+		color: '#ff0'
+	},
+	{
+		name: 'Fire',
+		lowercase: 'fire',
+		color: 'firebrick'
+	},
+	{
+		name: 'Electric',
+		lowercase: 'electric',
+		color: 'lightblue'
+	},
+	{
+		name: 'Water',
+		lowercase: 'water',
+		color: 'aquamarine'
+	},
+	{
+		name: 'Air',
+		lowercase: 'air',
+		color: 'mintcream'
+	},
+	{
+		name: 'Earth',
+		lowercase: 'earth',
+		color: 'darkseagreen'
+	},
+]

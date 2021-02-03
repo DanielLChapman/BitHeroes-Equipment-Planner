@@ -758,7 +758,7 @@ class App extends Component {
       left: 0
     };
     let hideStyling;
-    window.innerWidth > 900 ? hideStyling = {left: '-420px'} : hideStyling = {left: '-420px'}
+    window.innerWidth > 900 ? hideStyling = {left: '-420px'} : hideStyling = {left: '-520px'}
     
     runeWindowStyling = ((this.state.showRunes) ? showStyling : hideStyling);
     enchantWindowStyling = ((this.state.showEnchants) ? showStyling : hideStyling);
@@ -782,7 +782,9 @@ class App extends Component {
           
         </header>
         <section className="menu">
-          <AboutWindow />
+          <AboutWindow 
+          styling={aboutWindowStyling}
+          openClose={this.handleOpenClose}  />
           <StatWindow 
             updateStats={this.updateStats} 
             styling={statWindowStyling} 

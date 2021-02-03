@@ -504,7 +504,7 @@ body {
   .stat-window,
   .optimizer-window,
   .about-window {
-    width: 220px;
+    width: 80%;
     top: 0;
     margin-top: -20px;
   }
@@ -820,13 +820,13 @@ select option {
     padding: initial;
   }
   .about-window section ul {
-    width: 220px;
+    width: 100%;
     padding: 0;
     margin: initial;
     position: relative;
   }
   .about-window section ul li {
-    width: 220px;
+    width: 90%;
     position: relative;
   }
 }
@@ -910,4 +910,55 @@ select option {
 }
 .evolvium-table .selected {
   background: #ffa500;
+}
+.stat-window-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  width: 330px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  text-align: right;
+  font-family: 'Roboto', sans-serif;
+}
+.stat-window-table thead tr {
+  color: #fff;
+  text-align: right;
+}
+.stat-window-table th,
+.stat-window-table td {
+  padding: 12px 15px;
+}
+.stat-window-table th:nth-child(1),
+.stat-window-table td:nth-child(1) {
+  text-align: left;
+}
+.stat-window-table tbody,
+.stat-window-table tr {
+  border-bottom: 1px solid #ddd;
+}
+.stat-window-table td:after {
+  content: "%";
+}
+.stat-window-table td:nth-child(1):after {
+  content: "";
+}
+.stat-window-table .damage-output:after {
+  content: "";
+}
+@media screen and (max-width: 450px) {
+  .stat-window-table {
+    width: 100%;
+  }
+  .stat-window-table td:nth-child(3),
+  .stat-window-table th:nth-child(3) {
+    display: none;
+  }
+}
+.link-stat-table-ul {
+  margin-bottom: -15px !important;
+}
+.links-stat-table {
+  left: -15px;
+  position: relative;
 }

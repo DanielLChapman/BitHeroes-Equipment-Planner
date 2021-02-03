@@ -720,7 +720,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       break;
     case 'Bushido':
       statsToChange.damage = 10;
-      statsToChange.damage_reduction -= 10;
+      statsToChange.damage_reduction = -10;
       break;
     case 'Conduction':
       if (count === 2) {
@@ -910,7 +910,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       break;
     case "Fish N' Barrel":
       statsToChange.damage_reduction = 5;
-      statsToChange.damage -= 5;
+      statsToChange.damage = -5;
       break;
     case 'Magmasher':
       statsToChange.healing = 10;
@@ -993,7 +993,7 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.dual_strike = 1;
       break;
     case 'Cloak of Dark Tides':
-      statsToChange.damage_reduction -= 5;
+      statsToChange.damage_reduction = -5;
       statsToChange.damage = 5;
       break;
     case 'Widowmaker':
@@ -1695,11 +1695,12 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       break;
     case 'Saywite':
         if (count === 2 ) {
-          statsToChange.team_enrage = 3;
+          stats.team_enrage += 3;
+          max_stats.team_enrage += 3;
         }
         if (count === 3) {
           statsToChange.water_resistance = 20;
-          statsToChange.damage -= 10;
+          statsToChange.damage = -10;
         } 
         if (count === 4) {
           max_stats.water_resistance += 25;

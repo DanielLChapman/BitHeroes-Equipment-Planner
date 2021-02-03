@@ -493,7 +493,7 @@ body {
     height: 100vh;
   }
   @media screen and (max-width:414px) {
-    width: 220px;
+    width: 80%;
     top: 0;
     margin-top: -20px;
   }
@@ -798,12 +798,12 @@ select.selector, select option {
     padding: initial;
     
     ul {
-      width: 220px;
+      width: 100%;
       padding: 0;
       margin: initial;
       position: relative;
       li {
-        width: 220px;
+        width: 90%;
         position: relative;
         
       }
@@ -906,4 +906,58 @@ select.selector, select option {
   .selected {
     background: orange;
   }
+}
+
+.stat-window-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 330px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    thead tr {
+      color: #ffffff;
+      text-align: right;
+    }
+    th, td {
+      padding: 12px 15px;
+      &:nth-child(1) {
+        text-align: left;
+      }
+    }
+    tbody, tr {
+      border-bottom: 1px solid #dddddd;
+    }
+    td:after {
+      content: "%"
+    }
+    td:nth-child(1) {
+      &:after {
+        content: ""
+      }
+    }
+    .damage-output {
+        &:after {
+          content: ""
+        }
+    }
+    @media screen and (max-width: 450px) {
+      width: 100%;
+      td, th {
+        &:nth-child(3) {
+          display: none;
+        }
+      }
+    }
+}
+
+.link-stat-table-ul {
+  margin-bottom: -15px !important;
+}
+
+.links-stat-table {
+  left: -15px;
+  position: relative;
 }
