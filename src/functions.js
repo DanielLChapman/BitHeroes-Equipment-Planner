@@ -401,7 +401,6 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
     for (var i = 0; i < runes.length; i++) {
 
       if (runes[i].id !== 'x') {
-        console.log(runes[i]);
         let tempRune = runes[i];
         let multiplier = 1;
 
@@ -471,6 +470,11 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
 
           let r1 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot1'].title);
           let r2 = searchObjectArray(enchantTypes, 'title', enchantments[x]['slot2'].title);
+
+
+          let r1Value = r1.value*multiple;
+          let r2Value = r2.value*multiple;
+          
           
 
           //DRY this later
@@ -478,25 +482,25 @@ export const calculateBonuses = (baseStats = [6, 6, 6], equipmentOn, runes = [],
           //stats[r2.effect] += r2.value;
           //stats[r1.effect] += r1.value;
           //adding decimals seems to become a repeating decimal, this is a team fix. 
-          stats[r1.effect] = Math.round((stats[r1.effect]+r1.value)*1000)/1000 * multiple;
-          min_stats[r1.effect] = Math.round((min_stats[r1.effect]+r1.value)*1000)/1000 * multiple;
-          max_stats[r1.effect] = Math.round((max_stats[r1.effect]+r1.value)*1000)/1000 * multiple;
+          stats[r1.effect] = Math.round((stats[r1.effect]+r1Value)*1000)/1000;
+          min_stats[r1.effect] = Math.round((min_stats[r1.effect]+r1Value)*1000)/1000;
+          max_stats[r1.effect] = Math.round((max_stats[r1.effect]+r1Value)*1000)/1000;
           
-          stats[r2.effect] = Math.round((stats[r2.effect]+r2.value)*1000)/1000 * multiple;
-          min_stats[r2.effect] = Math.round((min_stats[r2.effect]+r2.value)*1000)/1000 * multiple;
-          max_stats[r2.effect] = Math.round((max_stats[r2.effect]+r2.value)*1000)/1000 * multiple;
+          stats[r2.effect] = Math.round((stats[r2.effect]+r2Value)*1000)/1000;
+          min_stats[r2.effect] = Math.round((min_stats[r2.effect]+r2Value)*1000)/1000;
+          max_stats[r2.effect] = Math.round((max_stats[r2.effect]+r2Value)*1000)/1000;
 
           if (r1.effect2) {
             //stats[r1.effect2] += r1.value2;
-            stats[r1.effect2] = Math.round((stats[r1.effect2]+r1.value2)*1000)/1000 * multiple;
-            min_stats[r1.effect2] = Math.round((min_stats[r1.effect2]+r1.value2)*1000)/1000 * multiple;
-            max_stats[r1.effect2] = Math.round((max_stats[r1.effect2]+r1.value2)*1000)/1000 * multiple;
+            stats[r1.effect2] = Math.round((stats[r1.effect2]+(r1.value2)*multiple)*1000)/1000;
+            min_stats[r1.effect2] = Math.round((min_stats[r1.effect2]+(r1.value2)*multiple)*1000)/1000;
+            max_stats[r1.effect2] = Math.round((max_stats[r1.effect2]+(r1.value2)*multiple)*1000)/1000;
           }
           if (r2.effect2) {
             //stats[r2.effect2] += r2.value2;
-            stats[r2.effect2] = Math.round((stats[r2.effect2]+r2.value2)*1000)/1000 * multiple;
-            min_stats[r2.effect2] = Math.round((min_stats[r2.effect2]+r2.value2)*1000)/1000 * multiple;
-            max_stats[r2.effect2] = Math.round((max_stats[r2.effect2]+r2.value2)*1000)/1000 * multiple;
+            stats[r2.effect2] = Math.round((stats[r2.effect2]+(r2.value2)*multiple)*1000)/1000;
+            min_stats[r2.effect2] = Math.round((min_stats[r2.effect2]+(r2.value2)*multiple)*1000)/1000;
+            max_stats[r2.effect2] = Math.round((max_stats[r2.effect2]+(r2.value2)*multiple)*1000)/1000;
             
           }
 
@@ -1781,9 +1785,9 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
 
   if (!usedMinMax) {
     Object.keys(statsToChange).forEach((x) => {
-      stats[x] += statsToChange[x];
-      min_stats[x] += statsToChange[x];
-      max_stats[x] += statsToChange[x];
+      stats[x] += parseInt(statsToChange[x], 10);
+      min_stats[x] += parseInt(statsToChange[x], 10);
+      max_stats[x] += parseInt(statsToChange[x], 10);
     });
   }
   
