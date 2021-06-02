@@ -162,6 +162,7 @@ export default class Equipment extends Component {
 											<div className="set-bonuses">
 												{
 													Object.keys(this.state.sets[x].setBonuses).map((q, i) => {
+										
 														//if (this.props.sets[x].name === 'Apocalypse') {
 														//	console.log({q, i});
 														//}

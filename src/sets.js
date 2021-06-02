@@ -706,6 +706,57 @@ export const sets = {
 			4: "+30% Barrier. Heal and Cleanse self when you proc barrier"
 		}
 	},
+	ondina: {
+		name: "Ondina",
+		location: "t16 Raids",
+		tier: 16,
+		items: ["Ondina Scales","Ondina Doublesword","Ondina Eye","Ondina Gem" ],
+		description: "",
+		setBonuses: {
+			2: "When you get hit, gain 2.5% water resistance, up to 10%",
+			3: "15% Barrier if you have the lowest health of the team",
+			4: "25% Chance to deflect damage to furthest enemy, if you have the lowest health of the team"
+		}
+	},
+	orvar: {
+		name: "Orvar",
+		location: "t16 Titans",
+		tier: 16,
+		items: ["Orvar Crown","Orvar Suit","Orvar Bow","Orvar Circle",],
+		description: "",
+		setBonuses: {
+			2: "When you use an SP skill, increase healing by 20%. Resets on using a healing skill.",
+			3: "Using a healing spell gives you 20% electric damage. Resets on SP damage skill",
+			4: "Expender 3: Bleed all for 40%. 10% Overheal converted to team enrage"
+		}
+	},
+	einar: {
+		name: "Einar",
+		location: "t16 Ignited Abyss",
+		tier: 16,
+		items: ["Einar Flames","Einar Rapier","Einar Ring","Einar Heart",],
+		description: "",
+		setBonuses: {
+			2: "3% Ricochet",
+			3: "+5% Fire Damage. Revenge: Gain 40% Damage Enrage each time your attack is evaded or blocked.",
+			4: "+15% Fire Damage. 20% Chance to attack fastest enemy when you hit an enemy"
+		}
+	},
+
+	sigbiorn: {
+	name: "Sigbiorn",
+	location: "t16 Trials",
+	tier: 16,
+	items: ["Sigbiorn Head","Sigbiorn Skin","Sigbiorn Wall","Sigbiorn Teeth", ],
+	description: "",
+	setBonuses: {
+		2: "Extort",
+		3: "Shield self by 5% when you get hit, 10% Earth Resistance",
+		4: "10% Earth Resistance, 30% chance to shield team for 20% when you get hit"
+	}
+	},
+	 
+	
 	
 }
 

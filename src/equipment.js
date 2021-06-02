@@ -6041,11 +6041,294 @@ export const equipment = {
 			flat: false
 		},
 	},
+	einar_heart: {
+		name: "Einar Heart",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "einar",
+		effect: "",
+		shareID: "undefined",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	einar_ring: {
+		name: "Einar Ring",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "einar",
+		effect: "",
+		shareID: "82",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	einar_rapier: {
+		name: "Einar Rapier",
+		type: "set",
+		slot: "Sword",
+		image: "",
+		partOfSet: "einar",
+		effect: "",
+		shareID: "qp",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	einar_flames: {
+		name: "Einar Flames",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "einar",
+		effect: "",
+		shareID: "undefined",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	orvar_circle: {
+		name: "Orvar Circle",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "orvar",
+		effect: "",
+		shareID: "8p",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	orvar_bow: {
+		name: "Orvar Bow",
+		type: "set",
+		slot: "Bow",
+		image: "",
+		partOfSet: "orvar",
+		effect: "",
+		shareID: "undefined",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	orvar_suit: {
+		name: "Orvar Suit",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "orvar",
+		effect: "",
+		shareID: "vs",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	orvar_crown: {
+		name: "Orvar Crown",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "orvar",
+		effect: "",
+		shareID: "9f",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	ondina_gem: {
+		name: "Ondina Gem",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "ondina",
+		effect: "",
+		shareID: "jr",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	ondina_eye: {
+		name: "Ondina Eye",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "ondina",
+		effect: "",
+		shareID: "undefined",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+
+	ondina_doublesword: {
+		name: "Ondina Doublesword",
+		type: "set",
+		slot: "Sword",
+		image: "",
+		partOfSet: "ondina",
+		effect: "",
+		shareID: "uw",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	ondina_scales: {
+		name: "Ondina Scales",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "ondina",
+		effect: "",
+		shareID: "jp",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	sigbiorn_teeth: {
+		name: "Sigbiorn Teeth",
+		type: "set",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "sigbiorn",
+		effect: "",
+		shareID: "dd",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+
+	sigbiorn_wall: {
+		name: "Sigbiorn Wall",
+		type: "set",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "sigbiorn",
+		effect: "",
+		shareID: "k:",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	sigbiorn_skin: {
+		name: "Sigbiorn Skin",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "sigbiorn",
+		effect: "",
+		shareID: "up",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+	sigbiorn_head: {
+		name: "Sigbiorn Head",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "sigbiorn",
+		effect: "",
+		shareID: "r7",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+	},
+
 	
 }
 
 
 /*
+
+function generateSet(name, slot, set, tier, element, eType ) {
+	let a = generateShareID();
+	console.log(`
+	
+	${ name.toLowerCase().split(' ').join('_')}: {
+		name: "${name}",
+		type: "set",
+		slot: "${slot}",
+		image: "",
+		partOfSet: "${set}",
+		effect: "",
+		shareID: "${a}",
+		tier: ${tier},
+		elemental: {
+			element_value: 4,
+			element_type: "${element}",
+			element_modifier: "${eType}",
+			flat: false
+		},
+	},
+
+	`);
+}
 
 function generateMythic(name, slot, effect, tier, location, element1, element2) {
 	let a = generateShareID();

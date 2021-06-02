@@ -1783,12 +1783,50 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       max_stats.fire_damage += 10;
       break;
     case 'Thorstein Talisman':
-      statsToChange.healing += 20;
+      statsToChange.healing = 20;
       break;
     case 'Thorstein Crown':
       max_stats.absorb_chance += 5;
       break;
-    //Add in legendary enchant and accessories, mounts too
+
+    case 'Ondina':
+      if (count === 2) {
+        stats.water_resistance += 5
+        max_stats.water_resistance += 10;
+      }
+      if (count === 4) {
+        stats.deflect_chance += 25;
+        max_stats.deflect_chance += 25;
+      }
+      break;
+    case 'Orvar':
+      if (count === 2) {
+        max_stats.healing += 20;
+      }
+      if (count === 3 ) {
+        max_stats.electric_damage += 20;
+      } 
+      break;
+    case 'Einar':
+      if (count === 2) {
+        statsToChange.richochet_chance = 3;
+      }
+      if (count === 3) {
+        statsToChange.fire_damage = 5;
+        max_stats.damage_enrage += 40;
+      }
+      if (count === 4) {
+        statsToChange.fire_damage = 15;
+      }
+      break;
+    case 'Sigbiorn':
+      if (count === 3) {
+        statsToChange.earth_resistance = 10;
+      }
+      if (count === 4) {
+        statsToChange.earth_resistance = 10;
+      }
+      break;
     default: 
       //console.log(name, equipped, stats);
       break;
