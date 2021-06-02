@@ -7,6 +7,7 @@ const AboutWindow = (props) => (
 
             <span style={{textDecoration: 'underline'}}>UPDATES:</span>
             <ul className="about-page-ul">
+                <li>6/2/2021  -  Added in tier 16 mythics</li>
                 <li>2/3/2021  -  Added in Min-Avg-Max for stats windows, please message on discord if you run into an issue or have a better suggestion for displaying the data.</li>
                 <li>2/1/2021   - Added Artifact Runes</li>
                 <li>1/31/2021  - Temporarily removing Saywite's 25% on under 70% hp.</li>

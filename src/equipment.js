@@ -5857,8 +5857,250 @@ export const equipment = {
 		shareID: "y1",
 		tier: 0,
 	},
-
+	thorstein_endurer: {
+		name: "Thorstein Endurer",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "While below 40% health, 20% chance for healing skills received to be twice as effective",
+		location: "t16 Trials",
+		shareID: "~5",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	thorstein_divider: {
+		name: "Thorstein Divider",
+		type: "mythic",
+		slot: "Axe",
+		image: "",
+		partOfSet: "",
+		effect: "Gain 2.5% barrier from each rooted enemy",
+		location: "t16 Trials",
+		shareID: "dh",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	thorstein_band: {
+		name: "Thorstein Band",
+		type: "mythic",
+		slot: "Ring",
+		image: "",
+		partOfSet: "",
+		effect: "Vampirism 10: 45% Power when you get hit",
+		location: "t16 Raids",
+		shareID: "l2",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	thorstein_crown: {
+		name: "Thorstein Crown",
+		type: "mythic",
+		slot: "Head",
+		image: "",
+		partOfSet: "",
+		effect: "5% Absorb if you have the lowest health of your team",
+		location: "t16 Raids",
+		shareID: "xy",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	thorstein_talisman: {
+		name: "Thorstein Talisman",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "Skills that cost SP gain 20% Healing Bonus",
+		location: "t16 Titans",
+		shareID: "4g",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	thorstein_shield: {
+		name: "Thorstein Shield",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "Revitalize: Spread heal for 10% when you hit an enemy",
+		location: "t16 Titans",
+		shareID: "zv",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	thorstein_wall: {
+		name: "Thorstein Wall",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "Damage from ricochet or bouncing attacks deal 10% more fire damage",
+		location: "t16 Ignited Abyss",
+		shareID: "i~",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	thorstein_scale: {
+		name: "Thorstein Scale",
+		type: "mythic",
+		slot: "Body",
+		image: "",
+		partOfSet: "",
+		effect: "3% Team Damage Enrage",
+		location: "t16 Ignited Abyss",
+		shareID: "*e",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "earth",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	
 }
+
+
+/*
+
+function generateMythic(name, slot, effect, tier, location, element1, element2) {
+	let a = generateShareID();
+	console.log(`
+	${ name.toLowerCase().split(' ').join('_')}: {
+		name: "${name}",
+		type: "mythic",
+		slot: "${slot}",
+		image: "",
+		partOfSet: "",
+		effect: "${effect}",
+		location: "${location}",
+		shareID: "${a}",
+		tier: ${tier},
+		elemental: {
+			element_value: 4,
+			element_type: "${element1}",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "${element2}",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	
+	`)
+}
+
+: {
+		name: "",
+		type: "mythic",
+		slot: "",
+		image: "",
+		partOfSet: "",
+		effect: "",
+		location: "t16 Trials",
+		shareID: "",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+*/
 
 //Not for public to use
 /*
@@ -5884,6 +6126,7 @@ const generateShareID = () => {
 	} else {
 		x.push(result);
 		console.log(result);
+		return result
 	}
 }
 

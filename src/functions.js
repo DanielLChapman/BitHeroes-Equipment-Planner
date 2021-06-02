@@ -1776,7 +1776,18 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
       statsToChange.block = 30+(2*accessoryUpgrade);
       statsToChange.damage_reduction = 15;
       break;
-
+    case 'Thorstein Scale':
+      stats.team_enrage += 3;
+      break;
+    case 'Thorstein Wall':
+      max_stats.fire_damage += 10;
+      break;
+    case 'Thorstein Talisman':
+      statsToChange.healing += 20;
+      break;
+    case 'Thorstein Crown':
+      max_stats.absorb_chance += 5;
+      break;
     //Add in legendary enchant and accessories, mounts too
     default: 
       //console.log(name, equipped, stats);

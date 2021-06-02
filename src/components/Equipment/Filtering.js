@@ -52,7 +52,7 @@ class Filtering extends Component {
 
                                 
                                 {
-                                    [1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((x, i) => {
+                                    [1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((x, i) => {
                                         if (x === 1) {
                                             return (
                                                 <label key={i}>
@@ -106,7 +106,7 @@ class Filtering extends Component {
 									this.props.bySlotFiltering(e, 'tiers')
 								}} multiple>
 									{
-										[1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((x, i) => {
+										[1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((x, i) => {
 											let styling;
 
 											this.props.equipmentFiltering.tiers.includes(x) ? styling = '' : styling = 'force-color-dropdown'; 
