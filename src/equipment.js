@@ -2894,7 +2894,30 @@ export const equipment = {
 		effect: "10% Chance for Skills to Not Spend SP, +5% Fire Resist, +4 Water Damage",
 		shareID: "TL",
 		elemental: {
-			element_value: 5,
+			element_value: 4,
+			element_type: "fire",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "water",
+			element_modifier: "damage",
+			flat: false
+		},
+		tier: 11,
+	},
+	tohtuhm: {
+		name: "Tohtuhm",
+		type: "mythic",
+		slot: "Sword",
+		image: "",
+		partOfSet: "",
+		location: "t11 Titan World Boss",
+		effect: "4% Dual Strike",
+		shareID: "51",
+		elemental: {
+			element_value: 4,
 			element_type: "fire",
 			element_modifier: "resistance",
 			flat: false
