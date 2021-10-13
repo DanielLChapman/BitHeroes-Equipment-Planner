@@ -1741,6 +1741,24 @@ export const setStatBonuses = (name, equipped, stats, count = 2, aU = 0, min_sta
        
       max_stats.air_damage = 20;
       break;
+    case 'Tohtuhm':
+      
+      statsToChange.dual_strike = 4;
+      break;
+    case 'Thorstein Locket':
+      stats.air_damage += 10;
+      min_stats.air_damage += 0;
+      max_stats.air_damage += 20;
+      break;
+    case 'Tyrnogs':
+      if (count === 3) {
+        max_stats.air_damage += 25;
+      }
+      if (count === 4) {
+        max_stats.dual_strike += 30;
+        max_stats.air_damage += 50;
+      }
+      break;
     case 'Evenor':
       if (count === 2) {
         max_stats.empower_chance += 4;

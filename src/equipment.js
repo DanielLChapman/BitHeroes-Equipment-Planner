@@ -6322,6 +6322,116 @@ export const equipment = {
 			flat: false
 		},
 	},
+	thorstein_guard: {
+		name: "Thorstein Guard",
+		type: "mythic",
+		slot: "Offhand",
+		image: "",
+		partOfSet: "",
+		effect: "15% Chance to gain 1 SP",
+		location: "Nordic Dream",
+		shareID: "fc",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	thorstein_locket: {
+		name: "Thorstein Locket",
+		type: "mythic",
+		slot: "Necklace",
+		image: "",
+		partOfSet: "",
+		effect: "Skills gain 5% air damage for each SP spent",
+		location: "Nordic Dream",
+		shareID: "v.",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "electric",
+			element_modifier: "resistance",
+			flat: false
+		},
+		elemental2: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	tyrnogs_jewel: {
+		name: "Tyrnogs Jewel",
+		type: "set",
+		slot: "Ring",
+		image: "",
+		partOfSet: "tyrnogs",
+		effect: "",
+		shareID: "n3",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	tyrnogs_windspear: {
+		name: "Tyrnogs Windspear",
+		type: "set",
+		slot: "Spear",
+		image: "",
+		partOfSet: "tyrnogs",
+		effect: "",
+		shareID: "_*",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	tyrnogs_lamellar: {
+		name: "Tyrnogs Lamellar",
+		type: "set",
+		slot: "Body",
+		image: "",
+		partOfSet: "tyrnogs",
+		effect: "",
+		shareID: "*2",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
+	tyrnogs_helm: {
+		name: "Tyrnogs Helm",
+		type: "set",
+		slot: "Head",
+		image: "",
+		partOfSet: "tyrnogs",
+		effect: "",
+		shareID: "7u",
+		tier: 16,
+		elemental: {
+			element_value: 4,
+			element_type: "air",
+			element_modifier: "damage",
+			flat: false
+		},
+	},
 
 	
 }

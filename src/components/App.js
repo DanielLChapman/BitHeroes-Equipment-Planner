@@ -765,6 +765,7 @@ class App extends Component {
     statWindowStyling = ((this.state.showStats) ? showStyling : hideStyling);
     optimizerWindowStyling = ((this.state.showOptimizer) ? showStyling : hideStyling);
     aboutWindowStyling = ((this.state.showAbout) ? showStyling : hideStyling);
+
     return (
       <div className="App">
         <header className="App-header header">

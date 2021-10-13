@@ -755,7 +755,19 @@ export const sets = {
 		4: "10% Earth Resistance, 30% chance to shield team for 20% when you get hit"
 	}
 	},
-	 
+	tyrnogs: {
+		name: "Tyrnogs",
+		location: "t16 Nordic Dreams",
+		tier: 16,
+		items: ["Tyrnogs Jewel","Tyrnogs Helm","Tyrnogs Lamellar","Tyrnogs Windspear" ],
+		description: "",
+		setBonuses: {
+			2: "15% Chance for skills to not spend SP",
+			3: "+25% Air Damage on spells over 2SP",
+			4: "+50% Air Damage on targets with more than 70% HP, +30% Dual Strike on skills over 2 SP"
+		}
+	},
+		 
 	
 	
 }

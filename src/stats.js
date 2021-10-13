@@ -168,11 +168,11 @@ export const statTable = [
 	},
 	{
 		name: 'Earth Dmg: ',
-		id: 'air_damage'
+		id: 'earth_damage'
 	},
 	{
 		name: 'Earth Resist: ',
-		id: 'air_resistance'
+		id: 'earth_resistance'
 	},
 	
 	

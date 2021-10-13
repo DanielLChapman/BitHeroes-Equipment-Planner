@@ -27,6 +27,8 @@ export default class StatWindow extends React.Component {
             return {accessoryLevel: props.currentLevel}
         };
     }
+
+    
     
     render() {
         let linkCalcs = <ul></ul>
