@@ -768,6 +768,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <meta httpEquiv='cache-control' content='no-cache' />
         <header className="App-header header">
           <h1 className="title">Bit Heroes Equipment Planner</h1>
           <p className="sharable-link">
