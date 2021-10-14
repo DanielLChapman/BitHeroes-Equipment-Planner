@@ -4,7 +4,7 @@ import Equipped from "../components/Equipped";
 import { shallow, mount } from 'enzyme';
 import { BrowserRouter, Route, Switch, MemoryRouter } from "react-router-dom";
 
-import {equipment} from '../equipment';
+import {equipment} from '../equipment-v-16-1';
 import {sets} from '../sets';
 
 var wrapper;

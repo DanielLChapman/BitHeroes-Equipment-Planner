@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
 import {convertName} from '../functions';
-import {filteringEquipment} from '../equipment';
+import {filteringEquipment} from '../equipment-v-16-1';
 
 import Filtering from './Equipment/Filtering';
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {equipment, sortEquipment} from '../equipment';
+import {equipment, sortEquipment} from '../equipment-v-16-1';
 import {searchOptions, change} from '../investigation';
 import OptimizerNotice from './Optimizer/OptimizerNotice';
 import OptimizerDropdown from './Optimizer/OptimizerDropdown';
 import OptimizerFunction from './Optimizer/OptimizerFunction';
 
 import Filtering from './Equipment/Filtering';
-import {filteringEquipment} from '../equipment';
+import {filteringEquipment} from '../equipment-v-16-1';
 import {tiers} from './Equipment';
 
 export default class OptimizerWindow extends React.Component {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { sets } from '../sets';
-import { equipment, sortEquipment } from '../equipment';
+import { equipment, sortEquipment } from '../equipment-v-16-1';
 import { mountTypes } from '../mounts';
 import {enchantTypes } from '../enchants';
 import {runeTypes, metaRunes, artifactRunes } from '../runes';
@@ -768,7 +768,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <meta httpEquiv='cache-control' content='no-cache' />
+        
         <header className="App-header header">
           <h1 className="title">Bit Heroes Equipment Planner</h1>
           <p className="sharable-link">

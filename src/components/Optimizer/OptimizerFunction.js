@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {equipment, sortEquipment} from '../../equipment';
+import {equipment, sortEquipment} from '../../equipment-v-16-1';
 import {sets} from '../../sets';
 import {base } from '../../stats';
 import { mountTypes } from '../../mounts';
